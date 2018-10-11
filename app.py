@@ -4,6 +4,7 @@ import datetime
 import requests
 from flask import Flask, render_template, redirect
 from flask_caching import Cache
+from flask_compress import Compress
 from flask_rev import Rev
 from icalendar import Calendar
 from lxml import objectify, html
@@ -15,6 +16,7 @@ CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
 cache.init_app(app)
+Compress(app)
 Rev(app)
 
 

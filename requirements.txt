@@ -1,5 +1,6 @@
 Flask
 Flask-Caching
+Flask-Compress
 flask-rev
 icalendar
 lxml
