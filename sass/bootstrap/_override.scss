@@ -1,0 +1,74 @@
+// OVERRIDE BOOTSTRAP
+// @Override Bootstrap variables
+// See "bootstrap/scss/_variables.scss"
+
+// COLORS
+$primary: $tryton-color-primary;
+$secondary: $tryton-color-secondary;
+$success: $tryton-color-success;
+$info: $tryton-color-info;
+$warning: $tryton-color-warning;
+$danger: $tryton-color-danger;
+$light: $tryton-color-light;
+$dark: $tryton-color-dark;
+$body-color: $tryton-color-body;
+$theme-colors: (
+  'white': #fff,
+);
+
+// Text
+$font-family-base: $tryton-font-family-base;
+$headings-color: $dark;
+$h2-font-size: 2rem;
+$h3-font-size: 1rem;
+$line-height-base: 1.75;
+
+// CARD
+$card-cap-bg: $light;
+
+// JUMBOTRON
+$border-radius-lg: $border-radius;
+
+// NAVBAR
+//$navbar-brand-padding-y: 0;
+$navbar-padding-y: 0;
+$nav-link-padding-x: 1rem;
+$nav-link-padding-y: 1.5rem;
+$navbar-nav-link-padding-x: 1rem;
+$dropdown-bg: $dark;
+$dropdown-link-color: #fff;
+$dropdown-spacer: 0;
+$dropdown-border-width: 0;
+$dropdown-border-radius: 0;
+
+// BUTTONS
+$btn-focus-width: 0;
+
+// FORMS
+$input-border-radius: $border-radius;
+
+// GRID
+$grid-gutter-width: 30px;
+
+// SPACERS
+$spacers: (
+  'gutter': $grid-gutter-width,
+  'gutter-half': $grid-gutter-width / 2,
+  );
+
+// CONTAINER
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1500px,
+  );
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1440px
+  );

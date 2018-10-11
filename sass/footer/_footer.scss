@@ -1,0 +1,51 @@
+#footer {
+  .topfooter {
+    @extend .section;
+    background-color: $tryton-color-gray-dark;
+    color: $tryton-color-secondary;
+
+    h3 {
+      @include media-breakpoint-down(md) {
+        margin-top: 2rem;
+      }
+      color: $tryton-color-secondary;
+    }
+
+    a,
+    li,
+    p {
+      color: $tryton-color-gray-light;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    hr {
+      border-color: $tryton-color-gray;
+    }
+
+    .footer-right {
+      @include media-breakpoint-down(md) {
+        margin-top: 2rem;
+      }
+
+      p {
+        color: $navbar-dark-color;
+      }
+    }
+  }
+
+  .subfooter {
+    background-color: $dark;
+    padding: 15px 0;
+
+    p {
+      color: $navbar-dark-color;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+}

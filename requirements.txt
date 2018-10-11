@@ -1,0 +1,6 @@
+Flask
+Flask-Caching
+flask-rev
+icalendar
+lxml
+requests

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Tryton">
+        <meta name="author" content="Tryton">
+
+        <title>Tryton - Modularity, scalability & security for your business</title>
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/screen.min.css') }}">
+
+        <script src="{{ url_for('static', filename='js/all.js') }}"></script>
+    </head>
+    <body>
+
+        <header id="header" class="wow fadeIn">
+            {% block header %}
+            <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.png') }}" alt="Tryton" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav ml-auto">
+                            {% for title, items in menu.items() %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true">{{ title }}</a>
+                                <div class="dropdown-menu">
+                                    {% for item, url in items %}
+                                    <a class="dropdown-item" href="{{ url }}">{{ item }}</a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            {% endblock header %}
+        </header>
+
+        <section id="content">
+            {% block content %}
+            {% endblock content %}
+        </section>
+
+        <footer id="footer">
+            {% block footer %}
+            <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" alt="Placeholder Large"/>
+            <section class="topfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                {% for title, items in menu.items() %}
+                                <div class="col-md-3">
+                                    <h3>{{ title }}</h3>
+                                    <nav>
+                                        <ul>
+                                            {% for item, url in items %}
+                                            <li>
+                                                <a href="{{ url }}">{{ item }}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="offset-lg-1 col-md-5 col-lg-4">
+                            <div class="footer-right">
+                                <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/tryton-white.png') }}" alt="Tryton" />
+                                <hr/>
+                                <p class="lead">Modularity, scalability & security for your business</p>
+                                <p>
+                                <strong>TRYTON</strong> is a business software for all,<br/>easy to use, complete and <strong>100% Open Source</strong>.
+                                </p>
+                                <div class="socials">
+                                    <h3>Follow us</h3>
+                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" class="mr-3 wow zoomIn" data-wow-delay=".2s" title="Twitter">Twitter</a>
+                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" class="mr-3 wow zoomIn" data-wow-delay=".1s" title="Facebook">Facebook</a>
+                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" class="mr-3 wow zoomIn" data-wow-delay=".3s" title="Linkedin">Linkedin</a>
+                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" class="mr-3 wow zoomIn" data-wow-delay=".4s" title="Youtube">Youtube</a>
+                                    <a href="https://vimeo.com/groups/tryton" target="_blank" class="mr-3 wow zoomIn" data-wow-delay=".5s" title="Viméo">Viméo</a>
+                                    <a href="https://plus.google.com/communities/111064602356347307346" target="_blank" class=" wow zoomIn" data-wow-delay=".6s" title="Google +">Google+</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="subfooter">
+                <div class="container">
+                    <p>Contents © {{ copyright_dates }} Tryton <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
+                </div>
+            </section>
+            {% endblock footer %}
+        </footer>
+
+    </body>
+</html>

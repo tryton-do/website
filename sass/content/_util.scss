@@ -1,0 +1,33 @@
+// LINE HEIGHT
+.line-height-small {
+  line-height: $line-height-small;
+}
+
+// Z-INDEX
+@each $z, $value in $z-indexs {
+  .z-#{$z} {
+    z-index: $value;
+  }
+}
+
+// FILTER
+.filter {
+  position: relative;
+
+  &::before {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  @each $color, $value in $theme-colors {
+    &.filter-#{$color} {
+      &::before {
+        background-color: rgba($value, $filter-opacity);
+        z-index: 0;
+      }
+    }
+  }
+}
