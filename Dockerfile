@@ -25,6 +25,8 @@ RUN apt-get update \
         uwsgi-plugin-python3 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN useradd --no-log-init -r -M web
+
 ENV INSTALL_PATH /web
 RUN mkdir -p $INSTALL_PATH
 
@@ -40,4 +42,5 @@ COPY --from=builder-node $INSTALL_PATH/static/css static/css/
 COPY --from=builder-node $INSTALL_PATH/static/js static/js/
 
 EXPOSE 5000
+USER web
 CMD uwsgi --ini uwsgi.conf
