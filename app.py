@@ -16,6 +16,7 @@ CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
 app.config['MINIFY_PAGE'] = True
 cache.init_app(app)
 Compress(app)
