@@ -7,7 +7,11 @@
         <meta name="description" content="Tryton">
         <meta name="author" content="Tryton">
 
-        <title>Tryton - Modularity, scalability & security for your business</title>
+        <title>
+            {% block title %}
+            Tryton - Modularity, scalability & security for your business
+            {% endblock title %}
+        </title>
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/screen.min.css') }}">
