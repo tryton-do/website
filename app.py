@@ -1,5 +1,5 @@
 #!/bin/env python3
-from collections import namedtuple
+from collections import namedtuple, OrderedDict
 from random import shuffle
 import datetime
 
@@ -38,27 +38,26 @@ def index():
 
 @app.context_processor
 def inject_menu():
-    menu = {
-        'Tryton': [
-            ('Success Stories', url_for('success_stories')),
-            ('Get Tryton', '#'),
-            ('Documentation', '//docs.tryton.org/'),
-            ],
-        'Community': [
-            ('Forum', 'https://discuss.tryton.org/'),
-            ('Presentations', '#'),
-            ('Contribute', '#'),
-            ],
-        'Foundation': [
-            ('About', '#'),
-            ('Supporters', '#'),
-            ('Donations', '#'),
-            ],
-        'Services': [
-            ('Service providers', '#'),
-            ('Become a service provider', '#'),
-            ],
-        }
+    menu = OrderedDict()
+    menu['Tryton'] = [
+        ('Success Stories', url_for('success_stories')),
+        ('Get Tryton', '#'),
+        ('Documentation', '//docs.tryton.org/'),
+        ]
+    menu['Community'] = [
+        ('Forum', 'https://discuss.tryton.org/'),
+        ('Presentations', '#'),
+        ('Contribute', '#'),
+        ]
+    menu['Foundation'] = [
+        ('About', '#'),
+        ('Supporters', '#'),
+        ('Donations', '#'),
+        ]
+    menu['Services'] = [
+        ('Service providers', '#'),
+        ('Become a service provider', '#'),
+        ]
     return dict(menu=menu)
 
 
