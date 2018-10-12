@@ -13,6 +13,7 @@ from lxml import objectify, html
 NEWS_URL = 'https://discuss.tryton.org/c/news'
 CALENDAR_URL = 'https://calendar.google.com/calendar/embed?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com&ctz=Europe%2FBrussels'
 CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics'
+CACHE_TIMEOUT = 60 * 60
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
@@ -25,7 +26,7 @@ Rev(app)
 
 
 @app.route('/')
-@cache.cached(timeout=60 * 60)
+@cache.cached(timeout=CACHE_TIMEOUT)
 def index():
     return render_template(
         'index.html',
