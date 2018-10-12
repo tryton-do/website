@@ -1,8 +1,10 @@
 #!/bin/env python3
+from collections import namedtuple
+from random import shuffle
 import datetime
 
 import requests
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, url_for
 from flask_caching import Cache
 from flask_htmlmin import HTMLMIN
 from flask_compress import Compress
@@ -38,7 +40,7 @@ def index():
 def inject_menu():
     menu = {
         'Tryton': [
-            ('Success Stories', '#'),
+            ('Success Stories', url_for('success_stories')),
             ('Get Tryton', '#'),
             ('Documentation', '//docs.tryton.org/'),
             ],
@@ -114,6 +116,90 @@ def date(datetime):
     if hasattr(datetime, 'date'):
         return datetime.date()
     return datetime
+
+
+@app.route('/success-stories')
+@cache.cached(timeout=CACHE_TIMEOUT)
+def success_stories():
+    Case = namedtuple('Case', 'title description url logo'.split())
+    cases = [
+        Case(
+            title="AMMEBA",
+            description="A Mutual of Medical Federation of Buenos Aires.",
+            url='',
+            logo='images/success-stories/ammeba.jpg'),
+        Case(
+            title="Advocate Consulting",
+            description="A legal firm servicing the general aviation industry",
+            url='',
+            logo='images/success-stories/advocate-consulting-legal.jpg'),
+        Case(
+            title="Banque Française Mutualiste",
+            description="A French bank for the public service.",
+            url='',
+            logo='images/success-stories/bfm.jpg'),
+        Case(
+            title="La Cave Thrace",
+            description="Imports and distributes wine in France.",
+            url='',
+            logo='images/success-stories/la-cave-thrace.jpg'),
+        Case(
+            title="Cultural Commons Collection Society",
+            description="Collects and distributes music royalties.",
+            url='',
+            logo='images/success-stories/c3s.jpg'),
+        Case(
+            title="Grufesa",
+            description="Exports strawberries in Europe.",
+            url='',
+            logo='images/success-stories/grufesa.jpg'),
+        Case(
+            title="Expertise Vision",
+            description="Produces vision based systems.",
+            url='',
+            logo='images/success-stories/expertise-vision.jpg'),
+        Case(
+            title="Institut Mèdic per la Imatge",
+            description="Offers all kinds of MRI scans, nuclear medicine and "
+            "bone densitometry.",
+            url='',
+            logo='images/success-stories/imi.jpg'),
+        Case(
+            title="MenschensKinder Teltow",
+            description="Operates municipal day care centers and "
+            "parent-child groups.",
+            url='',
+            logo='images/success-stories/menschenskinder-teltow.jpg'),
+        Case(
+            title="Lackierzentrum Reichenbach",
+            description="Produces surface coating for automotive, aerospace, "
+            "construction and mechanical engineering.",
+            url='',
+            logo='images/success-stories/lackierzentrum-reichenbach.jpg'),
+        Case(
+            title="Lozärner Fasnachtskomitee",
+            description="Organizes the Lucerne Carnival.",
+            url='',
+            logo='images/success-stories/lucerne-carnival.jpg'),
+        Case(
+            title="Revelle Group",
+            description="Consulting in developing countries and "
+            "emerging economies.",
+            url='',
+            logo='images/success-stories/revelle.jpg'),
+        Case(
+            title="Sinclair Containers",
+            description="Sells and rents containers.",
+            url='',
+            logo='images/success-stories/sinclair-containers.jpg'),
+        Case(
+            title="Skoda Autohaus Zeidler",
+            description="A German car dealership and workshop for Skoda.",
+            url='',
+            logo='images/success-stories/zeidler.jpg'),
+        ]
+    shuffle(cases)
+    return render_template('success_stories.html', cases=cases)
 
 
 if __name__ == '__main__':

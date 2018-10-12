@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}
+Tryton - Success Stories
+{% endblock title %}
+{% block content %}
+{{ super() }}
+<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-success-stories.jpg') }});">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">Success Stories</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+        {% for case in cases %}
+        <div class="col mb-gutter">
+            <div class="card mx-auto" style="width: 18rem">
+                {% if case.logo %}
+                <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" style="height: 180px"/>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ case.title }}</h5>
+                    <p class="card-text">{{ case.description }}</p>
+                    <a href="{{ case.url }}" class="btn btn-primary {{ 'disabled' if not case.url else '' }}" aria-disabled="{{ not case.url }}">More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+</section>
+{% endblock content %}
