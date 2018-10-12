@@ -89,7 +89,7 @@
     </div>
 </section>
 
-<section class="section bg-light text-center">
+<section class="section bg-light text-center" id="features">
     <div class="container">
         <section class="section-header bg-light text-primary wow fadeInDown">
             <h2 class="pl-3 pr-3">All you need to run your business</h2>
@@ -222,10 +222,10 @@
     </div>
 </section>
 
-<section class="section">
+<section class="section" id="news">
     <div class="container">
         <section class="section-header bg-white wow fadeInLeft">
-            <h2 class="pr-3" id="news"><a href="{{ url_for('news') }}">News</a></h2>
+            <h2 class="pr-3"><a href="{{ url_for('news') }}">News</a></h2>
         </section>
         <div class="row">
             {% for item in news[:3] %}
@@ -243,7 +243,7 @@
     </div>
 </section>
 
-<section class="section-bottom">
+<section class="section-bottom" id="events">
     <div class="container">
         <div class="jumbotron bg-primary wow fadeIn" data-wow-delay=".4s">
             <div class="row">
