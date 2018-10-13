@@ -15,12 +15,12 @@ from lxml import objectify, html
 NEWS_URL = 'https://discuss.tryton.org/c/news'
 CALENDAR_URL = 'https://calendar.google.com/calendar/embed?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com&ctz=Europe%2FBrussels'
 CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics'
-CACHE_TIMEOUT = 60 * 60
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
 app.config['MINIFY_PAGE'] = True
+app.config['CACHE_DEFAULT_TIMEOUT'] = 60 * 60
 cache.init_app(app)
 Compress(app)
 HTMLMIN(app)
@@ -28,7 +28,7 @@ Rev(app)
 
 
 @app.route('/')
-@cache.cached(timeout=CACHE_TIMEOUT)
+@cache.cached()
 def index():
     return render_template(
         'index.html',
@@ -118,7 +118,7 @@ def date(datetime):
 
 
 @app.route('/success-stories')
-@cache.cached(timeout=CACHE_TIMEOUT)
+@cache.cached()
 def success_stories():
     Case = namedtuple('Case', 'title description url logo'.split())
     cases = [
@@ -202,13 +202,13 @@ def success_stories():
 
 
 @app.route('/download')
-@cache.cached(timeout=CACHE_TIMEOUT)
+@cache.cached()
 def download():
     return render_template('download.html')
 
 
 @app.route('/presentations')
-@cache.cached(timeout=CACHE_TIMEOUT)
+@cache.cached()
 def presentations():
     return render_template('presentations.html')
 
