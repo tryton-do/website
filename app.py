@@ -46,7 +46,7 @@ def inject_menu():
         ]
     menu['Community'] = [
         ('Forum', 'https://discuss.tryton.org/'),
-        ('Presentations', '#'),
+        ('Presentations', url_for('presentations')),
         ('Contribute', '#'),
         ]
     menu['Foundation'] = [
@@ -207,5 +207,11 @@ def download():
     return render_template('download.html')
 
 
+@app.route('/presentations')
+@cache.cached(timeout=CACHE_TIMEOUT)
+def presentations():
+    return render_template('presentations.html')
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, extra_files=['templates'])
