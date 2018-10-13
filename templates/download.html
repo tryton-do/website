@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% block title %}
+Tryton - Downloads
+{% endblock title %}
+{% block content %}
+{{ super() }}
+<section class="section bg-primary">
+    <div class="container">
+        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
+            <h2 class="pl-3 pr-3">Download</h1>
+        </section>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="d-none d-xl-block col-xl-2 order-2">
+                <ul class="nav flex-column border-left">
+                    <li class="nav-item"><a class="pl-3" href="#demo">Demo</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#docker">Docker Image</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#desktop-client">Desktop Client</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#source">Source Files</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#chronos">Chronos</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#packages">Packages</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#distributions">Distributions</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 mx-md-auto order-1" role="main">
+                <p class="lead">Tryton is composed of a server which runs on PostgreSQL, a web or desktop client and a set of server modules.</p>
+                <h2 id="demo">Try without installing</h2>
+                <p>We host a shared demo server which is reset every day.
+                It is filled with few data for the example.</p>
+                <div class="row">
+                <table class="table table-sm col-lg-6 order-lg-2">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">User name</th>
+                            <th scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">English</th>
+                            <td>demo</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Español</th>
+                            <td>demo_es</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Français</th>
+                            <td>demo_fr</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Deutsch</th>
+                            <td>demo_de</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Administrator</th>
+                            <td>admin</td>
+                            <td>admin</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-lg-4 order-lg-1"><a href="http://demo.tryton.org/" class="btn btn-primary text-white mx-auto mt-3">Launch the demo</a></div>
+                </div>
+                <h2 id="docker" class="">Docker Image</h2>
+                <p>Container with pre-installed the server, modules and web client.
+                It is a very simple way to locally install and explore the application.
+                It may later be used for production deployment.
+                The images are updated every week.</p>
+                <p><a href="https://hub.docker.com/r/tryton/tryton/" class="btn btn-primary">Download</a></p>
+                <h2 id="desktop-client">Desktop Client</h2>
+                <p>Ready-to-use client for your desktop.
+                You can manage and connect to different servers with the same client.</p>
+                <p>
+                <a href="https://downloads.tryton.org/current/tryton-last.exe" class="btn btn-outline-primary">Download for Windows</a>
+                <a href="https://downloads.tryton.org/current/tryton-last.dmg" class="btn btn-outline-primary">Download for macOS</a></li>
+                </p>
+                <h2 id="source">Source Files</h2>
+                <p>We publish the releases of each component as file archives.
+                It is useful to create packages.
+                </p>
+                <p><a href="https://downloads.tryton.org/current/" class="btn btn-outline-primary">Browse</a></p>
+                <h2 id="chronos">Chronos</h2>
+                <p>We publish also an optional add-on to manage time sheets from your browser.</p>
+                <p>
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/tryton-chronos/" class="btn btn-outline-primary">Download for Firefox</a>
+                <a href="https://chrome.google.com/webstore/detail/chronos/ikhcoclknebokeabdhaaggmmookkndmp" class="btn btn-outline-primary">Download for Chome</a>
+                </p>
+                <h2 id="packages">Packages</h2>
+                <p>We publish also packages on the <a href="http://pypi.python.org/pypi?:action=browse&show=all&c=551">Python Package Index</a>.
+                Third party also publish modules for Tryton there.<br/>
+                You can directly install them using the <a href="http://www.pip-installer.org/">pip</a> command-line tool:</p>
+                <pre class="bg-light"><code>
+        $ pip install trytond
+        $ pip install tryton
+        $ pip install trytond_sale
+                </code></pre>
+                <p class="text-info">Replace <code>trytond_sale</code> with the name of the module needed.</p>
+                <p class="text-warning">The web client can not be installed with <code>pip</code>, you must follow this <a href="https://www.npmjs.com/package/tryton-sao#installation">installation procedure</a>.</p>
+                <h2 id="distributions">Distributions</h2>
+                <p>Tryton is also packaged and distributed by third-parties volunteers.
+                Often there is a delay with the release of new versions but the installation is more integrated with the operating system.</p>
+                <ul>
+                    <li><a href="http://aur.archlinux.org/packages.php?K=tryton">Arch Linux</a></li>
+                    <li><a href="https://tryton-team.pages.debian.net/">Debian</a></li>
+                    <li><a href="https://admin.fedoraproject.org/pkgdb/packages/tryton*/">Fedora</a></li>
+                    <li><a href="https://wiki.gentoo.org/wiki/Tryton">Gentoo</a></li>
+                    <li><a href="https://packages.ubuntu.com/search?searchon=names&keywords=tryton">Ubuntu</a></li>
+                    <li><a href="http://pkgsrc.se/meta-pkgs/py-tryton-platform">NetBSD</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

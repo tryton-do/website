@@ -41,7 +41,7 @@ def inject_menu():
     menu = OrderedDict()
     menu['Tryton'] = [
         ('Success Stories', url_for('success_stories')),
-        ('Get Tryton', '#'),
+        ('Get Tryton', url_for('download')),
         ('Documentation', '//docs.tryton.org/'),
         ]
     menu['Community'] = [
@@ -199,6 +199,12 @@ def success_stories():
         ]
     shuffle(cases)
     return render_template('success_stories.html', cases=cases)
+
+
+@app.route('/download')
+@cache.cached(timeout=CACHE_TIMEOUT)
+def download():
+    return render_template('download.html')
 
 
 if __name__ == '__main__':
