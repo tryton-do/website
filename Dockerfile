@@ -42,6 +42,5 @@ COPY --from=builder-node $INSTALL_PATH/static/css static/css/
 COPY --from=builder-node $INSTALL_PATH/static/js static/js/
 
 EXPOSE 5000
-EXPOSE 5001
 USER web
 CMD uwsgi --ini uwsgi.conf

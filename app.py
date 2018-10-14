@@ -16,21 +16,11 @@ NEWS_URL = 'https://discuss.tryton.org/c/news'
 CALENDAR_URL = 'https://calendar.google.com/calendar/embed?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com&ctz=Europe%2FBrussels'
 CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics'
 
-
-class Application(Flask):
-    def __call__(self, environ, start_response):
-        # Lighttpd does not set PATH_INFO
-        if environ.get('PATH_INFO') is None:
-            environ['PATH_INFO'] = environ.get('SCRIPT_NAME', '') + \
-                environ.get('PATH_INFO', '')
-        return super().__call__(environ, start_response)
-
-
-app = Application(__name__)
+cache = Cache(config={'CACHE_TYPE': 'simple'})
+app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
 app.config['MINIFY_PAGE'] = True
 app.config['CACHE_DEFAULT_TIMEOUT'] = 60 * 60
-cache = Cache(config={'CACHE_TYPE': 'simple'})
 cache.init_app(app)
 Compress(app)
 HTMLMIN(app)
