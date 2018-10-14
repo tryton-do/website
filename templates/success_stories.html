@@ -15,7 +15,7 @@ Tryton - Success Stories
         <div class="row">
         {% for case in cases %}
         <div class="col mb-gutter">
-            <div class="card mx-auto" style="width: 18rem">
+            <div class="card mx-auto shadow" style="width: 18rem">
                 {% if case.logo %}
                 <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" style="height: 180px"/>
                 {% endif %}
