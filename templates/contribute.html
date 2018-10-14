@@ -1,0 +1,175 @@
+{% extends "layout.html" %}
+{% block title %}
+Tryton - Contribute
+{% endblock title %}
+{% block content %}
+{{ super() }}
+<section class="section bg-primary">
+    <div class="container">
+        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
+            <h1 class="pl-3 pr-3">Get Involved</h1>
+        </section>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="d-none d-xl-block col-xl-2 order-2">
+                <ul class="nav flex-column border-left">
+                    <li class="nav-item"><a class="pl-3" href="#donation">Donate</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#support">Help Users</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#spread">Spread the Word</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#bug">Report Bugs &amp; Issues</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#develop">Submit Changes</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#translate">Translate</a></li>
+                    <li class="nav-item"><a class="pl-3" href="#feature">Write Blueprint</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 mx-md-auto order-1" role="main">
+
+                <p class="lead">Join the Tryton community and help the project.</p>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-body d-inline-flex">
+                        <div class="picto-container mr-3 d-none d-sm-flex">
+                            <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s">
+                                <span class="material-icons md-48">monetization_on</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title" id="donate">Donate</h5>
+                            <p class="card-text">
+                            The infrastructure powering Tryton is provided by the Foundation.
+                            Donation is the only way for the Foundation to be funded.
+                            </p>
+                            <a href="#" class="card-link">{{ heart|safe }} Donate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-body d-inline-flex">
+                        <div class="picto-container mr-3 d-none d-sm-flex">
+                            <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s">
+                                <span class="material-icons md-48">live_help</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title" id="support">Help Users</h5>
+                            <p class="card-text">
+                            Tryton is a volunteer-driven project.
+                            We relies on the community members to help others.
+                            Join the forum and start helping.
+                            </p>
+                            <a href="https://discuss.tryton.org/c/support" class="card-link">Support Forum</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-body d-inline-flex">
+                        <div class="picto-container mr-3 d-none d-sm-flex">
+                            <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s">
+                                <span class="material-icons md-48">share</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title" id="spread">Spread the Word</h5>
+                            <p class="card-text">
+                            Help us to increase the popularity of Tryton:
+                            <ul>
+                                <li>Share your experiences on social networks and and follow Tryton on
+                                    <a href="https://twitter.com/TrytonSoftware">Twitter</a>,
+                                    <a href="https://www.facebook.com/TrytonSoftware/">Facebook</a>,
+                                    <a href="https://www.linkedin.com/groups/1313967/">LinkedIn</a>,
+                                    etc.</li>
+                                <li>Write reviews on
+                                    <a href="https://www.capterra.com/p/146240/Tryton/">Capterra</a>,
+                                    <a href="https://www.g2crowd.com/products/tryton/reviews">G2 Crowd</a>,
+                                    etc.</li>
+                                <li><a href="https://discuss.tryton.org/c/communication/news-proposal">Propose news</a></li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-body d-inline-flex">
+                        <div class="picto-container mr-3 d-none d-sm-flex">
+                            <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s">
+                                <span class="material-icons md-48">bug_report</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title" id="bug">Report Bugs &amp; Issues</h5>
+                            <p class="card-text">
+                            If you encounter any issues, be sure it is not yet known otherwise report it.
+                            This help us to maintain a high quality level.
+                            </p>
+                            <a href="https://bugs.tryton.org/" class="btn btn-primary">Report Issues</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-body d-inline-flex">
+                        <div class="picto-container mr-3 d-none d-sm-flex">
+                            <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s">
+                                <span class="material-icons md-48">build</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title" id="develop">Submit Changes</h5>
+                            <p class="card-text">
+                            Developers can propose changes to fix issues, to add new features or to improve the software and the documentation.
+                            You can start first by solving
+                            <a href="https://bugs.tryton.org/issue?status=-1,1,2,3,4,5,6,7&@columns=id,activity,component,title,assignedto,status&@dispname=Show%20Easy&@group=priority&@filter=status">issues qualified easy</a>.
+                            </p>
+                            <a href="#" class="card-link">How to develop</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-body d-inline-flex">
+                        <div class="picto-container mr-3 d-none d-sm-flex">
+                            <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s">
+                                <span class="material-icons md-48">translate</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title" id="translate">Translate</h5>
+                            <p class="card-text">
+                            Tryton does not speak yet your language or there is a typo in the translation.
+                            We use a server to share the translation effort.
+                            The terms are updated every month.
+                            </p>
+                            <a href="https://pootle.tryton.org/" class="btn btn-primary">Translate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-body d-inline-flex">
+                        <div class="picto-container mr-3 d-none d-sm-flex">
+                            <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s">
+                                <span class="material-icons md-48">description</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title" id="feature">Write Blueprint</h5>
+                            <p class="card-text">
+                            Large changes or features require first to be discussed with the community to reach a consensus.
+                            </p>
+                            <a href="https://discuss.tryton.org/c/feature" class="card-link">Submit blueprint</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
