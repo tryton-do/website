@@ -27,6 +27,9 @@ HTMLMIN(app)
 Rev(app)
 
 
+HEART = '<span class="material-icons" style="color:#d9534f;">favorite</span>'
+
+
 @app.route('/')
 @cache.cached()
 def index():
@@ -52,7 +55,7 @@ def inject_menu():
     menu['Foundation'] = [
         ('About', '#'),
         ('Supporters', '#'),
-        ('Donations', '#'),
+        (HEART + ' Donations', '#'),
         ]
     menu['Services'] = [
         ('Service providers', '#'),
@@ -64,6 +67,11 @@ def inject_menu():
 @app.context_processor
 def inject_copyright_dates():
     return dict(copyright_dates='2008-%s' % datetime.date.today().year)
+
+
+@app.context_processor
+def inject_heart():
+    return dict(heart=HEART)
 
 
 @app.route('/news/index.html')

@@ -37,7 +37,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true">{{ title }}</a>
                                 <div class="dropdown-menu">
                                     {% for item, url in items %}
-                                    <a class="dropdown-item" href="{{ url }}">{{ item }}</a>
+                                    <a class="dropdown-item" href="{{ url }}">{{ item|safe }}</a>
                                     {% endfor %}
                                 </div>
                             </li>
@@ -69,7 +69,7 @@
                                         <ul>
                                             {% for item, url in items %}
                                             <li>
-                                                <a href="{{ url }}">{{ item }}</a>
+                                                <a href="{{ url }}">{{ item|safe }}</a>
                                             </li>
                                             {% endfor %}
                                         </ul>
