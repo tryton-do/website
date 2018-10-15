@@ -27,7 +27,11 @@ HTMLMIN(app)
 Rev(app)
 
 
-HEART = '<span class="material-icons" style="color:#d9534f;">favorite</span>'
+HEART = ('<span '
+    'class="material-icons" '
+    'style="color:#d9534f; font-size: inherit; vertical-align: middle">'
+    'favorite'
+    '</span>')
 
 
 @app.route('/')
