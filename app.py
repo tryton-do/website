@@ -57,7 +57,7 @@ def inject_menu():
         ('Contribute', url_for('contribute')),
         ]
     menu['Foundation'] = [
-        ('About', '#'),
+        ('About', url_for('foundation')),
         ('Supporters', '#'),
         (HEART + ' Donations', '#'),
         ]
@@ -229,6 +229,12 @@ def presentations():
 @cache.cached()
 def contribute():
     return render_template('contribute.html')
+
+
+@app.route('/foundation')
+@cache.cached()
+def foundation():
+    return render_template('foundation.html')
 
 
 if __name__ == '__main__':
