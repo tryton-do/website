@@ -136,7 +136,7 @@ def success_stories():
     cases = [
         Case(
             title="AMMEBA",
-            description="A Mutual of Medical Federation of Buenos Aires.",
+            description="A Medical Mutual Society of Buenos Aires.",
             url='',
             logo='images/success-stories/ammeba.jpg'),
         Case(
@@ -171,8 +171,8 @@ def success_stories():
             logo='images/success-stories/expertise-vision.jpg'),
         Case(
             title="Institut Mèdic per la Imatge",
-            description="Offers all kinds of MRI scans, nuclear medicine and "
-            "bone densitometry.",
+            description="Provides all kinds of MRI scans, nuclear medicine "
+            "and bone densitometry.",
             url='',
             logo='images/success-stories/imi.jpg'),
         Case(
