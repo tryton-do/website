@@ -1,6 +1,8 @@
 #!/bin/env python3
 from collections import namedtuple, OrderedDict
+from functools import partial
 from random import shuffle
+from urllib.parse import urlparse
 import datetime
 
 import requests
@@ -9,12 +11,14 @@ from flask_caching import Cache
 from flask_htmlmin import HTMLMIN
 from flask_compress import Compress
 from flask_rev import Rev
+from flask_gravatar import Gravatar
 from icalendar import Calendar
 from lxml import objectify, html
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'
 CALENDAR_URL = 'https://calendar.google.com/calendar/embed?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com&ctz=Europe%2FBrussels'
 CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics'
+SUPPORTERS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/supporters'
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
@@ -25,6 +29,7 @@ cache.init_app(app)
 Compress(app)
 HTMLMIN(app)
 Rev(app)
+Gravatar(app, size=198, default='mp', use_ssl=True)
 
 
 @app.after_request
@@ -66,7 +71,7 @@ def inject_menu():
         ]
     menu['Foundation'] = [
         ('About', url_for('foundation')),
-        ('Supporters', '#'),
+        ('Supporters', url_for('supporters')),
         (HEART + ' Donations', '#'),
         ]
     menu['Services'] = [
@@ -243,6 +248,28 @@ def contribute():
 @cache.cached()
 def foundation():
     return render_template('foundation.html')
+
+
+@app.route('/supporters')
+@cache.cached()
+def supporters():
+    def url(supporter, start):
+        for website in supporter['websites']:
+            if website.startswith(start):
+                return website
+    headers = {'Content-Type': 'application/json'}
+    response = requests.get(SUPPORTERS_URL, headers=headers)
+    response.raise_for_status()
+    supporters = response.json()
+    return render_template('supporters.html',
+        supporters=supporters,
+        discuss_url=partial(url, start='https://discuss.tryton.org/'),
+        roundup_url=partial(url, start='https://bugs.tryton.org/'))
+
+
+@app.template_filter('hostname')
+def hostname(url):
+    return urlparse(url).hostname
 
 
 if __name__ == '__main__':
