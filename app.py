@@ -136,7 +136,7 @@ def success_stories():
     cases = [
         Case(
             title="AMMEBA",
-            description="A Medical Mutual Society of Buenos Aires.",
+            description="A Medical Mutual Society from Buenos Aires.",
             url='',
             logo='images/success-stories/ammeba.jpg'),
         Case(
