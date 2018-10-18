@@ -1,0 +1,203 @@
+{% extends "layout-toc.html" %}
+{% block title %}
+Tryton - Donate
+{% endblock title %}
+{% block content %}
+<section class="section bg-primary">
+    <div class="container">
+        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
+            <h1 class="pl-3 pr-3">{{ heart | safe }}Donate</h1>
+        </section>
+    </div>
+</section>
+{{ super() }}
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center" id="donors">Donors</h2>
+                <p>
+                The Tryton Foundation wants to thank individuals and companies that finance it's activity.
+                Donors are listed in descending order using an algorithm that takes into account
+                both the amount and the age of the donation over the last year.
+                </p>
+                <ol>
+                    {% for donator in donators %}
+                    <li>{{ donator }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-center" id="donations-yearly">Yearly Donations</h2>
+                <table class="table table-striped text-right">
+                    <thead>
+                        <tr>
+                            <th scope="col">Year</th>
+                            <th scope="col">Donation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for year, donation in donations %}
+                        <tr>
+                            <td>{{ year }}</td>
+                            <td>{{ '{0:0.2f}'.format(donation) }} €</td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block toc %}
+<li class="nav-item"><a class="pl-3" href="#wire-transfer">Wire Transfer</a></li>
+<li class="nav-item"><a class="pl-3" href="#paypal">PayPal</a></li>
+<li class="nav-item"><a class="pl-3" href="#paypal-recurring">Recurring PayPal</a></li>
+<li class="nav-item"><a class="pl-3" href="#bitcoin">Bitcoin</a></li>
+<li class="nav-item"><a class="pl-3" href="#contribute">Contribute</a></li>
+<li class="nav-item"><a class="pl-3" href="#donors">Donors</a></li>
+<li class="nav-item"><a class="pl-3" href="#donations-yearly">Yearly Donations</a></li>
+{% endblock toc %}
+
+{% block main %}
+<p class="lead">
+Help the Tryton project to achieve its goals which ultimately brings a better free software business solution for companies all over the world.
+No matter they're big or small, all of them benefit from a powerful application that is free from any vendor lock ins.<br/>
+If you're already using Tryton, please consider contributing to the project or support the Foundation so the project remains vibrant and continues growing.
+</p>
+<div class="card mb-5">
+    <h3 class="card-header" id="wire-transfer">Wire Transfer</h3>
+    <div class="card-body">
+        <p class="card-text">You can make a wire transfer to our bank account:
+        <address>
+            <abbr title="International Bank Account Number">IBAN:</abbr>BE82 0688 9627 4468<br/>
+            <abbr title="Bank Identifier Codes">BIC:</abbr>GKCCBEBB<br/>
+        </address>
+        </p>
+    </div>
+</div>
+<div class="card mb-5">
+    <h3 class="card-header" id="paypal">PayPal</h3>
+    <div class="card-body">
+        <p class="card-text">You can easily make a one-time contribution using PayPal:
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="paypal@tryton.org">
+            <input type="hidden" name="item_name" value="Tryton Donation">
+            <input type="hidden" name="item_number" value="Donation">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="return" value="{{ url_for('donate_thanks') }}">
+            <input type="hidden" name="cancel" value="{{ url_for('donate_cancel') }}">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">€</span>
+                </div>
+                <input name="amount" class="form-control" placeholder="Enter amount" value="10.00" min="5.00" step="0.01" required type="number">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
+                </div>
+            </div>
+        </form>
+        <small>
+            You can use this form even if you don't have or want to create a PayPal account.
+            Instead you can pay with your credit card.
+        </small>
+        </p>
+    </div>
+</div>
+<div class="card mb-5">
+    <h3 class="card-header" id="paypal-recurring">Recurring PayPal</h3>
+    <div class="card-body">
+        <p class="card-text">You can easily make a monthly contribution using PayPal:
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="SUPKSJEB34BME">
+            <input type="hidden" name="on0" value="">
+            <div class="input-group mb-3">
+                <select name="os0" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
+                    <option value="Donation">Donation : €10,00 EUR - monthly</option>
+                    <option value="Donation">Donation : €20,00 EUR - monthly</option>
+                    <option value="Donation">Donation : €50,00 EUR - monthly</option>
+                    <option value="Donation">Donation : €100,00 EUR - monthly</option>
+                    <option value="Donation">Donation : €200,00 EUR - monthly</option>
+                    <option value="Donation">Donation : €500,00 EUR - monthly</option>
+                </select>
+                <input type="hidden" name="currency_code" value="EUR">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Subscribe</button>
+                </div>
+            </div>
+        </form>
+        <small>
+            PayPal does not require you to create an account for recurring donations.
+        </small>
+        </p>
+    </div>
+</div>
+<div class="card mb-5">
+    <h3 class="card-header" id="bitcoin">Bitcoin</h3>
+    <div class="card-body">
+        <p class="card-text">You can easily donate in bitcoin:
+        <form action="https://bitpay.com/checkout" method="post">
+            <input name="action" type="hidden" value="checkout">
+            <div class="input-group mb-3">
+                <input name="orderID" type="email" class="form-control" placeholder="Email address (optional)" maxlength="50" autocapitalize="off" autocorrect="off">
+            </div>
+            <div class="input-group mb-3">
+                <input name="price" type="number" value="10.00" placeholder="Amount" maxlength="10" min="0.01" step="0.01" class="form-control" required>
+                <select name="currency" class="custom-select">
+                    <option value="USD">USD</option>
+                    <option value="BTC">BTC</option>
+                    <option value="EUR" selected>EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="AUD">AUD</option>
+                    <option value="BGN">BGN</option>
+                    <option value="BRL">BRL</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CNY">CNY</option>
+                    <option value="CZK">CZK</option>
+                    <option value="DKK">DKK</option>
+                    <option value="HKD">HKD</option>
+                    <option value="HRK">HRK</option>
+                    <option value="HUF">HUF</option>
+                    <option value="IDR">IDR</option>
+                    <option value="ILS">ILS</option>
+                    <option value="INR">INR</option>
+                    <option value="JPY">JPY</option>
+                    <option value="KRW">KRW</option>
+                    <option value="LTL">LTL</option>
+                    <option value="LVL">LVL</option>
+                    <option value="MXN">MXN</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="NZD">NZD</option>
+                    <option value="PHP">PHP</option>
+                    <option value="PLN">PLN</option>
+                    <option value="RON">RON</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SEK">SEK</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="TRY">TRY</option>
+                    <option value="ZAR">ZAR</option>
+                </select>
+                <input type="hidden" name="data" value="DTV4JaKv709xq02lnDoV6YQzckpuFjSKkWgOIEaHst13ciMsAsGhH+lsBgTnSgZUhdcrDUWYx6UE4QolrN26/QN7O/4kpMfJkjkImN+nLRGmR05AM/UJhWVXsidBuo4N1u8LGqe1e5ohy+w7uRNew7y57qR8N6dngxEPcRHlPK9UuJu6OS3/aRho33vG0D0oVDUL4bwPTn5ITu1Eal1vM15fb/wWtoPX5+JwZgaYj2DdZJMEEV5T1K06zBhcAGWg">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
+                </div>
+            </div>
+        </form>
+        </p>
+    </div>
+</div>
+<div class="card mb-5">
+    <h3 class="card-header" id="contribute">Contribute</h3>
+    <div class="card-body">
+        <p class="card-text">
+        If you want to donate your time, we <a href="{{ url_for('contribute') }}">welcome community contribution</a>.
+        </p>
+    </div>
+</div>
+{% endblock main %}

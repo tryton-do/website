@@ -19,6 +19,8 @@ NEWS_URL = 'https://discuss.tryton.org/c/news'
 CALENDAR_URL = 'https://calendar.google.com/calendar/embed?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com&ctz=Europe%2FBrussels'
 CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics'
 SUPPORTERS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/supporters'
+DONATORS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/donators?account=732&account=734'
+DONATIONS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/donations?account=732&account=734'
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
@@ -72,7 +74,7 @@ def inject_menu():
     menu['Foundation'] = [
         ('About', url_for('foundation')),
         ('Supporters', url_for('supporters')),
-        (HEART + ' Donations', '#'),
+        (HEART + ' Donations', url_for('donate')),
         ]
     menu['Services'] = [
         ('Service providers', '#'),
@@ -270,6 +272,33 @@ def supporters():
 @app.template_filter('hostname')
 def hostname(url):
     return urlparse(url).hostname
+
+
+@app.route('/donate')
+@cache.cached()
+def donate():
+    headers = {'Content-Type': 'application/json'}
+    response = requests.get(DONATORS_URL, headers=headers)
+    response.raise_for_status()
+    donators = response.json()
+    response = requests.get(DONATIONS_URL, headers=headers)
+    response.raise_for_status()
+    donations = response.json()
+    return render_template('donate.html',
+        donators=donators,
+        donations=donations)
+
+
+@app.route('/donate/thanks')
+@cache.cached()
+def donate_thanks():
+    return render_template('donate_thanks.html')
+
+
+@app.route('/donate/cancel')
+@cache.cached()
+def donate_cancel():
+    return render_template('donate_cancel.html')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}
+Tryton - Donate
+{% endblock title %}
+{% block content %}
+{{ super() }}
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <p class="lead text-center">
+                <span class="material-icons">sentiment_dissatisfied</span>
+                We're sorry that you choose not to contribute to Tryton today.
+                </p>
+                <p class="text-right">
+                <small>
+                    Did you have any problems or have concerns? Please let us know by sending an email to <a href="foundation@tryton.org">foundation@tryton.org</a>.
+                </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

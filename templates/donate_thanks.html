@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}
+Tryton - Donate Thanks
+{% endblock title %}
+{% block content %}
+{{ super() }}
+<section class="section bg-light">
+    <div class="container">
+        <section class="section-header text-center bg-light mb1 wow fadeInDown">
+            <h1 class="pl-3 pr-3">{{ heart | safe }}Thanks You!</h1>
+        </section>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <p class="lead text-center">
+                <span class="material-icons">sentiment_very_satisfied</span>
+                On behalf of the Tryton Community, we thank you for your support!
+                </p>
+                <p class="text-right">
+                <small>
+                    If you have any questions regarding your donations, please send us an email to <a href="foundation@tryton.org">foundation@tryton.org</a>.
+                </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
