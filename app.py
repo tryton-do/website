@@ -27,6 +27,14 @@ HTMLMIN(app)
 Rev(app)
 
 
+@app.after_request
+def add_cache_control_header(response):
+    if 'Cache-Control' not in response.headers:
+        response.cache_control.max_age = app.config['CACHE_DEFAULT_TIMEOUT']
+        response.cache_control.public = True
+    return response
+
+
 HEART = ('<span '
     'class="material-icons" '
     'style="color:#d9534f; font-size: inherit; vertical-align: middle">'
