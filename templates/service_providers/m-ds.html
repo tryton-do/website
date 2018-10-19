@@ -1,0 +1,19 @@
+{% set img = url_for('static', filename='images/service_providers/m-ds.jpg') %}
+{% set website = 'http://www.m-ds.de/' %}
+{% set email = 'service@m-ds.de' %}
+{% set phone = '+493328308801' %}
+{% extends "service_providers/layout.html" %}
+{% block description %}
+As its roots in cross-plattform publishing.
+The company provides services around Ubuntu/Windows server management and web
+services.
+m-ds has versatile experience in Python development in special Zope/Plone
+competence.
+Since 2015 three projects with Tryton were implemented:
+First was the migration of our own "home-made" IT business solution to Tryton.
+Second was the development of a POS for a bookshop with gross prices (essential
+for German bookshops).
+A third project is a still growing solution for kindergardens.
+Tryton has become a core competence of m-ds.
+{% endblock description %}
+{% block location %}Berlin, Germany{% endblock %}

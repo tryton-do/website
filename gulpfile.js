@@ -12,6 +12,7 @@ gulp.task('js', function() {
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/wowjs/dist/wow.min.js',
+        'node_modules/leaflet/dist/leaflet.js',
         'js/wow.js',
         'js/highlight.pack.js'])
         .pipe(concat('all.js'))

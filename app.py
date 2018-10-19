@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import datetime
 
 import requests
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, jsonify
 from flask_caching import Cache
 from flask_htmlmin import HTMLMIN
 from flask_compress import Compress
@@ -21,6 +21,20 @@ CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6
 SUPPORTERS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/supporters'
 DONATORS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/donators?account=732&account=734'
 DONATIONS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/donations?account=732&account=734'
+
+PROVIDERS = [
+    ('Adiczion', [(43.52153, 5.43150)]),
+    ('B2CK', [(50.631123, 5.567552)]),
+    ('Coopengo', [(48.873278, 2.324776)]),
+    ('Datalife', [(37.9596885, -1.2086241)]),
+    ('First Telecom', [(38.0131591, 23.7721521), (44.83722, 20.40560)]),
+    ('gcoop', [(-34.59675, -58.43035)]),
+    ('Lava Lab Software', [(-27.978905, 153.389466)]),
+    ('m-ds', [(52.520008, 13.404954)]),
+    ('NaN-tic', [(41.544063, 2.115122)]),
+    ('SISalp', [(45.903956, 6.099937), (43.132028, 5.935532)]),
+    ('Virtual Things', [(48.13585, 11.577415), (50.775116, 6.083565)]),
+    ]
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
@@ -77,7 +91,7 @@ def inject_menu():
         (HEART + ' Donations', url_for('donate')),
         ]
     menu['Services'] = [
-        ('Service providers', '#'),
+        ('Service providers', url_for('service_providers')),
         ('Become a service provider', '#'),
         ]
     return dict(menu=menu)
@@ -299,6 +313,13 @@ def donate_thanks():
 @cache.cached()
 def donate_cancel():
     return render_template('donate_cancel.html')
+
+
+@app.route('/service-providers')
+@cache.cached()
+def service_providers():
+    shuffle(PROVIDERS)
+    return render_template('service_providers.html', providers=PROVIDERS)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,25 @@
+<div class="col mb-gutter" id="{{ name | lower }}">
+    <div class="card mx-auto shadow" style="width: 24rem">
+        <a href="{{ website }}">
+            <img class="card-img-top text-center d-block" src="{{ img }}" alt="{{ name }}" style="height: 240px"/>
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{ name }}</h5>
+            <p class="card-text" style="height: 200px; overflow-y: auto;">
+            {% block description %}{% endblock %}
+            </p>
+            {% if website %}
+            <a href="{{ website }}"><span class="material-icons">web</span></a>
+            {% endif %}
+            {% if email %}
+            <a href="mailto:{{ email }}"><span class="material-icons">email</span></a>
+            {% endif %}
+            {% if phone %}
+            <a href="tel:{{ phone }}"><span class="material-icons">phone</span></a>
+            {% endif %}
+        </div>
+        <div class="card-footer text-truncate">
+            {% block location %}{% endblock %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}
+Tryton - Service Providers
+{% endblock title %}
+{% block content %}
+{{ super() }}
+<section class="section bg-primary">
+    <div class="container">
+        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
+            <h1 class="pl-3 pr-3">Service Providers</h1>
+        </section>
+        <div class="d-none d-sm-block mx-auto col-md-6 card">
+            <div class="card-body">
+                <div id="map" style="height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            {% for provider, _ in providers %}
+            {% set name = provider %}
+            {% include "service_providers/%s.html" % provider.lower().replace(' ', '_') %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <p class="p-3 mb-2 bg-info text-white rounded">
+                Want to be listed here? Check how to <a href="#">become a service provider</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        L.Icon.Default.imagePath = '/static/images/';
+        var map = L.map('map').setView([0, 0], 1);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        var markers = {{ providers | tojson }};
+        markers.forEach(function(marker) {
+            var name = marker[0];
+            marker[1].forEach(function(LatLng) {
+                L.marker(LatLng).addTo(map)
+                    .bindPopup('<a href="#' + name.toLowerCase() + '">' + name + '</a>');
+            });
+        });
+    });
+</script>
+{% endblock script %}
