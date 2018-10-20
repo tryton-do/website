@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import datetime
 
 import requests
-from flask import Flask, render_template, redirect, url_for, jsonify
+from flask import Flask, render_template, redirect, url_for
 from flask_caching import Cache
 from flask_htmlmin import HTMLMIN
 from flask_compress import Compress
