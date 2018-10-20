@@ -1,12 +1,16 @@
 #!/bin/env python3
+import datetime
+import logging
+
 from collections import namedtuple, OrderedDict
 from functools import partial
+from logging.handlers import SMTPHandler
 from random import shuffle
 from urllib.parse import urlparse
-import datetime
 
 import requests
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
+from flask.logging import default_handler
 from flask_caching import Cache
 from flask_htmlmin import HTMLMIN
 from flask_compress import Compress
@@ -114,8 +118,12 @@ def news():
 
 
 def news_items(size=-1):
-    rss = requests.get(NEWS_URL + '.rss')
-    root = objectify.fromstring(rss.content)
+    try:
+        rss = requests.get(NEWS_URL + '.rss')
+        root = objectify.fromstring(rss.content)
+    except Exception:
+        app.logger.error('fail to fetch news', exc_info=True)
+        return
     for item in root.xpath('/rss/channel/item')[:size]:
         yield item
 
@@ -136,8 +144,12 @@ def events():
 
 def next_events(size=-1):
     today = datetime.date.today()
-    ics = requests.get(CALENDAR_ICS)
-    cal = Calendar.from_ical(ics.content)
+    try:
+        ics = requests.get(CALENDAR_ICS)
+        cal = Calendar.from_ical(ics.content)
+    except Exception:
+        app.logger.error('fail to fetch events', exc_info=True)
+        return []
 
     events = []
     for event in cal.walk('vevent'):
@@ -274,9 +286,12 @@ def supporters():
             if website.startswith(start):
                 return website
     headers = {'Content-Type': 'application/json'}
-    response = requests.get(SUPPORTERS_URL, headers=headers)
-    response.raise_for_status()
-    supporters = response.json()
+    try:
+        response = requests.get(SUPPORTERS_URL, headers=headers)
+        supporters = response.json()
+    except Exception:
+        app.logger.error('fail to fetch supporters', exc_info=True)
+        supporters = []
     return render_template('supporters.html',
         supporters=supporters,
         discuss_url=partial(url, start='https://discuss.tryton.org/'),
@@ -292,12 +307,18 @@ def hostname(url):
 @cache.cached()
 def donate():
     headers = {'Content-Type': 'application/json'}
-    response = requests.get(DONATORS_URL, headers=headers)
-    response.raise_for_status()
-    donators = response.json()
-    response = requests.get(DONATIONS_URL, headers=headers)
-    response.raise_for_status()
-    donations = response.json()
+    try:
+        response = requests.get(DONATORS_URL, headers=headers)
+        donators = response.json()
+    except Exception:
+        app.logger.error('fail to fetch donators', exc_info=True)
+        donators = []
+    try:
+        response = requests.get(DONATIONS_URL, headers=headers)
+        donations = response.json()
+    except Exception:
+        app.logger.error('fail to fetch donations', exc_info=True)
+        donations = []
     return render_template('donate.html',
         donators=donators,
         donations=donations)
@@ -322,5 +343,29 @@ def service_providers():
     return render_template('service_providers.html', providers=PROVIDERS)
 
 
+class RequestFormatter(logging.Formatter):
+    def format(self, record):
+        record.url = request.url
+        record.remote_addr = request.remote_addr
+        return super().format(record)
+
+
+mail_handler = SMTPHandler(
+    mailhost='mx.tryton.org',
+    fromaddr='www@tryton.org',
+    toaddrs=['webmaster@tryton.org'],
+    subject="[www.tryton.org] Application Error",
+    )
+mail_handler.setLevel(logging.ERROR)
+formatter = RequestFormatter(
+    '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
+    '%(levelname)s in %(module)s: %(message)s'
+    )
+default_handler.setFormatter(formatter)
+mail_handler.setFormatter(formatter)
+
 if __name__ == '__main__':
     app.run(debug=True, extra_files=['templates'])
+
+if not app.debug:
+    app.logger.addHandler(mail_handler)
