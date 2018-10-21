@@ -85,7 +85,7 @@ def inject_menu():
         ('Documentation', '//docs.tryton.org/'),
         ]
     menu['Community'] = [
-        ('Forum', 'https://discuss.tryton.org/'),
+        ('Forum', url_for('forum')),
         ('Presentations', url_for('presentations')),
         ('Contribute', url_for('contribute')),
         ]
@@ -258,6 +258,12 @@ def success_stories():
 @cache.cached()
 def download():
     return render_template('download.html')
+
+
+@app.route('/forum')
+@cache.cached()
+def forum():
+    return render_template('forum.html')
 
 
 @app.route('/presentations')

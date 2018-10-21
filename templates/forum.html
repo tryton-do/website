@@ -1,0 +1,125 @@
+{% extends "layout-toc.html" %}
+{% block title %}
+Tryton - Forum
+{% endblock title %}
+{% block content %}
+<section class="section bg-primary">
+    <div class="container">
+        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
+            <h1 class="pl-3 pr-3">Forum</h1>
+        </section>
+    </div>
+</section>
+{{ super() }}
+{% endblock content %}
+
+{% block toc %}
+<ul class="nav flex-column border-left">
+    <li class="nav-item"><a class="pl-3" href="#discuss">Forum</a></li>
+    <li class="nav-item"><a class="pl-3" href="#irc">IRC</a></li>
+    <li class="nav-item"><a class="pl-3" href="#mailing-lists">Mailing Lists</a></li>
+    <li class="nav-item"><a class="pl-3" href="#netiquette">Netiquette</a></li>
+</ul>
+{% endblock toc %}
+
+{% block main %}
+<div class="card mb-5 shadow">
+    <div class="card-body">
+        <h2 class="card-title" id="discuss">Forum</h2>
+        <p class="card-text">
+        The principal communication medium in the community is on our forum.
+        We discuss <a href="https://discuss.tryton.org/c/feature">new features</a>,
+        provide to each others <a href="https://discuss.tryton.org/c/support">support</a> and
+        talk about the <a href="https://discuss.tryton.org/c/organisation">organisation</a>.
+        </p>
+        <a href="https://discuss.tryton.org" class="card-link">Join the Forum</a>
+    </div>
+</div>
+
+<div class="card mb-5 shadow">
+    <div class="card-body">
+        <h2 class="card-title" id="irc">Internet Relay Chat</h2>
+        <p class="card-text">
+        For instant communication, we have multiple channels on <a href="https://freenode.net/">freenode network</a>.
+        </p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                English:
+                <a href="irc://irc.freenode.net/tryton">#tryton</a>
+                (<a href="http://www.tryton.org/~irclog/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                Deutsch:
+                <a href="irc://irc.freenode.net/tryton.de">#tryton.de</a>
+                (<a href="http://www.tryton.org/~irclog/de/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                Español:
+                <a href="irc://irc.freenode.net/tryton-es">#tryton-es</a>
+                (<a href="http://www.tryton.org/~irclog/es/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                Français:
+                <a href="irc://irc.freenode.net/tryton-fr">#tryton-fr</a>
+                (<a href="http://www.tryton.org/~irclog/fr/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                РУССКИЙ:
+                <a href="irc://irc.freenode.net/tryton-ru">#tryton-ru</a>
+                (<a href="http://www.tryton.org/~irclog/ru/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                commits:
+                <a href="irc://irc.freenode.net/tryton-commit">#tryton-commit</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mb-5 shadow">
+    <div class="card-body">
+        <h2 class="card-title" id="mailing-lists">Mailing Lists</h2>
+        <p class="card-text">
+        We have also some mailing lists which are <span class="text-danger">deprecated</span> in favor of the <a href="#forum">forum</a>.
+        They are listed here for archive.
+        </p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton/">English</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-ca/">Català</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-de/">Deutsch</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-es/">Español</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-fr/">Français</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-ru/">РУССКИЙ</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-dev/">Developers</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-announce/">Announce</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-commit/">commit</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://groups.google.com/group/tryton-contrib/">contrib</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<p class="lead" id="netiquette">
+<span class="material-icons">warning</span>
+Be considerate of others, follow the <a href="https://tools.ietf.org/html/rfc1855#section-3.0">netiquette</a>.
+</p>
+{% endblock main %}
