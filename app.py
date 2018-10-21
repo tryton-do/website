@@ -95,8 +95,8 @@ def inject_menu():
         (HEART + ' Donations', url_for('donate')),
         ]
     menu['Services'] = [
-        ('Service providers', url_for('service_providers')),
-        ('Become a service provider', '#'),
+        ('Service Providers', url_for('service_providers')),
+        ('Become a Service Provider', url_for('service_providers_start')),
         ]
     return dict(menu=menu)
 
@@ -341,6 +341,12 @@ def donate_cancel():
 def service_providers():
     shuffle(PROVIDERS)
     return render_template('service_providers.html', providers=PROVIDERS)
+
+
+@app.route('/service-providers/start')
+@cache.cached()
+def service_providers_start():
+    return render_template('service_providers_start.html')
 
 
 class RequestFormatter(logging.Formatter):
