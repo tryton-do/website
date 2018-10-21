@@ -278,6 +278,12 @@ def contribute():
     return render_template('contribute.html')
 
 
+@app.route('/develop')
+@cache.cached()
+def develop():
+    return render_template('develop.html')
+
+
 @app.route('/foundation')
 @cache.cached()
 def foundation():

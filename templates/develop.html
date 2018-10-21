@@ -1,0 +1,210 @@
+{% extends "layout-toc.html" %}
+{% block title %}
+Tryton - How to Develop
+{% endblock title %}
+{% block content %}
+<section class="section bg-primary">
+    <div class="container">
+        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
+            <h1 class="pl-3 pr-3">How to develop</h1>
+        </section>
+    </div>
+</section>
+{{ super() }}
+{% endblock content %}
+
+{% block toc %}
+<ul class="nav flex-column border-left">
+    <li class="nav-item"><a class="pl-3" href="#report-issue">Report Issue</a></li>
+    <li class="nav-item"><a class="pl-3" href="#submit-change">Submit Change</a></li>
+    <ul>
+        <li class="nav-item"><a class="pl-3" href="#submit-change-script">Script</a></li>
+        <li class="nav-item"><a class="pl-3" href="#submit-change-hg-extension">Mercurial Extension</a></li>
+    </ul>
+    <li class="nav-item"><a class="pl-3" href="#publish-change">Publish Change</a></li>
+    <li class="nav-item"><a class="pl-3" href="#coding-guidelines">Coding Guidelines</a></li>
+    <ul>
+        <li class="nav-item"><a class="pl-3" href="#code-style">Code Style</a></li>
+    </ul>
+    <li class="nav-item"><a class="pl-3" href="#requirements">Requirements</a></li>
+    <li class="nav-item"><a class="pl-3" href="#rules">Rules</a></li>
+    <li class="nav-item"><a class="pl-3" href="#backport">Back Port</a></li>
+</ul>
+{% endblock toc %}
+
+{% block main %}
+<section class="subsection">
+    <p class="lead">
+    <span class="h2">TL;DR</span><br/>
+    Clone the repository:
+    <pre><code class="console">$ hg clone https://hg.tryton.org/trytond
+$ cd trytond
+    </code></pre>
+    Make your modification.
+    Submit your patch:
+    <pre><code class="console">$ -L -o ~/.local/bin/upload.py https://codereview.tryton.org/static/upload.py
+$ python ~/.local/bin/upload.py --oauth2
+    </code></pre>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="report-issue">Report Issue</h2>
+    <p>
+    <ul>
+        <li>Test your issue on the latest development version.</li>
+        <li>Create an issue in our <a href="https://bugs.tryton.org/">issue tracker</a>.</li>
+        <li>Set the affected components on the issue.</li>
+        <li>Assign the issue to you and set the status to <span class="text-monospace">in-progress</span>.</li>
+    </ul>
+    <div class="bg-warning">
+        <span class="material-icons">warning</span>
+        If it is a security issue, be careful to correctly set the type to security.
+        This way, the issue will only be visible to the security team until its release.
+    </div>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="submit-change">Submit Change</h2>
+    <p>
+    <ul>
+        <li>Follow the <a href="#coding-guidelines">coding guidelines</a>.</li>
+        <li>Submit your patch to our <a href="https://codereview.tryton.org/">review tool</a> (with the repository name in front of the title).</li>
+        <li>The commit message will be the review subject (with repository name stripped) and the review description.
+            The review description must contain a reference to the issue (ex: <span class="text-monospace">issue1234</span>).
+            The reference to the review (ex: <span class="text-monospace">review123456</span>) will be automatically added to the commit message.</li>
+        <li>Your review will be validated by <mark>LGTM</mark> comment of core developers, your change will be committed and pushed, you don't need to do anything else.</li>
+        <li>Close the review once your patch is applied.</li>
+    </ul>
+    <div class="bg-warning">
+        <span class="material-icons">warning</span>
+        If it is a security issue, be careful to mark the review as protected.
+    </div>
+    </p>
+    <p>There are two options to upload changes:</p>
+    <h3 id="submit-change-script">Script</h3>
+    <p>
+    Download <a href="https://codereview.tryton.org/static/upload.py" class="text-monospace">upload.py</a> and see the <a href="https://github.com/rietveld-codereview/rietveld/wiki">help page</a>.
+    </p>
+    <h3 id="submit-change-hg-extension">Mercurial Extension</h3>
+    <p>There is a mercurial extension, <a href="https://bitbucket.org/nicoe/hgreview">hgreview</a> which simplifies the workflow.
+    </p>
+    <p>Install the extension:
+    <pre><code type="console">$ pip install hgreview
+$ hg config -e -l</code></pre>
+    Edit the file as:
+    <pre><code type="ini">[extensions]
+hgreview =
+
+[review]
+erver = https://codereview.tryton.org
+oauth2 = True
+send_email = True</code></pre>
+    </p>
+    <p>Then you can upload your patch (do not commit before upload):
+    <pre><code type="console">$ hg review -m "repository_name: Improve things a lot"</code></pre>
+    <em>For non-trunk fixes append the series number to repository name.</em>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="publish-change">Publish Change</h2>
+    <p class="bg-info">This part is only for core developers</p>
+    <p>Push to remove server:
+    <pre><code type="console">$ hg push ssh://hg@hg.tryton.org/trytond</code></pre>
+    Sometimes the push is rejected because it creates a new head.
+    It happens because your local repository is not up to date.<br/>
+    We prefer <b>rebase</b> over <b>merge</b> because it creates a linear history:
+    <pre><code type="console">$ hg pull --rebase</code></pre>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="coding-guidelines">Coding Guidelines</h2>
+    <p>The Tryton Project strongly recommends the following guidelines.</p>
+    <h3 id="code-style">Code Style</h3>
+    <h4>Python</h4>
+    <p>Code style follows in general <a href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a>:
+    <ul>
+        <li>Use 4 spaces for indentation.</li>
+        <li>Avoid the usage of <span class="text-monospace">from M import *</span>.</li>
+        <li>If unsure about PEP 8 conformity use <a href="http://pypi.python.org/pypi/pep8">pep8</a> to check the code (with option <span class="text-monospace">ignore=E123,E124,E126,E128</span>).</li>
+        <li>Breaking lines:
+            <ul>
+                <li>Use 4 spaces per bracket pair.</li>
+                <li>Prefer parenthesis over backslash.</li>
+            </ul>
+        </li>
+    </ul>
+    </p>
+    <h4>XML</h4>
+    <p>
+    <ul>
+        <li>Use 4 spaces for indentation.</li>
+        <li>No 80 columns limitation.</li>
+        <li>Opening tag on single line or one attribute per line.</li>
+    </ul>
+    </p>
+    <h4>Recommended Practices</h4>
+    <p>
+    <ul>
+        <li>Use doc-strings and comments in your code.</li>
+        <li>Never pass keyword arguments as positional arguments when calling a method.</li>
+        <li>In the very beginning (right under the doc-string) of a method definition, define all pool objects it will used (<span class="text-monospace">pool.get(...)</span>).</li>
+    </ul>
+    </p>
+    <h5>Naming of modules, classes, variables</h5>
+    <p>
+    <ul>
+        <li>A name should be as descriptive and as short as possible.</li>
+        <li>Avoid unnecessary duplicate of names.</li>
+        <li>Naming structure of a model or module must follow these rules:
+            <ul>
+                <li>First part left of the name is the general functioning of the module or model,</li>
+                <li>after this comes the less general name parts (= the more specific name parts) of the module or model</li>
+                <li>If you are unsure with naming, please request first on the mailing list or on the IRC channel #tryton</li>
+            </ul>
+        </li>
+        <li>For modules and method names use underscore for separating the name parts.</li>
+        <li>For naming classes use <a href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</a>.</li>
+    </ul>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="requirements">Requirements</h2>
+    <p>Your contribution should meet the following requirements:</p>
+    <h3>Must</h3>
+    <p>
+    <ul>
+        <li>By submitting patch, the contributor accepts the <a href="https://developercertificate.org/">Developer Certificate of Origin</a>.</li>
+        <li>The contributor email must be a valid email address.</li>
+        <li>The domain of the contributor email must not contain tryton.</li>
+        <li>The <span class="text-monospace">username</span> of a mercurial patch must be in the form:
+            <pre>Name &lt;email&gt;</pre>
+        </li>
+    </ul>
+    </p>
+    <h3>Nice to have, but not required</h3>
+    <p>
+    <ul>
+        <li>The contributor name should be the real name of the natural person who submits the code.</li>
+        <li>The contributor email should be linked to only one contributor name.</li>
+    </ul>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="rules">Rules</h2>
+    <p>If the contributor has a significant amount of code, he can add himself to the <span class="text-monospace">COPYRIGHT</span> file.</p>
+    <p>
+    Core developers are people which have push access to the repositories.
+    They are allowed to push small fixes without review.
+    Bigger fixes need approval from other core developer.</p>
+    <p>
+    For bigger fixes, in case of disagreement, a consensus should be reached.
+    At last the project leader (<a href="https://bugs.tryton.org/user3">Cédric Krier</a>) takes a decision.
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="backport">Back Port</h2>
+    <p>A fix will be back ported to older series by the maintainer on his own discretion after 1 week in the development branch.
+    The decision is based on the importance of the bug, the availability of workaround and the feasibilities.</p>
+    <p>Those rules don't apply for security bugs which are applied at once on all affected series followed a release.</p>
+</section>
+{% endblock main %}
