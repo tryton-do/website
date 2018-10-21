@@ -115,6 +115,11 @@ send_email = True</code></pre>
     We prefer <b>rebase</b> over <b>merge</b> because it creates a linear history:
     <pre><code type="console">$ hg pull --rebase</code></pre>
     </p>
+    <p>
+    <span class="material-icons">warning</span>
+    Keep the <a href="http://hg.tryton.org/tryton-env/">environment repository</a> always up to date with all <a href="https://www.mercurial-scm.org/wiki/Subrepository">subrepos</a>:
+    <pre><code type="console">$ hg commit -S --cwd tryton-env</code></pre>
+    </p>
 </section>
 <section class="subsection">
     <h2 id="coding-guidelines">Coding Guidelines</h2>
