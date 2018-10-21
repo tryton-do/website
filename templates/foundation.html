@@ -27,11 +27,11 @@ Tryton - Foundation
                 </div>
             </div>
             <div class="col-md mb-gutter">
-                <h3>Donations</h3>
+                <h3>{{ heart | safe }} Donations</h3>
                 <div class="card bg-primary">
                     <div class="card-body">
                         <p class="text-white">
-                        Please, visit our <a href="#" class="text-white">donations page</a> to learn more about
+                        Please, visit our <a href="{{ url_for('donate') }}" class="text-white">donations page</a> to learn more about
                         how you can help the Foundation to keep going and who has already supported us.
                         </p>
                     </div>
