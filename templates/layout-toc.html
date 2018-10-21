@@ -6,10 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="d-none d-xl-block col-xl-2 order-2">
-                <ul class="nav flex-column border-left">
-                    {% block toc %}
-                    {% endblock toc %}
-                </ul>
+                {% block toc %}
+                {% endblock toc %}
             </div>
             <div class="col-sm-12 col-md-10 col-xl-6 mx-md-auto order-1" role="main">
                 {% block main %}
