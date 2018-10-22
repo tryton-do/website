@@ -106,7 +106,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">account_balance</span>
                                 </div>
-                                <h3 class="mt-3">Financial Accounting</h3>
+                                <h6 class="mt-3 text-uppercase">Financial Accounting</h6>
                                 <p class="d-none d-sm-block">Record all transactions<br/>in your chart of accounts.</p>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">store_mall_directory</span>
                                 </div>
-                                <h3 class="mt-3">Sales</h3>
+                                <h6 class="mt-3 text-uppercase">Sales</h6>
                                 <p class="d-none d-sm-block">Follow orders from quotation<br/>to customer satisfaction.</p>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">local_convenience_store</span>
                                 </div>
-                                <h3 class="mt-3">Inventory & Stock</h3>
+                                <h6 class="mt-3 text-uppercase">Inventory & Stock</h6>
                                 <p class="d-none d-sm-block">Track goods in your warehouses<br/>from receipt to delivery.</p>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">account_balance_wallet</span>
                                 </div>
-                                <h3 class="mt-3">Analytic Accounting</h3>
+                                <h6 class="mt-3 text-uppercase">Analytic Accounting</h6>
                                 <p class="d-none d-sm-block">Break down your expenses<br/>and revenues by category.</p>
                             </div>
                         </div>
@@ -144,7 +144,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">person</span>
                                 </div>
-                                <h3 class="mt-3">CRM</h3>
+                                <h6 class="mt-3 text-uppercase">CRM</h6>
                                 <p class="d-none d-sm-block">Convert your leads<br/>and opportunities into sales.</p>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">shopping_cart</span>
                                 </div>
-                                <h3 class="mt-3">Purchasing</h3>
+                                <h6 class="mt-3 text-uppercase">Purchasing</h6>
                                 <p class="d-none d-sm-block">Follow your requests for quotation<br/>and reduce costs by grouping orders.</p>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">equalizer</span>
                                 </div>
-                                <h3 class="mt-3">Supply Chain</h3>
+                                <h6 class="mt-3 text-uppercase">Supply Chain</h6>
                                 <p class="d-none d-sm-block">Fill your warehouses<br/>just in time.</p>
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">build</span>
                                 </div>
-                                <h3 class="mt-3">Manufacturing</h3>
+                                <h6 class="mt-3 text-uppercase">Manufacturing</h6>
                                 <p class="d-none d-sm-block">Transform raw materials<br/>into finished products with bill of materials and routing.</p>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">local_shipping</span>
                                 </div>
-                                <h3 class="mt-3">Shipping</h3>
+                                <h6 class="mt-3 text-uppercase">Shipping</h6>
                                 <p class="d-none d-sm-block">Package shipments<br/>for your carriers.</p>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">work</span>
                                 </div>
-                                <h3 class="mt-3">Project Management</h3>
+                                <h6 class="mt-3 text-uppercase">Project Management</h6>
                                 <p class="d-none d-sm-block">Check the profitability of projects<br/>and never forget to invoice customers.</p>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">repeat</span>
                                 </div>
-                                <h3 class="mt-3">Subscription Management</h3>
+                                <h6 class="mt-3 text-uppercase">Subscription Management</h6>
                                 <p class="d-none d-sm-block">Create recurring invoices<br/>for your customer contracts.</p>
                             </div>
                         </div>
@@ -211,7 +211,7 @@
                                 <div class="picto bg-primary text-white">
                                     <span class="material-icons md-48">group_work</span>
                                 </div>
-                                <h3 class="mt-3">Third Party Integration</h3>
+                                <h6 class="mt-3 text-uppercase">Third Party Integration</h6>
                                 <p class="d-none d-sm-block">Automate your communication<br/>with banks, carriers, websites etc.</p>
                             </div>
                         </div>
@@ -230,7 +230,7 @@
         <div class="row">
             {% for item in news[:3] %}
             <div class="col-md wow fadeIn" data-wow-delay=".1s">
-                <h3>{{ item.title }}</h3>
+                <h4>{{ item.title }}</h4>
                 <p class="text-justify news-description">
                 {{ item.description|blockquote|truncate(240) }}
                 </p>
