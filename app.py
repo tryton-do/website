@@ -111,8 +111,8 @@ def inject_heart():
     return dict(heart=HEART)
 
 
-@app.route('/news/index.html')
 @app.route('/news')
+@app.route('/news/index.html', endpoint='news-alt')
 def news():
     return redirect(NEWS_URL)
 
@@ -142,8 +142,8 @@ def blockquote(content):
     return block.text_content()
 
 
-@app.route('/events.html')
 @app.route('/events')
+@app.route('/events.html', endpoint='events-alt')
 def events():
     return redirect(CALENDAR_URL)
 
@@ -177,6 +177,7 @@ def date(datetime):
 
 
 @app.route('/success-stories')
+@app.route('/business-cases.html', endpoint='success_stories-alt')
 @cache.cached()
 def success_stories():
     Case = namedtuple('Case', 'title description url logo'.split())
@@ -261,6 +262,7 @@ def success_stories():
 
 
 @app.route('/download')
+@app.route('/download.html', endpoint='download-alt')
 @cache.cached()
 def download():
     return render_template('download.html')
@@ -273,12 +275,14 @@ def forum():
 
 
 @app.route('/presentations')
+@app.route('/papers.html', endpoint='presentations-alt')
 @cache.cached()
 def presentations():
     return render_template('presentations.html')
 
 
 @app.route('/contribute')
+@app.route('/how-to-contribute.html', endpoint='contribute-alt')
 @cache.cached()
 def contribute():
     return render_template('contribute.html')
@@ -291,12 +295,14 @@ def develop():
 
 
 @app.route('/foundation')
+@app.route('/foundation/', endpoint='foundation-alt')
 @cache.cached()
 def foundation():
     return render_template('foundation.html')
 
 
 @app.route('/supporters')
+@app.route('/foundation/supporters.html', endpoint='supporters-alt')
 @cache.cached()
 def supporters():
     def url(supporter, start):
@@ -322,6 +328,7 @@ def hostname(url):
 
 
 @app.route('/donate')
+@app.route('/foundation/donations.html', endpoint='donate-alt')
 @cache.cached()
 def donate():
     headers = {'Content-Type': 'application/json'}
@@ -355,6 +362,7 @@ def donate_cancel():
 
 
 @app.route('/service-providers')
+@app.route('/services.html', endpoint='service_providers-alt')
 @cache.cached()
 def service_providers():
     shuffle(PROVIDERS)
