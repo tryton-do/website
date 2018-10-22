@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Tryton">
-        <meta name="author" content="Tryton">
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Tryton"/>
+        <meta name="author" content="Tryton"/>
         <meta name="og:title" content="{{ title }}"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="{{ url_for(request.endpoint, _external=True) }}"/>
@@ -27,7 +27,7 @@
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
 
         {% block style %}
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/screen.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/screen.min.css') }}"/>
         {% endblock style %}
 
         <script async src="{{ url_for('static', filename='js/all.js') }}"></script>
