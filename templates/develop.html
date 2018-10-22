@@ -15,13 +15,13 @@ Tryton - How to Develop
 
 {% block toc %}
 <ul class="nav flex-column border-left">
-    <li class="nav-item"><a class="pl-3" href="#report-issue">Report Issue</a></li>
-    <li class="nav-item"><a class="pl-3" href="#submit-change">Submit Change</a></li>
+    <li class="nav-item"><a class="pl-3" href="#report-issue">Report an Issue</a></li>
+    <li class="nav-item"><a class="pl-3" href="#submit-change">Submit a Change</a></li>
     <ul>
         <li class="nav-item"><a class="pl-3" href="#submit-change-script">Script</a></li>
         <li class="nav-item"><a class="pl-3" href="#submit-change-hg-extension">Mercurial Extension</a></li>
     </ul>
-    <li class="nav-item"><a class="pl-3" href="#publish-change">Publish Change</a></li>
+    <li class="nav-item"><a class="pl-3" href="#publish-change">Publish a Change</a></li>
     <li class="nav-item"><a class="pl-3" href="#coding-guidelines">Coding Guidelines</a></li>
     <ul>
         <li class="nav-item"><a class="pl-3" href="#code-style">Code Style</a></li>
@@ -49,7 +49,7 @@ $ python ~/.local/bin/upload.py --oauth2
     </code></pre>
 </section>
 <section class="subsection">
-    <h2 id="report-issue">Report Issue</h2>
+    <h2 id="report-issue">Report an Issue</h2>
     <p>
     <ul>
         <li>Test your issue on the latest development version.</li>
@@ -65,14 +65,14 @@ $ python ~/.local/bin/upload.py --oauth2
     </p>
 </section>
 <section class="subsection">
-    <h2 id="submit-change">Submit Change</h2>
+    <h2 id="submit-change">Submit a Change</h2>
     <p>
     <ul>
         <li>Follow the <a href="#coding-guidelines">coding guidelines</a>.</li>
         <li>Submit your change to our <a href="https://codereview.tryton.org/">review tool</a> using one of the methods listed below.</li>
         <li>Make sure the review has the repository name at the start of the review title,
             and ensure the review description contains a reference to the issue (e.g.: <span class="text-monospace">issue1234</span>).</li>
-        <li>Once accepted your review will be validated with a <mark>LGTM</mark> comment from a core developers</li>
+        <li>Once accepted your review will be validated with a <mark>LGTM</mark> comment from a core developer</li>
         <li>Your change will then be committed and pushed by a core developer.
             The commit message will be the review subject (with repository name stripped) and the review description.
             The reference to the review (e.g.: <span class="text-monospace">review123456</span>) will be automatically added to the commit message.</li>
@@ -109,9 +109,9 @@ send_email = True</code></pre>
     </p>
 </section>
 <section class="subsection">
-    <h2 id="publish-change">Publish Change</h2>
+    <h2 id="publish-change">Publish a Change</h2>
     <p class="bg-info">This part is only for core developers</p>
-    <p>Push to the remove server:
+    <p>Push to the remote server:
     <pre><code type="console">$ hg push ssh://hg@hg.tryton.org/trytond</code></pre>
     Sometimes the push is rejected because it creates a new head.
     This happens because your local repository is not up to date.<br/>
@@ -213,6 +213,6 @@ send_email = True</code></pre>
     <h2 id="backporting">Backporting</h2>
     <p>A fix will be back ported to older series by the maintainer on his own discretion after 1 week in the development branch.
     The decision is based on the importance of the bug, the availability of workaround and the feasibilities.</p>
-    <p>Those rules don't apply for security bugs which are applied at once to all affected series followed a release.</p>
+    <p>Those rules don't apply for security bugs which are applied at once to all affected series and followed by a release.</p>
 </section>
 {% endblock main %}
