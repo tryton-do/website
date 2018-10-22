@@ -117,6 +117,12 @@ def news():
     return redirect(NEWS_URL)
 
 
+@app.route('/news.rss')
+@app.route('/rss.xml')
+def news_rss():
+    return redirect(NEWS_URL + '.rss')
+
+
 def news_items(size=-1):
     try:
         rss = requests.get(NEWS_URL + '.rss')
