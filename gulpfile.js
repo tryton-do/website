@@ -14,7 +14,8 @@ gulp.task('js', function() {
         'node_modules/wowjs/dist/wow.min.js',
         'node_modules/leaflet/dist/leaflet.js',
         'js/wow.js',
-        'js/highlight.pack.js'])
+        'js/highlight.pack.js',
+        'js/map.js'])
         .pipe(concat('all.js'))
         .pipe(gulp.dest('static/js/'));
 });
