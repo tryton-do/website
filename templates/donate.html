@@ -3,11 +3,9 @@
 Tryton - Donate
 {% endblock title %}
 {% block content %}
-<section class="section bg-primary">
+<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-donate.jpg') }});">
     <div class="container">
-        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
-            <h1 class="pl-3 pr-3">{{ heart | safe }}Donate</h1>
-        </section>
+        <h1 class="mb-0 text-white position-relative z-1">{{ heart | safe }}Donate</h1>
     </div>
 </section>
 {{ super() }}

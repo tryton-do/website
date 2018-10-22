@@ -3,11 +3,9 @@
 Tryton - Get Tryton
 {% endblock title %}
 {% block content %}
-<section class="section bg-primary">
+<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-download.jpg') }});">
     <div class="container">
-        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
-            <h1 class="pl-3 pr-3">Get Tryton</h1>
-        </section>
+        <h1 class="mb-0 text-white position-relative z-1">Get Tryton</h1>
     </div>
 </section>
 {{ super() }}
