@@ -1,7 +1,6 @@
+{% set title = "Foundation" %}
+{% set description = "The Tryton Foundation aims to protect, promote and develop Tryton as Free Software" %}
 {% extends "layout.html" %}
-{% block title %}
-Tryton - Foundation
-{% endblock %}
 {% block content %}
 {{ super() }}
 <section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-foundation.jpg') }});">

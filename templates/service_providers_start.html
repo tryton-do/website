@@ -1,7 +1,5 @@
+{% set title = "Become a Service Provider" %}
 {% extends "layout-toc.html" %}
-{% block title %}
-Tryton -Become a Service Provider
-{% endblock title %}
 {% block style %}
 {{ super() }}
 <style>
@@ -17,7 +15,7 @@ h5:before {
 {% block content %}
 <section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-service-providers-start.jpg') }});">
     <div class="container">
-        <h1 class="mb-0 text-white position-relative z-1">Become a Service Provider</h1>
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
 </section>
 {{ super() }}

@@ -1,11 +1,10 @@
+{% set title = "Get Involved" %}
+{% set description = "Join the Tryton community and help the project" %}
 {% extends "layout-toc.html" %}
-{% block title %}
-Tryton - Contribute
-{% endblock title %}
 {% block content %}
 <section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-contribute.jpg') }});">
     <div class="container">
-        <h1 class="mb-0 text-white position-relative z-1">Get Involved</h1>
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
 </section>
 {{ super() }}
