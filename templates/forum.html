@@ -23,13 +23,18 @@ Tryton - Forum
 {% endblock toc %}
 
 {% block main %}
+<p class="lead" id="netiquette">
+<span class="material-icons">warning</span>
+Be considerate of others, follow the <a href="https://tools.ietf.org/html/rfc1855#section-3.0">netiquette</a>.
+</p>
+
 <div class="card mb-5 shadow">
     <div class="card-body">
         <h2 class="card-title" id="discuss">Forum</h2>
         <p class="card-text">
-        The principal communication medium in the community is on our forum.
+        The principal communication method for the community is on our forum.
         We discuss <a href="https://discuss.tryton.org/c/feature">new features</a>,
-        provide to each others <a href="https://discuss.tryton.org/c/support">support</a> and
+        provide each other <a href="https://discuss.tryton.org/c/support">support</a> and
         talk about the <a href="https://discuss.tryton.org/c/organisation">organisation</a>.
         </p>
         <a href="https://discuss.tryton.org" class="card-link">Join the Forum</a>
@@ -40,7 +45,7 @@ Tryton - Forum
     <div class="card-body">
         <h2 class="card-title" id="irc">Internet Relay Chat</h2>
         <p class="card-text">
-        For instant communication, we have multiple channels on <a href="https://freenode.net/">freenode network</a>.
+        For instant communication, we have multiple channels on the <a href="https://freenode.net/">freenode network</a>.
         </p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -81,7 +86,7 @@ Tryton - Forum
         <h2 class="card-title" id="mailing-lists">Mailing Lists</h2>
         <p class="card-text">
         We have also some mailing lists which are <span class="text-danger">deprecated</span> in favor of the <a href="#forum">forum</a>.
-        They are listed here for archive.
+        They are listed here for reference.
         </p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -117,9 +122,4 @@ Tryton - Forum
         </ul>
     </div>
 </div>
-
-<p class="lead" id="netiquette">
-<span class="material-icons">warning</span>
-Be considerate of others, follow the <a href="https://tools.ietf.org/html/rfc1855#section-3.0">netiquette</a>.
-</p>
 {% endblock main %}

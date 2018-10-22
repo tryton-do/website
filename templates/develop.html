@@ -25,10 +25,11 @@ Tryton - How to Develop
     <li class="nav-item"><a class="pl-3" href="#coding-guidelines">Coding Guidelines</a></li>
     <ul>
         <li class="nav-item"><a class="pl-3" href="#code-style">Code Style</a></li>
+        <li class="nav-item"><a class="pl-3" href="#best-practices">Best Practices</a></li>
     </ul>
     <li class="nav-item"><a class="pl-3" href="#requirements">Requirements</a></li>
     <li class="nav-item"><a class="pl-3" href="#rules">Rules</a></li>
-    <li class="nav-item"><a class="pl-3" href="#backport">Back Port</a></li>
+    <li class="nav-item"><a class="pl-3" href="#backporting">Backporting</a></li>
 </ul>
 {% endblock toc %}
 
@@ -36,16 +37,16 @@ Tryton - How to Develop
 <section class="subsection">
     <p class="lead">
     <span class="h2">TL;DR</span><br/>
-    Clone the repository:
+    Clone the repository:</p>
     <pre><code class="console">$ hg clone https://hg.tryton.org/trytond
 $ cd trytond
     </code></pre>
+    <p class="lead">
     Make your modification.
-    Submit your patch:
+    Submit your change:</p>
     <pre><code class="console">$ -L -o ~/.local/bin/upload.py https://codereview.tryton.org/static/upload.py
 $ python ~/.local/bin/upload.py --oauth2
     </code></pre>
-    </p>
 </section>
 <section class="subsection">
     <h2 id="report-issue">Report Issue</h2>
@@ -68,12 +69,14 @@ $ python ~/.local/bin/upload.py --oauth2
     <p>
     <ul>
         <li>Follow the <a href="#coding-guidelines">coding guidelines</a>.</li>
-        <li>Submit your patch to our <a href="https://codereview.tryton.org/">review tool</a> (with the repository name in front of the title).</li>
-        <li>The commit message will be the review subject (with repository name stripped) and the review description.
-            The review description must contain a reference to the issue (ex: <span class="text-monospace">issue1234</span>).
-            The reference to the review (ex: <span class="text-monospace">review123456</span>) will be automatically added to the commit message.</li>
-        <li>Your review will be validated by <mark>LGTM</mark> comment of core developers, your change will be committed and pushed, you don't need to do anything else.</li>
-        <li>Close the review once your patch is applied.</li>
+        <li>Submit your change to our <a href="https://codereview.tryton.org/">review tool</a> using one of the methods listed below.</li>
+        <li>Make sure the review has the repository name at the start of the review title,
+            and ensure the review description contains a reference to the issue (e.g.: <span class="text-monospace">issue1234</span>).</li>
+        <li>Once accepted your review will be validated with a <mark>LGTM</mark> comment from a core developers</li>
+        <li>Your change will then be committed and pushed by a core developer.
+            The commit message will be the review subject (with repository name stripped) and the review description.
+            The reference to the review (e.g.: <span class="text-monospace">review123456</span>) will be automatically added to the commit message.</li>
+        <li>Close the review once your change has been applied.</li>
     </ul>
     <div class="bg-warning">
         <span class="material-icons">warning</span>
@@ -83,7 +86,7 @@ $ python ~/.local/bin/upload.py --oauth2
     <p>There are two options to upload changes:</p>
     <h3 id="submit-change-script">Script</h3>
     <p>
-    Download <a href="https://codereview.tryton.org/static/upload.py" class="text-monospace">upload.py</a> and see the <a href="https://github.com/rietveld-codereview/rietveld/wiki">help page</a>.
+    Download <a href="https://codereview.tryton.org/static/upload.py" class="text-monospace">upload.py</a> and read its <a href="https://github.com/rietveld-codereview/rietveld/wiki">help page</a>.
     </p>
     <h3 id="submit-change-hg-extension">Mercurial Extension</h3>
     <p>There is a mercurial extension, <a href="https://bitbucket.org/nicoe/hgreview">hgreview</a> which simplifies the workflow.
@@ -91,33 +94,33 @@ $ python ~/.local/bin/upload.py --oauth2
     <p>Install the extension:
     <pre><code type="console">$ pip install hgreview
 $ hg config -e -l</code></pre>
-    Edit the file as:
+    Edit the file to include:
     <pre><code type="ini">[extensions]
 hgreview =
 
 [review]
-erver = https://codereview.tryton.org
+server = https://codereview.tryton.org
 oauth2 = True
 send_email = True</code></pre>
     </p>
-    <p>Then you can upload your patch (do not commit before upload):
+    <p>You can then upload your change (do not commit before doing this):
     <pre><code type="console">$ hg review -m "repository_name: Improve things a lot"</code></pre>
-    <em>For non-trunk fixes append the series number to repository name.</em>
+    <em>For non-trunk fixes append the series number to the repository name.</em>
     </p>
 </section>
 <section class="subsection">
     <h2 id="publish-change">Publish Change</h2>
     <p class="bg-info">This part is only for core developers</p>
-    <p>Push to remove server:
+    <p>Push to the remove server:
     <pre><code type="console">$ hg push ssh://hg@hg.tryton.org/trytond</code></pre>
     Sometimes the push is rejected because it creates a new head.
-    It happens because your local repository is not up to date.<br/>
+    This happens because your local repository is not up to date.<br/>
     We prefer <b>rebase</b> over <b>merge</b> because it creates a linear history:
     <pre><code type="console">$ hg pull --rebase</code></pre>
     </p>
     <p>
     <span class="material-icons">warning</span>
-    Keep the <a href="http://hg.tryton.org/tryton-env/">environment repository</a> always up to date with all <a href="https://www.mercurial-scm.org/wiki/Subrepository">subrepos</a>:
+    Always keep the <a href="http://hg.tryton.org/tryton-env/">environment repository</a> up to date with all the <a href="https://www.mercurial-scm.org/wiki/Subrepository">subrepos</a>:
     <pre><code type="console">$ hg commit -S --cwd tryton-env</code></pre>
     </p>
 </section>
@@ -126,7 +129,7 @@ send_email = True</code></pre>
     <p>The Tryton Project strongly recommends the following guidelines.</p>
     <h3 id="code-style">Code Style</h3>
     <h4>Python</h4>
-    <p>Code style follows in general <a href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a>:
+    <p>Code style, in general, follows <a href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a>:
     <ul>
         <li>Use 4 spaces for indentation.</li>
         <li>Avoid the usage of <span class="text-monospace">from M import *</span>.</li>
@@ -147,41 +150,41 @@ send_email = True</code></pre>
         <li>Opening tag on single line or one attribute per line.</li>
     </ul>
     </p>
-    <h4>Recommended Practices</h4>
+    <h3 id="best-practices">Best Practices</h4>
     <p>
     <ul>
         <li>Use doc-strings and comments in your code.</li>
         <li>Never pass keyword arguments as positional arguments when calling a method.</li>
-        <li>In the very beginning (right under the doc-string) of a method definition, define all pool objects it will used (<span class="text-monospace">pool.get(...)</span>).</li>
+        <li>In the very beginning (right under the doc-string) of a method definition, define all pool objects that will be used (<span class="text-monospace">pool.get(...)</span>).</li>
     </ul>
     </p>
-    <h5>Naming of modules, classes, variables</h5>
+    <h4>Naming of modules, classes, variables</h4>
     <p>
     <ul>
         <li>A name should be as descriptive and as short as possible.</li>
-        <li>Avoid unnecessary duplicate of names.</li>
+        <li>Avoid unnecessary duplication of names.</li>
         <li>Naming structure of a model or module must follow these rules:
             <ul>
-                <li>First part left of the name is the general functioning of the module or model,</li>
-                <li>after this comes the less general name parts (= the more specific name parts) of the module or model</li>
-                <li>If you are unsure with naming, please request first on the mailing list or on the IRC channel #tryton</li>
+                <li>First part of the name is the general function of the module or model,</li>
+                <li>after this come the less general parts of the name (i.e. the more specific name parts) for the module or model</li>
+                <li>If you are unsure with naming, please ask first on the <a href="{{ url_for('forum', _anchor='irc') }}">#tryton channel</a></li>
             </ul>
         </li>
-        <li>For modules and method names use underscore for separating the name parts.</li>
+        <li>For modules and method names use an underscore to separate the parts of name.</li>
         <li>For naming classes use <a href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</a>.</li>
     </ul>
     </p>
 </section>
 <section class="subsection">
     <h2 id="requirements">Requirements</h2>
-    <p>Your contribution should meet the following requirements:</p>
+    <p>Your contribution must meet the following requirements:</p>
     <h3>Must</h3>
     <p>
     <ul>
-        <li>By submitting patch, the contributor accepts the <a href="https://developercertificate.org/">Developer Certificate of Origin</a>.</li>
+        <li>By submitting a change, the contributor accepts the <a href="https://developercertificate.org/">Developer Certificate of Origin</a>.</li>
         <li>The contributor email must be a valid email address.</li>
         <li>The domain of the contributor email must not contain tryton.</li>
-        <li>The <span class="text-monospace">username</span> of a mercurial patch must be in the form:
+        <li>The <span class="text-monospace">username</span> of a mercurial changeset must be in the form:
             <pre>Name &lt;email&gt;</pre>
         </li>
     </ul>
@@ -200,16 +203,16 @@ send_email = True</code></pre>
     <p>
     Core developers are people which have push access to the repositories.
     They are allowed to push small fixes without review.
-    Bigger fixes need approval from other core developer.</p>
+    Bigger fixes need approval from other core developers.</p>
     <p>
-    For bigger fixes, in case of disagreement, a consensus should be reached.
-    At last the project leader (<a href="https://bugs.tryton.org/user3">Cédric Krier</a>) takes a decision.
+    In the case of disagreement, a consensus should be reached.
+    As a last resort, the project leader (<a href="https://bugs.tryton.org/user3">Cédric Krier</a>) will make the decision.
     </p>
 </section>
 <section class="subsection">
-    <h2 id="backport">Back Port</h2>
+    <h2 id="backporting">Backporting</h2>
     <p>A fix will be back ported to older series by the maintainer on his own discretion after 1 week in the development branch.
     The decision is based on the importance of the bug, the availability of workaround and the feasibilities.</p>
-    <p>Those rules don't apply for security bugs which are applied at once on all affected series followed a release.</p>
+    <p>Those rules don't apply for security bugs which are applied at once to all affected series followed a release.</p>
 </section>
 {% endblock main %}
