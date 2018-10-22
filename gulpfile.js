@@ -15,6 +15,7 @@ gulp.task('js', function() {
         'node_modules/leaflet/dist/leaflet.js',
         'js/wow.js',
         'js/highlight.pack.js',
+        'js/highlight.js',
         'js/map.js'])
         .pipe(concat('all.js'))
         .pipe(gulp.dest('static/js/'));
