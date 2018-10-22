@@ -4,11 +4,12 @@
     background-color: $tryton-color-gray-dark;
     color: $tryton-color-secondary;
 
-    h3 {
+    h4 {
       @include media-breakpoint-down(md) {
         margin-top: 2rem;
       }
       color: $tryton-color-secondary;
+      text-transform: uppercase;
     }
 
     a,
