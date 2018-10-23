@@ -414,7 +414,7 @@ default_handler.setFormatter(formatter)
 mail_handler.setFormatter(formatter)
 
 if __name__ == '__main__':
-    app.run(debug=True, extra_files=['templates'])
+    app.run(debug=True, extra_files=['templates', 'templates/service_providers'])
 
 if not app.debug:
     app.logger.addHandler(mail_handler)
