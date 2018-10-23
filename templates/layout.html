@@ -9,8 +9,8 @@
         <meta name="og:title" content="{{ title }}"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="{{ url_for(request.endpoint, _external=True) }}"/>
-        <meta property="og:image" content="{{ url_for('static', filename='images/banner.png', _external=True, _scheme='http') }}"/>
-        <meta property="og:image:secure_url" content="{{ url_for('static', filename='images/banner.png', _external=True, _scheme='https') }}"/>
+        <meta property="og:image" content="{{ url_for('static', filename='images/logo.png', _external=True, _scheme='http') }}"/>
+        <meta property="og:image:secure_url" content="{{ url_for('static', filename='images/logo.png', _external=True, _scheme='https') }}"/>
         {% if description %}
         <meta property="og:description" content="{{ description }}"/>
         {% endif %}
@@ -21,7 +21,7 @@
         {% if description %}
         <meta name="twitter:description" content="{{ description }}"/>
         {% endif %}
-        <meta name="twitter:image" content="{{ url_for('static', filename='images/banner.png', _external=True) }}"/>
+        <meta name="twitter:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}"/>
 
         <title>Tryton - {{ title }}</title>
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
