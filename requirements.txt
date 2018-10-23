@@ -3,6 +3,7 @@ Flask-Caching
 Flask-Compress
 Flask-Gravatar
 Flask-HTMLmin
+Flask-Sitemap
 flask-rev
 icalendar
 lxml

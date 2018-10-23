@@ -12,10 +12,11 @@ import requests
 from flask import Flask, render_template, redirect, url_for, request
 from flask.logging import default_handler
 from flask_caching import Cache
-from flask_htmlmin import HTMLMIN
 from flask_compress import Compress
-from flask_rev import Rev
 from flask_gravatar import Gravatar
+from flask_htmlmin import HTMLMIN
+from flask_rev import Rev
+from flask_sitemap import Sitemap
 from icalendar import Calendar
 from lxml import objectify, html
 
@@ -45,11 +46,18 @@ app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
 app.config['MINIFY_PAGE'] = True
 app.config['CACHE_DEFAULT_TIMEOUT'] = 60 * 60
+app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
+app.config['SITEMAP_VIEW_DECORATORS'] = [cache.cached()]
+app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
+    'news-alt', 'news_rss', 'event-alt', 'success_stories-alt', 'download-alt',
+    'presentations-alt', 'contribute-alt', 'foundation-alt', 'supporters-alt',
+    'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt']
 cache.init_app(app)
 Compress(app)
 HTMLMIN(app)
 Rev(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
+sitemap = Sitemap(app=app)
 
 
 @app.after_request
