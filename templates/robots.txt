@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: {{ url_for('flask_sitemap.sitemap', _external=True) }}

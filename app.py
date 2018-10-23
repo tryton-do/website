@@ -9,7 +9,8 @@ from random import shuffle
 from urllib.parse import urlparse
 
 import requests
-from flask import Flask, render_template, redirect, url_for, request
+from flask import (Flask, render_template, redirect, url_for, request,
+    make_response)
 from flask.logging import default_handler
 from flask_caching import Cache
 from flask_compress import Compress
@@ -117,6 +118,14 @@ def inject_copyright_dates():
 @app.context_processor
 def inject_heart():
     return dict(heart=HEART)
+
+
+@app.route('/robots.txt')
+@cache.cached()
+def static_from_root():
+    response = make_response(render_template('robots.txt'))
+    response.mimetype = 'text/plain'
+    return response
 
 
 @app.route('/news')
