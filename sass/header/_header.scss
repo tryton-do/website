@@ -26,7 +26,8 @@
 
         text-transform: uppercase;
 
-        &:hover {
+        &:hover,
+        &:focus {
           background-color: $primary;
           color: $secondary;
         }
