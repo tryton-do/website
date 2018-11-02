@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
@@ -8,16 +9,20 @@ var cssFileName = 'screen';
 
 gulp.task('js', function() {
     gulp.src([
-        'node_modules/jquery/dist/jquery.slim.min.js',
-        'node_modules/popper.js/dist/umd/popper.min.js',
-        'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        'node_modules/wowjs/dist/wow.min.js',
+        'node_modules/jquery/dist/jquery.slim.js',
+        'node_modules/popper.js/dist/umd/popper.js',
+        'node_modules/bootstrap/dist/js/bootstrap.js',
+        'node_modules/wowjs/dist/wow.js',
         'node_modules/leaflet/dist/leaflet.js',
         'js/wow.js',
         'js/highlight.pack.js',
         'js/highlight.js',
         'js/map.js'])
+        .pipe(sourcemaps.init())
+        .pipe(gulp.dest('static/js/'))
         .pipe(concat('all.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('static/js/'));
 });
 
