@@ -5,7 +5,10 @@ var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
+var iconfont = require('gulp-iconfont');
+var iconfontCss = require('gulp-iconfont-css');
 var cssFileName = 'screen';
+var fontName = 'Icons';
 
 gulp.task('js', function() {
     gulp.src([
@@ -36,8 +39,25 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('static/css/'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch(['sass/*', 'sass/*/*', 'sass/*/*/*'], ['sass']);
+gulp.task('iconfont', function() {
+    gulp.src(['iconfont/*.svg'])
+        .pipe(iconfontCss({
+            fontName: fontName,
+            targetPath: '../../sass/iconfont/_icons.scss',
+            fontPath: '../../static/fonts/'
+        }))
+        .pipe(iconfont({
+            fontName: fontName,
+            formats: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
+            normalize: true,
+            fontHeight: 1000
+        }))
+        .pipe(gulp.dest('static/fonts/'));
 });
 
-gulp.task('default', ['js', 'sass','watch']);
+gulp.task('watch', function() {
+    gulp.watch(['sass/*', 'sass/*/*', 'sass/*/*/*'], ['sass']);
+    gulp.watch(['iconfont/*'], ['iconfont']);
+});
+
+gulp.task('default', ['js', 'iconfont', 'sass', 'watch']);
