@@ -7,6 +7,7 @@ var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var iconfont = require('gulp-iconfont');
 var iconfontCss = require('gulp-iconfont-css');
+var sequence = require('run-sequence');
 var cssFileName = 'screen';
 var fontName = 'Icons';
 
@@ -39,7 +40,7 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('static/css/'));
 });
 
-gulp.task('iconfont', function() {
+gulp.task('iconfont', function(callback) {
     gulp.src(['iconfont/*.svg'])
         .pipe(iconfontCss({
             fontName: fontName,
@@ -52,7 +53,12 @@ gulp.task('iconfont', function() {
             normalize: true,
             fontHeight: 1000
         }))
-        .pipe(gulp.dest('static/fonts/'));
+        .pipe(gulp.dest('static/fonts/'))
+        .on('end', callback);
+});
+
+gulp.task('css', function(done) {
+    sequence('iconfont', 'sass', done);
 });
 
 gulp.task('watch', function() {
@@ -60,4 +66,4 @@ gulp.task('watch', function() {
     gulp.watch(['iconfont/*'], ['iconfont']);
 });
 
-gulp.task('default', ['js', 'iconfont', 'sass']);
+gulp.task('default', ['js', 'css']);
