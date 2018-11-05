@@ -7,6 +7,7 @@ WORKDIR $INSTALL_PATH
 COPY package.json  gulpfile.js ./
 COPY js js/
 COPY sass sass/
+COPY iconfont iconfont/
 RUN npm install
 RUN node_modules/.bin/gulp
 
