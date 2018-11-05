@@ -41,6 +41,7 @@ COPY static/fonts static/fonts/
 COPY static/images static/images/
 COPY --from=builder-node $INSTALL_PATH/static/css static/css/
 COPY --from=builder-node $INSTALL_PATH/static/js static/js/
+COPY --from=builder-node $INSTALL_PATH/static/fonts static/fonts
 
 EXPOSE 5000
 USER web
