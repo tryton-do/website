@@ -1,0 +1,10 @@
+// Rules for sizing the icons
+.icon {
+  &:hover {
+    text-decoration: none;
+  }
+  &.i-18 { font-size: 18px; }
+  &.i-24 { font-size: 24px; }
+  &.i-36 { font-size: 36px; }
+  &.i-48 { font-size: 48px; }
+}

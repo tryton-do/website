@@ -1,4 +1,4 @@
 static/css
 static/js
 static/fonts/Icons
-sass/iconfont
+sass/iconfont/_icons.scss
