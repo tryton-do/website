@@ -60,4 +60,4 @@ gulp.task('watch', function() {
     gulp.watch(['iconfont/*'], ['iconfont']);
 });
 
-gulp.task('default', ['js', 'iconfont', 'sass', 'watch']);
+gulp.task('default', ['js', 'iconfont', 'sass']);

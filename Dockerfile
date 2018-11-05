@@ -8,7 +8,7 @@ COPY package.json  gulpfile.js ./
 COPY js js/
 COPY sass sass/
 RUN npm install
-RUN node_modules/.bin/gulp js sass
+RUN node_modules/.bin/gulp
 
 FROM debian:stretch-slim
 LABEL maintainer="Tryton <foundation@tryton.org>" \
