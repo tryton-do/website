@@ -66,7 +66,7 @@ No matter whether they're big or small, all of them benefit from a powerful appl
 If you're already using Tryton, please consider contributing to the project or supporting the Foundation so the project remains vibrant and continues to grow.
 </p>
 <div class="card mb-5">
-    <h4 class="card-header" id="wire-transfer">Wire Transfer</h4>
+    <h2 class="h4 card-header" id="wire-transfer">Wire Transfer</h2>
     <div class="card-body">
         <p class="card-text">You can make a wire transfer to our bank account:
         <address>
@@ -77,7 +77,7 @@ If you're already using Tryton, please consider contributing to the project or s
     </div>
 </div>
 <div class="card mb-5">
-    <h4 class="card-header" id="paypal">PayPal</h4>
+    <h2 class="h4 card-header" id="paypal">PayPal</h2>
     <div class="card-body">
         <p class="card-text">You can easily make a one-time contribution using PayPal:
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -92,7 +92,7 @@ If you're already using Tryton, please consider contributing to the project or s
                 <div class="input-group-prepend">
                     <span class="input-group-text">€</span>
                 </div>
-                <input name="amount" class="form-control" placeholder="Enter amount" value="10.00" min="5.00" step="0.01" required type="number">
+                <input name="amount" class="form-control" title="Amount" placeholder="Enter amount" value="10.00" min="5.00" step="0.01" required type="number">
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
                 </div>
@@ -106,7 +106,7 @@ If you're already using Tryton, please consider contributing to the project or s
     </div>
 </div>
 <div class="card mb-5">
-    <h4 class="card-header" id="paypal-recurring">Recurring PayPal</h4>
+    <h2 class="h4 card-header" id="paypal-recurring">Recurring PayPal</h2>
     <div class="card-body">
         <p class="card-text">You can easily make a monthly contribution using PayPal:
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -114,7 +114,7 @@ If you're already using Tryton, please consider contributing to the project or s
             <input type="hidden" name="hosted_button_id" value="SUPKSJEB34BME">
             <input type="hidden" name="on0" value="">
             <div class="input-group mb-3">
-                <select name="os0" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
+                <select name="os0" title="Amount by Frequency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
                     <option value="Donation">Donation : €10,00 EUR - monthly</option>
                     <option value="Donation">Donation : €20,00 EUR - monthly</option>
                     <option value="Donation">Donation : €50,00 EUR - monthly</option>
@@ -135,17 +135,17 @@ If you're already using Tryton, please consider contributing to the project or s
     </div>
 </div>
 <div class="card mb-5">
-    <h4 class="card-header" id="bitcoin">Bitcoin</h4>
+    <h2 class="h4 card-header" id="bitcoin">Bitcoin</h2>
     <div class="card-body">
         <p class="card-text">You can easily donate in bitcoin:
         <form action="https://bitpay.com/checkout" method="post">
             <input name="action" type="hidden" value="checkout">
             <div class="input-group mb-3">
-                <input name="orderID" type="email" class="form-control" placeholder="Email address (optional)" maxlength="50" autocapitalize="off" autocorrect="off">
+                <input name="orderID" type="email" class="form-control" title="Email Address" placeholder="Email address (optional)" maxlength="50" autocapitalize="off" autocorrect="off">
             </div>
             <div class="input-group mb-3">
-                <input name="price" type="number" value="10.00" placeholder="Amount" maxlength="10" min="0.01" step="0.01" class="form-control" required>
-                <select name="currency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
+                <input name="price" type="number" value="10.00" title="Amount" placeholder="Amount" maxlength="10" min="0.01" step="0.01" class="form-control" required>
+                <select name="currency" title="Currency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
                     <option value="USD">USD</option>
                     <option value="BTC">BTC</option>
                     <option value="EUR" selected>EUR</option>
@@ -192,7 +192,7 @@ If you're already using Tryton, please consider contributing to the project or s
     </div>
 </div>
 <div class="card mb-5">
-    <h4 class="card-header" id="contribute">Contribute</h4>
+    <h2 class="h4 card-header" id="contribute">Contribute</h2>
     <div class="card-body">
         <p class="card-text">
         If you want to donate your time, we <a href="{{ url_for('contribute') }}">welcome contributions from the community</a>.

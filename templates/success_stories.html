@@ -15,12 +15,12 @@
         <div class="col mb-gutter">
             <div class="card mx-auto shadow" style="width: 18rem">
                 {% if case.logo %}
-                <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" style="height: 180px"/>
+                <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" style="height: 180px" alt=""/>
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ case.title }}</h5>
+                    <h2 class="h5 card-title">{{ case.title }}</h2>
                     <p class="card-text">{{ case.description }}</p>
-                    <a href="{{ case.url }}" class="btn btn-primary {{ 'disabled' if not case.url else '' }}" aria-disabled="{{ not case.url }}">More</a>
+                    <a href="{{ case.url }}" class="btn btn-primary {{ 'disabled' if not case.url else '' }}" aria-disabled="{{ not case.url }}">More<span class="sr-only">on {{ case.title }}</span></a>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
 body {
     counter-reset: step;
 }
-h5:before {
+h2:before {
     counter-increment: step;
     content: counter(step) ". ";
 }
@@ -41,7 +41,7 @@ h5:before {
             </div>
         </div>
         <div>
-            <h5 class="card-title" id="contribute">Contribute</h5>
+            <h2 class="h5 card-title" id="contribute">Contribute</h2>
             <p class="card-text">
             You must build a reputation for expertize within the community by <a href="{{ url_for('contribute') }}">contributing</a> to the project.
             </p>
@@ -58,7 +58,7 @@ h5:before {
             </div>
         </div>
         <div>
-            <h5 class="card-title" id="listing">Request Listing</h5>
+            <h2 class="h5 card-title" id="listing">Request Listing</h2>
             <p class="card-text">
             Once you think that your reputation has reached a high enough level, send an email to <a href="mailto:foundation@tryton.org">foundation@tryton.org</a> to request to be listed.
             </p>
@@ -75,7 +75,7 @@ h5:before {
             </div>
         </div>
         <div>
-            <h5 class="card-title" id="listing">Submit Success Stories</h5>
+            <h2 class="h5 card-title" id="success-stories">Submit Success Stories</h2>
             <p class="card-text">
             To stay listed, you must provide at least one <a href="{{ url_for('success_stories') }}">success story</a> within 6 months.
             </p>
@@ -92,7 +92,7 @@ h5:before {
             </div>
         </div>
         <div>
-            <h5 class="card-title" id="update">Keep up to date</h5>
+            <h2 class="h5 card-title" id="update">Keep up to date</h2>
             <p class="card-text">
             You must:
             <ul>

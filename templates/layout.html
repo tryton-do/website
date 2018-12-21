@@ -39,7 +39,7 @@
             <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url_for('index') }}">
-                        <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.png') }}" width="110" height="32" alt="Tryton" />
+                        <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.png') }}" width="110" height="32" alt="Tryton Home"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -78,8 +78,8 @@
                             <div class="row">
                                 {% for title, items in menu.items() %}
                                 <div class="col-md-3">
-                                    <h4>{{ title }}</h4>
-                                    <nav>
+                                    <h2 id="nav-footer-{{ loop.index }}">{{ title }}</h2>
+                                    <nav aira-labelledby="nav-footer-{{ loop.index }}">
                                         <ul>
                                             {% for item, url in items %}
                                             <li>
@@ -101,13 +101,13 @@
                                 <strong>TRYTON</strong> is business software, ideal for communities of any size,<br/>easy to use, complete and <strong>100% Open Source</strong>.
                                 </p>
                                 <div class="socials">
-                                    <h4>Follow us</h4>
-                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" class="mr-3 wow zoomIn icon icon-twitter-box i-36" data-wow-delay=".2s" title="Twitter"></a>
-                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" class="mr-3 wow zoomIn icon icon-facebook-box i-36" data-wow-delay=".1s" title="Facebook"></a>
-                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" class="mr-3 wow zoomIn icon icon-linkedin-box i-36" data-wow-delay=".3s" title="LinkedIn"></a>
-                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" class="mr-3 wow zoomIn icon icon-youtube i-36" data-wow-delay=".4s" title="YouTube"></a>
-                                    <a href="https://vimeo.com/groups/tryton" target="_blank" class="mr-3 wow zoomIn icon icon-vimeo i-36" data-wow-delay=".5s" title="Vimeo"></a>
-                                    <a href="https://plus.google.com/communities/111064602356347307346" target="_blank" class=" wow zoomIn icon icon-google-plus-box i-36" data-wow-delay=".6s" title="Google+"></a>
+                                    <h2>Follow us</h2>
+                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" class="mr-3 wow zoomIn icon icon-twitter-box i-36" data-wow-delay=".2s"><span class="sr-only">Twitter</span></a>
+                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" class="mr-3 wow zoomIn icon icon-facebook-box i-36" data-wow-delay=".1s"><span class="sr-only">Facebook</span></a>
+                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" class="mr-3 wow zoomIn icon icon-linkedin-box i-36" data-wow-delay=".3s"><span class="sr-only">LinkedIn</span></a>
+                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" class="mr-3 wow zoomIn icon icon-youtube i-36" data-wow-delay=".4s"><span class="sr-only">YouTube</span></a>
+                                    <a href="https://vimeo.com/groups/tryton" target="_blank" class="mr-3 wow zoomIn icon icon-vimeo i-36" data-wow-delay=".5s"><span class="sr-only">Vimeo</span></a>
+                                    <a href="https://plus.google.com/communities/111064602356347307346" target="_blank" class=" wow zoomIn icon icon-google-plus-box i-36" data-wow-delay=".6s"><span class="sr-only">Google+</span></a>
                                 </div>
                             </div>
                         </div>
