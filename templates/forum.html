@@ -1,4 +1,10 @@
 {% set title = "Forum" %}
+{% set toc = [
+    ("Forum", 'discuss', None),
+    ("IRC", 'irc', None),
+    ("Mailing Lists", 'mailing-lists', None),
+    ]
+%}
 {% extends "layout-toc.html" %}
 {% block content %}
 <section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-forum.jpg') }});">
@@ -8,14 +14,6 @@
 </section>
 {{ super() }}
 {% endblock content %}
-
-{% block toc %}
-<ul class="nav flex-column border-left">
-    <li class="nav-item"><a class="pl-3" href="#discuss">Forum</a></li>
-    <li class="nav-item"><a class="pl-3" href="#irc">IRC</a></li>
-    <li class="nav-item"><a class="pl-3" href="#mailing-lists">Mailing Lists</a></li>
-</ul>
-{% endblock toc %}
 
 {% block main %}
 <p class="lead" id="netiquette">

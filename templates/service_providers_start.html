@@ -1,4 +1,11 @@
 {% set title = "Become a Service Provider" %}
+{% set toc = [
+    ("Contribute", 'contribute', None),
+    ("Request Listing", 'listing', None),
+    ("Submit Success Stories", 'success-stories', None),
+    ("Keep up to date", 'update', None),
+    ]
+%}
 {% extends "layout-toc.html" %}
 {% block style %}
 {{ super() }}
@@ -20,15 +27,6 @@ h2:before {
 </section>
 {{ super() }}
 {% endblock content %}
-
-{% block toc %}
-<ol class="flex-column border-left">
-    <li class="nav-item"><a class="pl-3" href="#contribute">Contribute</a></li>
-    <li class="nav-item"><a class="pl-3" href="#listing">Request Listing</a></li>
-    <li class="nav-item"><a class="pl-3" href="#success-stories">Submit Success Stories</a></li>
-    <li class="nav-item"><a class="pl-3" href="#update">Keep up to date</a></li>
-</ol>
-{% endblock toc %}
 
 {% block main %}
 <p class="lead">You want your company to be listed as a <a href="{{ url_for('service_providers') }}"> service provider</a>? Follow these steps:</p>

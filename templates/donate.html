@@ -1,5 +1,15 @@
 {% set title = "Donate" %}
 {% set descending = "Help the Tryton project to achieve its goals" %}
+{% set toc = [
+    ("Wire Transfer", 'wire-transfer', None),
+    ("PayPal", 'paypal', None),
+    ("Recurring PayPal", 'paypal-recurring', None),
+    ("Bitcoin", 'bitcoin', None),
+    ("Contribute", 'contribute', None),
+    ("Donors", 'donors', None),
+    ("Yearly Donations", 'donations-yearly', None),
+    ]
+%}
 {% extends "layout-toc.html" %}
 {% block content %}
 <section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-donate.jpg') }});">
@@ -46,18 +56,6 @@
     </div>
 </section>
 {% endblock content %}
-
-{% block toc %}
-<ul class="nav flex-column border-left">
-    <li class="nav-item"><a class="pl-3" href="#wire-transfer">Wire Transfer</a></li>
-    <li class="nav-item"><a class="pl-3" href="#paypal">PayPal</a></li>
-    <li class="nav-item"><a class="pl-3" href="#paypal-recurring">Recurring PayPal</a></li>
-    <li class="nav-item"><a class="pl-3" href="#bitcoin">Bitcoin</a></li>
-    <li class="nav-item"><a class="pl-3" href="#contribute">Contribute</a></li>
-    <li class="nav-item"><a class="pl-3" href="#donors">Donors</a></li>
-    <li class="nav-item"><a class="pl-3" href="#donations-yearly">Yearly Donations</a></li>
-</ul>
-{% endblock toc %}
 
 {% block main %}
 <p class="lead">

@@ -1,5 +1,15 @@
 {% set title = "Get Involved" %}
 {% set description = "Join the Tryton community and help the project" %}
+{% set toc = [
+    ("Donate", 'donate', None),
+    ("Help Users", 'support', None),
+    ("Spread the Word", 'spread', None),
+    ("Report Bugs & Issues", 'bug', None),
+    ("Submit Changes", 'develop', None),
+    ("Translate", 'translate', None),
+    ("Write Blueprints", 'feature', None),
+    ]
+%}
 {% extends "layout-toc.html" %}
 {% block content %}
 <section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-contribute.jpg') }});">
@@ -9,18 +19,6 @@
 </section>
 {{ super() }}
 {% endblock content %}
-
-{% block toc %}
-<ul class="nav flex-column border-left">
-    <li class="nav-item"><a class="pl-3" href="#donate">Donate</a></li>
-    <li class="nav-item"><a class="pl-3" href="#support">Help Users</a></li>
-    <li class="nav-item"><a class="pl-3" href="#spread">Spread the Word</a></li>
-    <li class="nav-item"><a class="pl-3" href="#bug">Report Bugs &amp; Issues</a></li>
-    <li class="nav-item"><a class="pl-3" href="#develop">Submit Changes</a></li>
-    <li class="nav-item"><a class="pl-3" href="#translate">Translate</a></li>
-    <li class="nav-item"><a class="pl-3" href="#feature">Write Blueprints</a></li>
-</ul>
-{% endblock toc %}
 
 {% block main %}
 <p class="lead">Join the Tryton community and help the project.</p>

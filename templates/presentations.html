@@ -1,4 +1,18 @@
 {% set title = "Presentations & Papers" %}
+{% set toc = [
+    ("PyConFr 2018", 'PyConFr2018', None),
+    ("TUL2017", 'TUL2017', None),
+    ("TUB2016", 'TUB2016', None),
+    ("Jeudi du Libre 2016", 'jdl2016', None),
+    ("TUBA2015", 'TUBA2015', None),
+    ("TUL2014", 'TUL2014', None),
+    ("TUB2013", 'TUB2013', None),
+    ("TUL2012", 'TUL2012', None),
+    ("TUL2011", 'TUL2011', None),
+    ("PyCONFR 2010", 'PyConFr2010', None),
+    ("EUROPYTHON 2010", 'EUROPYTHON2010', None),
+    ]
+%}
 {% extends "layout-toc.html" %}
 {% block content %}
 <section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-presentations.jpg') }});">
@@ -8,22 +22,6 @@
 </section>
 {{ super() }}
 {% endblock content %}
-
-{% block toc %}
-<ul class="nav flex-column border-left">
-    <li class="nav-item"><a class="pl-3" href="#PyConFr2018">PyConFr 2018</a></li>
-    <li class="nav-item"><a class="pl-3" href="#TUL2017">TUL2017</a></li>
-    <li class="nav-item"><a class="pl-3" href="#TUB2016">TUB2016</a></li>
-    <li class="nav-item"><a class="pl-3" href="#jdl2016">Jeudi du Libre 2016</a></li>
-    <li class="nav-item"><a class="pl-3" href="#TUBA2015">TUBA2015</a></li>
-    <li class="nav-item"><a class="pl-3" href="#TUL2014">TUL2014</a></li>
-    <li class="nav-item"><a class="pl-3" href="#TUB2013">TUB2013</a></li>
-    <li class="nav-item"><a class="pl-3" href="#TUL2012">TUL2012</a></li>
-    <li class="nav-item"><a class="pl-3" href="#TUL2011">TUL2011</a></li>
-    <li class="nav-item"><a class="pl-3" href="#PyConFr2010">PyCONFR 2010</a></li>
-    <li class="nav-item"><a class="pl-3" href="#EUROPYTHON2010">EUROPYTHON 2010</a></li>
-</ul>
-{% endblock toc %}
 
 {% block main %}
 <p class="p-3 mb-2 bg-info text-white rounded">If you made a presentation around Tryton and want to be listed here, please send an email to <a href="mailto:foundation@tryton.org">foundation@tryton.org.</a></p>

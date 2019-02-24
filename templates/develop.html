@@ -1,4 +1,20 @@
 {% set title = "How to Develop" %}
+{% set toc = [
+    ("Report an Issue", 'report-issue', None),
+    ("Submit a Change", 'submit-change', [
+        ("Script", 'submit-change-script', None),
+        ("Mercurial Extension", 'submit-change-hg-extension', None),
+        ]),
+    ("Publish a Change", 'publish-change', None),
+    ("Coding Guidelines", 'coding-guidelines', [
+        ("Code Style", 'code-style', None),
+        ("Best Practices", 'best-practices', None),
+        ]),
+    ("Requirements", 'requirements', None),
+    ("Rules", 'rules', None),
+    ("Backporting", 'backporting', None),
+    ]
+%}
 {% extends "layout-toc.html" %}
 {% block content %}
 <section class="section bg-primary">
@@ -10,26 +26,6 @@
 </section>
 {{ super() }}
 {% endblock content %}
-
-{% block toc %}
-<ul class="nav flex-column border-left">
-    <li class="nav-item"><a class="pl-3" href="#report-issue">Report an Issue</a></li>
-    <li class="nav-item"><a class="pl-3" href="#submit-change">Submit a Change</a></li>
-    <ul>
-        <li class="nav-item"><a class="pl-3" href="#submit-change-script">Script</a></li>
-        <li class="nav-item"><a class="pl-3" href="#submit-change-hg-extension">Mercurial Extension</a></li>
-    </ul>
-    <li class="nav-item"><a class="pl-3" href="#publish-change">Publish a Change</a></li>
-    <li class="nav-item"><a class="pl-3" href="#coding-guidelines">Coding Guidelines</a></li>
-    <ul>
-        <li class="nav-item"><a class="pl-3" href="#code-style">Code Style</a></li>
-        <li class="nav-item"><a class="pl-3" href="#best-practices">Best Practices</a></li>
-    </ul>
-    <li class="nav-item"><a class="pl-3" href="#requirements">Requirements</a></li>
-    <li class="nav-item"><a class="pl-3" href="#rules">Rules</a></li>
-    <li class="nav-item"><a class="pl-3" href="#backporting">Backporting</a></li>
-</ul>
-{% endblock toc %}
 
 {% block main %}
 <section class="subsection">
