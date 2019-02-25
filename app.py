@@ -107,7 +107,7 @@ def inject_menu():
         ('Service Providers', url_for('service_providers')),
         ('Become a Service Provider', url_for('service_providers_start')),
         ]
-    return dict(menu=menu)
+    return dict(menu=menu, datetime=datetime)
 
 
 @app.context_processor
@@ -298,6 +298,54 @@ def presentations():
     return render_template('presentations.html')
 
 
+@app.route('/events/<event>')
+@cache.cached()
+def event(event):
+    class Day:
+        def __init__(self, date, *events):
+            if not isinstance(date, datetime.date):
+                date = datetime.date(*date)
+            self.date = date
+            self.events = []
+            for event in events:
+                self.add(*event)
+
+        def add(self, summary, start, end, *args):
+            if not isinstance(start, datetime.time):
+                start = datetime.time(*start)
+            if not isinstance(end, datetime.time):
+                end = datetime.time(*end)
+            start = datetime.datetime.combine(self.date, start)
+            end = datetime.datetime.combine(self.date, end)
+            self.events.append(Event(summary, start, end, *args))
+
+        @property
+        def start(self):
+            if self.events:
+                return min(e.start for e in self.events)
+
+        @property
+        def end(self):
+            if self.events:
+                return max(e.end for e in self.events)
+
+    class Event:
+        def __init__(self, summary, start, end, description='', profiles=()):
+            self.summary = summary
+            self.start = start
+            self.end = end
+            self.description = description
+            self.profiles = [Profile(*p) for p in profiles]
+
+    class Profile:
+        def __init__(self, name, gravatar, company='', url=''):
+            self.name = name
+            self.gravatar = gravatar
+            self.company = company
+            self.url = url
+    return render_template('events/%s.html' % event, Day=Day)
+
+
 @app.route('/contribute')
 @app.route('/how-to-contribute.html', endpoint='contribute-alt')
 @cache.cached()
@@ -414,7 +462,11 @@ default_handler.setFormatter(formatter)
 mail_handler.setFormatter(formatter)
 
 if __name__ == '__main__':
-    app.run(debug=True, extra_files=['templates', 'templates/service_providers'])
+    app.run(debug=True, extra_files=[
+            'templates',
+            'templates/service_providers',
+            'templates/events',
+            ])
 
 if not app.debug:
     app.logger.addHandler(mail_handler)

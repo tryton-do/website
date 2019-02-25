@@ -1,0 +1,108 @@
+{% set title = "Tryton Unconference Marseille, 4th-7th June 2019" %}
+{% set logo = 'images//events/tum2019-logo.png' %}
+{% set banner = 'tum2019-banner.svg' %}
+{% set events = [
+    Day((2019, 6, 4),
+        ("Code Sprint", (9,), (18,))),
+    Day((2019, 6, 5),
+        ("Code Sprint", (9,), (18,))),
+    Day((2019, 6, 6)),
+    Day((2019, 6, 7)),
+    ]
+%}
+{% extends "events/layout.html" %}
+
+{% block title %}
+Tryton Unconference Marseille<br/><small>4th-7th June 2019</small>
+{% endblock %}
+
+{% block style %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href='//css.tito.io/v1.1'/>
+{% endblock style %}
+
+{% block lead %}
+<p class="lead">
+From Tuesday 4th to Friday 7th June, the Tryton unconference comes to <a href="http://www.marseille.fr/">Marseille</a>.
+We invite users, developers and people interested to learn more about Tryton.
+Discover new features, learn about latest technical developments and share feedback from the community.
+</p>
+{{ super() }}
+{% endblock lead %}
+
+{% block schedule %}
+{{ super() }}
+{% if datetime.date.today() < datetime.date(2019, 5, 30) %}
+<div class="bg-light py-4">
+    <p class="lead"><span class="material-icons align-middle">build</span> The unconference is built by its participants.</p>
+    <a class="btn btn-primary text-uppercase my-4" href="mailto:tum2019@tryton.org">Submit a talk</a>
+</div>
+{% endif %}
+{% endblock schedule %}
+
+{% block register %}
+<h3 class="text-center">Want to participate to the #TUM2019?</h3>
+<tito-widget event="tryton-foundation/tum2019"></tito-widget>
+{% endblock register %}
+
+{% block venue %}
+<div class="vcard text-center">The unconference will be hosted at the
+<address class="adr">
+    <strong class="fn org url">
+        <a href="http://www.emd-management.fr/en/">
+            École de Commerce et de Management
+        </a></strong><br/>
+        <span class="street-address">Rue Joseph Biaggi - CS 70329</span>,<br/>
+        <span class="postal-code">13331</span>
+        <span class="locality">Marseille</span><br/>
+</address>
+</div>
+<iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=5.37457823753357%2C43.302074626344606%2C5.378113389015199%2C43.303889933242516&amp;layer=mapnik&amp;marker=43.30298228656913%2C5.3763458132743835" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=43.30298&amp;mlon=5.37635#map=19/43.30298/5.37635">View Larger Map</a></small>
+<h3>Transportations</h3>
+<ul>
+    <li>By Train</li>
+    <ul>
+        <li>The <a href="https://en.wikipedia.org/wiki/TGV">TGV</a> <a href="https://www.gares-sncf.com/fr/gare/frmsc/marseille-saint-charles">station St Charles</a> in the center of Marseille is preferred.</li>
+        <li>The other TGV <a href="https://www.gares-sncf.com/fr/gare/frqxb/aix-provence">station Aix en Provence</a> is also an option but requires a 25km of bus shuttle.</li>
+    </ul>
+    <li>By Plane</li>
+    <ul>
+        <li>The <a href="https://www.marseille-airport.com/">Marseille Provence Airport</a> has <a href="https://www.marseille-airport.com/access-car-parks/access/bus/marseille-gare-saint-charles">bus shuttle to Marseille</a> every 15 minutes.</li>
+    </ul>
+</ul>
+<p>Inside Marseille, we recommend to use the <a href="http://www.rtm.fr/">public transport</a> which has 2 metro lines and many bus lines.</p>
+{% endblock %}
+
+{% block accommodations %}
+<p>Marseille is a touristic city, they are a lot of hotels near the location.</p>
+<p>Yet we have some suggestions of hotels:</p>
+<ul>
+    <li><a href="http://europehotelmarseille.com/">Europe Hôtel Marseille</a></li>
+    <li><a href="http://www.hotel-aixenprovence-concorde.com/">Hotel le Concorde</a></li>
+    <li><a href="https://www.hotelterminusmarseille.fr/">Hôtel Terminus Saint Charles</a></li>
+    <li><a href="https://www.hiexpress.com/hotels/gb/en/reservation">Holiday Inn Express</a></li>
+</ul>
+{% endblock accommodations %}
+
+{% block main %}
+{{ super() }}
+<section class="section" id="sponsors">
+    <div class="container">
+        <section class="section-header">
+            <h2 class="bg-white">Sponsors</h2>
+        </section>
+        <p>With the support of:</p>
+        <a href="http://www.emd-management.fr/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tum2019-emd.jpg') }}" alt="École de Commerce et de Management"/>
+        </a>
+        <a href="http://www.libertis.org/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tum2019-libertis.jpg') }}" alt="Libertis"/>
+        </a>
+    </div>
+</section>
+{% endblock main %}
+
+{% block script %}
+{{ super() }}
+<script src='//js.tito.io/v1' async></script>
+{% endblock script %}

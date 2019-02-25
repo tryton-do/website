@@ -1,0 +1,105 @@
+{% set toc = [
+    ("Schedule", 'schedule', None),
+    ("Register", 'register', None),
+    ("Venue", 'venue', None),
+    ("Accommodations", 'accommodations', None),
+    ]
+%}
+{% extends "layout-toc.html" %}
+{% block style %}
+{{ super() }}
+<link rel="profile" href="http://microformats.org/profile/hcard">
+<link rel="profile" href="http://microformats.org/profile/hcalendar">
+{% endblock style %}
+{% block content %}
+<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/events/%s' % banner) }};">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{% block title %}{{ title }}{% endblock %}</h1>
+    </div>
+</section>
+{{ super() }}
+{% endblock content %}
+{% block main %}
+{{ super() }}
+<section class="section bg-light">
+    <div class="container text-center">
+        {% block lead %}
+        <a href="#register" class="btn btn-primary btn-lg">Register</a>
+        {% endblock lead %}
+    </div>
+</section>
+<section class="section" id="schedule">
+    <div class="container text-center">
+        <section class="section-header bg-white text-primary text-center wow fadeInDown">
+            <h2 class="pl-3 pr-3 text-uppercase"><span class="material-icons">timer</span> Schedule</h2>
+        </section>
+        {% block schedule %}
+        <div class="mx-auto" style="max-width: 600px;">
+            {% for day in events %}
+            <section class="subsection" id="schedule-2019-06-04">
+                <h3 class="d-flex justify-content-between align-items-baseline flex-wrap">{{ day.date.strftime('%A, %d %B') }} {% if day.events %}<small>from {{ day.start.strftime('%H:%M') }} to {{ day.end.strftime('%H:%M') }}</small>{% endif %}</h3>
+                {% if day.events %}
+                <ol class="list-group mx-auto">
+                    {% for event in day.events %}
+                    <li class="vevent list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="summary">{{ event.summary }}</h4>
+                            <small>
+                                <span class="dtsart" title="{{ event.start.isoformat() }}">{{ event.start.strftime('%H:%M') }}</span>
+                                -
+                                <span class="dtend" title="{{ event.end.isoformat() }}">{{ event.end.strftime('%H:%M') }}</span>
+                            </small>
+                        </div>
+                        <p class="description">
+                        {{ event.description }}
+                        </p>
+                        <div class="organizer d-flex justify-content-start">
+                            {% for profile in event.profiles %}
+                            <div class="vcard d-flex flex-wrap justify-content-start align-items-start">
+                                <a class="url" href="//www.gravatar.com/{{ profile.gravatar }}">
+                                    <img class="img-thumbnail photo" src="//www.gravatar.com/avatar/{{ profile.gravatar }}?=48"/>
+                                </a>
+                                <span class="fn m-1">{{ profile.name }}{% if profile.company %},<br/><a class="org" href="{{ profile.url }}">{{ profile.company }}</a>{% endif %}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ol>
+                {% else %}
+                <p class="bg-info text-center">To be announced</p>
+                {% endif %}
+            </section>
+            {% endfor %}
+        </div>
+        {% endblock schedule %}
+    </div>
+</section>
+<section class="section bg-light" id="register">
+    <div class="container">
+        <section class="section-header bg-light">
+            <h2 class="pl-3 pr-3 text-uppercase">Register</h2>
+        </section>
+        {% block register %}
+        {% endblock register %}
+    </div>
+</section>
+<section class="section" id="venue">
+    <div class="container">
+        <section class="section-header bg-white">
+            <h2 class="pl-3 pr-3 text-uppercase">Venue <span class="material-icons">place</span></h2>
+        </section>
+        {% block venue %}
+        {% endblock venue %}
+    </div>
+</section>
+<section class="section bg-light" id="accommodations">
+    <div class="container">
+        <section class="section-header bg-light">
+            <h2 class="pl-3 pr-3 text-uppercase">Accommodations <span class="material-icons">hotel</span></h2>
+        </section>
+        {% block accommodations %}
+        {% endblock accommodations %}
+    </div>
+</section>
+{% endblock main %}
