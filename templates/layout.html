@@ -75,7 +75,7 @@
 
         <footer id="footer">
             {% block footer %}
-            <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" width="1920" height="350" alt="Placeholder Large"/>
+            <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="Placeholder Large"/>
             <section class="topfooter">
                 <div class="container">
                     <div class="row">

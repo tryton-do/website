@@ -7,6 +7,7 @@
     ]
 %}
 {% extends "layout-toc.html" %}
+{% from "utils.html" import background %}
 {% block style %}
 {{ super() }}
 <style>
@@ -18,9 +19,10 @@ h2:before {
     content: counter(step) ". ";
 }
 </style>
+{{ background('banner-service-providers-start') }}
 {% endblock style %}
 {% block content %}
-<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-service-providers-start.jpg') }});">
+<section class="section section-banner background-banner-service-providers-start filter filter-primary text-center">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>

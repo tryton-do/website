@@ -1,6 +1,9 @@
 {% set title = "Modularity, scalability & security for your business" %}
 {% set description = "TRYTON is business software, ideal for companies of any size, easy to use, complete and 100% Open Source." %}
 {% extends "layout.html" %}
+{% macro slide_img(i, alt) %}
+<img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide%i.jpg' % i) }}" sizes="100vw" srcset="{{ url_for('static', filename='images/slide%i.jpg' % i) }} 1920w, {{ url_for('static', filename='images/slide%i-800px.jpg' % i) }} 800w, {{ url_for('static', filename='images/slide%i-400px.jpg' % i) }} 400w" alt="{{ alt }}">
+{% endmacro %}
 {% block header %}
 {{ super() }}
 <div id="carousel-header" class="carousel slide carousel-fade" data-ride="carousel">
@@ -12,7 +15,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide1.jpg') }}" width="1920" height="500" alt="First slide">
+            {{ slide_img(1, "First slide") }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>
@@ -26,7 +29,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide2.jpg') }}" width="1920" height="500" alt="Second Slide">
+            {{ slide_img(2, "Second Slide") }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>
@@ -40,7 +43,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide3.jpg') }}" width="1920" height="500" alt="Third slide">
+            {{ slide_img(3, "Third slide") }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>
@@ -54,7 +57,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide4.jpg') }}" width="1920" height="500" alt="Forth slide">
+            {{ slide_img(4, "Forth slide") }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>

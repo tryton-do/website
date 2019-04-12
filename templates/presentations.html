@@ -14,8 +14,13 @@
     ]
 %}
 {% extends "layout-toc.html" %}
+{% from "utils.html" import background %}
+{% block style %}
+{{ super() }}
+{{ background('banner-presentations') }}
+{% endblock %}
 {% block content %}
-<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-presentations.jpg') }});">
+<section class="section section-banner background-banner-presentations filter filter-primary text-center">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>

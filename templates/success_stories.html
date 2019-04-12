@@ -1,8 +1,13 @@
 {% set title = "Success Stories" %}
 {% extends "layout.html" %}
+{% from "utils.html" import background %}
+{% block style %}
+{{ super() }}
+{{ background('banner-success-stories') }}
+{% endblock %}
 {% block content %}
 {{ super() }}
-<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/banner-success-stories.jpg') }});">
+<section class="section section-banner background-banner-success-stories filter filter-primary text-center">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
