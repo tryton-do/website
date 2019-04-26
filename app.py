@@ -232,7 +232,7 @@ def success_stories():
         Case(
             title="Expertise Vision",
             description="Produces vision based systems.",
-            url='',
+            url=url_for('success_story', story='expertise-vision'),
             logo='images/success-stories/expertise-vision.jpg'),
         Case(
             title="Institut Mèdic per la Imatge",
@@ -276,6 +276,12 @@ def success_stories():
         ]
     shuffle(cases)
     return render_template('success_stories.html', cases=cases)
+
+
+@app.route('/success-stories/<story>')
+@cache.cached()
+def success_story(story):
+    return render_template('success_stories/%s.html' % story)
 
 
 @app.route('/download')
@@ -466,6 +472,7 @@ if __name__ == '__main__':
             'templates',
             'templates/service_providers',
             'templates/events',
+            'templates/success_stories',
             ])
 
 if not app.debug:

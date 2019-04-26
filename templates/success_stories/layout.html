@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+{{ super() }}
+<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/success-stories/%s' % banner) }});">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-xl-6 mx-md-auto order-1" role="main">
+                <section class="subsection">
+                    {% block customer %}
+                    <h2 id="customer">The Customer</h2>
+                    {% endblock customer %}
+                </section>
+                <section class="subsection">
+                    {% block challenge %}
+                    <h2 id="challenge">The Challenge</h2>
+                    {% endblock challenge %}
+                </section>
+                <section class="subsection">
+                    {% block solution %}
+                    <h2 id="solution">The Solution</h2>
+                    {% endblock solution %}
+                </section>
+                <section class="subsection">
+                    {% block implementation %}
+                    <h2 id="implementation">The Implementation</h2>
+                    {% endblock implementation %}
+                </section>
+                <section class="subsection">
+                    {% block results %}
+                    <h2 id="results">Results</h2>
+                    {% endblock results %}
+                </section>
+                <section class="subsection">
+                    {% block provider %}
+                    <h2 id="provider">Provider</h2>
+                    {% endblock provider %}
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
