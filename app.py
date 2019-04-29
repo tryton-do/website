@@ -308,10 +308,11 @@ def presentations():
 @cache.cached()
 def event(event):
     class Day:
-        def __init__(self, date, *events):
+        def __init__(self, date, *events, full=False):
             if not isinstance(date, datetime.date):
                 date = datetime.date(*date)
             self.date = date
+            self.full = full
             self.events = []
             for event in events:
                 self.add(*event)

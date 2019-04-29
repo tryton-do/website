@@ -3,11 +3,34 @@
 {% set banner = 'tum2019-banner.svg' %}
 {% set events = [
     Day((2019, 6, 4),
-        ("Code Sprint", (9,), (18,))),
+        ("Code Sprint", (9,), (18,)), full=True),
     Day((2019, 6, 5),
-        ("Code Sprint", (9,), (18,))),
-    Day((2019, 6, 6)),
-    Day((2019, 6, 7)),
+        ("Code Sprint", (9,), (18,)), full=True),
+    Day((2019, 6, 6),
+        ("A tour of new Tryton's features", (9,), (12,),
+            "Presentation of new key features introduced in Tryton between 4.8 and 5.2.",
+            [("Cédric Krier", 'bedb3a4b40d90063feb70b48ee2b0f25', "B2CK", 'https://www.b2ck.com/')]),
+        ("Managing a service company with Tryton", (14,), (15,),
+            "A tour on how Tryton can be usefull for companies non managing product stocks.",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("I used to Excel, but now I Shine", (15,), (16,),
+            "We're going to present a new tool that aims to completely remove the use of spreadsheets as a critical tool in companies using Tryton. Not matter if the company uses spreadsheets for analysis or registering information not held by Tryton modules.",
+            [("Albert Cervera i Areny", '7b657cfa5fc31952b4507e61ec95853b', "NaN-tic", 'https://www.nan-tic.com/')]),
+        ("Supporters Meeting", (17,), (18,),
+            "The annual meeting of Foundation's supporters.",
+            []),
+        ),
+    Day((2019, 6, 7),
+        ("Building mobile applications connected to Tryton", (9,), (10,),
+            "How we developed an Android application which reads and writes information to a Tryton server.",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es')]),
+        ("Papyrus", (11,), (12,),
+            "We're going to present a new Tryton module for advanced document processing and inspection in Tryton.",
+            [("Albert Cervera i Areny", '7b657cfa5fc31952b4507e61ec95853b', "NaN-tic", 'https://www.nan-tic.com/')]),
+        ("Deploying Tryton with Docker", (14,), (15,),
+            "How we customize and deploy Tryton at B2CK using Docker and few shell scripts.",
+            [("Cédric Krier", 'bedb3a4b40d90063feb70b48ee2b0f25', "B2CK", 'https://www.b2ck.com/')]),
+        ),
     ]
 %}
 {% extends "events/layout.html" %}
@@ -33,7 +56,7 @@ Discover new features, learn about latest technical developments and share feedb
 {% block schedule %}
 {{ super() }}
 {% if datetime.date.today() < datetime.date(2019, 5, 30) %}
-<div class="bg-light py-4">
+<div class="bg-light py-4 text-center">
     <p class="lead"><span class="material-icons align-middle">build</span> The unconference is built by its participants.</p>
     <a class="btn btn-primary text-uppercase my-4" href="mailto:tum2019@tryton.org">Submit a talk</a>
 </div>

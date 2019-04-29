@@ -29,7 +29,7 @@
     </div>
 </section>
 <section class="section" id="schedule">
-    <div class="container text-center">
+    <div class="container">
         <section class="section-header bg-white text-primary text-center wow fadeInDown">
             <h2 class="pl-3 pr-3 text-uppercase"><span class="material-icons">timer</span> Schedule</h2>
         </section>
@@ -66,6 +66,9 @@
                     </li>
                     {% endfor %}
                 </ol>
+                {% if not day.full %}
+                <p class="bg-info text-center mt-4">More to come</p>
+                {% endif %}
                 {% else %}
                 <p class="bg-info text-center">To be announced</p>
                 {% endif %}
