@@ -2,15 +2,15 @@
 {% extends "layout.html" %}
 {% block content %}
 {{ super() }}
-<section class="section bg-light">
+<div class="section bg-light">
     <div class="container">
         <section class="section-header text-center bg-light mb1 wow fadeInDown">
             <h1 class="pl-3 pr-3">{{ heart | safe }}Thanks You!</h1>
         </section>
     </div>
-</section>
+</div>
 
-<section class="section">
+<div class="section">
     <div class="container">
         <div class="row">
             <div class="col-md">
@@ -26,5 +26,5 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock content %}

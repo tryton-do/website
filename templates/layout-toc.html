@@ -12,7 +12,7 @@
 </ul>
 {% endmacro %}
 {% block content %}
-<section class="section">
+<div class="section">
     <div class="container">
         <div class="row flex-md-nowrap">
             {{ super() }}
@@ -21,11 +21,11 @@
                 {{ nav(toc, "nav flex-column border-left") }}
             </div>
             {% endblock toc %}
-            <main class="col-sm-12 col-md-8 offset-md-2 order-1" role="main">
+            <main class="col-sm-12 col-md-8 offset-md-2 order-1">
             {% block main %}
             {% endblock main %}
             </main>
         </div>
     </div>
-</section>
+</div>
 {% endblock content %}

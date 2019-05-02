@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
 {{ super() }}
-<section class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/success-stories/%s' % banner) }});">
+<div class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/success-stories/%s' % banner) }});">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
-</section>
-<section class="section">
+</div>
+<div class="section">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-10 col-xl-6 mx-md-auto order-1" role="main">
@@ -43,5 +43,5 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock content %}

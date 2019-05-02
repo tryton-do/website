@@ -68,10 +68,10 @@
             {% endblock header %}
         </header>
 
-        <section id="content">
+        <div id="content">
             {% block content %}
             {% endblock content %}
-        </section>
+        </div>
 
         <footer id="footer">
             {% block footer %}
@@ -83,8 +83,8 @@
                             <div class="row">
                                 {% for title, items in menu.items() %}
                                 <div class="col-md-3">
-                                    <h2 id="nav-footer-{{ loop.index }}">{{ title }}</h2>
-                                    <nav aira-labelledby="nav-footer-{{ loop.index }}">
+                                    <h2>{{ title }}</h2>
+                                    <nav>
                                         <ul>
                                             {% for item, url in items %}
                                             <li>
@@ -118,11 +118,11 @@
                     </div>
                 </div>
             </section>
-            <section class="subfooter">
+            <div class="subfooter">
                 <div class="container">
                     <p>Contents © {{ copyright_dates }} Tryton <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
                 </div>
-            </section>
+            </div>
             {% endblock footer %}
         </footer>
 

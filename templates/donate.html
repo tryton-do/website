@@ -71,127 +71,131 @@ If you're already using Tryton, please consider contributing to the project or s
 <div class="card mb-5 w-100">
     <h2 class="h4 card-header" id="wire-transfer">Wire Transfer</h2>
     <div class="card-body">
-        <p class="card-text">You can make a wire transfer to our bank account:
-        <address>
-            <abbr title="International Bank Account Number">IBAN:</abbr>BE82 0688 9627 4468<br/>
-            <abbr title="Bank Identifier Codes">BIC:</abbr>GKCCBEBB<br/>
-        </address>
-        </p>
+        <div class="card-text">
+            <p>You can make a wire transfer to our bank account:</p>
+            <address>
+                <abbr title="International Bank Account Number">IBAN:</abbr>BE82 0688 9627 4468<br/>
+                <abbr title="Bank Identifier Codes">BIC:</abbr>GKCCBEBB<br/>
+            </address>
+        </div>
     </div>
 </div>
 <div class="card mb-5 w-100">
     <h2 class="h4 card-header" id="paypal">PayPal</h2>
     <div class="card-body">
-        <p class="card-text">You can easily make a one-time contribution using PayPal:
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_donations">
-            <input type="hidden" name="business" value="paypal@tryton.org">
-            <input type="hidden" name="item_name" value="Tryton Donation">
-            <input type="hidden" name="item_number" value="Donation">
-            <input type="hidden" name="currency_code" value="EUR">
-            <input type="hidden" name="return" value="{{ url_for('donate_thanks') }}">
-            <input type="hidden" name="cancel" value="{{ url_for('donate_cancel') }}">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">€</span>
+        <div class="card-text">
+            <p>You can easily make a one-time contribution using PayPal:</p>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_donations">
+                <input type="hidden" name="business" value="paypal@tryton.org">
+                <input type="hidden" name="item_name" value="Tryton Donation">
+                <input type="hidden" name="item_number" value="Donation">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="{{ url_for('donate_thanks') }}">
+                <input type="hidden" name="cancel" value="{{ url_for('donate_cancel') }}">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">€</span>
+                    </div>
+                    <input name="amount" class="form-control" title="Amount" placeholder="Enter amount" value="10.00" min="5.00" step="0.01" required type="number">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
+                    </div>
                 </div>
-                <input name="amount" class="form-control" title="Amount" placeholder="Enter amount" value="10.00" min="5.00" step="0.01" required type="number">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
-                </div>
-            </div>
-        </form>
-        <small>
-            You can use this form even if you don't have or want to create a PayPal account.
-            Instead you can pay with your credit card.
-        </small>
-        </p>
+            </form>
+            <small>
+                You can use this form even if you don't have or want to create a PayPal account.
+                Instead you can pay with your credit card.
+            </small>
+        </div>
     </div>
 </div>
 <div class="card mb-5 w-100">
     <h2 class="h4 card-header" id="paypal-recurring">Recurring PayPal</h2>
     <div class="card-body">
-        <p class="card-text">You can easily make a monthly contribution using PayPal:
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="SUPKSJEB34BME">
-            <input type="hidden" name="on0" value="">
-            <div class="input-group mb-3">
-                <select name="os0" title="Amount by Frequency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
-                    <option value="Donation">Donation : €10,00 EUR - monthly</option>
-                    <option value="Donation">Donation : €20,00 EUR - monthly</option>
-                    <option value="Donation">Donation : €50,00 EUR - monthly</option>
-                    <option value="Donation">Donation : €100,00 EUR - monthly</option>
-                    <option value="Donation">Donation : €200,00 EUR - monthly</option>
-                    <option value="Donation">Donation : €500,00 EUR - monthly</option>
-                </select>
-                <input type="hidden" name="currency_code" value="EUR">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Subscribe</button>
+        <div class="card-text">
+            <p>You can easily make a monthly contribution using PayPal:</p>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="SUPKSJEB34BME">
+                <input type="hidden" name="on0" value="">
+                <div class="input-group mb-3">
+                    <select name="os0" title="Amount by Frequency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
+                        <option value="Donation">Donation : €10,00 EUR - monthly</option>
+                        <option value="Donation">Donation : €20,00 EUR - monthly</option>
+                        <option value="Donation">Donation : €50,00 EUR - monthly</option>
+                        <option value="Donation">Donation : €100,00 EUR - monthly</option>
+                        <option value="Donation">Donation : €200,00 EUR - monthly</option>
+                        <option value="Donation">Donation : €500,00 EUR - monthly</option>
+                    </select>
+                    <input type="hidden" name="currency_code" value="EUR">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Subscribe</button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <small>
-            PayPal does not require you to create an account for recurring donations.
-        </small>
-        </p>
+            </form>
+            <small>
+                PayPal does not require you to create an account for recurring donations.
+            </small>
+        </div>
     </div>
 </div>
 <div class="card mb-5 w-100">
     <h2 class="h4 card-header" id="bitcoin">Bitcoin</h2>
     <div class="card-body">
-        <p class="card-text">You can easily donate in bitcoin:
-        <form action="https://bitpay.com/checkout" method="post">
-            <input name="action" type="hidden" value="checkout">
-            <div class="input-group mb-3">
-                <input name="orderID" type="email" class="form-control" title="Email Address" placeholder="Email address (optional)" maxlength="50" autocapitalize="off" autocorrect="off">
-            </div>
-            <div class="input-group mb-3">
-                <input name="price" type="number" value="10.00" title="Amount" placeholder="Amount" maxlength="10" min="0.01" step="0.01" class="form-control" required>
-                <select name="currency" title="Currency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
-                    <option value="USD">USD</option>
-                    <option value="BTC">BTC</option>
-                    <option value="EUR" selected>EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="AUD">AUD</option>
-                    <option value="BGN">BGN</option>
-                    <option value="BRL">BRL</option>
-                    <option value="CAD">CAD</option>
-                    <option value="CHF">CHF</option>
-                    <option value="CNY">CNY</option>
-                    <option value="CZK">CZK</option>
-                    <option value="DKK">DKK</option>
-                    <option value="HKD">HKD</option>
-                    <option value="HRK">HRK</option>
-                    <option value="HUF">HUF</option>
-                    <option value="IDR">IDR</option>
-                    <option value="ILS">ILS</option>
-                    <option value="INR">INR</option>
-                    <option value="JPY">JPY</option>
-                    <option value="KRW">KRW</option>
-                    <option value="LTL">LTL</option>
-                    <option value="LVL">LVL</option>
-                    <option value="MXN">MXN</option>
-                    <option value="MYR">MYR</option>
-                    <option value="NOK">NOK</option>
-                    <option value="NZD">NZD</option>
-                    <option value="PHP">PHP</option>
-                    <option value="PLN">PLN</option>
-                    <option value="RON">RON</option>
-                    <option value="RUB">RUB</option>
-                    <option value="SEK">SEK</option>
-                    <option value="SGD">SGD</option>
-                    <option value="THB">THB</option>
-                    <option value="TRY">TRY</option>
-                    <option value="ZAR">ZAR</option>
-                </select>
-                <input type="hidden" name="data" value="DTV4JaKv709xq02lnDoV6YQzckpuFjSKkWgOIEaHst13ciMsAsGhH+lsBgTnSgZUhdcrDUWYx6UE4QolrN26/QN7O/4kpMfJkjkImN+nLRGmR05AM/UJhWVXsidBuo4N1u8LGqe1e5ohy+w7uRNew7y57qR8N6dngxEPcRHlPK9UuJu6OS3/aRho33vG0D0oVDUL4bwPTn5ITu1Eal1vM15fb/wWtoPX5+JwZgaYj2DdZJMEEV5T1K06zBhcAGWg">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
+        <div class="card-text">
+            <p>You can easily donate in bitcoin:</p>
+            <form action="https://bitpay.com/checkout" method="post">
+                <input name="action" type="hidden" value="checkout">
+                <div class="input-group mb-3">
+                    <input name="orderID" type="email" class="form-control" title="Email Address" placeholder="Email address (optional)" maxlength="50" autocapitalize="off">
                 </div>
-            </div>
-        </form>
-        </p>
+                <div class="input-group mb-3">
+                    <input name="price" type="number" value="10.00" title="Amount" placeholder="Amount" min="0.01" step="0.01" class="form-control" required>
+                    <select name="currency" title="Currency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
+                        <option value="USD">USD</option>
+                        <option value="BTC">BTC</option>
+                        <option value="EUR" selected>EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="AUD">AUD</option>
+                        <option value="BGN">BGN</option>
+                        <option value="BRL">BRL</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CHF">CHF</option>
+                        <option value="CNY">CNY</option>
+                        <option value="CZK">CZK</option>
+                        <option value="DKK">DKK</option>
+                        <option value="HKD">HKD</option>
+                        <option value="HRK">HRK</option>
+                        <option value="HUF">HUF</option>
+                        <option value="IDR">IDR</option>
+                        <option value="ILS">ILS</option>
+                        <option value="INR">INR</option>
+                        <option value="JPY">JPY</option>
+                        <option value="KRW">KRW</option>
+                        <option value="LTL">LTL</option>
+                        <option value="LVL">LVL</option>
+                        <option value="MXN">MXN</option>
+                        <option value="MYR">MYR</option>
+                        <option value="NOK">NOK</option>
+                        <option value="NZD">NZD</option>
+                        <option value="PHP">PHP</option>
+                        <option value="PLN">PLN</option>
+                        <option value="RON">RON</option>
+                        <option value="RUB">RUB</option>
+                        <option value="SEK">SEK</option>
+                        <option value="SGD">SGD</option>
+                        <option value="THB">THB</option>
+                        <option value="TRY">TRY</option>
+                        <option value="ZAR">ZAR</option>
+                    </select>
+                    <input type="hidden" name="data" value="DTV4JaKv709xq02lnDoV6YQzckpuFjSKkWgOIEaHst13ciMsAsGhH+lsBgTnSgZUhdcrDUWYx6UE4QolrN26/QN7O/4kpMfJkjkImN+nLRGmR05AM/UJhWVXsidBuo4N1u8LGqe1e5ohy+w7uRNew7y57qR8N6dngxEPcRHlPK9UuJu6OS3/aRho33vG0D0oVDUL4bwPTn5ITu1Eal1vM15fb/wWtoPX5+JwZgaYj2DdZJMEEV5T1K06zBhcAGWg">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <div class="card mb-5 w-100">

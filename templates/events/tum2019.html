@@ -80,18 +80,20 @@ Discover new features, learn about latest technical developments and share feedb
         <span class="locality">Marseille</span><br/>
 </address>
 </div>
-<iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=5.37457823753357%2C43.302074626344606%2C5.378113389015199%2C43.303889933242516&amp;layer=mapnik&amp;marker=43.30298228656913%2C5.3763458132743835" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=43.30298&amp;mlon=5.37635#map=19/43.30298/5.37635">View Larger Map</a></small>
+<iframe height="500" src="https://www.openstreetmap.org/export/embed.html?bbox=5.37457823753357%2C43.302074626344606%2C5.378113389015199%2C43.303889933242516&amp;layer=mapnik&amp;marker=43.30298228656913%2C5.3763458132743835" style="width: 100%; border: 1px solid black; overflow: hidden; margin: 0"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=43.30298&amp;mlon=5.37635#map=19/43.30298/5.37635">View Larger Map</a></small>
 <h3>Transportations</h3>
 <ul>
-    <li>By Train</li>
-    <ul>
-        <li>The <a href="https://en.wikipedia.org/wiki/TGV">TGV</a> <a href="https://www.gares-sncf.com/fr/gare/frmsc/marseille-saint-charles">station St Charles</a> in the center of Marseille is preferred.</li>
-        <li>The other TGV <a href="https://www.gares-sncf.com/fr/gare/frqxb/aix-provence">station Aix en Provence</a> is also an option but requires a 25km of bus shuttle.</li>
-    </ul>
-    <li>By Plane</li>
-    <ul>
-        <li>The <a href="https://www.marseille-airport.com/">Marseille Provence Airport</a> has <a href="https://www.marseille-airport.com/access-car-parks/access/bus/marseille-gare-saint-charles">bus shuttle to Marseille</a> every 15 minutes.</li>
-    </ul>
+    <li>By Train
+        <ul>
+            <li>The <a href="https://en.wikipedia.org/wiki/TGV">TGV</a> <a href="https://www.gares-sncf.com/fr/gare/frmsc/marseille-saint-charles">station St Charles</a> in the center of Marseille is preferred.</li>
+            <li>The other TGV <a href="https://www.gares-sncf.com/fr/gare/frqxb/aix-provence">station Aix en Provence</a> is also an option but requires a 25km of bus shuttle.</li>
+        </ul>
+    </li>
+    <li>By Plane
+        <ul>
+            <li>The <a href="https://www.marseille-airport.com/">Marseille Provence Airport</a> has <a href="https://www.marseille-airport.com/access-car-parks/access/bus/marseille-gare-saint-charles">bus shuttle to Marseille</a> every 15 minutes.</li>
+        </ul>
+    </li>
 </ul>
 <p>Inside Marseille, we recommend to use the <a href="http://www.rtm.fr/">public transport</a> which has 2 metro lines and many bus lines.</p>
 {% endblock %}
@@ -111,9 +113,9 @@ Discover new features, learn about latest technical developments and share feedb
 {{ super() }}
 <section class="section" id="sponsors">
     <div class="container">
-        <section class="section-header">
+        <div class="section-header">
             <h2 class="bg-white">Sponsors</h2>
-        </section>
+        </div>
         <p>With the support of:</p>
         <a href="http://www.emd-management.fr/">
             <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tum2019-emd.jpg') }}" alt="École de Commerce et de Management"/>

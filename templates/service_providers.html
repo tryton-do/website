@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% block content %}
 {{ super() }}
-<section class="section bg-primary">
+<div class="section bg-primary">
     <div class="container">
         <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
             <h1 class="pl-3 pr-3">{{ title }}</h1>
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <section class="section">
     <div class="container">
@@ -26,7 +26,7 @@
     </div>
 </section>
 
-<section class="section">
+<div class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto text-center">
@@ -36,11 +36,11 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock content %}
 
 {% block script %}
-<script type="text/javascript">
+<script>
     function setupMap() {
         L.Icon.Default.imagePath = '/static/images/';
         var map = L.map('map').setView([0, 0], 1);
