@@ -43,7 +43,6 @@ PROVIDERS = [
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
-app.config['MINIFY_PAGE'] = True
 app.config['CACHE_DEFAULT_TIMEOUT'] = 60 * 60
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SITEMAP_VIEW_DECORATORS'] = [cache.cached()]
