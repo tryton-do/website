@@ -1,7 +1,6 @@
 Flask
 Flask-Caching
 Flask-Gravatar
-Flask-HTMLmin
 Flask-Sitemap
 flask-rev
 icalendar

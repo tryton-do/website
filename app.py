@@ -14,7 +14,6 @@ from flask import (Flask, render_template, redirect, url_for, request,
 from flask.logging import default_handler
 from flask_caching import Cache
 from flask_gravatar import Gravatar
-from flask_htmlmin import HTMLMIN
 from flask_rev import Rev
 from flask_sitemap import Sitemap
 from icalendar import Calendar
@@ -53,7 +52,6 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'presentations-alt', 'contribute-alt', 'foundation-alt', 'supporters-alt',
     'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt']
 cache.init_app(app)
-HTMLMIN(app)
 Rev(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
 sitemap = Sitemap(app=app)
