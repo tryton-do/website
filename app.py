@@ -13,7 +13,6 @@ from flask import (Flask, render_template, redirect, url_for, request,
     make_response)
 from flask.logging import default_handler
 from flask_caching import Cache
-from flask_compress import Compress
 from flask_gravatar import Gravatar
 from flask_htmlmin import HTMLMIN
 from flask_rev import Rev
@@ -54,7 +53,6 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'presentations-alt', 'contribute-alt', 'foundation-alt', 'supporters-alt',
     'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt']
 cache.init_app(app)
-Compress(app)
 HTMLMIN(app)
 Rev(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
