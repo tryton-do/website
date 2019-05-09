@@ -5,34 +5,34 @@
         ("Script", 'submit-change-script', None),
         ("Mercurial Extension", 'submit-change-hg-extension', None),
         ]),
-    ("Publish a Change", 'publish-change', None),
     ("Coding Guidelines", 'coding-guidelines', [
         ("Code Style", 'code-style', None),
         ("Best Practices", 'best-practices', None),
         ]),
     ("Requirements", 'requirements', None),
     ("Rules", 'rules', None),
+    ("Publish a Change", 'publish-change', None),
     ("Backporting", 'backporting', None),
     ]
 %}
 {% extends "layout-toc.html" %}
 {% block content %}
-<section class="section bg-primary">
+<div class="section bg-primary">
     <div class="container">
-        <section class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
+        <div class="section-header text-center text-white bg-primary mb1 wow fadeInDown">
             <h1 class="pl-3 pr-3">{{ title }}</h1>
-        </section>
+        </div>
     </div>
-</section>
+</div>
 {{ super() }}
 {% endblock content %}
 
 {% block main %}
-<section class="subsection">
+<div class="subsection">
     <p class="lead">
     <span class="h2">TL;DR</span><br/>
     Clone the repository:</p>
-    <pre><code class="console">$ hg clone https://hg.tryton.org/trytond
+    <pre><code class="console">$ hg clone https://hg.tryton.org/tryton-env
 $ cd trytond
     </code></pre>
     <p class="lead">
@@ -41,10 +41,9 @@ $ cd trytond
     <pre><code class="console">$ curl -L -o ~/.local/bin/upload.py https://codereview.tryton.org/static/upload.py
 $ python ~/.local/bin/upload.py --oauth2
     </code></pre>
-</section>
-<section class="subsection">
+</div>
+<div class="subsection">
     <h2 id="report-issue">Report an Issue</h2>
-    <p>
     <ul>
         <li>Test your issue on the latest development version.</li>
         <li>Create an issue in our <a href="https://bugs.tryton.org/">issue tracker</a>.</li>
@@ -56,14 +55,12 @@ $ python ~/.local/bin/upload.py --oauth2
         If it is a security issue, be careful to correctly set the type to security.
         This way, the issue will only be visible to the security team until its release.
     </div>
-    </p>
-</section>
-<section class="subsection">
+</div>
+<div class="subsection">
     <h2 id="submit-change">Submit a Change</h2>
-    <p>
     <ul>
         <li>Follow the <a href="#coding-guidelines">coding guidelines</a>.</li>
-        <li>Submit your change to our <a href="https://codereview.tryton.org/">review tool</a> using one of the methods listed below.</li>
+        <li>Submit your change to our <a href="https://codereview.tryton.org/">review tool</a> using the <a href="https://codereview.tryton.org/static/upload.py">upload.py</a> script (see the <a href="https://github.com/rietveld-codereview/rietveld/wiki">help page</a>).</li>
         <li>Make sure the review has the repository name at the start of the review title,
             and ensure the review description contains a reference to the issue (e.g.: <span class="text-monospace">issue1234</span>).</li>
         <li>Once accepted your review will be validated with a <mark>LGTM</mark> comment from a core developer</li>
@@ -76,54 +73,13 @@ $ python ~/.local/bin/upload.py --oauth2
         <span class="material-icons">warning</span>
         If it is a security issue, be careful to mark the review as protected.
     </div>
-    </p>
-    <p>There are two options to upload changes:</p>
-    <h3 id="submit-change-script">Script</h3>
-    <p>
-    Download <a href="https://codereview.tryton.org/static/upload.py" class="text-monospace">upload.py</a> and read its <a href="https://github.com/rietveld-codereview/rietveld/wiki">help page</a>.
-    </p>
-    <h3 id="submit-change-hg-extension">Mercurial Extension</h3>
-    <p>There is a mercurial extension, <a href="https://bitbucket.org/nicoe/hgreview">hgreview</a> which simplifies the workflow.
-    </p>
-    <p>Install the extension:
-    <pre><code type="console">$ pip install hgreview
-$ hg config -e -l</code></pre>
-    Edit the file to include:
-    <pre><code type="ini">[extensions]
-hgreview =
-
-[review]
-server = https://codereview.tryton.org
-oauth2 = True
-send_email = True</code></pre>
-    </p>
-    <p>You can then upload your change (do not commit before doing this):
-    <pre><code type="console">$ hg review -m "repository_name: Improve things a lot"</code></pre>
-    <em>For non-trunk fixes append the series number to the repository name.</em>
-    </p>
-</section>
-<section class="subsection">
-    <h2 id="publish-change">Publish a Change</h2>
-    <p class="bg-info">This part is only for core developers</p>
-    <p>Push to the remote server:
-    <pre><code type="console">$ hg push ssh://hg@hg.tryton.org/trytond</code></pre>
-    Sometimes the push is rejected because it creates a new head.
-    This happens because your local repository is not up to date.<br/>
-    We prefer <b>rebase</b> over <b>merge</b> because it creates a linear history:
-    <pre><code type="console">$ hg pull --rebase</code></pre>
-    </p>
-    <p>
-    <span class="material-icons">warning</span>
-    Always keep the <a href="http://hg.tryton.org/tryton-env/">environment repository</a> up to date with all the <a href="https://www.mercurial-scm.org/wiki/Subrepository">subrepos</a>:
-    <pre><code type="console">$ hg commit -S --cwd tryton-env</code></pre>
-    </p>
-</section>
-<section class="subsection">
+</div>
+<div class="subsection">
     <h2 id="coding-guidelines">Coding Guidelines</h2>
     <p>The Tryton Project strongly recommends the following guidelines.</p>
     <h3 id="code-style">Code Style</h3>
     <h4>Python</h4>
-    <p>Code style, in general, follows <a href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a>:
+    <p>Code style, in general, follows <a href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a>:</p>
     <ul>
         <li>Use 4 spaces for indentation.</li>
         <li>Avoid the usage of <span class="text-monospace">from M import *</span>.</li>
@@ -135,25 +91,19 @@ send_email = True</code></pre>
             </ul>
         </li>
     </ul>
-    </p>
     <h4>XML</h4>
-    <p>
     <ul>
         <li>Use 4 spaces for indentation.</li>
         <li>No 80 columns limitation.</li>
         <li>Opening tag on single line or one attribute per line.</li>
     </ul>
-    </p>
-    <h3 id="best-practices">Best Practices</h4>
-    <p>
+    <h3 id="best-practices">Best Practices</h3>
     <ul>
         <li>Use doc-strings and comments in your code.</li>
         <li>Never pass keyword arguments as positional arguments when calling a method.</li>
         <li>In the very beginning (right under the doc-string) of a method definition, define all pool objects that will be used (<span class="text-monospace">pool.get(...)</span>).</li>
     </ul>
-    </p>
     <h4>Naming of modules, classes, variables</h4>
-    <p>
     <ul>
         <li>A name should be as descriptive and as short as possible.</li>
         <li>Avoid unnecessary duplication of names.</li>
@@ -167,13 +117,11 @@ send_email = True</code></pre>
         <li>For modules and method names use an underscore to separate the parts of name.</li>
         <li>For naming classes use <a href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</a>.</li>
     </ul>
-    </p>
-</section>
-<section class="subsection">
+</div>
+<div class="subsection">
     <h2 id="requirements">Requirements</h2>
     <p>Your contribution must meet the following requirements:</p>
     <h3>Must</h3>
-    <p>
     <ul>
         <li>By submitting a change, the contributor accepts the <a href="https://developercertificate.org/">Developer Certificate of Origin</a>.</li>
         <li>The contributor email must be a valid email address.</li>
@@ -182,16 +130,13 @@ send_email = True</code></pre>
             <pre>Name &lt;email&gt;</pre>
         </li>
     </ul>
-    </p>
     <h3>Nice to have, but not required</h3>
-    <p>
     <ul>
         <li>The contributor name should be the real name of the natural person who submits the code.</li>
         <li>The contributor email should be linked to only one contributor name.</li>
     </ul>
-    </p>
-</section>
-<section class="subsection">
+</div>
+<div class="subsection">
     <h2 id="rules">Rules</h2>
     <p>If the contributor has a significant amount of code, he can add himself to the <span class="text-monospace">COPYRIGHT</span> file.</p>
     <p>
@@ -202,11 +147,26 @@ send_email = True</code></pre>
     In the case of disagreement, a consensus should be reached.
     As a last resort, the project leader (<a href="https://bugs.tryton.org/user3">Cédric Krier</a>) will make the decision.
     </p>
-</section>
-<section class="subsection">
+</div>
+<div class="subsection">
+    <h2 id="publish-change">Publish a Change</h2>
+    <p class="bg-info">This part is only for core developers</p>
+    <p>
+    <span class="material-icons">warning</span>
+    Always keep the <a href="http://hg.tryton.org/tryton-env/">environment repository</a> up to date with all the <a href="https://www.mercurial-scm.org/wiki/Subrepository">subrepos</a>:
+    </p>
+    <pre><code class="console">$ hg commit -S --cwd tryton-env</code></pre>
+    <p>Push to the remote server:</p>
+    <pre><code class="console">$ hg push ssh://hg@hg.tryton.org/tryton-env</code></pre>
+    Sometimes the push is rejected because it creates a new head.
+    This happens because your local repository is not up to date.<br/>
+    We prefer <b>rebase</b> over <b>merge</b> because it creates a linear history:
+    <pre><code class="console">$ hg pull --rebase</code></pre>
+</div>
+<div class="subsection">
     <h2 id="backporting">Backporting</h2>
     <p>A fix will be back ported to older series by the maintainer on his own discretion after 1 week in the development branch.
     The decision is based on the importance of the bug, the availability of workaround and the feasibilities.</p>
     <p>Those rules don't apply for security bugs which are applied at once to all affected series and followed by a release.</p>
-</section>
+</div>
 {% endblock main %}
