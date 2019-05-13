@@ -30,6 +30,8 @@
 }
 
 .btn-secondary {
+  border-color: $light;
+
   &:hover,
   &:focus,
   &:active {
