@@ -4,14 +4,16 @@ import logging
 
 from collections import namedtuple, OrderedDict
 from functools import partial
+from http import HTTPStatus
 from logging.handlers import SMTPHandler
 from random import shuffle
 from urllib.parse import urlparse
 
 import requests
 from flask import (Flask, render_template, redirect, url_for, request,
-    make_response)
+    make_response, abort)
 from flask.logging import default_handler
+from flask.templating import TemplateNotFound
 from flask_caching import Cache
 from flask_gravatar import Gravatar
 from flask_rev import Rev
@@ -276,7 +278,10 @@ def success_stories():
 @app.route('/success-stories/<story>')
 @cache.cached()
 def success_story(story):
-    return render_template('success_stories/%s.html' % story)
+    try:
+        return render_template('success_stories/%s.html' % story)
+    except TemplateNotFound:
+        abort(HTTPStatus.NOT_FOUND)
 
 
 @app.route('/download')
@@ -345,7 +350,10 @@ def event(event):
             self.gravatar = gravatar
             self.company = company
             self.url = url
-    return render_template('events/%s.html' % event, Day=Day)
+    try:
+        return render_template('events/%s.html' % event, Day=Day)
+    except TemplateNotFound:
+        abort(HTTPStatus.NOT_FOUND)
 
 
 @app.route('/contribute')
