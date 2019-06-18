@@ -52,7 +52,7 @@
             var name = marker[0];
             marker[1].forEach(function(LatLng) {
                 L.marker(LatLng).addTo(map)
-                    .bindPopup('<a href="#' + name.toLowerCase() + '">' + name + '</a>');
+                    .bindPopup('<a href="#' + name.toLowerCase().replace(/ /g, '-') + '">' + name + '</a>');
             });
         });
     }
