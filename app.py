@@ -51,7 +51,8 @@ app.config['SITEMAP_VIEW_DECORATORS'] = [cache.cached()]
 app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'news-alt', 'news_rss', 'event-alt', 'success_stories-alt', 'download-alt',
     'presentations-alt', 'contribute-alt', 'foundation-alt', 'supporters-alt',
-    'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt']
+    'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt',
+    'sitemap.xml']
 cache.init_app(app)
 Rev(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
