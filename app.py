@@ -191,7 +191,6 @@ def date(datetime):
 
 
 @app.route('/success-stories')
-@app.route('/business-cases.html', endpoint='success_stories-alt')
 @cache.cached()
 def success_stories():
     Case = namedtuple('Case', 'title description url logo'.split())
@@ -275,6 +274,11 @@ def success_stories():
     return render_template('success_stories.html', cases=cases)
 
 
+@app.route('/business-cases.html', endpoint='success_stories-alt')
+def success_stories():
+    return redirect(url_for('success_stories'))
+
+
 @app.route('/success-stories/<story>')
 @cache.cached()
 def success_story(story):
@@ -285,10 +289,14 @@ def success_story(story):
 
 
 @app.route('/download')
-@app.route('/download.html', endpoint='download-alt')
 @cache.cached()
 def download():
     return render_template('download.html')
+
+
+@app.route('/download.html', endpoint='download-alt')
+def download():
+    return redirect(url_for('download'))
 
 
 @app.route('/forum')
@@ -298,10 +306,14 @@ def forum():
 
 
 @app.route('/presentations')
-@app.route('/papers.html', endpoint='presentations-alt')
 @cache.cached()
 def presentations():
     return render_template('presentations.html')
+
+
+@app.route('/papers.html', endpoint='presentations-alt')
+def presentations():
+    return redirect(url_for('presentations'))
 
 
 @app.route('/events/<event>')
@@ -357,10 +369,14 @@ def event(event):
 
 
 @app.route('/contribute')
-@app.route('/how-to-contribute.html', endpoint='contribute-alt')
 @cache.cached()
 def contribute():
     return render_template('contribute.html')
+
+
+@app.route('/how-to-contribute.html', endpoint='contribute-alt')
+def contribute():
+    return redirect(url_for('contribute'))
 
 
 @app.route('/develop')
@@ -370,14 +386,17 @@ def develop():
 
 
 @app.route('/foundation')
-@app.route('/foundation/', endpoint='foundation-alt')
 @cache.cached()
 def foundation():
     return render_template('foundation.html')
 
 
+@app.route('/foundation/', endpoint='foundation-alt')
+def foundation():
+    return redirect(url_for('foundation'))
+
+
 @app.route('/supporters')
-@app.route('/foundation/supporters.html', endpoint='supporters-alt')
 @cache.cached()
 def supporters():
     def url(supporter, start):
@@ -397,13 +416,17 @@ def supporters():
         roundup_url=partial(url, start='https://bugs.tryton.org/'))
 
 
+@app.route('/foundation/supporters.html', endpoint='supporters-alt')
+def supporters():
+    return redirect(url_for('supporters'))
+
+
 @app.template_filter('hostname')
 def hostname(url):
     return urlparse(url).hostname
 
 
 @app.route('/donate')
-@app.route('/foundation/donations.html', endpoint='donate-alt')
 @cache.cached()
 def donate():
     headers = {'Content-Type': 'application/json'}
@@ -424,6 +447,11 @@ def donate():
         donations=donations)
 
 
+@app.route('/foundation/donations.html', endpoint='donate-alt')
+def donate():
+    return redirect(url_for('donate'))
+
+
 @app.route('/donate/thanks')
 @cache.cached()
 def donate_thanks():
@@ -437,11 +465,15 @@ def donate_cancel():
 
 
 @app.route('/service-providers')
-@app.route('/services.html', endpoint='service_providers-alt')
 @cache.cached()
 def service_providers():
     shuffle(PROVIDERS)
     return render_template('service_providers.html', providers=PROVIDERS)
+
+
+@app.route('/services.html', endpoint='service_providers-alt')
+def service_providers():
+    return redirect(url_for('service_providers'))
 
 
 @app.route('/service-providers/start')
