@@ -22,11 +22,21 @@ from icalendar import Calendar
 from lxml import objectify, html
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'
-CALENDAR_URL = 'https://calendar.google.com/calendar/embed?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com&ctz=Europe%2FBrussels'
-CALENDAR_ICS = 'https://calendar.google.com/calendar/ical/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics'
-SUPPORTERS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/supporters'
-DONATORS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/donators?account=732&account=734'
-DONATIONS_URL = 'https://foundation.tryton.org:9000/foundation/foundation/1/donations?account=732&account=734'
+CALENDAR_URL = (
+    'https://calendar.google.com/calendar/embed'
+    '?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com'
+    '&ctz=Europe%2FBrussels')
+CALENDAR_ICS = (
+    'https://calendar.google.com/calendar/ical'
+    '/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics')
+SUPPORTERS_URL = (
+    'https://foundation.tryton.org:9000/foundation/foundation/1/supporters')
+DONATORS_URL = (
+    'https://foundation.tryton.org:9000/foundation/foundation/1/donators'
+    '?account=732&account=734')
+DONATIONS_URL = (
+    'https://foundation.tryton.org:9000/foundation/foundation/1/donations'
+    '?account=732&account=734')
 
 PROVIDERS = [
     ('Adiczion', [(43.52153, 5.43150)]),
