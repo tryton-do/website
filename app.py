@@ -286,7 +286,7 @@ def success_stories():
 
 
 @app.route('/business-cases.html', endpoint='success_stories-alt')
-def success_stories():
+def success_stories_alt():
     return redirect(url_for('success_stories'))
 
 
@@ -306,7 +306,7 @@ def download():
 
 
 @app.route('/download.html', endpoint='download-alt')
-def download():
+def download_alt():
     return redirect(url_for('download'))
 
 
@@ -323,7 +323,7 @@ def presentations():
 
 
 @app.route('/papers.html', endpoint='presentations-alt')
-def presentations():
+def presentations_alt():
     return redirect(url_for('presentations'))
 
 
@@ -386,7 +386,7 @@ def contribute():
 
 
 @app.route('/how-to-contribute.html', endpoint='contribute-alt')
-def contribute():
+def contribute_alt():
     return redirect(url_for('contribute'))
 
 
@@ -403,7 +403,7 @@ def foundation():
 
 
 @app.route('/foundation/', endpoint='foundation-alt')
-def foundation():
+def foundation_alt():
     return redirect(url_for('foundation'))
 
 
@@ -428,7 +428,7 @@ def supporters():
 
 
 @app.route('/foundation/supporters.html', endpoint='supporters-alt')
-def supporters():
+def supporters_alt():
     return redirect(url_for('supporters'))
 
 
@@ -459,7 +459,7 @@ def donate():
 
 
 @app.route('/foundation/donations.html', endpoint='donate-alt')
-def donate():
+def donate_alt():
     return redirect(url_for('donate'))
 
 
@@ -483,7 +483,7 @@ def service_providers():
 
 
 @app.route('/services.html', endpoint='service_providers-alt')
-def service_providers():
+def service_providers_alt():
     return redirect(url_for('service_providers'))
 
 
