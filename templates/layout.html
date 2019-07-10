@@ -8,7 +8,7 @@
         <meta name="author" content="Tryton"/>
         <meta property="og:title" content="{{ title }}"/>
         <meta property="og:type" content="website"/>
-        {% if request.endpoint %}
+        {% if request.endpoint and request.endpoint != 'static' %}
         <meta property="og:url" content="{{ url_for(request.endpoint, _external=True, **request.view_args) }}"/>
         {% else %}
         <meta property="og:url" content="{{ request.url }}"/>
