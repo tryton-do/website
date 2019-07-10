@@ -493,6 +493,11 @@ def service_providers_start():
     return render_template('service_providers_start.html')
 
 
+@app.errorhandler(HTTPStatus.NOT_FOUND)
+def not_found(error):
+    return render_template('not_found.html'), HTTPStatus.NOT_FOUND
+
+
 class RequestFormatter(logging.Formatter):
     def format(self, record):
         record.url = request.url
