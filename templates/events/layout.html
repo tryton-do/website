@@ -45,9 +45,9 @@
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="summary">{{ event.summary }}</h4>
                             <small>
-                                <span class="dtstart" title="{{ event.start.isoformat() }}">{{ event.start.strftime('%H:%M') }}</span>
+                                <span class="dtstart" title="{{ event.start.strftime('%Y%m%dT%H%M%S') }}">{{ event.start.strftime('%H:%M') }}</span>
                                 -
-                                <span class="dtend" title="{{ event.end.isoformat() }}">{{ event.end.strftime('%H:%M') }}</span>
+                                <span class="dtend" title="{{ event.end.strftime('%Y%m%dT%H%M%S') }}">{{ event.end.strftime('%H:%M') }}</span>
                             </small>
                         </div>
                         <p class="description">
