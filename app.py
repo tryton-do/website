@@ -1,6 +1,7 @@
 #!/bin/env python3
 import datetime
 import logging
+import os
 
 from collections import namedtuple, OrderedDict
 from functools import partial
@@ -15,8 +16,8 @@ from flask import (Flask, render_template, redirect, url_for, request,
 from flask.logging import default_handler
 from flask.templating import TemplateNotFound
 from flask_caching import Cache
+from flask_cdn import CDN
 from flask_gravatar import Gravatar
-from flask_rev import Rev
 from flask_sitemap import Sitemap
 from icalendar import Calendar
 from lxml import objectify, html
@@ -63,8 +64,9 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'presentations-alt', 'contribute-alt', 'foundation-alt', 'supporters-alt',
     'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt',
     'sitemap.xml']
+app.config['CDN_DOMAIN'] = os.environ.get('CDN_DOMAIN')
 cache.init_app(app)
-Rev(app)
+CDN(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
 sitemap = Sitemap(app=app)
 

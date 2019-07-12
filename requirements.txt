@@ -2,7 +2,7 @@ Flask
 Flask-Caching
 Flask-Gravatar
 Flask-Sitemap
-flask-rev
+flask-cdn
 icalendar
 lxml
 requests

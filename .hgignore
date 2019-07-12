@@ -2,3 +2,4 @@ static/css
 static/js
 static/fonts/Icons
 sass/iconfont/_icons.scss
+website.env

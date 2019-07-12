@@ -44,12 +44,9 @@
 
   .subfooter {
     background-color: $dark;
+    color: $navbar-dark-color;
+    margin: 0;
     padding: 15px 0;
-
-    p {
-      color: $navbar-dark-color;
-      margin: 0;
-      text-transform: uppercase;
-    }
+    text-transform: uppercase;
   }
 }
