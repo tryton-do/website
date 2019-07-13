@@ -1,11 +1,24 @@
 {% set title = "Unconference Marseille - June 4th-7th, 2019" %}
 {% set logo = 'images/events/tum2019-logo.png' %}
 {% set banner = 'tum2019-banner.svg' %}
+{% macro location() %}
+<div class="h-card vcard">
+    <strong class="p-name fn">
+        <a class="u-url url" href="http://www.emd-management.fr/en/">
+            École de Commerce et de Management
+        </a></strong><br/>
+        <span class="p-addr addr">
+            <span class="p-street-address street-address">Rue Joseph Biaggi - CS 70329</span>,<br/>
+            <span class="p-postal-code postal-code">13331</span>
+            <span class="p-locality locality">Marseille</span><br/>
+        </span>
+</div>
+{% endmacro %}
 {% set events = [
     Day((2019, 6, 4),
-        ("Code Sprint", (9,), (18,)), full=True),
+        ("Code Sprint", (9,), (18,)), location=location(), full=True),
     Day((2019, 6, 5),
-        ("Code Sprint", (9,), (18,)), full=True),
+        ("Code Sprint", (9,), (18,)), location=location(), full=True),
     Day((2019, 6, 6),
         ("A tour of new Tryton's features", (9,), (12,),
             "Presentation of new key features introduced in Tryton between 4.8 and 5.2.",
@@ -19,7 +32,7 @@
         ("Supporters Meeting", (17,), (18,),
             "The annual meeting of Foundation's supporters.",
             []),
-        ),
+        location=location()),
     Day((2019, 6, 7),
         ("Building mobile applications connected to Tryton", (9,), (10,),
             "How we developed an Android application which reads and writes information to a Tryton server.",
@@ -37,7 +50,7 @@
         ("Lisp ERP", (16,), (17,),
             "Programming modules for Tryton with Hy (embedded Lisp for Python).",
             [("Francesc Guillen", 'a0ef3bd08930d7f4891f891ec27d17a6',)]),
-        ),
+        location=location()),
     ]
 %}
 {% extends "events/layout.html" %}
@@ -81,15 +94,7 @@ Discover new features, learn about latest technical developments and share feedb
 
 {% block venue %}
 <div class="vcard text-center">The unconference will be hosted at the
-<address class="adr">
-    <strong class="fn org url">
-        <a href="http://www.emd-management.fr/en/">
-            École de Commerce et de Management
-        </a></strong><br/>
-        <span class="street-address">Rue Joseph Biaggi - CS 70329</span>,<br/>
-        <span class="postal-code">13331</span>
-        <span class="locality">Marseille</span><br/>
-</address>
+    {{ location() | safe }}
 </div>
 <iframe height="500" src="https://www.openstreetmap.org/export/embed.html?bbox=5.37457823753357%2C43.302074626344606%2C5.378113389015199%2C43.303889933242516&amp;layer=mapnik&amp;marker=43.30298228656913%2C5.3763458132743835" style="width: 100%; border: 1px solid black; overflow: hidden; margin: 0"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=43.30298&amp;mlon=5.37635#map=19/43.30298/5.37635">View Larger Map</a></small>
 <h3>Transportations</h3>

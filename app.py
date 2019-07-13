@@ -333,23 +333,27 @@ def presentations_alt():
 @cache.cached()
 def event(event):
     class Day:
-        def __init__(self, date, *events, full=False):
+        def __init__(self, date, *events, location=None, full=False):
             if not isinstance(date, datetime.date):
                 date = datetime.date(*date)
             self.date = date
             self.full = full
+            self.location = location
             self.events = []
             for event in events:
                 self.add(*event)
 
-        def add(self, summary, start, end, *args):
+        def add(self, summary, start, end, *args, location=None):
             if not isinstance(start, datetime.time):
                 start = datetime.time(*start)
             if not isinstance(end, datetime.time):
                 end = datetime.time(*end)
             start = datetime.datetime.combine(self.date, start)
             end = datetime.datetime.combine(self.date, end)
-            self.events.append(Event(summary, start, end, *args))
+            if not location:
+                location = self.location
+            self.events.append(Event(
+                    summary, start, end, *args, location=location))
 
         @property
         def start(self):
@@ -362,10 +366,12 @@ def event(event):
                 return max(e.end for e in self.events)
 
     class Event:
-        def __init__(self, summary, start, end, description='', profiles=()):
+        def __init__(self, summary, start, end, description='', profiles=(),
+                location=None):
             self.summary = summary
             self.start = start
             self.end = end
+            self.location = location
             self.description = description
             self.profiles = [Profile(*p) for p in profiles]
 
