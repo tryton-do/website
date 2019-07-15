@@ -310,6 +310,13 @@ def success_story(story):
         abort(HTTPStatus.NOT_FOUND)
 
 
+@sitemap.register_generator
+def success_story_generator():
+    for case in CASES:
+        if case.url:
+            yield 'success_story', dict(story=case.name)
+
+
 @app.route('/download')
 @cache.cached()
 def download():
