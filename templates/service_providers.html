@@ -22,7 +22,7 @@
         <div class="row">
             {% for provider, _ in providers %}
             {% set name = provider %}
-            {% include "service_providers/%s.html" % provider.lower().replace(' ', '_') %}
+            {% include "service_providers/%s.html" % provider|lower|slugify %}
             {% endfor %}
         </div>
     </div>

@@ -2,8 +2,10 @@
 import datetime
 import logging
 import os
+import re
+import unicodedata
 
-from collections import namedtuple, OrderedDict
+from collections import OrderedDict
 from functools import partial
 from http import HTTPStatus
 from logging.handlers import SMTPHandler
@@ -70,6 +72,18 @@ cache.init_app(app)
 CDN(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
 sitemap = Sitemap(app=app)
+
+_slugify_strip_re = re.compile(r'[^\w\s-]')
+_slugify_hyphenate_re = re.compile(r'[-\s]+')
+
+
+@app.template_filter('slugify')
+def slugify(value):
+    if not isinstance(value, str):
+        value = str(value)
+    value = unicodedata.normalize('NFKD', value)
+    value = str(_slugify_strip_re.sub('', value).strip())
+    return _slugify_hyphenate_re.sub('-', value)
 
 
 @app.after_request
@@ -204,88 +218,82 @@ def date(datetime):
     return datetime
 
 
+class Case:
+    def __init__(self, title, description, story=False):
+        self.title = title
+        self.description = description
+        self.story = story
+
+    @property
+    def name(self):
+        return slugify(self.title.lower())
+
+    @property
+    def url(self):
+        if self.story:
+            return url_for('success_story', story=self.name)
+
+    @property
+    def logo(self):
+        return 'images/success-stories/%s.jpg' % self.name
+
+
+CASES = [
+    Case(
+        title="AMMEBA",
+        description="A Medical Mutual Society from Buenos Aires."),
+    Case(
+        title="Advocate Consulting Legal",
+        description="A legal firm servicing the general aviation industry"),
+    Case(
+        title="Banque Française Mutualiste",
+        description="A French bank for the public service."),
+    Case(
+        title="La Cave Thrace",
+        description="Imports and distributes wine in France."),
+    Case(
+        title="Cultural Commons Collection Society",
+        description="Collects and distributes music royalties."),
+    Case(
+        title="Grufesa",
+        description="Exports strawberries in Europe."),
+    Case(
+        title="Expertise Vision",
+        description="Produces vision based systems.",
+        story=True),
+    Case(
+        title="Institut Mèdic per la Imatge",
+        description="Provides all kinds of MRI scans, nuclear medicine "
+        "and bone densitometry."),
+    Case(
+        title="MenschensKinder Teltow",
+        description="Operates municipal day care centers and "
+        "parent-child groups."),
+    Case(
+        title="Lackierzentrum Reichenbach",
+        description="Produces surface coating for automotive, aerospace, "
+        "construction and mechanical engineering."),
+    Case(
+        title="Lucerne Carnival",
+        description="Organizes the Lucerne Carnival."),
+    Case(
+        title="Revelle",
+        description="Consulting in developing countries and "
+        "emerging economies."),
+    Case(
+        title="Sinclair Containers",
+        description="Sells and rents containers."),
+    Case(
+        title="Skoda Autohaus Zeidler",
+        description="A German car dealership and workshop for Skoda."),
+    ]
+
+
 @app.route('/success-stories')
 @cache.cached()
 def success_stories():
-    Case = namedtuple('Case', 'title description url logo'.split())
-    cases = [
-        Case(
-            title="AMMEBA",
-            description="A Medical Mutual Society from Buenos Aires.",
-            url='',
-            logo='images/success-stories/ammeba.jpg'),
-        Case(
-            title="Advocate Consulting",
-            description="A legal firm servicing the general aviation industry",
-            url='',
-            logo='images/success-stories/advocate-consulting-legal.jpg'),
-        Case(
-            title="Banque Française Mutualiste",
-            description="A French bank for the public service.",
-            url='',
-            logo='images/success-stories/bfm.jpg'),
-        Case(
-            title="La Cave Thrace",
-            description="Imports and distributes wine in France.",
-            url='',
-            logo='images/success-stories/la-cave-thrace.jpg'),
-        Case(
-            title="Cultural Commons Collection Society",
-            description="Collects and distributes music royalties.",
-            url='',
-            logo='images/success-stories/c3s.jpg'),
-        Case(
-            title="Grufesa",
-            description="Exports strawberries in Europe.",
-            url='',
-            logo='images/success-stories/grufesa.jpg'),
-        Case(
-            title="Expertise Vision",
-            description="Produces vision based systems.",
-            url=url_for('success_story', story='expertise-vision'),
-            logo='images/success-stories/expertise-vision.jpg'),
-        Case(
-            title="Institut Mèdic per la Imatge",
-            description="Provides all kinds of MRI scans, nuclear medicine "
-            "and bone densitometry.",
-            url='',
-            logo='images/success-stories/imi.jpg'),
-        Case(
-            title="MenschensKinder Teltow",
-            description="Operates municipal day care centers and "
-            "parent-child groups.",
-            url='',
-            logo='images/success-stories/menschenskinder-teltow.jpg'),
-        Case(
-            title="Lackierzentrum Reichenbach",
-            description="Produces surface coating for automotive, aerospace, "
-            "construction and mechanical engineering.",
-            url='',
-            logo='images/success-stories/lackierzentrum-reichenbach.jpg'),
-        Case(
-            title="Lozärner Fasnachtskomitee",
-            description="Organizes the Lucerne Carnival.",
-            url='',
-            logo='images/success-stories/lucerne-carnival.jpg'),
-        Case(
-            title="Revelle Group",
-            description="Consulting in developing countries and "
-            "emerging economies.",
-            url='',
-            logo='images/success-stories/revelle.jpg'),
-        Case(
-            title="Sinclair Containers",
-            description="Sells and rents containers.",
-            url='',
-            logo='images/success-stories/sinclair-containers.jpg'),
-        Case(
-            title="Skoda Autohaus Zeidler",
-            description="A German car dealership and workshop for Skoda.",
-            url='',
-            logo='images/success-stories/zeidler.jpg'),
-        ]
-    shuffle(cases)
-    return render_template('success_stories.html', cases=cases)
+    shuffle(CASES)
+    return render_template('success_stories.html', cases=CASES)
 
 
 @app.route('/business-cases.html', endpoint='success_stories-alt')
