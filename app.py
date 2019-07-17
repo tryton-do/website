@@ -51,6 +51,7 @@ PROVIDERS = [
     ('Lava Lab Software', [(-27.978905, 153.389466)]),
     ('m-ds', [(52.520008, 13.404954)]),
     ('NaN-tic', [(41.544063, 2.115122)]),
+    ('power solutions', [(47.0467674, 8.3048232)]),
     ('SISalp', [(45.903956, 6.099937), (43.132028, 5.935532)]),
     ('Virtual Things', [(48.13585, 11.577415), (50.775116, 6.083565)]),
     ]
@@ -240,6 +241,9 @@ class Case:
 
 
 CASES = [
+    Case(title="ALS Swiss",
+        description="A society for people suffering ALS disease.",
+        story=True),
     Case(
         title="AMMEBA",
         description="A Medical Mutual Society from Buenos Aires."),
@@ -250,6 +254,10 @@ CASES = [
         title="Banque Française Mutualiste",
         description="A French bank for the public service."),
     Case(
+        title="Blue Box Distribution",
+        description="An international distributor of hair care products.",
+        story=True),
+    Case(
         title="La Cave Thrace",
         description="Imports and distributes wine in France."),
     Case(
@@ -258,6 +266,10 @@ CASES = [
     Case(
         title="Expertise Vision",
         description="Produces vision based systems.",
+        story=True),
+    Case(
+        title="Felber",
+        description="A stamp and signalisation company.",
         story=True),
     Case(
         title="Grufesa",

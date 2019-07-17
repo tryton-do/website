@@ -1,0 +1,11 @@
+{% set img = url_for('static', filename='images/service-providers/power_solutions.jpg') %}
+{% set website = 'http://www.powersolutions.ch/' %}
+{% set email = 'contact@powersolutions.ch' %}
+{% set phone = '+41412111222' %}
+{% extends "service_providers/layout.html" %}
+{% block description %}
+Since 2012 we have offered Tryton cloud servers that you can easily rent (SAAS).
+We offer consulting, integration, extension and support for Tryton solutions.
+Also check out <a href="http://www.tryton.cloud/">tryton.cloud</a>.
+{% endblock description %}
+{% block location %}Lucerne, Switzerland{% endblock %}
