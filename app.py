@@ -68,6 +68,7 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'sitemap.xml']
 app.config['CDN_DOMAIN'] = os.environ.get('CDN_DOMAIN')
 app.config['CDN_HTTPS'] = True
+app.config['SITEMAP_IGNORE_ENDPOINTS'] = ['events', 'events-alt']
 cache.init_app(app)
 CDN(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
