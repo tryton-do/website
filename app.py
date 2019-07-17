@@ -255,11 +255,12 @@ CASES = [
         title="Cultural Commons Collection Society",
         description="Collects and distributes music royalties."),
     Case(
-        title="Grufesa",
-        description="Exports strawberries in Europe."),
-    Case(
         title="Expertise Vision",
         description="Produces vision based systems.",
+        story=True),
+    Case(
+        title="Grufesa",
+        description="Exports strawberries in Europe.",
         story=True),
     Case(
         title="Institut Mèdic per la Imatge",
