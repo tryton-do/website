@@ -9,7 +9,7 @@ from collections import OrderedDict
 from functools import partial
 from http import HTTPStatus
 from logging.handlers import SMTPHandler
-from random import shuffle, choice
+from random import sample, shuffle
 from urllib.parse import urlparse
 
 import requests
@@ -239,6 +239,13 @@ class Case:
     def logo(self):
         return 'images/success-stories/%s.jpg' % self.name
 
+    def __eq__(self, other):
+        if isinstance(other, str):
+            return self.name == other
+        elif isinstance(other, Case):
+            return self.name == other.name
+        return NotImplemented
+
 
 CASES = [
     Case(title="ALS Swiss",
@@ -303,8 +310,9 @@ CASES = [
 @app.route('/success-stories')
 @cache.cached()
 def success_stories():
-    shuffle(CASES)
-    return render_template('success_stories.html', cases=CASES)
+    cases = sorted(
+        sample(CASES, len(CASES)), key=lambda c: c.story, reverse=True)
+    return render_template('success_stories.html', cases=cases)
 
 
 @app.route('/business-cases.html', endpoint='success_stories-alt')
@@ -315,8 +323,8 @@ def success_stories_alt():
 @app.route('/success-stories/<story>')
 @cache.cached()
 def success_story(story):
-    next_case = choice(
-        [case for case in CASES if case.url and case.name != story])
+    cases = [c for c in CASES if c.story or c.name == story]
+    next_case = cases[(cases.index(story) + 1) % len(cases)]
     try:
         return render_template(
             'success_stories/%s.html' % story, next_case=next_case)
