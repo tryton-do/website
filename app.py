@@ -16,12 +16,12 @@ import requests
 from flask import (Flask, render_template, redirect, url_for, request,
     make_response, abort)
 from flask.logging import default_handler
-from flask.templating import TemplateNotFound
 from flask_caching import Cache
 from flask_cdn import CDN
 from flask_gravatar import Gravatar
 from flask_sitemap import Sitemap
 from icalendar import Calendar
+from jinja2 import TemplateNotFound
 from lxml import objectify, html
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'

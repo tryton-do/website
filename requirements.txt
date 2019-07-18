@@ -4,5 +4,6 @@ Flask-Gravatar
 Flask-Sitemap
 flask-cdn
 icalendar
+jinja2
 lxml
 requests
