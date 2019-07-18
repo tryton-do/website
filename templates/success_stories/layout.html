@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "utils.html" import case_card %}
 {% block content %}
 {{ super() }}
 <div class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/success-stories/%s' % banner) }});">
@@ -43,5 +44,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="section bg-light text-center">
+    {{ case_card(next_case) }}
 </div>
 {% endblock content %}

@@ -2,7 +2,7 @@
 {% set description = "List of Tryton's success stories" %}
 {% set keywords = ["sucess story", "review", "case study" ] %}
 {% extends "layout.html" %}
-{% from "utils.html" import background %}
+{% from "utils.html" import background, case_card %}
 {% block style %}
 {{ super() }}
 {{ background('banner-success-stories') }}
@@ -20,18 +20,7 @@
         <div class="row">
         {% for case in cases %}
         <div class="col mb-gutter">
-            <div class="card mx-auto shadow d-flex flex-column" style="width: 18rem; height: 100%">
-                {% if case.logo %}
-                <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" style="height: 180px" alt=""/>
-                {% endif %}
-                <div class="card-body">
-                    <h2 class="h5 card-title">{{ case.title }}</h2>
-                    <p class="card-text">{{ case.description }}</p>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="{{ case.url }}" class="btn btn-primary btn-block {{ 'disabled' if not case.url else '' }}" {% if not case.url %}aria-disabled="true"{% endif %}>More<span class="sr-only">on {{ case.title }}</span></a>
-                </div>
-            </div>
+            {{ case_card(case) }}
         </div>
         {% endfor %}
         </div>

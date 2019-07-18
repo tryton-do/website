@@ -9,7 +9,7 @@ from collections import OrderedDict
 from functools import partial
 from http import HTTPStatus
 from logging.handlers import SMTPHandler
-from random import shuffle
+from random import shuffle, choice
 from urllib.parse import urlparse
 
 import requests
@@ -315,8 +315,11 @@ def success_stories_alt():
 @app.route('/success-stories/<story>')
 @cache.cached()
 def success_story(story):
+    next_case = choice(
+        [case for case in CASES if case.url and case.name != story])
     try:
-        return render_template('success_stories/%s.html' % story)
+        return render_template(
+            'success_stories/%s.html' % story, next_case=next_case)
     except TemplateNotFound:
         abort(HTTPStatus.NOT_FOUND)
 
