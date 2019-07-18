@@ -288,9 +288,6 @@ CASES = [
         description="Produces surface coating for automotive, aerospace, "
         "construction and mechanical engineering."),
     Case(
-        title="Lucerne Carnival",
-        description="Organizes the Lucerne Carnival."),
-    Case(
         title="Revelle",
         description="Consulting in developing countries and "
         "emerging economies."),
