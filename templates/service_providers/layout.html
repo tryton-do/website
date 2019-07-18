@@ -1,5 +1,5 @@
 <div class="col mb-gutter" id="{{ name | lower | replace(' ', '-') }}">
-    <div class="card mx-auto shadow" style="width: 24rem">
+    <div class="card mx-auto shadow d-flex flex-colum" style="width: 24rem; height: 100%">
         <a href="{{ website }}" style="height: 240px">
             {% if img %}
             <img class="card-img-top text-center d-block" src="{{ img }}" alt="{{ name }}"/>
@@ -7,7 +7,7 @@
         </a>
         <div class="card-body">
             <h2 class="h5 card-title">{{ name }}</h2>
-            <p class="card-text" style="height: 200px; overflow-y: auto;">
+            <p class="card-text" style="max-height: 200px; overflow-y: auto;">
             {% block description %}{% endblock %}
             </p>
             {% if website %}
