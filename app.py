@@ -10,6 +10,7 @@ from functools import partial
 from http import HTTPStatus
 from logging.handlers import SMTPHandler
 from random import sample, shuffle
+from operator import attrgetter
 from urllib.parse import urlparse
 
 import requests
@@ -311,7 +312,7 @@ CASES = [
 @cache.cached()
 def success_stories():
     cases = sorted(
-        sample(CASES, len(CASES)), key=lambda c: c.story, reverse=True)
+        sample(CASES, len(CASES)), key=attrgetter('story'), reverse=True)
     return render_template('success_stories.html', cases=cases)
 
 
