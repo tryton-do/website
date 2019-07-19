@@ -324,7 +324,10 @@ def success_stories_alt():
 @cache.cached()
 def success_story(story):
     cases = [c for c in CASES if c.story or c.name == story]
-    next_case = cases[(cases.index(story) + 1) % len(cases)]
+    try:
+        next_case = cases[(cases.index(story) + 1) % len(cases)]
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
     try:
         return render_template(
             'success_stories/%s.html' % story, next_case=next_case)
