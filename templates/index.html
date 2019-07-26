@@ -4,6 +4,10 @@
 {% macro slide_img(i, alt) %}
 <img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide%i.jpg' % i) }}" sizes="100vw" srcset="{{ url_for('static', filename='images/slide%i.jpg' % i) }} 1920w, {{ url_for('static', filename='images/slide%i-800px.jpg' % i) }} 800w, {{ url_for('static', filename='images/slide%i-400px.jpg' % i) }} 400w" alt="{{ alt }}">
 {% endmacro %}
+{% block style %}
+{{ super() }}
+<link rel="alternate" type="application/rss+xml" title="Tryton's news" href="{{ url_for('news_rss') }}"/>
+{% endblock style %}
 {% block header %}
 {{ super() }}
 <div id="carousel-header" class="carousel slide carousel-fade" data-ride="carousel">

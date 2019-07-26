@@ -118,6 +118,7 @@ def inject_menu():
     menu = OrderedDict()
     menu['Tryton'] = [
         ('Success Stories', url_for('success_stories')),
+        ('News', url_for('news')),
         ('Get Tryton', url_for('download')),
         ('Documentation', '//docs.tryton.org/'),
         ]
