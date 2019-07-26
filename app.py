@@ -18,7 +18,7 @@ from flask import (Flask, render_template, redirect, url_for, request,
     make_response, abort)
 from flask.logging import default_handler
 from flask_caching import Cache
-from flask_cdn import CDN
+from flask_cdn import CDN, url_for as cdn_url_for
 from flask_gravatar import Gravatar
 from flask_sitemap import Sitemap
 from icalendar import Calendar
@@ -542,6 +542,11 @@ def service_providers_alt():
 @cache.cached()
 def service_providers_start():
     return render_template('service_providers_start.html')
+
+
+@app.route('/fonts/<name>')
+def fonts(name):
+    return redirect(cdn_url_for('static', filename='fonts/' + name))
 
 
 @app.errorhandler(HTTPStatus.NOT_FOUND)
