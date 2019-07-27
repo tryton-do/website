@@ -550,6 +550,7 @@ def fonts(name):
 
 
 @app.errorhandler(HTTPStatus.NOT_FOUND)
+@cache.cached()
 def not_found(error):
     return render_template('not_found.html'), HTTPStatus.NOT_FOUND
 
