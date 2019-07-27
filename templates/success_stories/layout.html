@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% from "utils.html" import case_card %}
+{% block head %}
+{{ super() }}
+<link rel="prefetch" href="{{ next_case.url }}"/>
+{% endblock %}
 {% block content %}
 {{ super() }}
 <div class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/success-stories/%s' % banner) }});">
