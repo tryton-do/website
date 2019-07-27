@@ -102,16 +102,19 @@ CSS_LINK_HEADERS = [
         'static', [], {'filename': 'css/screen.min.css'}, {
             'rel': 'preload', 'as': 'style', 'nopush': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/RobotoCondensed-Light.woff'}, {
+        'fonts', [], {'name': 'RobotoCondensed-Light.woff'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/RobotoCondensed-Regular.woff'}, {
+        'fonts', [], {'name': 'RobotoCondensed-Regular.woff'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/RobotoCondensed-Bold.woff'}, {
+        'fonts', [], {'name': 'RobotoCondensed-Bold.woff'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/MaterialIcons-Regular.woff2'}, {
+        'fonts', [], {'name': 'MaterialIcons-Regular.woff2'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True}),
+    LinkHeader(
+        'fonts', [], {'name': 'Icons.woff2'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True}),
     ]
 
