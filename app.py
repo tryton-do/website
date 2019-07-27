@@ -1,11 +1,12 @@
 #!/bin/env python3
 import datetime
+import functools
 import logging
 import os
 import re
 import unicodedata
 
-from collections import OrderedDict
+from collections import OrderedDict, namedtuple
 from functools import partial
 from http import HTTPStatus
 from logging.handlers import SMTPHandler
@@ -89,6 +90,56 @@ def slugify(value):
     return _slugify_hyphenate_re.sub('-', value)
 
 
+LinkHeader = namedtuple(
+    'LinkHeader', ['endpoint', 'args', 'kwargs', 'params'])
+
+JS_LINK_HEADERS = [
+    LinkHeader('static', [], {'filename': 'js/all.js'}, {
+            'rel': 'preload', 'as': 'script', 'nopush': True}),
+    ]
+CSS_LINK_HEADERS = [
+    LinkHeader(
+        'static', [], {'filename': 'css/screen.min.css'}, {
+            'rel': 'preload', 'as': 'style', 'nopush': True}),
+    LinkHeader(
+        'static', [], {'filename': 'fonts/RobotoCondensed-Light.woff'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True}),
+    LinkHeader(
+        'static', [], {'filename': 'fonts/RobotoCondensed-Regular.woff'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True}),
+    LinkHeader(
+        'static', [], {'filename': 'fonts/RobotoCondensed-Bold.woff'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True}),
+    LinkHeader(
+        'static', [], {'filename': 'fonts/MaterialIcons-Regular.woff2'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True}),
+    ]
+
+
+def add_links(links):
+    def format_param(param):
+        key, value = param
+        if value is True:
+            return key
+        else:
+            return '%s=%s' % (key, value)
+
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            response = make_response(func(*args, **kwargs))
+            for link in links:
+                url = cdn_url_for(link.endpoint, *link.args, **link.kwargs)
+                params = '; '.join(map(format_param, link.params.items()))
+                value = '<{url}>; {params}'.format(
+                    url=url,
+                    params=params)
+                response.headers.add('Link', value)
+            return response
+        return wrapper
+    return decorator
+
+
 @app.after_request
 def add_cache_control_header(response):
     if 'Cache-Control' not in response.headers:
@@ -106,6 +157,7 @@ HEART = ('<span '
 
 @app.route('/')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def index():
     return render_template(
         'index.html',
@@ -311,6 +363,7 @@ CASES = [
 
 @app.route('/success-stories')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def success_stories():
     cases = sorted(
         sample(CASES, len(CASES)), key=attrgetter('story'), reverse=True)
@@ -324,6 +377,7 @@ def success_stories_alt():
 
 @app.route('/success-stories/<story>')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def success_story(story):
     cases = [c for c in CASES if c.story or c.name == story]
     try:
@@ -346,6 +400,7 @@ def success_story_generator():
 
 @app.route('/download')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def download():
     return render_template('download.html')
 
@@ -357,12 +412,14 @@ def download_alt():
 
 @app.route('/forum')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def forum():
     return render_template('forum.html')
 
 
 @app.route('/presentations')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def presentations():
     return render_template('presentations.html')
 
@@ -374,6 +431,7 @@ def presentations_alt():
 
 @app.route('/events/<event>')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def event(event):
     class Day:
         def __init__(self, date, *events, location=None, full=False):
@@ -432,6 +490,7 @@ def event(event):
 
 @app.route('/contribute')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def contribute():
     return render_template('contribute.html')
 
@@ -443,12 +502,14 @@ def contribute_alt():
 
 @app.route('/develop')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def develop():
     return render_template('develop.html')
 
 
 @app.route('/foundation')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def foundation():
     return render_template('foundation.html')
 
@@ -460,6 +521,7 @@ def foundation_alt():
 
 @app.route('/supporters')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def supporters():
     def url(supporter, start):
         for website in supporter['websites']:
@@ -490,6 +552,7 @@ def hostname(url):
 
 @app.route('/donate')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate():
     headers = {'Content-Type': 'application/json'}
     try:
@@ -516,18 +579,21 @@ def donate_alt():
 
 @app.route('/donate/thanks')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate_thanks():
     return render_template('donate_thanks.html')
 
 
 @app.route('/donate/cancel')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate_cancel():
     return render_template('donate_cancel.html')
 
 
 @app.route('/service-providers')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers():
     shuffle(PROVIDERS)
     return render_template('service_providers.html', providers=PROVIDERS)
@@ -540,6 +606,7 @@ def service_providers_alt():
 
 @app.route('/service-providers/start')
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers_start():
     return render_template('service_providers_start.html')
 
@@ -551,6 +618,7 @@ def fonts(name):
 
 @app.errorhandler(HTTPStatus.NOT_FOUND)
 @cache.cached()
+@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def not_found(error):
     return render_template('not_found.html'), HTTPStatus.NOT_FOUND
 
