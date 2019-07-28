@@ -103,19 +103,24 @@ CSS_LINK_HEADERS = [
             'rel': 'preload', 'as': 'style', 'nopush': True}),
     LinkHeader(
         'fonts', [], {'name': 'RobotoCondensed-Light.woff'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True}),
+            'rel': 'preload', 'as': 'font', 'nopush': True,
+            'crossorigin': True}),
     LinkHeader(
         'fonts', [], {'name': 'RobotoCondensed-Regular.woff'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True}),
+            'rel': 'preload', 'as': 'font', 'nopush': True,
+            'crossorigin': True}),
     LinkHeader(
         'fonts', [], {'name': 'RobotoCondensed-Bold.woff'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True}),
+            'rel': 'preload', 'as': 'font', 'nopush': True,
+            'crossorigin': True}),
     LinkHeader(
         'fonts', [], {'name': 'MaterialIcons-Regular.woff2'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True}),
+            'rel': 'preload', 'as': 'font', 'nopush': True,
+            'crossorigin': True}),
     LinkHeader(
         'fonts', [], {'name': 'Icons.woff2'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True}),
+            'rel': 'preload', 'as': 'font', 'nopush': True,
+            'crossorigin': True}),
     ]
 
 
