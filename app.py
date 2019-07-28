@@ -152,7 +152,7 @@ def add_cache_control_header(response):
 
 
 HEART = ('<span '
-    'class="material-icons" '
+    'class="material-icons" aria-hidden="true" '
     'style="color:#d9534f; font-size: inherit; vertical-align: middle">'
     'favorite'
     '</span>')

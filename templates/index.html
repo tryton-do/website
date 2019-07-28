@@ -1,8 +1,8 @@
 {% set title = "Modularity, scalability & security for your business" %}
 {% set description = "TRYTON is business software, ideal for companies of any size, easy to use, complete and 100% Open Source." %}
 {% extends "layout.html" %}
-{% macro slide_img(i, alt) %}
-<img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide%i.jpg' % i) }}" sizes="100vw" srcset="{{ url_for('static', filename='images/slide%i.jpg' % i) }} 1920w, {{ url_for('static', filename='images/slide%i-800px.jpg' % i) }} 800w, {{ url_for('static', filename='images/slide%i-400px.jpg' % i) }} 400w" alt="{{ alt }}">
+{% macro slide_img(i) %}
+<img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide%i.jpg' % i) }}" sizes="100vw" srcset="{{ url_for('static', filename='images/slide%i.jpg' % i) }} 1920w, {{ url_for('static', filename='images/slide%i-800px.jpg' % i) }} 800w, {{ url_for('static', filename='images/slide%i-400px.jpg' % i) }} 400w" alt="">
 {% endmacro %}
 {% block head %}
 {{ super() }}
@@ -19,7 +19,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            {{ slide_img(1, "First slide") }}
+            {{ slide_img(1) }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            {{ slide_img(2, "Second Slide") }}
+            {{ slide_img(2) }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            {{ slide_img(3, "Third slide") }}
+            {{ slide_img(3) }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            {{ slide_img(4, "Forth slide") }}
+            {{ slide_img(4) }}
             <div class="carousel-caption">
                 <div class="container">
                     <h2>
@@ -78,10 +78,12 @@
     <div class="carousel-controls">
         <div class="container d-flex">
             <a href="#carousel-header" role="button" data-slide="prev">
-                &lt;
+                <span aria-hidden="true">&lt;</span>
+                <span class="sr-only">Previous</span>
             </a>
             <a href="#carousel-header" role="button" data-slide="next">
-                &gt;
+                <span aria-hidden="true">&gt;</span>
+                <span class="sr-only">Next</span>
             </a>
         </div>
     </div>
@@ -260,7 +262,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="picto-container">
-                                <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s" >
+                                <div class="picto bg-dark text-white wow zoomIn" data-wow-delay=".5s" aria-hidden="true">
                                     <span class="material-icons md-48">event</span>
                                 </div>
                                 <h3 class="text-white mt-3 mb-3">Events</h3>
