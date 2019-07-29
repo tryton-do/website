@@ -70,7 +70,7 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt',
     'sitemap.xml']
 app.config['CDN_DOMAIN'] = os.environ.get('CDN_DOMAIN')
-app.config['CDN_HTTPS'] = True
+app.config['CDN_HTTPS'] = os.environ.get('CDN_HTTPS', True)
 app.config['SITEMAP_IGNORE_ENDPOINTS'] = ['events', 'events-alt']
 cache.init_app(app)
 CDN(app)
