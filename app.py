@@ -19,7 +19,7 @@ from flask import (Flask, render_template, redirect, url_for, request,
     make_response, abort)
 from flask.logging import default_handler
 from flask_caching import Cache
-from flask_cdn import CDN, url_for as cdn_url_for
+from flask_cdn import CDN, url_for as _cdn_url_for
 from flask_gravatar import Gravatar
 from flask_sitemap import Sitemap
 from icalendar import Calendar
@@ -88,6 +88,13 @@ def slugify(value):
     value = unicodedata.normalize('NFKD', value)
     value = str(_slugify_strip_re.sub('', value).strip())
     return _slugify_hyphenate_re.sub('-', value)
+
+
+def cdn_url_for(*args, **kwargs):
+    if app.config['CDN_DOMAIN']:
+        return _cdn_url_for(*args, **kwargs)
+    else:
+        return url_for(*args, **kwargs)
 
 
 LinkHeader = namedtuple(
