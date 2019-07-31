@@ -632,6 +632,11 @@ def fonts(name):
     return redirect(cdn_url_for('static', filename='fonts/' + name))
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return redirect(url_for('static', filename='images/favicon.ico'))
+
+
 @app.errorhandler(HTTPStatus.NOT_FOUND)
 @cache.cached()
 @add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
