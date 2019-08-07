@@ -51,6 +51,7 @@ PROVIDERS = [
     ('Datalife', [(37.9596885, -1.2086241)]),
     ('First Telecom', [(38.0131591, 23.7721521), (44.83722, 20.40560)]),
     ('gcoop', [(-34.59675, -58.43035)]),
+    ('IntegraPer', [(-11.9753824, -77.0860785)]),
     ('Lava Lab Software', [(-27.978905, 153.389466)]),
     ('m-ds', [(52.520008, 13.404954)]),
     ('NaN-tic', [(41.544063, 2.115122)]),
@@ -333,6 +334,10 @@ CASES = [
     Case(
         title="Blue Box Distribution",
         description="An international distributor of hair care products.",
+        story=True),
+    Case(
+        title="CAMIR",
+        description="A provider of spare parts for machinery.",
         story=True),
     Case(
         title="La Cave Thrace",
