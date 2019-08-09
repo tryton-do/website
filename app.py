@@ -52,6 +52,7 @@ PROVIDERS = [
     ('First Telecom', [(38.0131591, 23.7721521), (44.83722, 20.40560)]),
     ('gcoop', [(-34.59675, -58.43035)]),
     ('IntegraPer', [(-11.9753824, -77.0860785)]),
+    ('Kopen Software', [(41.5995983, 0.5799085)]),
     ('Lava Lab Software', [(-27.978905, 153.389466)]),
     ('m-ds', [(52.520008, 13.404954)]),
     ('NaN-tic', [(41.544063, 2.115122)]),
@@ -361,6 +362,11 @@ CASES = [
         title="Institut Mèdic per la Imatge",
         description="Provides all kinds of MRI scans, nuclear medicine "
         "and bone densitometry."),
+    Case(
+        title="Koolvet",
+        description="Software for veterinary clinics that deal with small "
+        "domestic pets and larger farm animals.",
+        story=True),
     Case(
         title="MenschensKinder Teltow",
         description="Operates municipal day care centers and "
