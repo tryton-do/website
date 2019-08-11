@@ -235,12 +235,12 @@
 
 <section class="section" id="news">
     <div class="container">
-        <section class="section-header bg-white wow fadeInLeft">
+        <section class="section-header bg-white">
             <h3 class="pr-3 text-uppercase"><a href="{{ url_for('news') }}">News</a></h3>
         </section>
         <div class="row">
             {% for item in news[:3] %}
-            <div class="col-md wow fadeIn" data-wow-delay=".1s">
+            <div class="col-md">
                 <h4>{{ item.title }} <small class="d-none d-sm-inline text-muted">{{ item.pubDate | string | truncate(16, True, '') }}</small></h4>
                 <p class="news-description">
                 {{ item.description|blockquote|truncate(240) }}
@@ -256,7 +256,7 @@
 
 <section class="section-bottom" id="events">
     <div class="container">
-        <div class="jumbotron bg-primary wow fadeIn" data-wow-delay=".4s">
+        <div class="jumbotron bg-primary">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="row">
