@@ -677,8 +677,11 @@ default_handler.setFormatter(formatter)
 mail_handler.setFormatter(formatter)
 
 if __name__ == '__main__':
-    app.config['CDN_DEBUG'] = True
-    app.run(debug=True, extra_files=[
+    app.config['CDN_DEBUG'] = ast.literal_eval(
+        os.environ.get('CDN_DEBUG', 'True'))
+    app.run(
+        debug=ast.literal_eval(os.environ.get('DEBUG', 'True')),
+        extra_files=[
             'templates',
             'templates/service_providers',
             'templates/events',
