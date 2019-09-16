@@ -103,6 +103,9 @@ def cdn_url_for(*args, **kwargs):
 LinkHeader = namedtuple(
     'LinkHeader', ['endpoint', 'args', 'kwargs', 'params'])
 
+PRECONNECT_HEADERS = [
+    LinkHeader('index', [], {}, {'rel': 'preconnect'}),
+    ]
 JS_LINK_HEADERS = [
     LinkHeader('static', [], {'filename': 'js/all.js'}, {
             'rel': 'preload', 'as': 'script', 'nopush': True}),
@@ -147,7 +150,18 @@ def add_links(links):
         def wrapper(*args, **kwargs):
             response = make_response(func(*args, **kwargs))
             for link in links:
-                url = cdn_url_for(link.endpoint, *link.args, **link.kwargs)
+                if link.endpoint == 'index':
+                    if (app.config['CDN_DOMAIN']
+                            and not app.config['CDN_DEBUG']):
+                        urls = app.url_map.bind(
+                            app.config['CDN_DOMAIN'], url_scheme='https')
+                        url = urls.build(
+                            link.endpoint, *link.args, **link.kwargs,
+                            force_external=True)
+                    else:
+                        url = url_for(link.endpoint, *link.args, **link.kwargs)
+                else:
+                    url = cdn_url_for(link.endpoint, *link.args, **link.kwargs)
                 params = '; '.join(map(format_param, link.params.items()))
                 value = '<{url}>; {params}'.format(
                     url=url,
@@ -175,7 +189,7 @@ HEART = ('<span '
 
 @app.route('/')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def index():
     return render_template(
         'index.html',
@@ -390,7 +404,7 @@ CASES = [
 
 @app.route('/success-stories')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def success_stories():
     cases = sorted(
         sample(CASES, len(CASES)), key=attrgetter('story'), reverse=True)
@@ -404,7 +418,7 @@ def success_stories_alt():
 
 @app.route('/success-stories/<story>')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def success_story(story):
     cases = [c for c in CASES if c.story or c.name == story]
     try:
@@ -427,7 +441,7 @@ def success_story_generator():
 
 @app.route('/download')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def download():
     return render_template('download.html')
 
@@ -439,14 +453,14 @@ def download_alt():
 
 @app.route('/forum')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def forum():
     return render_template('forum.html')
 
 
 @app.route('/presentations')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def presentations():
     return render_template('presentations.html')
 
@@ -458,7 +472,7 @@ def presentations_alt():
 
 @app.route('/events/<event>')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def event(event):
     class Day:
         def __init__(self, date, *events, location=None, full=False):
@@ -517,7 +531,7 @@ def event(event):
 
 @app.route('/contribute')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def contribute():
     return render_template('contribute.html')
 
@@ -529,14 +543,14 @@ def contribute_alt():
 
 @app.route('/develop')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def develop():
     return render_template('develop.html')
 
 
 @app.route('/foundation')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def foundation():
     return render_template('foundation.html')
 
@@ -548,7 +562,7 @@ def foundation_alt():
 
 @app.route('/supporters')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def supporters():
     def url(supporter, start):
         for website in supporter['websites']:
@@ -579,7 +593,7 @@ def hostname(url):
 
 @app.route('/donate')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate():
     headers = {'Content-Type': 'application/json'}
     try:
@@ -606,21 +620,21 @@ def donate_alt():
 
 @app.route('/donate/thanks')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate_thanks():
     return render_template('donate_thanks.html')
 
 
 @app.route('/donate/cancel')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate_cancel():
     return render_template('donate_cancel.html')
 
 
 @app.route('/service-providers')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers():
     shuffle(PROVIDERS)
     return render_template('service_providers.html', providers=PROVIDERS)
@@ -633,7 +647,7 @@ def service_providers_alt():
 
 @app.route('/service-providers/start')
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers_start():
     return render_template('service_providers_start.html')
 
@@ -650,7 +664,7 @@ def favicon():
 
 @app.errorhandler(HTTPStatus.NOT_FOUND)
 @cache.cached()
-@add_links(JS_LINK_HEADERS + CSS_LINK_HEADERS)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def not_found(error):
     return render_template('not_found.html'), HTTPStatus.NOT_FOUND
 
