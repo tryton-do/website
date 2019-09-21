@@ -6,4 +6,5 @@ flask-cdn
 icalendar
 jinja2
 lxml
+python-memcached
 requests

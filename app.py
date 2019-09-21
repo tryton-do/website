@@ -62,6 +62,10 @@ PROVIDERS = [
     ]
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
+if os.environ.get('MEMCACHED'):
+    cache.config['CACHE_TYPE'] = 'memcached'
+    cache.config['CACHE_MEMCACHED_SERVERS'] = (
+        os.environ['MEMCACHED'].split(','))
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
 app.config['CACHE_DEFAULT_TIMEOUT'] = 60 * 60
