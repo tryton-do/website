@@ -1,5 +1,4 @@
 Flask
-Flask-APScheduler
 Flask-Caching
 Flask-Gravatar
 Flask-Sitemap
