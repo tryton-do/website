@@ -19,6 +19,7 @@ import requests
 from flask import (Flask, render_template, redirect, url_for, request,
     make_response, abort)
 from flask.logging import default_handler
+from flask_apscheduler import APScheduler
 from flask_caching import Cache
 from flask_cdn import CDN, url_for as _cdn_url_for
 from flask_gravatar import Gravatar
@@ -76,6 +77,9 @@ app.config['CDN_DOMAIN'] = os.environ.get('CDN_DOMAIN')
 app.config['CDN_HTTPS'] = ast.literal_eval(os.environ.get('CDN_HTTPS', 'True'))
 app.config['SITEMAP_IGNORE_ENDPOINTS'] = ['events', 'events-alt']
 cache.init_app(app)
+scheduler = APScheduler()
+scheduler.init_app(app)
+scheduler.start()
 CDN(app)
 Gravatar(app, size=198, default='mp', use_ssl=True)
 sitemap = Sitemap(app=app)
@@ -253,12 +257,24 @@ def news_rss():
     return redirect(NEWS_URL + '.rss')
 
 
-def news_items(size=-1):
+@scheduler.task('interval', hours=1, next_run_time=datetime.datetime.now())
+def fetch_news_items():
     try:
         rss = requests.get(NEWS_URL + '.rss')
-        root = objectify.fromstring(rss.content)
     except Exception:
         app.logger.error('fail to fetch news', exc_info=True)
+        raise
+    cache.set('news', rss.content)
+
+
+def news_items(size=-1):
+    content = cache.get('news')
+    if not content:
+        return
+    try:
+        root = objectify.fromstring(content)
+    except Exception:
+        app.logger.error('fail to parse news', exc_info=True)
         return
     for item in root.xpath('/rss/channel/item')[:size]:
         yield item
@@ -278,13 +294,25 @@ def events():
     return redirect(CALENDAR_URL)
 
 
-def next_events(size=-1):
-    today = datetime.date.today()
+@scheduler.task('interval', hours=1, next_run_time=datetime.datetime.now())
+def fetch_events():
     try:
         ics = requests.get(CALENDAR_ICS)
-        cal = Calendar.from_ical(ics.content)
     except Exception:
         app.logger.error('fail to fetch events', exc_info=True)
+        raise
+    cache.set('events', ics.content)
+
+
+def next_events(size=-1):
+    today = datetime.date.today()
+    content = cache.get('events')
+    if not content:
+        return []
+    try:
+        cal = Calendar.from_ical(content)
+    except Exception:
+        app.logger.error('fail to parse events', exc_info=True)
         return []
 
     events = []
@@ -560,6 +588,18 @@ def foundation_alt():
     return redirect(url_for('foundation'))
 
 
+@scheduler.task('interval', days=1, next_run_time=datetime.datetime.now())
+def fetch_supporters():
+    headers = {'Content-Type': 'application/json'}
+    try:
+        response = requests.get(SUPPORTERS_URL, headers=headers)
+        supporters = response.json()
+    except Exception:
+        app.logger.error('fail to fetch supporters', exc_info=True)
+        supporters = []
+    cache.set('supporters', supporters)
+
+
 @app.route('/supporters')
 @cache.cached()
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
@@ -568,15 +608,8 @@ def supporters():
         for website in supporter['websites']:
             if website.startswith(start):
                 return website
-    headers = {'Content-Type': 'application/json'}
-    try:
-        response = requests.get(SUPPORTERS_URL, headers=headers)
-        supporters = response.json()
-    except Exception:
-        app.logger.error('fail to fetch supporters', exc_info=True)
-        supporters = []
     return render_template('supporters.html',
-        supporters=supporters,
+        supporters=cache.get('supporters') or [],
         discuss_url=partial(url, start='https://discuss.tryton.org/'),
         roundup_url=partial(url, start='https://bugs.tryton.org/'))
 
@@ -591,10 +624,8 @@ def hostname(url):
     return urlparse(url).hostname
 
 
-@app.route('/donate')
-@cache.cached()
-@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
-def donate():
+@scheduler.task('interval', days=1, next_run_time=datetime.datetime.now())
+def fetch_donations():
     headers = {'Content-Type': 'application/json'}
     try:
         response = requests.get(DONATORS_URL, headers=headers)
@@ -602,15 +633,23 @@ def donate():
     except Exception:
         app.logger.error('fail to fetch donators', exc_info=True)
         donators = []
+    cache.set('donators', donators)
     try:
         response = requests.get(DONATIONS_URL, headers=headers)
         donations = response.json()
     except Exception:
         app.logger.error('fail to fetch donations', exc_info=True)
         donations = []
+    cache.set('donations', donations)
+
+
+@app.route('/donate')
+@cache.cached()
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
+def donate():
     return render_template('donate.html',
-        donators=donators,
-        donations=donations)
+        donators=cache.get('donators') or [],
+        donations=cache.get('donations') or [])
 
 
 @app.route('/foundation/donations.html', endpoint='donate-alt')
