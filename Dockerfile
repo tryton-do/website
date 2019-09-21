@@ -24,6 +24,7 @@ RUN apt-get update \
         python3-setuptools \
         uwsgi \
         uwsgi-plugin-python3 \
+        curl \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd --no-log-init -r -M web

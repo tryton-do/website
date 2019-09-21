@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
     website:
@@ -10,6 +10,9 @@ services:
         ports:
             - "127.0.0.1:5000:5000"
         restart: unless-stopped
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+            interval: 5m
     memcached:
         image: memcached
         ports:
