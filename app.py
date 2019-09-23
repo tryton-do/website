@@ -156,7 +156,7 @@ def add_links(links):
             for link in links:
                 if (link.endpoint == 'index'
                         or (link.endpoint == 'static'
-                            and kwargs.get(
+                            and link.kwargs.get(
                                 'filename', '').startswith('fonts/'))):
                     if (app.config['CDN_DOMAIN']
                             and not app.config['CDN_DEBUG']):
