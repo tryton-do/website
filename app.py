@@ -136,7 +136,7 @@ CSS_LINK_HEADERS = [
             'crossorigin': True}),
     LinkHeader(
         'fonts', {'name': 'Icons.woff2'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True,
+            'rel': 'prefetch', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     ]
 
