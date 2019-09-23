@@ -119,24 +119,24 @@ CSS_LINK_HEADERS = [
         'static', [], {'filename': 'css/screen.min.css'}, {
             'rel': 'preload', 'as': 'style', 'nopush': True}),
     LinkHeader(
-        'fonts', [], {'name': 'RobotoCondensed-Light.woff'}, {
-            'rel': 'prefetch', 'as': 'font', 'nopush': True,
+        'static', [], {'filename': 'fonts/RobotoCondensed-Light.woff'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'fonts', [], {'name': 'RobotoCondensed-Regular.woff'}, {
-            'rel': 'prefetch', 'as': 'font', 'nopush': True,
+        'static', [], {'filename': 'fonts/RobotoCondensed-Regular.woff'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'fonts', [], {'name': 'RobotoCondensed-Bold.woff'}, {
-            'rel': 'prefetch', 'as': 'font', 'nopush': True,
+        'static', [], {'filename': 'fonts/RobotoCondensed-Bold.woff'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'fonts', [], {'name': 'MaterialIcons-Regular.woff2'}, {
-            'rel': 'prefetch', 'as': 'font', 'nopush': True,
+        'static', [], {'filename': 'fonts/MaterialIcons-Regular.woff2'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
         'fonts', [], {'name': 'Icons.woff2'}, {
-            'rel': 'prefetch', 'as': 'font', 'nopush': True,
+            'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     ]
 
@@ -154,7 +154,10 @@ def add_links(links):
         def wrapper(*args, **kwargs):
             response = make_response(func(*args, **kwargs))
             for link in links:
-                if link.endpoint == 'index':
+                if (link.endpoint == 'index'
+                        or (link.endpoint == 'static'
+                            and kwargs.get(
+                                'filename', '').startswith('fonts/'))):
                     if (app.config['CDN_DOMAIN']
                             and not app.config['CDN_DEBUG']):
                         urls = app.url_map.bind(
