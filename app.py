@@ -105,37 +105,37 @@ def cdn_url_for(*args, **kwargs):
 
 
 LinkHeader = namedtuple(
-    'LinkHeader', ['endpoint', 'args', 'kwargs', 'params'])
+    'LinkHeader', ['endpoint', 'values', 'params'])
 
 PRECONNECT_HEADERS = [
-    LinkHeader('index', [], {}, {'rel': 'preconnect'}),
+    LinkHeader('index', {}, {'rel': 'preconnect'}),
     ]
 JS_LINK_HEADERS = [
-    LinkHeader('static', [], {'filename': 'js/all.js'}, {
+    LinkHeader('static', {'filename': 'js/all.js'}, {
             'rel': 'preload', 'as': 'script', 'nopush': True}),
     ]
 CSS_LINK_HEADERS = [
     LinkHeader(
-        'static', [], {'filename': 'css/screen.min.css'}, {
+        'static', {'filename': 'css/screen.min.css'}, {
             'rel': 'preload', 'as': 'style', 'nopush': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/RobotoCondensed-Light.woff'}, {
+        'static', {'filename': 'fonts/RobotoCondensed-Light.woff'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/RobotoCondensed-Regular.woff'}, {
+        'static', {'filename': 'fonts/RobotoCondensed-Regular.woff'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/RobotoCondensed-Bold.woff'}, {
+        'static', {'filename': 'fonts/RobotoCondensed-Bold.woff'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'static', [], {'filename': 'fonts/MaterialIcons-Regular.woff2'}, {
+        'static', {'filename': 'fonts/MaterialIcons-Regular.woff2'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'fonts', [], {'name': 'Icons.woff2'}, {
+        'fonts', {'name': 'Icons.woff2'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     ]
@@ -156,19 +156,18 @@ def add_links(links):
             for link in links:
                 if (link.endpoint == 'index'
                         or (link.endpoint == 'static'
-                            and link.kwargs.get(
+                            and link.values.get(
                                 'filename', '').startswith('fonts/'))):
                     if (app.config['CDN_DOMAIN']
                             and not app.config['CDN_DEBUG']):
                         urls = app.url_map.bind(
                             app.config['CDN_DOMAIN'], url_scheme='https')
                         url = urls.build(
-                            link.endpoint, *link.args, **link.kwargs,
-                            force_external=True)
+                            link.endpoint, link.values, force_external=True)
                     else:
-                        url = url_for(link.endpoint, *link.args, **link.kwargs)
+                        url = url_for(link.endpoint, **link.values)
                 else:
-                    url = cdn_url_for(link.endpoint, *link.args, **link.kwargs)
+                    url = cdn_url_for(link.endpoint, **link.values)
                 params = '; '.join(map(format_param, link.params.items()))
                 value = '<{url}>; {params}'.format(
                     url=url,
