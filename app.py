@@ -595,7 +595,7 @@ def supporters():
             if website.startswith(start):
                 return website
     return render_template('supporters.html',
-        supporters=cache.get('supporters') or [],
+        supporters=fetch_supporters(),
         discuss_url=partial(url, start='https://discuss.tryton.org/'),
         roundup_url=partial(url, start='https://bugs.tryton.org/'))
 
