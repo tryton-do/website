@@ -2,7 +2,9 @@
     <div class="card mx-auto shadow d-flex flex-colum" style="width: 24rem; height: 100%">
         <a href="{{ website }}" style="height: 240px">
             {% if img %}
-            <img class="card-img-top text-center d-block" src="{{ img }}" alt="{{ name }}"/>
+            <noscript class="loading-lazy">
+                <img class="card-img-top text-center d-block" src="{{ img }}" alt="{{ name }}" loading="lazy"/>
+            </noscript>
             {% endif %}
         </a>
         <div class="card-body">

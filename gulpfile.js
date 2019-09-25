@@ -18,6 +18,7 @@ gulp.task('js', function() {
         'node_modules/bootstrap/dist/js/bootstrap.js',
         'node_modules/wowjs/dist/wow.js',
         'node_modules/leaflet/dist/leaflet.js',
+        'node_modules/loading-attribute-polyfill/loading-attribute-polyfill.js',
         'js/wow.js',
         'js/highlight.pack.js',
         'js/highlight.js',

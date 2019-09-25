@@ -19,6 +19,7 @@
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.4.1",
     "leaflet": "^1.5.1",
+    "loading-attribute-polyfill": "^1.1.0",
     "material-icons": "^0.3.1",
     "popper.js": "^1.15.0",
     "wowjs": "^1.1.3"

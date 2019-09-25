@@ -7,7 +7,9 @@
 {% block customer %}
 {{ super() }}
 <p class="lead">
-<img src="{{ url_for('static', filename='images/success-stories/camir/warehouse1.jpg') }}" class="mx-auto my-4 d-block mx-md-4 my-md-0 float-md-left" alt="Zone C of CAMIR's warehouse">
+<noscript class="loading-lazy">
+    <img src="{{ url_for('static', filename='images/success-stories/camir/warehouse1.jpg') }}" class="mx-auto my-4 d-block mx-md-4 my-md-0 float-md-left" alt="Zone C of CAMIR's warehouse" loading="lazy">
+</noscript>
 <a href="http://www.camirperu.com/">CAMIR</a>, is a company whose main activities are the commercialization of industrial products and the manufacture of metal parts at the business to business level, one of its main clients is the largest brewery factory in Peru.</p>
 <p>It started operations in 1991 and is located in the JR. HELIO NRO. 5624 URB. INDUSTRIAL INFANTAS - LOS OLIVOS - LIMA - PERU.</p>
 <p>It has <a href="https://www.iso.org/standard/62085.html">ISO 9001-2015</a> certification since April-2018, a process initiated in parallel with the implementation of Tryton as its ERP in 2017.</p>
@@ -32,7 +34,9 @@
 <p>In response to the problems identified during the analytical phase, we defined the scope of the changes that were required.
 From this we were able to work out what Tryton modules were needed to support all of the businesses processes.</p>
 <p>
-<img src="{{ url_for('static', filename='images/success-stories/camir/warehouse2.jpg') }}" class="mx-auto my-4 d-block mx-md-4 my-md-0 float-md-right" alt="Zone B of CAMIR's warehouse">
+<noscript class="loading-lazy">
+    <img src="{{ url_for('static', filename='images/success-stories/camir/warehouse2.jpg') }}" class="mx-auto my-4 d-block mx-md-4 my-md-0 float-md-right" alt="Zone B of CAMIR's warehouse" loading="lazy">
+</noscript>
 The modules that were needed were the following:</p>
 <ul>
     <li>Purchase</li>
@@ -63,7 +67,9 @@ However, now Tryton communicates directly with the SUNAT web service, so invoice
 This reduces costs, saves time, and improves procedural agility.</p>
 <p>The Purchase and Sales Register at the end of each month is generated in 3 clicks of the mouse and this makes the accountants very happy.</p>
 <p>The implementation started its testing phase in June 2018, and entered production on January 1, 2019.</p>
-<img src="{{ url_for('static', filename='images/success-stories/camir/manufacturer.jpg') }}" class="img-fluid" alt="Manufacturer">
+<noscript class="loading-lazy">
+    <img src="{{ url_for('static', filename='images/success-stories/camir/manufacturer.jpg') }}" class="img-fluid" alt="Manufacturer" loading="lazy">
+</noscript>
 {% endblock implementation %}
 {% block results %}
 {{ super() }}

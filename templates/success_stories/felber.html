@@ -8,7 +8,9 @@
 {{ super() }}
 <p class="lead"><a href="https://www.felber-ag.ch/">Felber</a> is a local producer and service provider for label stamps and signalisation products.
 It is a small company with only 4 employees.</p>
-<img src="{{ url_for('static', filename='images/success-stories/felber/banner.jpg') }}" class="img-fluid" alt="">
+<noscript class="loading-lazy">
+    <img src="{{ url_for('static', filename='images/success-stories/felber/banner.jpg') }}" class="img-fluid" alt="" loading="lazy">
+</noscript>
 {% endblock customer %}
 {% block challenge %}
 {{ super() }}

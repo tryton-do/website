@@ -82,7 +82,9 @@
 
         <footer id="footer">
             {% block footer %}
-            <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt=""/>
+            <noscript class="loading-lazy">
+                <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy"/>
+            </noscript>
             <section class="topfooter">
                 <div class="container">
                     <div class="row">
@@ -106,7 +108,9 @@
                         </div>
                         <div class="offset-lg-1 col-md-5 col-lg-4">
                             <div class="footer-right">
-                                <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" />
+                                <noscript class="loading-lazy">
+                                    <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
+                                </noscript>
                                 <hr/>
                                 <p class="lead">Modularity, scalability & security for your business</p>
                                 <p>

@@ -7,7 +7,9 @@
 {% block customer %}
 {{ super() }}
 <p class="lead">
-<img src="{{ url_for('static', filename='images/success-stories/koolvet/cat.jpg') }}" class="mx-4 float-right" alt="cat with veterinary">
+<noscript class="loading-lazy">
+    <img src="{{ url_for('static', filename='images/success-stories/koolvet/cat.jpg') }}" class="mx-4 float-right" alt="cat with veterinary" loading="lazy">
+</noscript>
 <a href="https://www.koolvet.com/">Koolvet</a> is a young company based in Spain but expanding to South America.
 It offers veterinary software for the management of clinics, veterinary offices, universities and ambulant veterinarians.
 </p>
@@ -60,7 +62,9 @@ Now complete, the solution is ready for use in veterinary clinics that deal with
 {% block results %}
 {{ super() }}
 <p>
-<img src="{{ url_for('static', filename='images/success-stories/koolvet/results.jpg') }}" class="mx-4 float-left" alt="computer with koolvet software">
+<noscript class="loading-lazy">
+    <img src="{{ url_for('static', filename='images/success-stories/koolvet/results.jpg') }}" class="mx-4 float-left" alt="computer with koolvet software" loading="lazy">
+</noscript>
 Our customers are extremely happy with koolvet: They can access their information from anywhere using any device.
 All the team members always have easy access to information that is always up to date, and their processes have been streamlined making them simpler and less error prone.
 </p>
