@@ -79,9 +79,18 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
 app.config['CDN_DOMAIN'] = os.environ.get('CDN_DOMAIN')
 app.config['CDN_HTTPS'] = ast.literal_eval(os.environ.get('CDN_HTTPS', 'True'))
 app.config['SITEMAP_IGNORE_ENDPOINTS'] = ['events', 'events-alt']
+app.config['GRAVATAR_SIZE'] = 198
+app.config['GRAVATAR_DEFAULT'] = 'mp'
+app.config['GRAVATAR_USE_SSL'] = True
+if app.config['CDN_DOMAIN']:
+    app.config['GRAVATAR_BASE_URL'] = '%s://%s/' % (
+        'https' if app.config['CDN_HTTPS'] else 'http',
+        app.config['CDN_DOMAIN'])
+else:
+    app.config['GRAVATAR_BASE_URL'] = '/'
 cache.init_app(app)
 CDN(app)
-Gravatar(app, size=198, default='mp', use_ssl=True)
+Gravatar(app)
 sitemap = Sitemap(app=app)
 
 _slugify_strip_re = re.compile(r'[^\w\s-]')
@@ -603,6 +612,26 @@ def supporters():
 @app.route('/foundation/supporters.html', endpoint='supporters-alt')
 def supporters_alt():
     return redirect(url_for('supporters'))
+
+
+@cache.memoize(timeout=60 * 60 * 24)
+def fetch_gravatar(hash, **params):
+    url = 'https://secure.gravatar.com/avatar/' + hash
+    try:
+        response = requests.get(url, params=params)
+    except Exception as e:
+        return b''
+    rv = make_response(response.content)
+    rv.content_type = response.headers['Content-Type']
+    rv.cache_control.max_age = 60 * 60 * 24
+    rv.cache_control.public = True
+    return rv
+
+
+@app.route('/avatar/<hash>')
+@cache.cached()
+def avatar(hash):
+    return fetch_gravatar(hash, **request.args)
 
 
 @app.template_filter('hostname')
