@@ -61,7 +61,7 @@
                             <div class="h-card vcard d-flex flex-wrap justify-content-start align-items-start">
                                 <a class="u-url url" href="//www.gravatar.com/{{ profile.gravatar }}">
                                     <noscript class="loading-lazy">
-                                        <img class="img-thumbnail u-photo photo" src="//www.gravatar.com/avatar/{{ profile.gravatar }}?=48" alt="Avatar of {{ profile.name }}" loading="lazy"/>
+                                        <img class="img-thumbnail u-photo photo" src="{{ url_for('avatar', hash=profile.gravatar, s=48) }}" alt="Avatar of {{ profile.name }}" loading="lazy"/>
                                     </noscript>
                                 </a>
                                 <span class="p-name fn m-1">{{ profile.name }}{% if profile.company %},<br/><a class="p-org org" href="{{ profile.url }}">{{ profile.company }}</a>{% endif %}</span>
