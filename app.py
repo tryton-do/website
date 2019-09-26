@@ -125,7 +125,7 @@ JS_LINK_HEADERS = [
     ]
 CSS_LINK_HEADERS = [
     LinkHeader(
-        'static', {'filename': 'css/screen.min.css'}, {
+        'static', {'filename': 'css/screen.css'}, {
             'rel': 'preload', 'as': 'style', 'nopush': True}),
     LinkHeader(
         'static', {'filename': 'fonts/RobotoCondensed-Light.woff'}, {

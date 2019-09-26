@@ -4,11 +4,10 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
-var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var iconfont = require('gulp-iconfont');
 var iconfontCss = require('gulp-iconfont-css');
-var cssFileName = 'screen';
+var touch = require('gulp-touch-fd');
 var fontName = 'Icons';
 
 gulp.task('js', function() {
@@ -28,18 +27,19 @@ gulp.task('js', function() {
         .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('static/js/'));
+        .pipe(gulp.dest('static/js/'))
+        .pipe(touch());
 });
 
 gulp.task('sass', function() {
-    return gulp.src('sass/' + cssFileName + '.scss')
+    return gulp.src('sass/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(rename(cssFileName + '.min.css'))
         .pipe(autoprefixer())
         .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('static/css/'));
+        .pipe(gulp.dest('static/css/'))
+        .pipe(touch());
 });
 
 gulp.task('iconfont', function(callback) {
@@ -62,7 +62,7 @@ gulp.task('iconfont', function(callback) {
 gulp.task('css', gulp.series(['iconfont', 'sass']));
 
 gulp.task('watch', function() {
-    gulp.watch(['sass/*', 'sass/*/*', 'sass/*/*/*'], gulp.parallel(['sass']));
+    gulp.watch(['sass/**/*.scss'], gulp.parallel(['sass']));
     gulp.watch(['iconfont/*'], gulp.parallel(['iconfont']));
 });
 
