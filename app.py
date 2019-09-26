@@ -629,7 +629,7 @@ def fetch_gravatar(hash, **params):
 
 
 @app.route('/avatar/<hash>')
-@cache.cached()
+@cache.cached(query_string=True)
 def avatar(hash):
     return fetch_gravatar(hash, **request.args)
 
