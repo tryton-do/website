@@ -617,10 +617,7 @@ def supporters_alt():
 @cache.memoize(timeout=60 * 60 * 24)
 def fetch_gravatar(hash, **params):
     url = 'https://secure.gravatar.com/avatar/' + hash
-    try:
-        response = requests.get(url, params=params)
-    except Exception as e:
-        return b''
+    response = requests.get(url, params=params)
     rv = make_response(response.content)
     rv.content_type = response.headers['Content-Type']
     rv.cache_control.max_age = 60 * 60 * 24
