@@ -26,6 +26,7 @@ from flask_sitemap import Sitemap
 from icalendar import Calendar
 from jinja2 import TemplateNotFound
 from lxml import objectify, html
+from werkzeug.contrib.fixers import ProxyFix
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'
 CALENDAR_URL = (
@@ -67,6 +68,7 @@ if os.environ.get('MEMCACHED'):
     cache.config['CACHE_MEMCACHED_SERVERS'] = (
         os.environ['MEMCACHED'].split(','))
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
 app.config['CACHE_DEFAULT_TIMEOUT'] = 60 * 60
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True

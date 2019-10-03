@@ -8,3 +8,4 @@ jinja2
 lxml
 python-memcached
 requests
+werkzeug
