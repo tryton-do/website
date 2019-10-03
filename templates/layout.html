@@ -31,13 +31,11 @@
 
         <title>Tryton - {{ title }}</title>
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
-        {% if request.endpoint %}
-        {% with canonical = url_for(request.endpoint, _external=True, _scheme='https', **request.view_args) %}
-        {% if canonical != request.url %}
+        {% with canonical = canonical or url_for_canonical() %}
+        {%- if canonical != request.url %}
         <link rel="canonical" href="{{ canonical }}"/>
-        {% endif %}
-        {% endwith %}
-        {% endif %}
+        {%- endif %}
+        {%- endwith %}
 
         {% block style %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/screen.css') }}"/>

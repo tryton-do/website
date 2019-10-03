@@ -198,6 +198,19 @@ def add_cache_control_header(response):
     return response
 
 
+def url_for_canonical(endpoint=None, **values):
+    if endpoint is None:
+        endpoint = request.endpoint
+    if not endpoint:
+        return ''
+    return url_for(endpoint, _external=True, _scheme='https', **values)
+
+
+@app.context_processor
+def inject_canonical():
+    return dict(url_for_canonical=url_for_canonical)
+
+
 HEART = ('<span '
     'class="material-icons" aria-hidden="true" '
     'style="color:#d9534f; font-size: inherit; vertical-align: middle">'
@@ -454,7 +467,8 @@ def success_story(story):
         abort(HTTPStatus.NOT_FOUND)
     try:
         return render_template(
-            'success_stories/%s.html' % story, next_case=next_case)
+            'success_stories/%s.html' % story, next_case=next_case,
+            canonical=url_for_canonical(story=story))
     except TemplateNotFound:
         abort(HTTPStatus.NOT_FOUND)
 
@@ -551,7 +565,9 @@ def event(event):
             self.company = company
             self.url = url
     try:
-        return render_template('events/%s.html' % event, Day=Day)
+        return render_template(
+            'events/%s.html' % event, Day=Day,
+            canonical=url_for_canonical(event=event))
     except TemplateNotFound:
         abort(HTTPStatus.NOT_FOUND)
 
