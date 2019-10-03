@@ -71,6 +71,7 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=365)
 app.config['CACHE_DEFAULT_TIMEOUT'] = 60 * 60
+app.config['PREFERRED_URL_SCHEME'] = 'https'
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SITEMAP_VIEW_DECORATORS'] = [cache.cached()]
 app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
