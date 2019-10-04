@@ -31,10 +31,8 @@
 
         <title>Tryton - {{ title }}</title>
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
-        {% with canonical = canonical or url_for_canonical() %}
-        {%- if canonical != request.url %}
+        {%- with canonical = canonical or url_for_canonical() %}
         <link rel="canonical" href="{{ canonical }}"/>
-        {%- endif %}
         {%- endwith %}
 
         {% block style %}
