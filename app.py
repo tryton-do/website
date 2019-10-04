@@ -741,7 +741,8 @@ def favicon():
 @cache.cached()
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def not_found(error):
-    return render_template('not_found.html'), HTTPStatus.NOT_FOUND
+    return render_template(
+        'not_found.html', canonical=None), HTTPStatus.NOT_FOUND
 
 
 class RequestFormatter(logging.Formatter):
