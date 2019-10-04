@@ -638,6 +638,7 @@ def supporters_alt():
 def fetch_gravatar(hash, **params):
     url = 'https://secure.gravatar.com/avatar/' + hash
     response = requests.get(url, params=params)
+    response.raise_for_status()
     rv = make_response(response.content)
     rv.content_type = response.headers['Content-Type']
     rv.cache_control.max_age = 60 * 60 * 24
