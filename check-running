@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+
+curl -f "http://${SERVER_NAME:=localhost}/" --connect-to "::localhost:5000"

@@ -37,6 +37,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY app.py uwsgi.conf ./
+COPY check-running ./
 COPY templates templates/
 COPY static/fonts static/fonts/
 COPY static/images static/images/
