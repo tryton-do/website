@@ -39,10 +39,10 @@
         {%- endif %}
 
         {% block style %}
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/screen.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
         {% endblock style %}
 
-        <script async src="{{ url_for('static', filename='js/all.js') }}"></script>
+        <script async src="{{ url_for('static', filename='js/main.js') }}"></script>
         {% endblock head %}
     </head>
     <body>

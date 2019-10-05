@@ -11,21 +11,32 @@ var iconfontCss = require('gulp-iconfont-css');
 var touch = require('gulp-touch-fd');
 var fontName = 'Icons';
 
-gulp.task('js', function() {
+gulp.task('main-js', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.slim.js',
         'node_modules/popper.js/dist/umd/popper.js',
         'node_modules/bootstrap/dist/js/bootstrap.js',
         'node_modules/wowjs/dist/wow.js',
-        'node_modules/leaflet/dist/leaflet.js',
         'node_modules/loading-attribute-polyfill/loading-attribute-polyfill.js',
         'js/wow.js',
         'js/highlight.pack.js',
-        'js/highlight.js',
+        'js/highlight.js'])
+        .pipe(sourcemaps.init())
+        .pipe(gulp.dest('static/js/'))
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('static/js/'))
+        .pipe(touch());
+});
+
+gulp.task('map-js', function() {
+    return gulp.src([
+        'node_modules/leaflet/dist/leaflet.js',
         'js/map.js'])
         .pipe(sourcemaps.init())
         .pipe(gulp.dest('static/js/'))
-        .pipe(concat('all.js'))
+        .pipe(concat('map.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('static/js/'))
@@ -64,6 +75,7 @@ gulp.task('iconfont', function(callback) {
 });
 
 gulp.task('css', gulp.series(['iconfont', 'sass']));
+gulp.task('js', gulp.parallel(['main-js', 'map-js']));
 
 gulp.task('watch', function() {
     gulp.watch(['sass/**/*.scss'], gulp.parallel(['sass']));
