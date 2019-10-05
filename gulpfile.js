@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
+var sassPackageImporter = require('node-sass-package-importer');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var sourcemaps = require('gulp-sourcemaps');
@@ -34,7 +35,10 @@ gulp.task('js', function() {
 gulp.task('sass', function() {
     return gulp.src('sass/**/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({
+            importer: sassPackageImporter(),
+            outputStyle: 'compressed',
+        }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
