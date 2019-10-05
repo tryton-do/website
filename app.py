@@ -124,12 +124,12 @@ PRECONNECT_HEADERS = [
     LinkHeader('index', {}, {'rel': 'preconnect'}),
     ]
 JS_LINK_HEADERS = [
-    LinkHeader('static', {'filename': 'js/all.js'}, {
+    LinkHeader('static', {'filename': 'js/main.js'}, {
             'rel': 'preload', 'as': 'script', 'nopush': True}),
     ]
 CSS_LINK_HEADERS = [
     LinkHeader(
-        'static', {'filename': 'css/screen.css'}, {
+        'static', {'filename': 'css/main.css'}, {
             'rel': 'preload', 'as': 'style', 'nopush': True}),
     LinkHeader(
         'static', {'filename': 'fonts/RobotoCondensed-Light.woff'}, {
