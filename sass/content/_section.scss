@@ -29,6 +29,7 @@
 
   // SECTION HEADER
   .section-header {
+    animation: fadeInDown 2s ease-out;
     margin-bottom: $h2-margin-bottom;
     position: relative;
 
@@ -95,4 +96,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  & .container {
+    animation: fadeInDown 1s ease-out;
+  }
 }

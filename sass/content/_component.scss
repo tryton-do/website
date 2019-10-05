@@ -6,6 +6,7 @@
 // PICTOS
 .picto-container {
   align-items: center;
+  animation: zoomIn 1s ease-out;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -77,6 +78,17 @@
   @each $height, $value in $image-frame-heights {
     &.frame-#{$height} {
       min-height: $value;
+    }
+  }
+}
+
+.socials {
+  a {
+    opacity: .5;
+
+    &:hover {
+      opacity: 1;
+      transition: .5s ease;
     }
   }
 }

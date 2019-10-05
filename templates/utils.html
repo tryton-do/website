@@ -16,8 +16,8 @@
 </style>
 {% endmacro %}
 
-{% macro case_card(case) %}
-<div class="card mx-auto shadow d-flex flex-column" style="width: 18rem; height: 100%">
+{% macro case_card(case, classes='') %}
+<div class="card mx-auto shadow d-flex flex-column {{ classes }}" style="width: 18rem; height: 100%">
     {% if case.logo %}
     <noscript class="loading-lazy">
         <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" style="height: 180px" alt="" loading="lazy"/>

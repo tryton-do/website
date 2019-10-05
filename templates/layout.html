@@ -89,7 +89,7 @@
         <footer id="footer">
             {% block footer %}
             <noscript class="loading-lazy">
-                <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy"/>
+                <img class="img-fluid" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy"/>
             </noscript>
             <section class="topfooter">
                 <div class="container">
@@ -115,7 +115,7 @@
                         <div class="offset-lg-1 col-md-5 col-lg-4">
                             <div class="footer-right">
                                 <noscript class="loading-lazy">
-                                    <img class="img-fluid wow fadeIn" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
+                                    <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
                                 </noscript>
                                 <hr/>
                                 <p class="lead">Modularity, scalability & security for your business</p>
@@ -124,12 +124,12 @@
                                 </p>
                                 <div class="socials">
                                     <h2>Follow us</h2>
-                                    <a href="{{ url_for('news_rss') }}" class="mr-3 wow zoomIn icon icon-rss-box i-36" data-wow-delay=".2s"><span class="sr-only">RSS</span></a>
-                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" rel="noopener" class="mr-3 wow zoomIn icon icon-twitter-box i-36" data-wow-delay=".2s"><span class="sr-only">Twitter</span></a>
-                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" rel="noopener" class="mr-3 wow zoomIn icon icon-facebook-box i-36" data-wow-delay=".1s"><span class="sr-only">Facebook</span></a>
-                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" rel="noopener" class="mr-3 wow zoomIn icon icon-linkedin-box i-36" data-wow-delay=".3s"><span class="sr-only">LinkedIn</span></a>
-                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" rel="noopener" class="mr-3 wow zoomIn icon icon-youtube i-36" data-wow-delay=".4s"><span class="sr-only">YouTube</span></a>
-                                    <a href="https://vimeo.com/groups/tryton" target="_blank" rel="noopener" class="mr-3 wow zoomIn icon icon-vimeo i-36" data-wow-delay=".5s"><span class="sr-only">Vimeo</span></a>
+                                    <a href="{{ url_for('news_rss') }}" class="mr-3 icon icon-rss-box i-36"><span class="sr-only">RSS</span></a>
+                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" rel="noopener" class="mr-3 icon icon-twitter-box i-36"><span class="sr-only">Twitter</span></a>
+                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" rel="noopener" class="mr-3 icon icon-facebook-box i-36"><span class="sr-only">Facebook</span></a>
+                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" rel="noopener" class="mr-3 icon icon-linkedin-box i-36"><span class="sr-only">LinkedIn</span></a>
+                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" rel="noopener" class="mr-3 icon icon-youtube i-36"><span class="sr-only">YouTube</span></a>
+                                    <a href="https://vimeo.com/groups/tryton" target="_blank" rel="noopener" class="mr-3 icon icon-vimeo i-36"><span class="sr-only">Vimeo</span></a>
                                 </div>
                             </div>
                         </div>

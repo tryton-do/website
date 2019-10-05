@@ -50,8 +50,6 @@
     </div>
 </div>
 <div class="section bg-light text-center">
-    <div class="wow bounce" data-wow-offset="10" data-wow-iteration="2">
-        {{ case_card(next_case) }}
-    </div>
+    {{ case_card(next_case, classes='bounce') }}
 </div>
 {% endblock content %}
