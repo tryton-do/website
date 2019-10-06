@@ -2,6 +2,7 @@
 import ast
 import datetime
 import functools
+import hashlib
 import logging
 import os
 import re
@@ -94,7 +95,7 @@ else:
     app.config['GRAVATAR_BASE_URL'] = '/'
 cache.init_app(app)
 CDN(app)
-Gravatar(app)
+gravatar = Gravatar(app)
 sitemap = Sitemap(app=app)
 
 _slugify_strip_re = re.compile(r'[^\w\s-]')
@@ -735,6 +736,20 @@ def fonts(name):
 @app.route('/favicon.ico')
 def favicon():
     return redirect(url_for('static', filename='images/favicon.ico'))
+
+
+@app.route('/_warmup')
+def warmup():
+    fetch_news_items()
+    fetch_events()
+    for supporter in fetch_supporters():
+        hash = hashlib.md5(supporter['email'].encode('utf-8')).hexdigest()
+        try:
+            fetch_gravatar(
+                hash, s='198', d=gravatar.default, r=gravatar.rating)
+        except Exception:
+            app.logger.warning('fail to fetch gravatar')
+    return '', HTTPStatus.NO_CONTENT
 
 
 @app.errorhandler(HTTPStatus.NOT_FOUND)
