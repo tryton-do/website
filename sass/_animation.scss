@@ -52,3 +52,20 @@
     animation-play-state: paused;
   }
 }
+
+@keyframes beat {
+  from,
+  40%,
+  to {
+    transform: scale(1);
+  }
+
+  25%,
+  60% {
+    transform: scale(1.1);
+  }
+}
+
+.beat {
+  animation: beat .8s infinite;
+}

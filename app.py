@@ -214,7 +214,7 @@ def inject_canonical():
 
 
 HEART = ('<span '
-    'class="material-icons" aria-hidden="true" '
+    'class="material-icons beat" aria-hidden="true" '
     'style="color:#d9534f; font-size: inherit; vertical-align: middle">'
     'favorite'
     '</span>')
