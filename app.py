@@ -381,7 +381,8 @@ CASES = [
         story=True),
     Case(
         title="AMMEBA",
-        description="A Medical Mutual Society from Buenos Aires."),
+        description="A Medical Mutual Society from Buenos Aires.",
+        story=True),
     Case(
         title="Advocate Consulting Legal",
         description="A legal firm servicing the general aviation industry"),
