@@ -76,10 +76,10 @@
                     {% endfor %}
                 </ol>
                 {% if not day.full and day.date > datetime.date.today() %}
-                <p class="bg-info text-center mt-4">More to come</p>
+                <p class="bg-info text-center mt-4 rounded p-2">More to come</p>
                 {% endif %}
                 {% else %}
-                <p class="bg-info text-center">To be announced</p>
+                <p class="bg-info text-center rounded p-2">To be announced</p>
                 {% endif %}
             </section>
             {% endfor %}
