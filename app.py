@@ -651,6 +651,8 @@ def fetch_gravatar(hash, **params):
 @app.route('/avatar/<hash>')
 @cache.cached(query_string=True)
 def avatar(hash):
+    if not set(request.args.keys()).issubset(set('sdr')):
+        abort(HTTPStatus.BAD_REQUEST)
     return fetch_gravatar(hash, **request.args)
 
 
