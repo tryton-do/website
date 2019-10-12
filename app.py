@@ -435,7 +435,8 @@ CASES = [
     Case(
         title="Revelle",
         description="Consulting in developing countries and "
-        "emerging economies."),
+        "emerging economies.",
+        story=True),
     Case(
         title="Sinclair Containers",
         description="Sells and rents containers."),
