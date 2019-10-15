@@ -18,6 +18,23 @@
     }
 }
 </style>
+<noscript>
+    <style>
+    .background-{{ name | replace('/', '-') }}.lazy {
+        background-image: url('{{ url_for('static', filename='images/%s.jpg' % name) }}');
+    }
+    @media (max-width: 800px) {
+        .background-{{ name | replace('/', '-') }}.lazy {
+            background-image: url('{{ url_for('static', filename='images/%s-800px.jpg' % name) }}');
+        }
+    }
+    @media (max-width: 400px) {
+        .background-{{ name | replace('/', '-') }}.lazy {
+            background-image:url('{{ url_for('static', filename='images/%s-400px.jpg' % name) }}');
+        }
+    }
+    </style>
+</noscript>
 {% endmacro %}
 
 {% macro case_card(case, classes='') %}

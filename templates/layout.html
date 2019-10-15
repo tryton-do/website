@@ -40,6 +40,9 @@
 
         {% block style %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <noscript>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}"/>
+        </noscript>
         {% endblock style %}
 
         <script async src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -57,6 +60,12 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <noscript>
+                        <label class="navbar-toggler" for="navbarButton" tabindex="0">
+                            <span class="navbar-toggler-icon"></span>
+                        </label>
+                    </noscript>
+                    <input id="navbarButton" class="navbar-toggler d-none" aria-controls="navbarText" role="button" type="checkbox"/>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav ml-auto">
                             {% for title, items in menu.items() %}

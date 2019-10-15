@@ -14,12 +14,29 @@
 {{ super() }}
 <div id="carousel-header" class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carousel-header" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-header" data-slide-to="1"></li>
-        <li data-target="#carousel-header" data-slide-to="2"></li>
-        <li data-target="#carousel-header" data-slide-to="3"></li>
+        <li data-target="#carousel-header" data-slide-to="0" class="active">
+            <noscript>
+                <label for="carousel-0"> </label>
+            </noscript>
+        </li>
+        <li data-target="#carousel-header" data-slide-to="1">
+            <noscript>
+                <label for="carousel-1"> </label>
+            </noscript>
+        </li>
+        <li data-target="#carousel-header" data-slide-to="2">
+            <noscript>
+                <label for="carousel-2"> </label>
+            </noscript>
+        </li>
+        <li data-target="#carousel-header" data-slide-to="3">
+            <noscript>
+                <label for="carousel-3"> </label>
+            </noscript>
+        </li>
     </ol>
     <div class="carousel-inner">
+        <input class="carousel-active" type="radio" id="carousel-0" name="carousel" aria-hidden="true" hidden="" checked="checked">
         <div class="carousel-item active">
             {{ slide_img(1) }}
             <div class="carousel-caption">
@@ -34,6 +51,7 @@
                 </div>
             </div>
         </div>
+        <input class="carousel-active" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item">
             {{ slide_img(2) }}
             <div class="carousel-caption">
@@ -48,6 +66,7 @@
                 </div>
             </div>
         </div>
+        <input class="carousel-active" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item">
             {{ slide_img(3) }}
             <div class="carousel-caption">
@@ -62,6 +81,7 @@
                 </div>
             </div>
         </div>
+        <input class="carousel-active" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item">
             {{ slide_img(4) }}
             <div class="carousel-caption">

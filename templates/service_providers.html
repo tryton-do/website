@@ -9,7 +9,7 @@
         <section class="section-header text-center text-white bg-primary mb1">
             <h1 class="pl-3 pr-3">{{ title }}</h1>
         </section>
-        <div class="d-none d-sm-block mx-auto col-md-6 card">
+        <div id="map-card" class="d-none d-sm-block mx-auto col-md-6 card">
             <div class="card-body">
                 <div id="map" style="height: 300px;"></div>
             </div>
@@ -44,6 +44,13 @@
 {% block style %}
 {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}"/>
+<noscript>
+    <style>
+    #map-card {
+        display: none!important;
+    }
+    </style>
+</noscript>
 {% endblock style %}
 
 {% block script %}
