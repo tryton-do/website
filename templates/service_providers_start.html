@@ -9,7 +9,7 @@
     ]
 %}
 {% extends "layout-toc.html" %}
-{% from "utils.html" import background %}
+{% from "utils.html" import background with context %}
 {% block style %}
 {{ super() }}
 <style>
@@ -24,7 +24,7 @@ h2:before {
 {{ background('banner-service-providers-start') }}
 {% endblock style %}
 {% block content %}
-<section class="section section-banner background-banner-service-providers-start filter filter-primary text-center">
+<section class="section section-banner background-banner-service-providers-start filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>

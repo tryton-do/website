@@ -9,3 +9,4 @@ lxml
 python-memcached
 requests
 werkzeug
+colorthief

@@ -2,14 +2,14 @@
 {% set description = "List of Tryton's success stories" %}
 {% set keywords = ["sucess story", "review", "case study" ] %}
 {% extends "layout.html" %}
-{% from "utils.html" import background, case_card %}
+{% from "utils.html" import background, case_card with context %}
 {% block style %}
 {{ super() }}
 {{ background('banner-success-stories') }}
 {% endblock %}
 {% block content %}
 {{ super() }}
-<div class="section section-banner background-banner-success-stories filter filter-primary text-center">
+<div class="section section-banner background-banner-success-stories filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>

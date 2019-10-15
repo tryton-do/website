@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% macro slide_img(i) %}
 <noscript class="loading-lazy">
-    <img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide%i.jpg' % i) }}" sizes="100vw" srcset="{{ url_for('static', filename='images/slide%i.jpg' % i) }} 1920w, {{ url_for('static', filename='images/slide%i-800px.jpg' % i) }} 800w, {{ url_for('static', filename='images/slide%i-400px.jpg' % i) }} 400w" alt="" loading="lazy">
+    <img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide%i.jpg' % i) }}" sizes="100vw" srcset="{{ url_for('static', filename='images/slide%i.jpg' % i) }} 1920w, {{ url_for('static', filename='images/slide%i-800px.jpg' % i) }} 800w, {{ url_for('static', filename='images/slide%i-400px.jpg' % i) }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/slide%i.jpg' % i) }};">
 </noscript>
 {% endmacro %}
 {% block head %}

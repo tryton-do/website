@@ -2,6 +2,7 @@
 import ast
 import datetime
 import functools
+import glob
 import hashlib
 import logging
 import os
@@ -17,6 +18,7 @@ from operator import attrgetter
 from urllib.parse import urlparse
 
 import requests
+from colorthief import ColorThief
 from flask import (Flask, render_template, redirect, url_for, request,
     make_response, abort)
 from flask.logging import default_handler
@@ -211,6 +213,18 @@ def url_for_canonical(endpoint=None, **values):
 @app.context_processor
 def inject_canonical():
     return dict(url_for_canonical=url_for_canonical)
+
+
+@cache.memoize(timeout=365 * 24 * 60 * 60)
+def dominant_color(path):
+    color = ColorThief(
+        os.path.join(app.static_folder, path)).get_color(quality=1)
+    return '#%02x%02x%02x' % color
+
+
+@app.context_processor
+def inject_dominant_color():
+    return dict(dominant_color=dominant_color)
 
 
 HEART = ('<span '
@@ -757,6 +771,8 @@ def warmup():
                 hash, s='198', d=gravatar.default, r=gravatar.rating)
         except Exception:
             app.logger.warning('fail to fetch gravatar')
+    for path in glob.glob(os.path.join(app.static_folder, '**/*.jpg')):
+        dominant_color(os.path.relpath(path, app.static_folder))
     return '', HTTPStatus.NO_CONTENT
 
 

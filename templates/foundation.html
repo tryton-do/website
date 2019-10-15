@@ -2,14 +2,14 @@
 {% set description = "The Tryton Foundation aims to protect, promote and develop Tryton as Free Software" %}
 {% set keywords = ["foundation", "board", "bylaws"] %}
 {% extends "layout.html" %}
-{% from "utils.html" import background %}
+{% from "utils.html" import background with context %}
 {% block style %}
 {{ super() }}
 {{ background('banner-foundation') }}
 {% endblock %}
 {% block content %}
 {{ super() }}
-<section class="section section-banner background-banner-foundation filter filter-primary text-center">
+<section class="section section-banner background-banner-foundation filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">Tryton Foundation</h1>
     </div>

@@ -1,13 +1,13 @@
 {% set title = "Whoops, that page isn't here!" %}
 {% extends "layout.html" %}
-{% from "utils.html" import background %}
+{% from "utils.html" import background with context %}
 {% block style %}
 {{ super() }}
 {{ background('banner-dead-end') }}
 {% endblock style %}
 {% block content %}
 {{ super() }}
-<section class="section section-banner background-banner-dead-end filter filter-primary text-center">
+<section class="section section-banner background-banner-dead-end filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">
             <span class="material-icons">sentiment_dissatisfied</span>

@@ -18,7 +18,8 @@ gulp.task('main-js', function() {
         'node_modules/bootstrap/dist/js/bootstrap.js',
         'node_modules/loading-attribute-polyfill/loading-attribute-polyfill.js',
         'js/highlight.pack.js',
-        'js/highlight.js'])
+        'js/highlight.js',
+        'js/lazy.js'])
         .pipe(sourcemaps.init())
         .pipe(gulp.dest('static/js/'))
         .pipe(concat('main.js'))

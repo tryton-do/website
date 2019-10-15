@@ -12,13 +12,13 @@
     ]
 %}
 {% extends "layout-toc.html" %}
-{% from "utils.html" import background %}
+{% from "utils.html" import background with context %}
 {% block style %}
 {{ super() }}
 {{ background('banner-donate') }}
 {% endblock %}
 {% block content %}
-<section class="section section-banner background-banner-donate filter filter-primary text-center">
+<section class="section section-banner background-banner-donate filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ heart | safe }} {{ title }}</h1>
     </div>

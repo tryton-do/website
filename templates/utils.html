@@ -1,15 +1,19 @@
 {% macro background(name) %}
 <style>
-.background-{{ name }} {
+.background-{{ name | replace('/', '-') }}.lazy {
+    background-image: none;
+    background-color: {{ dominant_color('images/%s.jpg' % name) }};
+}
+.background-{{ name | replace('/', '-') }} {
     background-image: url('{{ url_for('static', filename='images/%s.jpg' % name) }}');
 }
 @media (max-width: 800px) {
-    .background-{{ name }} {
+    .background-{{ name | replace('/', '-') }} {
         background-image: url('{{ url_for('static', filename='images/%s-800px.jpg' % name) }}');
     }
 }
 @media (max-width: 400px) {
-    .background-{{ name }} {
+    .background-{{ name | replace('/', '-') }} {
         background-image:url('{{ url_for('static', filename='images/%s-400px.jpg' % name) }}');
     }
 }
