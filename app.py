@@ -412,6 +412,10 @@ CASES = [
         description="A stamp and signalisation company.",
         story=True),
     Case(
+        title="GotSHO LIMS",
+        description="Software Solution for genomic world.",
+        story=True),
+    Case(
         title="Grufesa",
         description="Exports strawberries in Europe.",
         story=True),
