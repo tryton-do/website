@@ -57,6 +57,7 @@
                     <a class="navbar-brand" href="{{ url_for('index') }}">
                         <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.png') }}" width="110" height="32" alt="Tryton Home"/>
                     </a>
+                    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -90,7 +91,7 @@
             {% endblock header %}
         </header>
 
-        <div id="content">
+        <div id="content" tabindex="-1">
             {% block content %}
             {% endblock content %}
         </div>
