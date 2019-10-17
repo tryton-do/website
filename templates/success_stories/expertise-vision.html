@@ -14,7 +14,7 @@ They use hardware and software in order to invent, design and implement turnkey 
 {% endblock customer %}
 {% block challenge %}
 {{ super() }}
-<p>Expertise-Vision was running an old version of <a href="http://www.odoo.com/">Odoo</a> (named OpenERP at that time).
+<p>Expertise-Vision was running an old version of <a href="https://www.odoo.com/">Odoo</a> (named OpenERP at that time).
 They wanted to upgrade to a system with the same features but which could be updated smoothly.
 The perimeter of the ERP at that time was narrowed to the following functionalities:</p>
 <ul>
@@ -34,19 +34,19 @@ Only a few fields were integrated to the Opportunity object to store additional 
 {% block implementation %}
 {{ super() }}
 <p>We designed a <a href="https://hg.b2ck.com/openerp2tryton/">migration script</a> to import into an unmodified Tryton system the data from the OpenERP instance.
-The leads and opportunities were transferred to use the <a href="http://docs.tryton.org/projects/modules-sale-opportunity">Sale Opportunity module</a>.</p>
-<p>From the initial list of functionalities the usage of <a href="http://radicale.org/">Radical</a> with an <a href="http://hg.b2ck.com/radicale_tryton_auth/">authentication plugin</a> for calendar management and the <a href="http://docs.tryton.org/projects/modules-party-relationship">Party Relationship module</a> were added to the list of requirements.
+The leads and opportunities were transferred to use the <a href="//docs.tryton.org/projects/modules-sale-opportunity">Sale Opportunity module</a>.</p>
+<p>From the initial list of functionalities the usage of <a href="https://radicale.org/">Radical</a> with an <a href="http://hg.b2ck.com/radicale_tryton_auth/">authentication plugin</a> for calendar management and the <a href="//docs.tryton.org/projects/modules-party-relationship">Party Relationship module</a> were added to the list of requirements.
 The supplier invoices and payments are also handled by the system now.</p>
 {% endblock implementation %}
 {% block results %}
 {{ super() }}
 <p>The migration from OpenERP to Tryton has been a success and was implemented very quickly.
 Tryton has also demonstrated that it can be used without much customization in order to successfully run a business from the quotation phase through to the payment of invoices.</p>
-<p>The implementation of the <a href="http://docs.tryton.org/projects/modules-purchase">Purchase</a> and <a href="http://docs.tryton.org/projects/modules-stock">Stock</a> modules has structured the purchasing process and significantly improved the invoice control.
+<p>The implementation of the <a href="//docs.tryton.org/projects/modules-purchase">Purchase</a> and <a href="//docs.tryton.org/projects/modules-stock">Stock</a> modules has structured the purchasing process and significantly improved the invoice control.
 Expertise-Vision can now easily view outstanding supplier and customer bills.</p>
 {% endblock %}
 {% block provider %}
 {{ super() }}
-<p><a href="http://www.b2ck.com/">B2CK</a> provided its development experience with Tryton (and OpenERP)</p>
-<p><a href="http://sisalp.fr/">SISalp</a> provided its hosting experience in matters of deployment and backup infrastructure.</p>
+<p><a href="https://www.b2ck.com/">B2CK</a> provided its development experience with Tryton (and OpenERP)</p>
+<p><a href="https://sisalp.fr/">SISalp</a> provided its hosting experience in matters of deployment and backup infrastructure.</p>
 {% endblock %}
