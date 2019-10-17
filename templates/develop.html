@@ -18,14 +18,17 @@
     ]
 %}
 {% extends "layout-toc.html" %}
+{% from "utils.html" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-develop') }}
+{% endblock %}
 {% block content %}
-<div class="section bg-primary">
+<section class="section section-banner background-banner-develop filter filter-primary text-center lazy">
     <div class="container">
-        <div class="section-header text-center text-white bg-primary mb1">
-            <h1 class="pl-3 pr-3">{{ title }}</h1>
-        </div>
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
-</div>
+</section>
 {{ super() }}
 {% endblock content %}
 
