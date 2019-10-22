@@ -217,6 +217,8 @@ def inject_canonical():
 
 @cache.memoize(timeout=365 * 24 * 60 * 60)
 def dominant_color(path):
+    if app.debug:
+        return '#000'
     color = ColorThief(
         os.path.join(app.static_folder, path)).get_color(quality=1)
     return '#%02x%02x%02x' % color
