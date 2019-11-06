@@ -3,8 +3,7 @@
 {% set keywords = ["help", "donation", "contribute"] %}
 {% set toc = [
     ("Wire Transfer", 'wire-transfer', None),
-    ("PayPal", 'paypal', None),
-    ("Recurring PayPal", 'paypal-recurring', None),
+    ("Credit Card", 'credit-card', None),
     ("Bitcoin", 'bitcoin', None),
     ("Contribute", 'contribute', None),
     ("Donors", 'donors', None),
@@ -16,6 +15,7 @@
 {% block style %}
 {{ super() }}
 {{ background('banner-donate') }}
+<script type="text/javascript" defer src="https://donorbox.org/install-popup-button.js"></script>
 {% endblock %}
 {% block content %}
 <section class="section section-banner background-banner-donate filter filter-primary text-center lazy">
@@ -82,62 +82,11 @@ If you're already using Tryton, please consider contributing to the project or s
     </div>
 </div>
 <div class="card mb-5 w-100">
-    <h2 class="h4 card-header" id="paypal">PayPal</h2>
+    <h2 class="h4 card-header" id="credit-card">Credit Card</h2>
     <div class="card-body">
         <div class="card-text">
-            <p>You can easily make a one-time contribution using PayPal:</p>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                <input type="hidden" name="cmd" value="_donations">
-                <input type="hidden" name="business" value="paypal@tryton.org">
-                <input type="hidden" name="item_name" value="Tryton Donation">
-                <input type="hidden" name="item_number" value="Donation">
-                <input type="hidden" name="currency_code" value="EUR">
-                <input type="hidden" name="return" value="{{ url_for('donate_thanks') }}">
-                <input type="hidden" name="cancel" value="{{ url_for('donate_cancel') }}">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">€</span>
-                    </div>
-                    <input name="amount" class="form-control" title="Amount" placeholder="Enter amount" value="10.00" min="5.00" step="0.01" required type="number">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
-                    </div>
-                </div>
-            </form>
-            <small>
-                You can use this form even if you don't have or want to create a PayPal account.
-                Instead you can pay with your credit card.
-            </small>
-        </div>
-    </div>
-</div>
-<div class="card mb-5 w-100">
-    <h2 class="h4 card-header" id="paypal-recurring">Recurring PayPal</h2>
-    <div class="card-body">
-        <div class="card-text">
-            <p>You can easily make a monthly contribution using PayPal:</p>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="SUPKSJEB34BME">
-                <input type="hidden" name="on0" value="">
-                <div class="input-group mb-3">
-                    <select name="os0" title="Amount by Frequency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
-                        <option value="Donation">Donation : €10,00 EUR - monthly</option>
-                        <option value="Donation">Donation : €20,00 EUR - monthly</option>
-                        <option value="Donation">Donation : €50,00 EUR - monthly</option>
-                        <option value="Donation">Donation : €100,00 EUR - monthly</option>
-                        <option value="Donation">Donation : €200,00 EUR - monthly</option>
-                        <option value="Donation">Donation : €500,00 EUR - monthly</option>
-                    </select>
-                    <input type="hidden" name="currency_code" value="EUR">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Subscribe</button>
-                    </div>
-                </div>
-            </form>
-            <small>
-                PayPal does not require you to create an account for recurring donations.
-            </small>
+            <p>You can easily make a donation by credit card:</p>
+            <a class="btn btn-outline-primary dbox-donation-button" href="https://donorbox.org/tryton-foundation">{{ heart | safe }}Donate</a>
         </div>
     </div>
 </div>
