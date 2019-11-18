@@ -440,6 +440,10 @@ CASES = [
         description="Provides all kinds of MRI scans, nuclear medicine "
         "and bone densitometry."),
     Case(
+        title="Jordà",
+        description="Installs and maintains lifts and elevators.",
+        story=True),
+    Case(
         title="Koolvet",
         description="Software for veterinary clinics that deal with small "
         "domestic pets and larger farm animals.",
