@@ -83,12 +83,12 @@
                     </div>
                 </div>
             </nav>
-            {% if datetime.date.today() < datetime.date(2019, 6, 6) %}
+            {% if datetime.date.today() <= datetime.date(2019, 6, 7) %}
             <div class="alert alert-info text-center" role="alert">
                 <span class="material-icons align-middle">notifications</span>Do not miss the <a class="alert-link" href="{{ url_for('event', event='tum2019') }}">Tryton Unconference, June 4th-7th 2019</a>!
             </div>
             {% endif %}
-            {% if datetime.date.today() < datetime.date(2019, 11, 27) %}
+            {% if datetime.date.today() <= datetime.date(2019, 11, 28) %}
             <div class="alert alert-info text-center" role="alert">
                 <span class="material-icons align-middle">notifications</span>Do not miss the <a class="alert-link" href="{{ url_for('event', event='tsd2019') }}">Tryton Spanish Days, November 27th-28th 2019</a>!
             </div>
