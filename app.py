@@ -95,6 +95,8 @@ if app.config['CDN_DOMAIN']:
         app.config['CDN_DOMAIN'])
 else:
     app.config['GRAVATAR_BASE_URL'] = '/'
+app.jinja_env.lstrip_blocks = True
+app.jinja_env.trim_blocks = True
 cache.init_app(app)
 CDN(app)
 gravatar = Gravatar(app)
