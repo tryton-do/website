@@ -322,7 +322,7 @@ def blockquote(content):
     block = html.fromstring(str(content)).find('blockquote')
     for box in block.find_class('lightbox-wrapper'):
         box.drop_tree()
-    return block.text_content()
+    return block.text_content().strip()
 
 
 @app.route('/events')
