@@ -34,9 +34,9 @@
         {%- if canonical is not defined %}
         {%- set canonical = url_for_canonical() %}
         {%- endif %}
-        {%- if canonical %}
+        {% if canonical != request.url %}
         <link rel="canonical" href="{{ canonical }}"/>
-        {%- endif %}
+        {% endif %}
 
         {% block style %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
