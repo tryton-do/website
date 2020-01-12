@@ -2,6 +2,9 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         {% block head %}
+        {%- if canonical is not defined %}
+        {%- set canonical = url_for_canonical() %}
+        {%- endif %}
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -10,11 +13,7 @@
         <meta name="author" content="Tryton"/>
         <meta property="og:title" content="{{ title }}"/>
         <meta property="og:type" content="website"/>
-        {% if request.endpoint and request.endpoint != 'static' %}
-        <meta property="og:url" content="{{ url_for(request.endpoint, _external=True, **request.view_args) }}"/>
-        {% else %}
-        <meta property="og:url" content="{{ request.url }}"/>
-        {% endif %}
+        <meta property="og:url" content="{{ canonical }}"/>
         <meta property="og:image" content="{{ url_for('static', filename=(logo or 'images/logo.png'), _external=True, _scheme='http') }}"/>
         <meta property="og:image:secure_url" content="{{ url_for('static', filename=(logo or 'images/logo.png'), _external=True, _scheme='https') }}"/>
         {% if description %}
@@ -31,9 +30,6 @@
 
         <title>Tryton - {{ title }}</title>
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
-        {%- if canonical is not defined %}
-        {%- set canonical = url_for_canonical() %}
-        {%- endif %}
         {% if canonical != request.url %}
         <link rel="canonical" href="{{ canonical }}"/>
         {% endif %}
