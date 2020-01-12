@@ -209,7 +209,8 @@ def url_for_canonical(endpoint=None, **values):
         endpoint = request.endpoint
     if not endpoint:
         return ''
-    return url_for(endpoint, _external=True, _scheme='https', **values)
+    scheme = 'https' if not app.debug else None
+    return url_for(endpoint, _external=True, _scheme=scheme, **values)
 
 
 @app.context_processor
