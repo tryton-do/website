@@ -122,6 +122,11 @@ def cdn_url_for(*args, **kwargs):
         return url_for(*args, **kwargs)
 
 
+def cache_key_prefix_view():
+    scheme = 'https' if request.is_secure else 'http'
+    return 'view/%s/%s' % (scheme, request.path)
+
+
 LinkHeader = namedtuple(
     'LinkHeader', ['endpoint', 'values', 'params'])
 
@@ -240,7 +245,7 @@ HEART = ('<span '
 
 
 @app.route('/')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def index():
     return render_template(
@@ -474,7 +479,7 @@ CASES = [
 
 
 @app.route('/success-stories')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def success_stories():
     cases = sorted(
@@ -488,7 +493,7 @@ def success_stories_alt():
 
 
 @app.route('/success-stories/<story>')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def success_story(story):
     cases = [c for c in CASES if c.story or c.name == story]
@@ -512,7 +517,7 @@ def success_story_generator():
 
 
 @app.route('/download')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def download():
     return render_template('download.html')
@@ -524,14 +529,14 @@ def download_alt():
 
 
 @app.route('/forum')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def forum():
     return render_template('forum.html')
 
 
 @app.route('/presentations')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def presentations():
     return render_template('presentations.html')
@@ -543,7 +548,7 @@ def presentations_alt():
 
 
 @app.route('/events/<event>')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def event(event):
     class Day:
@@ -604,7 +609,7 @@ def event(event):
 
 
 @app.route('/contribute')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def contribute():
     return render_template('contribute.html')
@@ -616,14 +621,14 @@ def contribute_alt():
 
 
 @app.route('/develop')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def develop():
     return render_template('develop.html')
 
 
 @app.route('/foundation')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def foundation():
     return render_template('foundation.html')
@@ -646,7 +651,7 @@ def fetch_supporters():
 
 
 @app.route('/supporters')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def supporters():
     def url(supporter, start):
@@ -712,7 +717,7 @@ def fetch_donations():
 
 
 @app.route('/donate')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate():
     return render_template('donate.html',
@@ -726,21 +731,21 @@ def donate_alt():
 
 
 @app.route('/donate/thanks')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate_thanks():
     return render_template('donate_thanks.html')
 
 
 @app.route('/donate/cancel')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def donate_cancel():
     return render_template('donate_cancel.html')
 
 
 @app.route('/service-providers')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers():
     shuffle(PROVIDERS)
@@ -753,7 +758,7 @@ def service_providers_alt():
 
 
 @app.route('/service-providers/start')
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers_start():
     return render_template('service_providers_start.html')
@@ -786,7 +791,7 @@ def warmup():
 
 
 @app.errorhandler(HTTPStatus.NOT_FOUND)
-@cache.cached()
+@cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def not_found(error):
     return render_template(
