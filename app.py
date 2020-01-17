@@ -32,6 +32,7 @@ from lxml import objectify, html
 from werkzeug.contrib.fixers import ProxyFix
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'
+NEWS_RSS_URL = NEWS_URL + '.rss'
 CALENDAR_URL = (
     'https://calendar.google.com/calendar/embed'
     '?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com'
@@ -307,12 +308,12 @@ def news():
 @app.route('/news.rss')
 @app.route('/rss.xml')
 def news_rss():
-    return redirect(NEWS_URL + '.rss')
+    return redirect(NEWS_RSS_URL)
 
 
 @cache.memoize(timeout=60 * 60)
 def fetch_news_items():
-    return requests.get(NEWS_URL + '.rss').content
+    return requests.get(NEWS_RSS_URL).content
 
 
 def news_items(size=-1):
