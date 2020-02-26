@@ -29,7 +29,7 @@ from flask_sitemap import Sitemap
 from icalendar import Calendar
 from jinja2 import TemplateNotFound
 from lxml import objectify, html
-from werkzeug.contrib.fixers import ProxyFix
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'
 NEWS_RSS_URL = NEWS_URL + '.rss'
