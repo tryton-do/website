@@ -267,6 +267,7 @@ def inject_menu():
     menu['Community'] = [
         ('Forum', url_for('forum')),
         ('Presentations', url_for('presentations')),
+        ('Get Help', 'https://discuss.tryton.org/c/support'),
         ('Contribute', url_for('contribute')),
         ]
     menu['Foundation'] = [
