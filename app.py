@@ -57,6 +57,7 @@ PROVIDERS = [
     ('First Telecom', [(38.0131591, 23.7721521), (44.83722, 20.40560)]),
     ('gcoop', [(-34.59675, -58.43035)]),
     ('IntegraPer', [(-11.9753824, -77.0860785)]),
+    ('INROWGA', [(18.476389, -69.893333)]),
     ('Kopen Software', [(41.5995983, 0.5799085)]),
     ('Lava Lab Software', [(-27.978905, 153.389466)]),
     ('m-ds', [(52.520008, 13.404954)]),
@@ -452,6 +453,11 @@ CASES = [
     Case(
         title="Jordà",
         description="Installs and maintains lifts and elevators.",
+        story=True),
+    Case(
+        title="Legna",
+        description="Graphic design, digital printing "
+        "and offset solution company",
         story=True),
     Case(
         title="Koolvet",
