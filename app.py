@@ -328,9 +328,9 @@ def news_items(size=-1):
         yield item
 
 
-@app.template_filter('blockquote')
-def blockquote(content):
-    block = html.fromstring(str(content)).find('blockquote')
+@app.template_filter('news_text')
+def news_text(content):
+    block = html.fromstring(str(content))
     for box in block.find_class('lightbox-wrapper'):
         box.drop_tree()
     return block.text_content().strip()
