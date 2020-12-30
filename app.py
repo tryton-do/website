@@ -635,6 +635,34 @@ def develop():
     return render_template('develop.html')
 
 
+@app.route('/develop/guidelines/code')
+@cache.cached(key_prefix=cache_key_prefix_view)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
+def guidelines_code():
+    return render_template('guidelines/code.html')
+
+
+@app.route('/develop/guidelines/documentation')
+@cache.cached(key_prefix=cache_key_prefix_view)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
+def guidelines_documentation():
+    return render_template('guidelines/documentation.html')
+
+
+@app.route('/develop/guidelines/help-text')
+@cache.cached(key_prefix=cache_key_prefix_view)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
+def guidelines_documentation_help():
+    return render_template('guidelines/help.html')
+
+
+@app.route('/develop/guidelines/howto')
+@cache.cached(key_prefix=cache_key_prefix_view)
+@add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
+def guidelines_documentation_howto():
+    return render_template('guidelines/howto.html')
+
+
 @app.route('/foundation')
 @cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)

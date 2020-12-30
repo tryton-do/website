@@ -4,9 +4,9 @@
 {% set toc = [
     ("Report an Issue", 'report-issue', None),
     ("Submit a Change", 'submit-change', None),
-    ("Coding Guidelines", 'coding-guidelines', [
-        ("Code Style", 'code-style', None),
-        ("Best Practices", 'best-practices', None),
+    ("Guidelines", 'guidelines', [
+        ("Code", 'guidelines-code', None),
+        ("Documentation", 'guidelines-documentation', None),
         ]),
     ("Requirements", 'requirements', None),
     ("Rules", 'rules', None),
@@ -61,7 +61,7 @@ $ python ~/.local/bin/upload.py
 <div class="subsection">
     <h2 id="submit-change">Submit a Change</h2>
     <ul>
-        <li>Follow the <a href="#coding-guidelines">coding guidelines</a>.</li>
+        <li>Follow the <a href="#guidelines">guidelines</a>.</li>
         <li>Submit your change to our <a href="https://codereview.tryton.org/">review tool</a> using the <a href="https://codereview.tryton.org/static/upload.py">upload.py</a> script (see the <a href="https://github.com/rietveld-codereview/rietveld/wiki">help page</a>).</li>
         <li>Make sure the review has the repository name at the start of the review title,
             and ensure the review description contains a reference to the issue (e.g.: <span class="text-monospace">issue1234</span>).</li>
@@ -78,47 +78,21 @@ $ python ~/.local/bin/upload.py
     </div>
 </div>
 <div class="subsection">
-    <h2 id="coding-guidelines">Coding Guidelines</h2>
-    <p>The Tryton Project strongly recommends the following guidelines.</p>
-    <h3 id="code-style">Code Style</h3>
-    <h4>Python</h4>
-    <p>Code style, in general, follows <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>:</p>
+    <h2 id="guidelines">Guidelines</h2>
+    <p>The Tryton Project has guidelines for both code and documentation.</p>
+    <h3 id="guidelines-code">Code</h3>
     <ul>
-        <li>Use 4 spaces for indentation.</li>
-        <li>Avoid the usage of <span class="text-monospace">from M import *</span>.</li>
-        <li>If unsure about conformity use <a href="https://pypi.org/project/flake8/">flake8</a> to check the code (with option <span class="text-monospace">ignore=E123,E124,E126,E128,E741,W503</span>).</li>
-        <li>Breaking lines:
-            <ul>
-                <li>Use 4 spaces per bracket pair.</li>
-                <li>Prefer parenthesis over backslash.</li>
-            </ul>
-        </li>
+        <li>The <a href="{{ url_for('guidelines_code') }}">Coding Guidelines</a> should be followed for any review you submit.</li>
     </ul>
-    <h4>XML</h4>
+    <h3 id="guidelines-documentation">Documentation</h3>
+    <p>
+    There are several different places that Tryton documentation can be found.
+    This is to make sure it is available in the right format, at the right time, for different use cases.</p>
+    <p>So to avoid duplication, and keep the documentation organised and maintainable there are several sets of guidelines:</p>
     <ul>
-        <li>Use 4 spaces for indentation.</li>
-        <li>No 80 columns limitation.</li>
-        <li>Opening tag on single line or one attribute per line.</li>
-    </ul>
-    <h3 id="best-practices">Best Practices</h3>
-    <ul>
-        <li>Use doc-strings and comments in your code.</li>
-        <li>Never pass keyword arguments as positional arguments when calling a method.</li>
-        <li>In the very beginning (right under the doc-string) of a method definition, define all pool objects that will be used (<span class="text-monospace">pool.get(...)</span>).</li>
-    </ul>
-    <h4>Naming of modules, classes, variables</h4>
-    <ul>
-        <li>A name should be as descriptive and as short as possible.</li>
-        <li>Avoid unnecessary duplication of names.</li>
-        <li>Naming structure of a model or module must follow these rules:
-            <ul>
-                <li>First part of the name is the general function of the module or model,</li>
-                <li>after this come the less general parts of the name (i.e. the more specific name parts) for the module or model</li>
-                <li>If you are unsure with naming, please ask first on the <a href="{{ url_for('forum', _anchor='irc') }}">#tryton channel</a></li>
-            </ul>
-        </li>
-        <li>For modules and method names use an underscore to separate the parts of name.</li>
-        <li>For naming classes use <a href="https://en.wikipedia.org/wiki/CamelCase">CamelCase</a>.</li>
+        <li>When creating documentation for a package you should follow the main <a href="{{ url_for('guidelines_documentation') }}">Documentation Guidelines</a>.</li>
+        <li>There are some <a href="{{ url_for('guidelines_documentation_help') }}">Help Text Guidelines</a> to follow if you are writing or changing help text.</li>
+        <li>If submitting a Howto for approval, then please make sure you've followed the <a href="{{ url_for('guidelines_documentation_howto') }}">Howto Guidelines</a>.</li>
     </ul>
 </div>
 <div class="subsection">
