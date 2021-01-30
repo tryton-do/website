@@ -44,7 +44,7 @@ SUPPORTERS_URL = (
     'https://foundation.tryton.org:9000/foundation/foundation/1/supporters')
 DONATORS_URL = (
     'https://foundation.tryton.org:9000/foundation/foundation/1/donators'
-    '?account=732&account=734')
+    '?account=732&account=734&duration=730')
 DONATIONS_URL = (
     'https://foundation.tryton.org:9000/foundation/foundation/1/donations'
     '?account=732&account=734')
