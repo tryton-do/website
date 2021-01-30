@@ -21,6 +21,9 @@
             {% if phone %}
             <a href="tel:{{ phone }}"><span class="material-icons">phone</span></a>
             {% endif %}
+            {% for story in stories %}
+            <a href="{{ url_for('success_story', story=story) }}"><span class="material-icons">history_edu</span></a>
+            {% endfor %}
         </div>
         <div class="card-footer text-truncate">
             {% block location %}{% endblock %}
