@@ -411,8 +411,9 @@ CASES = [
         description="A Medical Mutual Society from Buenos Aires.",
         story=True),
     Case(
-        title="Advocate Consulting Legal",
-        description="A legal firm servicing the general aviation industry"),
+        title="Advocate Consulting Legal Group",
+        description="A legal firm servicing the general aviation industry",
+        story=True),
     Case(
         title="Banque Française Mutualiste",
         description="A French bank for the public service."),
