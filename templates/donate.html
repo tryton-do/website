@@ -6,6 +6,7 @@
     ("Credit Card", 'credit-card', None),
     ("Bitcoin", 'bitcoin', None),
     ("Contribute", 'contribute', None),
+    ("Other Projects", 'others', None),
     ("Donors", 'donors', None),
     ("Yearly Donations", 'donations-yearly', None),
     ]
@@ -154,6 +155,31 @@ If you're already using Tryton, please consider contributing to the project or s
         <p class="card-text">
         If you want to donate your time, we <a href="{{ url_for('contribute') }}">welcome contributions from the community</a>.
         </p>
+    </div>
+</div>
+<div class="card mb-5 w-100">
+    <h2 class="h4 card-header" id="others">Other Projects</h2>
+    <div class="card-body">
+        <p class="card-text">
+        Tryton relies on other projects that also need your support.
+        This includes (but is not limited to):
+        </p>
+        <ul class="row">
+            <li class="col-sm-6"><a href="https://psfmember.org/civicrm/contribute/transact?reset=1&id=2">Python</a></li>
+            <li class="col-sm-6"><a href="https://www.postgresql.org/about/donate/">PostgreSQL</a></li>
+            <li class="col-sm-6"><a href="https://www.gnome.org/foundation/">GTK</a></li>
+            <li class="col-sm-6"><a href="https://psfmember.org/civicrm/contribute/transact?reset=1&id=20">Pallets</a></li>
+            <li class="col-sm-6"><a href="https://github.com/sponsors/dvarrazzo?o=esb">Psycopg</a></li>
+            <li class="col-sm-6"><a href="https://lxml.de/index.html#support-the-project">lxml</a></li>
+            <li class="col-sm-6"><a href="https://openjsf.org/">jQuery</a></li>
+            <li class="col-sm-6"><a href="https://opencollective.com/courtbouillon">WeasyPrint</a></li>
+            <li class="col-sm-6"><a href="http://www.gevent.org/sfc.html">gevent</a></li>
+            <li class="col-sm-6"><a href="https://www.paypal.com/donate/?cmd=_donations&business=S6VTL9FQ6L8EN&item_name=PapaParse&currency_code=EUR&source=url">Papaparse</a></li>
+            <li class="col-sm-6"><a href="https://fullcalendar.io/donate">FullCalendar</a></li>
+            <li class="col-sm-6"><a href="https://craig.is/accepting-donations?ref=mousetrap">Mousetrap</a></li>
+            <li class="col-sm-6"><a href="https://opencollective.com/Sortable/contribute">Sortable</a></li>
+            <li class="col-sm-6"><a href="https://opencollective.com/popperjs">Popper</a></li>
+        </ul>
     </div>
 </div>
 {% endblock main %}
