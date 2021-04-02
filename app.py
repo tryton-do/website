@@ -160,8 +160,8 @@ CSS_LINK_HEADERS = [
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'fonts', {'name': 'Icons.woff2'}, {
-            'rel': 'prefetch', 'as': 'font', 'nopush': True,
+        'static', {'filename': 'fonts/Icons.woff2'}, {
+            'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     ]
 
@@ -799,11 +799,6 @@ def service_providers_alt():
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers_start():
     return render_template('service_providers_start.html')
-
-
-@app.route('/fonts/<name>')
-def fonts(name):
-    return redirect(cdn_url_for('static', filename='fonts/' + name))
 
 
 @app.route('/favicon.ico')
