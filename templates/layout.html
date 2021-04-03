@@ -106,7 +106,7 @@
         <footer id="footer">
             {% block footer %}
             <noscript class="loading-lazy">
-                <img class="img-fluid" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/placeholder-large.jpg') }};"/>
+                <img class="img-fluid" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/placeholder-large.jpg') }};" width="1920" height="350"/>
             </noscript>
             <section class="topfooter">
                 <div class="container">
