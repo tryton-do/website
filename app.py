@@ -484,6 +484,10 @@ CASES = [
     Case(
         title="Skoda Autohaus Zeidler",
         description="A German car dealership and workshop for Skoda."),
+    Case(
+        title="Wenger Energie",
+        description="A provider of vacuum degassing and filter systems.",
+        story=True),
     ]
 
 
