@@ -1,4 +1,6 @@
-FROM node as builder-node
+# node-sass is not yet ready for node 16
+# https://github.com/sass/node-sass/issues/3077
+FROM node:15 as builder-node
 
 ENV INSTALL_PATH /web
 RUN mkdir -p $INSTALL_PATH
