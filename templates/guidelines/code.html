@@ -29,9 +29,9 @@
 {% block main %}
 <div class="subsection">
     <h2 id="code-style">Code Style</h2>
-    <p>The Tryton Project strongly recommends the following code style.</p>
+    <p>The Tryton Project strongly recommends the following code style:</p>
     <h3 id="python">Python</h3>
-    <p>Code style, in general, follows <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>:</p>
+    <p>Code style, in general, follows <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> and <a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a>:</p>
     <ul>
         <li>Use 4 spaces for indentation.</li>
         <li>Avoid the usage of <span class="text-monospace">from M import *</span>.</li>
@@ -40,8 +40,10 @@
             <ul>
                 <li>Use 4 spaces per bracket pair.</li>
                 <li>Prefer parenthesis over backslash.</li>
+                <li>Prefer breaking lines after opening parenthesis.</li>
             </ul>
         </li>
+        <li>Use double-quotes for strings that are natural language, single-quotes for symbol-like strings and triple double-quotes for multi-line docstrings.</li>
     </ul>
     <h3 id="xml">XML</h3>
     <ul>
@@ -50,7 +52,7 @@
         <li>Opening tag on single line or one attribute per line.</li>
     </ul>
     <h2 id="best-practices">Best Practices</h2>
-    <p>These best practices help keep the code consistent.</p>
+    <p>These best practices help keep the code consistent:</p>
     <ul>
         <li>Use doc-strings and comments in your code.</li>
         <li>Never pass keyword arguments as positional arguments when calling a method.</li>
