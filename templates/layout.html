@@ -95,6 +95,11 @@
                 You can help us get everything done by <a class="alert-link" href="{{ url_for('donate')}}">making a donation</a>{{ heart | safe }}!
             </div>
             {% endif %}
+            {% if datetime.date.today() <= datetime.date(2021, 11, 18) %}
+            <div class="alert alert-info text-center" role="alert">
+                <span class="material-icons align-middle">notifications</span>Do not miss the <a class="alert-link" href="{{ url_for('event', event='tsd2021') }}">Tryton Spanish Days, November 17th-18th 2021</a>!
+            </div>
+            {% endif %}
             {% endblock header %}
         </header>
 
