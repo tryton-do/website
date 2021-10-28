@@ -470,6 +470,9 @@ CASES = [
         description="Operates municipal day care centers and "
         "parent-child groups."),
     Case(
+        title="Mifarma",
+        description="Leading online parapharmacy."),
+    Case(
         title="Lackierzentrum Reichenbach",
         description="Produces surface coating for automotive, aerospace, "
         "construction and mechanical engineering."),
