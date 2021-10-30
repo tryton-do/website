@@ -471,7 +471,8 @@ CASES = [
         "parent-child groups."),
     Case(
         title="Mifarma",
-        description="Leading online parapharmacy."),
+        description="Leading online parapharmacy.",
+        story=True),
     Case(
         title="Lackierzentrum Reichenbach",
         description="Produces surface coating for automotive, aerospace, "
