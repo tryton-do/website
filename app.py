@@ -33,13 +33,8 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'
 NEWS_RSS_URL = NEWS_URL + '.rss'
-CALENDAR_URL = (
-    'https://calendar.google.com/calendar/embed'
-    '?src=p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com'
-    '&ctz=Europe%2FBrussels')
-CALENDAR_ICS = (
-    'https://calendar.google.com/calendar/ical'
-    '/p4jhgp9j5a2ehndebdglo6tslg%40group.calendar.google.com/public/basic.ics')
+CALENDAR_URL = 'https://discuss.tryton.org/upcoming-events'
+CALENDAR_ICS = 'https://discuss.tryton.org/discourse-post-event/events.ics'
 SUPPORTERS_URL = (
     'https://foundation.tryton.org:9000/foundation/foundation/1/supporters')
 DONATORS_URL = (
