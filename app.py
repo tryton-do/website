@@ -151,7 +151,7 @@ CSS_LINK_HEADERS = [
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
-        'static', {'filename': 'fonts/MaterialIcons-Regular.woff2'}, {
+        'static', {'filename': 'fonts/material-icons.woff2'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
