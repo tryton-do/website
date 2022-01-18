@@ -1,6 +1,7 @@
 // OVERRIDE BOOTSTRAP
 // @Override Bootstrap variables
 // See "bootstrap/scss/_variables.scss"
+@use "sass:math";
 
 // COLORS
 $primary: $tryton-color-primary;
@@ -52,7 +53,7 @@ $grid-gutter-width: 30px;
 // SPACERS
 $spacers: (
   'gutter': $grid-gutter-width,
-  'gutter-half': $grid-gutter-width / 2,
+  'gutter-half': math.div($grid-gutter-width, 2),
   );
 
 // CONTAINER

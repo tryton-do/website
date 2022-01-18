@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var sassPackageImporter = require('node-sass-package-importer');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
@@ -48,6 +48,7 @@ gulp.task('sass', function() {
         .pipe(sass({
             importer: sassPackageImporter(),
             outputStyle: 'compressed',
+            quietDeps: true,
         }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(cleanCSS())
