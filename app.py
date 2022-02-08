@@ -726,6 +726,19 @@ def fetch_gravatar(hash, **params):
 def avatar(hash):
     if not set(request.args.keys()).issubset(set('sdr')):
         abort(HTTPStatus.BAD_REQUEST)
+    if request.args.get('s'):
+        try:
+            if not (1 < int(request.args.get('s')) < 2048):
+                abort(HTTPStatus.BAD_REQUEST)
+        except ValueError:
+            abort(HTTPStatus.BAD_REQUEST)
+    if request.args.get('d') and request.args.get('d') not in {
+            '404', 'mp', 'identicon', 'monsterid', 'wavatar', 'retro',
+            'robohash', 'blank'}:
+        abort(HTTPStatus.BAD_REQUEST)
+    if request.args.get('r') and request.args.get('r') not in {
+            'g', 'pg', 'r', 'x'}:
+        abort(HTTPStatus.BAD_REQUEST)
     return fetch_gravatar(hash, **request.args)
 
 
