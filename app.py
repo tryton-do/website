@@ -8,27 +8,27 @@ import logging
 import os
 import re
 import unicodedata
-
 from collections import OrderedDict, namedtuple
 from functools import partial
 from http import HTTPStatus
 from logging.handlers import SMTPHandler
-from random import sample, shuffle
 from operator import attrgetter
+from random import sample, shuffle
 from urllib.parse import urlparse
 
 import requests
 from colorthief import ColorThief
-from flask import (Flask, render_template, redirect, url_for, request,
-    make_response, abort)
+from flask import (
+    Flask, abort, make_response, redirect, render_template, request, url_for)
 from flask.logging import default_handler
 from flask_caching import Cache
-from flask_cdn import CDN, url_for as _cdn_url_for
+from flask_cdn import CDN
+from flask_cdn import url_for as _cdn_url_for
 from flask_gravatar import Gravatar
 from flask_sitemap import Sitemap
 from icalendar import Calendar
 from jinja2 import TemplateNotFound
-from lxml import objectify, html
+from lxml import html, objectify
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 NEWS_URL = 'https://discuss.tryton.org/c/news'
