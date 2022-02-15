@@ -92,64 +92,6 @@ If you're already using Tryton, please consider contributing to the project or s
     </div>
 </div>
 <div class="card mb-5 w-100">
-    <h2 class="h4 card-header" id="bitcoin">Bitcoin</h2>
-    <div class="card-body">
-        <div class="card-text">
-            <p>You can easily donate in bitcoin:</p>
-            <form action="https://bitpay.com/checkout" method="post">
-                <input name="action" type="hidden" value="checkout">
-                <div class="input-group mb-3">
-                    <input name="orderID" type="email" class="form-control" title="Email Address" placeholder="Email address (optional)" maxlength="50" autocapitalize="off">
-                </div>
-                <div class="input-group mb-3">
-                    <input name="price" type="number" value="10.00" title="Amount" placeholder="Amount" min="0.01" step="0.01" class="form-control" required>
-                    <select name="currency" title="Currency" class="custom-select" style="-moz-appearance: none; -webkit-appearance: none;">
-                        <option value="USD">USD</option>
-                        <option value="BTC">BTC</option>
-                        <option value="EUR" selected>EUR</option>
-                        <option value="GBP">GBP</option>
-                        <option value="AUD">AUD</option>
-                        <option value="BGN">BGN</option>
-                        <option value="BRL">BRL</option>
-                        <option value="CAD">CAD</option>
-                        <option value="CHF">CHF</option>
-                        <option value="CNY">CNY</option>
-                        <option value="CZK">CZK</option>
-                        <option value="DKK">DKK</option>
-                        <option value="HKD">HKD</option>
-                        <option value="HRK">HRK</option>
-                        <option value="HUF">HUF</option>
-                        <option value="IDR">IDR</option>
-                        <option value="ILS">ILS</option>
-                        <option value="INR">INR</option>
-                        <option value="JPY">JPY</option>
-                        <option value="KRW">KRW</option>
-                        <option value="LTL">LTL</option>
-                        <option value="LVL">LVL</option>
-                        <option value="MXN">MXN</option>
-                        <option value="MYR">MYR</option>
-                        <option value="NOK">NOK</option>
-                        <option value="NZD">NZD</option>
-                        <option value="PHP">PHP</option>
-                        <option value="PLN">PLN</option>
-                        <option value="RON">RON</option>
-                        <option value="RUB">RUB</option>
-                        <option value="SEK">SEK</option>
-                        <option value="SGD">SGD</option>
-                        <option value="THB">THB</option>
-                        <option value="TRY">TRY</option>
-                        <option value="ZAR">ZAR</option>
-                    </select>
-                    <input type="hidden" name="data" value="DTV4JaKv709xq02lnDoV6YQzckpuFjSKkWgOIEaHst13ciMsAsGhH+lsBgTnSgZUnUJkwK3b4Th2Vmqgli5h9CrdtkpBoB0H6wSwQ27msp/3C6z1SSQgs+S7kox+JBksKzbDe2lFInUPQ5MZuJLkifNtbwK9d7K8NZXS+ix2DplqJNun42OtOCAoZ5Zqf6YqF8D9IZe7Ye5ghKWqslh1bsmZeVbHnbzm4aTdJsE74+1YtMGQmZ0MGFtyJ21GVvIgVUrSVO5FNb+sbPoPgWC/dPykPaPujsU0hJAAVEEVGeskdHthnoR1pJn9sTNbF/6pwIiyWCQC/D+1S35t9ZAMpy2GGTfRVrKBgJE+5ohdIHM=">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="submit">{{ heart | safe }}Donate</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="card mb-5 w-100">
     <h2 class="h4 card-header" id="contribute">Contribute</h2>
     <div class="card-body">
         <p class="card-text">
