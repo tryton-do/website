@@ -14,7 +14,7 @@ from http import HTTPStatus
 from logging.handlers import SMTPHandler
 from operator import attrgetter
 from random import sample, shuffle
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import requests
 from colorthief import ColorThief
@@ -26,7 +26,7 @@ from flask_cdn import CDN
 from flask_cdn import url_for as _cdn_url_for
 from flask_gravatar import Gravatar
 from flask_sitemap import Sitemap
-from icalendar import Calendar
+from icalendar import Calendar, Event
 from jinja2 import TemplateNotFound
 from lxml import html, objectify
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -34,7 +34,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 NEWS_URL = 'https://discuss.tryton.org/c/news'
 NEWS_RSS_URL = NEWS_URL + '.rss'
 CALENDAR_URL = 'https://discuss.tryton.org/upcoming-events'
-CALENDAR_ICS = 'https://discuss.tryton.org/discourse-post-event/events.ics'
+CALENDAR_JSON = 'https://discuss.tryton.org/discourse-post-event/events.json'
 SUPPORTERS_URL = (
     'https://foundation.tryton.org:9000/foundation/foundation/1/supporters')
 DONATORS_URL = (
@@ -82,7 +82,7 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'sitemap.xml']
 app.config['CDN_DOMAIN'] = os.environ.get('CDN_DOMAIN')
 app.config['CDN_HTTPS'] = ast.literal_eval(os.environ.get('CDN_HTTPS', 'True'))
-app.config['SITEMAP_IGNORE_ENDPOINTS'] = ['events', 'events-alt']
+app.config['SITEMAP_IGNORE_ENDPOINTS'] = ['events', 'events-alt', 'events-ics']
 app.config['GRAVATAR_SIZE'] = 198
 app.config['GRAVATAR_DEFAULT'] = 'mp'
 app.config['GRAVATAR_USE_SSL'] = True
@@ -337,10 +337,29 @@ def events():
     return redirect(CALENDAR_URL)
 
 
+@app.route('/events.ics', endpoint='events-ics')
+def events_ics():
+    response = make_response(fetch_events())
+    response.mimetype = 'text/calendar'
+    return response
+
+
 @cache.memoize(timeout=60 * 60 * 24)
 def fetch_events():
-    ics = requests.get(CALENDAR_ICS)
-    return ics.content
+    def parse_dt(value):
+        return datetime.datetime.fromisoformat(value.rstrip('Z'))
+    data = requests.get(CALENDAR_JSON).json()
+    calendar = Calendar()
+    for data in requests.get(CALENDAR_JSON).json()['events']:
+        event = Event()
+        if data.get('starts_at'):
+            event.add('dtstart', parse_dt(data['starts_at']))
+        if data.get('ends_at'):
+            event.add('dtend', parse_dt(data['ends_at']))
+        event['summary'] = data['name']
+        event['url'] = urljoin(CALENDAR_JSON, data['post']['url'])
+        calendar.add_component(event)
+    return calendar.to_ical()
 
 
 def next_events(size=-1):
