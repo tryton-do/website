@@ -13,7 +13,7 @@ COPY iconfont iconfont/
 RUN npm install
 RUN node_modules/.bin/gulp
 
-FROM debian:stretch-slim
+FROM debian:11-slim
 LABEL maintainer="Tryton <foundation@tryton.org>" \
     org.label-schema.name="Tryton" \
     org.label-schema.url="http://www.tryton.org/" \
