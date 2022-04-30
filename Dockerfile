@@ -9,7 +9,6 @@ WORKDIR $INSTALL_PATH
 COPY package.json  gulpfile.js ./
 COPY js js/
 COPY sass sass/
-COPY iconfont iconfont/
 RUN npm install
 RUN node_modules/.bin/gulp
 
@@ -45,7 +44,6 @@ COPY static/fonts static/fonts/
 COPY static/images static/images/
 COPY --from=builder-node $INSTALL_PATH/static/css static/css/
 COPY --from=builder-node $INSTALL_PATH/static/js static/js/
-COPY --from=builder-node $INSTALL_PATH/static/fonts static/fonts
 
 EXPOSE 5000
 USER web
