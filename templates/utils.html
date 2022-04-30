@@ -55,5 +55,5 @@
 {% endmacro %}
 
 {% macro icon(name, width=16, height=None) %}<svg class="icon" width="{{ width }}" height="{{ height or width }}">
-    <use href="/static/images/icons.svg#{{ name }}"></use>
+    <use href="{{ url_for('static', filename='images/icons.svg')|url_local }}#{{ name }}"></use>
 </svg>{% endmacro %}

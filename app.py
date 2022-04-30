@@ -762,6 +762,11 @@ def hostname(url):
     return urlparse(url).hostname
 
 
+@app.template_filter('url_local')
+def url_local(url):
+    return urlparse(url)._replace(scheme='', netloc='').geturl()
+
+
 @cache.memoize(timeout=60 * 60 * 24)
 def fetch_donators():
     headers = {'Content-Type': 'application/json'}
