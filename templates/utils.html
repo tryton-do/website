@@ -53,3 +53,7 @@
     </div>
 </div>
 {% endmacro %}
+
+{% macro icon(name, width=16, height=None) %}<svg class="icon" width="{{ width }}" height="{{ height or width }}">
+    <use xlink:href="{{ url_for('static', filename='icons.svg') }}#{{ name }}"></use>
+</svg>{% endmacro %}

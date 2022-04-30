@@ -14,6 +14,7 @@
 %}
 {% extends "layout-toc.html" %}
 {% from "utils.html" import background with context %}
+{% from "utils.html" import icon %}
 {% block style %}
 {{ super() }}
 {{ background('banner-download') }}
@@ -87,7 +88,7 @@ and they are supported for 1 year except for new major which has long term suppo
     These images are updated every week.</p>
     <p>
     <a href="https://hub.docker.com/r/tryton/tryton/" class="btn btn-primary">
-        <i class="icon icon-docker"></i> Download
+        {{ icon('docker') }} Download
     </a>
     </p>
 </section>
@@ -98,25 +99,25 @@ and they are supported for 1 year except for new major which has long term suppo
     <p>
     Current version:<br/>
     <a href="https://downloads.tryton.org/current/tryton-32bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 32bit">
-        <i class="icon icon-windows"></i> Windows 32bit
+        {{ icon('windows') }} Windows 32bit
     </a>
     <a href="https://downloads.tryton.org/current/tryton-64bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 64bit">
-        <i class="icon icon-windows"></i> Windows 64bit
+        {{ icon('windows') }} Windows 64bit
     </a>
     <a href="https://downloads.tryton.org/current/tryton-last.dmg" class="btn btn-outline-primary" title="Download for macOS">
-        <i class="icon icon-apple"></i> macOS
+        {{ icon('apple') }} macOS
     </a>
     </p>
     <p>
     Long term support:<br/>
     <a href="https://downloads.tryton.org/lts/tryton-32bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 32bit">
-        <i class="icon icon-windows"></i> Windows 32bit
+        {{ icon('windows') }} Windows 32bit
     </a>
     <a href="https://downloads.tryton.org/lts/tryton-64bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 64bit">
-        <i class="icon icon-windows"></i> Windows 64bit
+        {{ icon('windows') }} Windows 64bit
     </a>
     <a href="https://downloads.tryton.org/lts/tryton-last.dmg" class="btn btn-outline-primary" title="Download for macOS">
-        <i class="icon icon-apple"></i> macOS
+        {{ icon('apple') }} macOS
     </a>
     </p>
     <p class="text-info">For other platforms, use the <a href="#source">source files</a></p>
@@ -147,10 +148,10 @@ and they are supported for 1 year except for new major which has long term suppo
     <p>We also publish an optional add-on that can be used to manage timesheets from inside your browser.</p>
     <p>
     <a href="https://addons.mozilla.org/en-US/firefox/addon/tryton-chronos/" class="btn btn-outline-primary" title="Download for Firefox">
-        <i class="icon icon-firefox"></i> Firefox
+        {{ icon('firefox') }} Firefox
     </a>
     <a href="https://chrome.google.com/webstore/detail/chronos/ikhcoclknebokeabdhaaggmmookkndmp" class="btn btn-outline-primary" title="Download for Chrome">
-        <i class="icon icon-google-chrome"></i> Chrome
+        {{ icon('google-chrome') }} Chrome
     </a>
     </p>
 </section>
@@ -171,28 +172,28 @@ $ python -m pip install trytond_sale  # sale module</code></pre>
     These generally provide better integration with the operating system, but often there is a delay before new versions make it into their distributions.</p>
     <ul>
         <li id="archlinux"><a href="https://aur.archlinux.org/packages.php?K=tryton">
-                <i class="icon icon-arch-linux"></i> Arch Linux
+                {{ icon('arch-linux') }} Arch Linux
             </a></li>
         <li id="debian"><a href="https://tryton-team.pages.debian.net/">
-                <i class="icon icon-debian"></i> Debian
+                {{ icon('debian') }} Debian
             </a></li>
         <li id="fedora"><a href="https://apps.fedoraproject.org/packages/s/tryton">
-                <i class="icon icon-fedora"></i> fedora
+                {{ icon('fedora') }} fedora
             </a></li>
         <li id="gentoo"><a href="https://wiki.gentoo.org/wiki/Tryton">
-                <i class="icon icon-gentoo"></i> Gentoo
+                {{ icon('gentoo') }} Gentoo
             </a></li>
         <li id="openbsd"><a href="https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/productivity/tryton/">
-                <i class="icon icon-openbsd"></i> OpenBSD
+                {{ icon('openbsd') }} OpenBSD
             </a></li>
         <li id="opensuse"><a href="https://build.opensuse.org/project/subprojects/Application:ERP:Tryton">
-                <i class="icon icon-opensuse"></i> openSUSE
+                {{ icon('opensuse') }} openSUSE
             </a></li>
         <li id="ubuntu"><a href="https://packages.ubuntu.com/search?searchon=names&keywords=tryton">
-                <i class="icon icon-ubuntu"></i> Ubuntu
+                {{ icon('ubuntu') }} Ubuntu
             </a></li>
         <li id="netbsd"><a href="http://pkgsrc.se/meta-pkgs/py-tryton-platform">
-                <i class="icon icon-netbsd"></i> NetBSD
+                {{ icon('netbsd') }} NetBSD
             </a></li>
     </ul>
 </section>

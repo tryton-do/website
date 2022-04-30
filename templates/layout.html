@@ -1,3 +1,4 @@
+{% from "utils.html" import icon %}
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
@@ -146,12 +147,12 @@
                                 </p>
                                 <div class="socials">
                                     <h2>Follow us</h2>
-                                    <a href="{{ url_for('news_rss') }}" class="mr-3 icon icon-rss-box i-36"><span class="sr-only">RSS</span></a>
-                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" rel="noopener" class="mr-3 icon icon-twitter-box i-36"><span class="sr-only">Twitter</span></a>
-                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" rel="noopener" class="mr-3 icon icon-facebook-box i-36"><span class="sr-only">Facebook</span></a>
-                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" rel="noopener" class="mr-3 icon icon-linkedin-box i-36"><span class="sr-only">LinkedIn</span></a>
-                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" rel="noopener" class="mr-3 icon icon-youtube i-36"><span class="sr-only">YouTube</span></a>
-                                    <a href="https://vimeo.com/groups/tryton" target="_blank" rel="noopener" class="mr-3 icon icon-vimeo i-36"><span class="sr-only">Vimeo</span></a>
+                                    <a href="{{ url_for('news_rss') }}" class="mr-3">{{ icon('rss-box', 36) }}<span class="sr-only">RSS</span></a>
+                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" rel="noopener" class="mr-3">{{ icon('twitter-box', 36) }}<span class="sr-only">Twitter</span></a>
+                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" rel="noopener" class="mr-3">{{ icon('facebook-box', 36) }}<span class="sr-only">Facebook</span></a>
+                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" rel="noopener" class="mr-3">{{ icon('linkedin-box', 36) }}<span class="sr-only">LinkedIn</span></a>
+                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" rel="noopener" class="mr-3">{{ icon('youtube', 36) }}<span class="sr-only">YouTube</span></a>
+                                    <a href="https://vimeo.com/groups/tryton" target="_blank" rel="noopener" class="mr-3">{{ icon('vimeo', 36) }}<span class="sr-only">Vimeo</span></a>
                                 </div>
                             </div>
                         </div>
