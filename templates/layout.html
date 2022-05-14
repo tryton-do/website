@@ -41,10 +41,14 @@
         <style type="text/css">
             {{ css|safe }}
         </style>
-        {% endif %}
         <link rel="preload" href="{{ url_for('static', filename='css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript>
             <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        </noscript>
+        {% else %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        {% endif %}
+        <noscript>
             <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}"/>
         </noscript>
         {% endblock style %}
