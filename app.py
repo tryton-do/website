@@ -13,7 +13,7 @@ from functools import partial
 from http import HTTPStatus
 from logging.handlers import SMTPHandler
 from operator import attrgetter
-from random import sample, shuffle
+from random import choice, sample, shuffle
 from urllib.parse import urljoin, urlparse
 
 import requests
@@ -61,6 +61,8 @@ PROVIDERS = [
     ('SISalp', [(45.903956, 6.099937), (43.132028, 5.935532)]),
     ('Virtual Things', [(48.13585, 11.577415), (50.775116, 6.083565)]),
     ]
+CRITICAL_CSS_DIR = os.environ.get('CRITICAL_CSS')
+CRITICAL_CSS_COOKIE = 'critical-css'
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 if os.environ.get('MEMCACHED'):
@@ -121,7 +123,11 @@ def cdn_url_for(*args, **kwargs):
 
 def cache_key_prefix_view():
     scheme = 'https' if request.is_secure else 'http'
-    return 'view/%s/%s' % (scheme, request.path)
+    if not request.cookies.get('critical-css'):
+        return 'view/%s/%s/%s' % (
+            scheme, request.path, critical_css(timestamp=True))
+    else:
+        return 'view/%s/%s' % (scheme, request.path)
 
 
 LinkHeader = namedtuple(
@@ -214,6 +220,32 @@ def url_for_canonical(endpoint=None, **values):
 @app.context_processor
 def inject_canonical():
     return dict(url_for_canonical=url_for_canonical)
+
+
+def critical_css(timestamp=False):
+    if (CRITICAL_CSS_DIR
+            and request.endpoint
+            and not request.cookies.get(CRITICAL_CSS_COOKIE)):
+        file = os.path.join(CRITICAL_CSS_DIR, request.endpoint + '.css')
+        if os.path.exists(file):
+            if timestamp:
+                return int(os.path.getmtime(file))
+            else:
+                return open(file, 'r').read()
+
+
+@app.after_request
+def add_critical_css_cookie(response):
+    if (CRITICAL_CSS_DIR
+            and response.mimetype == 'text/html'
+            and not request.cookies.get(CRITICAL_CSS_COOKIE)):
+        response.set_cookie(CRITICAL_CSS_COOKIE, '1')
+    return response
+
+
+@app.context_processor
+def inject_critical_css():
+    return dict(critical_css=critical_css)
 
 
 @cache.memoize(timeout=365 * 24 * 60 * 60)
@@ -523,6 +555,8 @@ def success_stories_alt():
 @cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def success_story(story):
+    if story == '_':
+        story = choice(CASES).name
     cases = [c for c in CASES if c.story or c.name == story]
     try:
         next_case = cases[(cases.index(story) + 1) % len(cases)]
@@ -578,6 +612,9 @@ def presentations_alt():
 @cache.cached(key_prefix=cache_key_prefix_view)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def event(event):
+    if event == '_':
+        event = 'layout'
+
     class Day:
         def __init__(self, date, *events, location=None, full=False):
             if not isinstance(date, datetime.date):

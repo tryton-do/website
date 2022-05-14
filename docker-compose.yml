@@ -7,6 +7,9 @@ services:
             - website.env
         environment:
             - MEMCACHED=memcached
+            - CRITICAL_CSS=/critical-css
+        volumes:
+            - critical-css:/critical-css
         ports:
             - "127.0.0.1:5000:5000"
         restart: unless-stopped
@@ -18,3 +21,14 @@ services:
         ports:
             - "127.0.0.1:11211:11211"
         restart: unless-stopped
+    critical-css:
+        build: critical-css
+        environment:
+            - OUTPUT=/critical-css
+            - SITE=website:5000
+        volumes:
+            - critical-css:/critical-css
+        depends_on:
+            - website
+volumes:
+  critical-css:
