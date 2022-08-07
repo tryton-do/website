@@ -48,9 +48,7 @@
         <h2 class="h5 card-title">{{ case.title }}</h2>
         <p class="card-text">{{ case.description }}</p>
     </div>
-    <div class="card-footer text-center">
-        <a href="{{ case.url }}" class="btn btn-primary btn-block {{ 'disabled' if not case.url else '' }}" {% if not case.url %}aria-disabled="true"{% endif %}>More<span class="sr-only">on {{ case.title }}</span></a>
-    </div>
+    <a href="{{ case.url }}" class="card-footer btn stretched-link {{ 'disabled' if not case.url else '' }}" {% if not case.url %}aria-disabled="true"{% endif %}>More<span class="visually-hidden">on {{ case.title }}</span></a>
 </div>
 {% endmacro %}
 

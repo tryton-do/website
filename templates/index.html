@@ -12,24 +12,24 @@
 {% endblock head %}
 {% block header %}
 {{ super() }}
-<div id="carousel-header" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carousel-header" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carousel-header" data-slide-to="0" class="active">
+        <li data-bs-target="#carousel-header" data-bs-slide-to="0" class="active">
             <noscript>
                 <label for="carousel-0"> </label>
             </noscript>
         </li>
-        <li data-target="#carousel-header" data-slide-to="1">
+        <li data-bs-target="#carousel-header" data-bs-slide-to="1">
             <noscript>
                 <label for="carousel-1"> </label>
             </noscript>
         </li>
-        <li data-target="#carousel-header" data-slide-to="2">
+        <li data-bs-target="#carousel-header" data-bs-slide-to="2">
             <noscript>
                 <label for="carousel-2"> </label>
             </noscript>
         </li>
-        <li data-target="#carousel-header" data-slide-to="3">
+        <li data-bs-target="#carousel-header" data-bs-slide-to="3">
             <noscript>
                 <label for="carousel-3"> </label>
             </noscript>
@@ -113,7 +113,7 @@
 <section class="section bg-light text-center" id="features">
     <div class="container">
         <section class="section-header bg-light text-primary">
-            <h2 class="pl-3 pr-3 text-uppercase">All you need to run your business</h2>
+            <h2 class="ps-3 pe-3 text-uppercase">All you need to run your business</h2>
         </section>
         <h3 class="lead">
             {% include 'tryton-tm.html' %} includes all these features <strong>fully integrated</strong>
@@ -246,7 +246,7 @@
 <section class="section" id="news">
     <div class="container">
         <section class="section-header bg-white">
-            <h3 class="pr-3 text-uppercase"><a href="{{ url_for('news') }}">News</a></h3>
+            <h3 class="pe-3 text-uppercase"><a href="{{ url_for('news') }}">News</a></h3>
         </section>
         <div class="row">
             {% for item in news[:3] %}
@@ -256,7 +256,7 @@
                 {{ item.description|news_text|truncate(240) }}
                 </p>
                 <div class="d-flex">
-                    <a class="btn btn-primary ml-auto" href="{{ item.link }}">More<span class="sr-only">on "{{ item.title }}"</span></a>
+                    <a class="btn btn-primary ms-auto" href="{{ item.link }}">More<span class="visually-hidden">on "{{ item.title }}"</span></a>
                 </div>
             </div>
             {% endfor %}
@@ -283,7 +283,7 @@
                             If you are organizing an event around Tryton and want to be listed here, please send us an email
                             </p>
                             <div class="d-flex">
-                                <a class="btn btn-dark ml-auto" href="mailto:foundation@tryton.org">Send</a>
+                                <a class="btn btn-dark ms-auto" href="mailto:foundation@tryton.org">Send</a>
                             </div>
                         </div>
                     </div>
@@ -304,8 +304,8 @@
                             </dl>
                         </div>
                         <div class="col-lg-2 d-flex flex-column justify-content-between">
-                            <a class="btn btn-outline-secondary" href="{{ url_for('events-ics') }}">Add<span class="sr-only"> to calendar</span></a>
-                            <a class="btn btn-secondary" href="{{ url_for('events') }}">More<span class="sr-only"> events</span></a>
+                            <a class="btn btn-outline-secondary" href="{{ url_for('events-ics') }}">Add<span class="visually-hidden"> to calendar</span></a>
+                            <a class="btn btn-secondary" href="{{ url_for('events') }}">More<span class="visually-hidden"> events</span></a>
                         </div>
                     </div>
                 </div>

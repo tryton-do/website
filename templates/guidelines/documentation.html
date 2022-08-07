@@ -88,7 +88,7 @@ Indentation
     <p>To ensure consistency for certain words and terms always use:</p>
     <dl class="bg-light p-2">
         <dt>Tryton</dt>
-        <dd class="pl-4">This is always capitalised, unless referring to the <span class="text-monospace">tryton</span> command for the desktop client.</dd>
+        <dd class="ps-4">This is always capitalised, unless referring to the <span class="text-monospace">tryton</span> command for the desktop client.</dd>
     </dl>
     <p>
     Also avoid using the word ERP after Tryton.
@@ -143,20 +143,20 @@ Purchase Report
     <p>A few useful examples of standard roles include:</p>
     <dl>
         <dt><code>:abbr:`TST (Test Sphinx Thing)`</code></dt>
-        <dd class="pl-4">Used to define abbreviations.
+        <dd class="ps-4">Used to define abbreviations.
             The abbreviation definition can be given inside brackets and is only shown as a tooltip.</dd>
         <dt><code>:command:`trytond_import_countries`</code></dt>
-        <dd class="pl-4">Used for the name of commands or scripts.</dd>
+        <dd class="ps-4">Used for the name of commands or scripts.</dd>
         <dt><code>:doc:`Style Guide &lt;style&gt;`</code></dt>
-        <dd class="pl-4">Used to link to a documentation file.</dd>
+        <dd class="ps-4">Used to link to a documentation file.</dd>
         <dt><code>:file:`modules/{module_name}/doc/index.rst`</code></dt>
-        <dd class="pl-4">Used for filenames.
+        <dd class="ps-4">Used for filenames.
             Parts that may vary can be included with <mark>{variable}</mark> syntax, these are displayed differently to indicate that they should be replaced by the correct value when used.</dd>
         <dt><code>:guilabel:`Open related records`</code></dt>
-        <dd class="pl-4">Used for any element in the <abbr title="Graphical User Interface">GUI</abbr>.
+        <dd class="ps-4">Used for any element in the <abbr title="Graphical User Interface">GUI</abbr>.
             This includes button labels, window titles, menu names, and so on.</dd>
         <dt><code>:menuselection:`Administration --> Users --> Users`</code></dt>
-        <dd class="pl-4">Used for menu items.
+        <dd class="ps-4">Used for menu items.
             Each level is separated using <code>--></code>.
             <p>
             To create a <code>:menuselection:</code> item that is also a link you need to use substitutions:</p>
@@ -171,7 +171,7 @@ Purchase Report
             Where possible try and put <code>:menuselection:</code> items in an indented paragraph of their own so they won't break across lines.
             If this is not possible then enclose them in <code>[</code>square brackets<code>]</code> to help make them easier to read.</p></dd>
         <dt><code>:rfc:`2324`</code></dt>
-        <dd class="pl-4">Used for links to Internet Request for Comments.
+        <dd class="ps-4">Used for links to Internet Request for Comments.
             Just use the RFC's number.</dd>
     </dl>
 </div>
@@ -183,11 +183,11 @@ Purchase Report
     Depending on what the module does, and how it is structured you may need some, or all, of the following files:</p>
     <dl>
         <dt class="text-monospace">conf.py</dt>
-        <dd class="pl-4"><p>
+        <dd class="ps-4"><p>
             This file is required, and is the Sphinx configuration file.
             It must be kept exactly the same as the <span class="text-monospace">conf.py</span> files in the all the other modules.</p></dd>
         <dt class="text-monospace">index.rst</dt>
-        <dd class="pl-4"><p>
+        <dd class="ps-4"><p>
             This file is also required and should include a basic description of the module and a table of contents (<code>toctree</code> directive) that links to the other files with a <code>maxdepth</code> of 2.</p>
             <p class="bg-warning rounded p-2">
             <span class="material-icons">warning</span>
@@ -198,24 +198,24 @@ Purchase Report
             <p>
             The reason it is okay to use a <code>toctree</code> directive is because the build process knows about these and automatically strips them out when building the distribution file.</p></dd>
         <dt class="text-monospace">setup.rst</dt>
-        <dd class="pl-4"><p>
+        <dd class="ps-4"><p>
             The aim of this file is to describe any setup that needs to be done once a module has been activated.
             Often this setup will need to be done by the user before the module can be used properly.</p>
             <p>
             Add sections to this file that describe the setup that is required and how it is done, for example <mark>"Doing a specific module setup task"</mark>, or <mark>"Setting up the thing to do something"</mark>.</p></dd>
         <dt class="text-monospace">usage.rst</dt>
-        <dd class="pl-4"><p>
+        <dd class="ps-4"><p>
             The contents of this file are intended for users of the system.
             So it should talk to these readers directly and you can refer to them in the second person.
             This means you can use sentences like <mark>"Your system ... then you need to ..."</mark>.</p>
             <p>
             It should contain sections that provide instructions or guidance on using a feature of the module, for example <mark>"Using the main feature in the module"</mark>, or <mark>"Working with a specific part of the module"</mark>.</p></dd>
         <dt class="text-monospace">configuration.rst</dt>
-        <dd class="pl-4"><p>
+        <dd class="ps-4"><p>
             This file should contain each of the server configuration settings that the module provides.
             Each configuration option should be described mentioning what it is for, or what it does.</p></dd>
         <dt class="text-monospace">design.rst</dt>
-        <dd class="pl-4"><p>
+        <dd class="ps-4"><p>
             The design and structure of the module is described in this file.
             Try and focus on the concepts that the module introduces or extends.
             Often these concepts are implemented in Tryton as models, but it is the concepts and how they fit together that are important.</p>
@@ -225,7 +225,7 @@ Purchase Report
             Wizards and reports should be documented in sections beneath the concepts that they relate to.
             If they are used with several different models then document them as part of either the primary, or first, model that they relate to, and then link to them from any other models that use them.</p></dd>
         <dt class="text-monospace">reference.rst</dt>
-        <dd class="pl-4"><p>
+        <dd class="ps-4"><p>
             This file is used to provide reference information for people who are developing or working on the module.
             It includes sections that document any APIs or routes the module provides, as well as documentation on how to build or update parts of the module.</p></dd>
     </dl>

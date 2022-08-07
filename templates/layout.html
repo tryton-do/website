@@ -65,8 +65,8 @@
                     <a class="navbar-brand" href="{{ url_for('index') }}">
                         <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.png') }}" width="110" height="32" alt="Tryton Home"/>
                     </a>
-                    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <a href="#content" class="visually-hidden visually-hidden-focusable">Skip to main content</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <noscript>
@@ -76,11 +76,11 @@
                     </noscript>
                     <input id="navbarButton" class="navbar-toggler d-none" aria-controls="navbarText" role="button" type="checkbox"/>
                     <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav ms-auto">
                             {% for title, items in menu.items() %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true">{{ title }}</a>
-                                <div class="dropdown-menu dropdown-menu-right text-lg-right">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true">{{ title }}</a>
+                                <div class="dropdown-menu dropdown-menu-end text-lg-end">
                                     {% for item, url in items %}
                                     <a class="dropdown-item" href="{{ url }}">{{ item|safe }}</a>
                                     {% endfor %}
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="offset-lg-1 col-md-5 col-lg-4">
-                            <div class="footer-right">
+                            <div class="footer-end">
                                 <noscript class="loading-lazy">
                                     <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
                                 </noscript>
@@ -158,13 +158,13 @@
                                 </p>
                                 <div class="socials">
                                     <h2>Follow us</h2>
-                                    <a href="{{ url_for('news_rss') }}" class="mr-3">{{ icon('rss-box', 36) }}<span class="sr-only">RSS</span></a>
-                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" rel="noopener" class="mr-3">{{ icon('twitter-box', 36) }}<span class="sr-only">Twitter</span></a>
-                                    <a href="https://fosstodon.org/@tryton" target="_blank" rel="noopener" class="mr-3">{{ icon('mastodon', 36) }}<span class="sr-only">Mastodon</span></a>
-                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" rel="noopener" class="mr-3">{{ icon('facebook-box', 36) }}<span class="sr-only">Facebook</span></a>
-                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" rel="noopener" class="mr-3">{{ icon('linkedin-box', 36) }}<span class="sr-only">LinkedIn</span></a>
-                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" rel="noopener" class="mr-3">{{ icon('youtube', 36) }}<span class="sr-only">YouTube</span></a>
-                                    <a href="https://vimeo.com/groups/tryton" target="_blank" rel="noopener" class="mr-3">{{ icon('vimeo', 36) }}<span class="sr-only">Vimeo</span></a>
+                                    <a href="{{ url_for('news_rss') }}" class="me-3">{{ icon('rss-box', 36) }}<span class="visually-hidden">RSS</span></a>
+                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" rel="noopener" class="me-3">{{ icon('twitter-box', 36) }}<span class="visually-hidden">Twitter</span></a>
+                                    <a href="https://fosstodon.org/@tryton" target="_blank" rel="noopener" class="me-3">{{ icon('mastodon', 36) }}<span class="visually-hidden">Mastodon</span></a>
+                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" rel="noopener" class="me-3">{{ icon('facebook-box', 36) }}<span class="visually-hidden">Facebook</span></a>
+                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" rel="noopener" class="me-3">{{ icon('linkedin-box', 36) }}<span class="visually-hidden">LinkedIn</span></a>
+                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" rel="noopener" class="me-3">{{ icon('youtube', 36) }}<span class="visually-hidden">YouTube</span></a>
+                                    <a href="https://vimeo.com/groups/tryton" target="_blank" rel="noopener" class="me-3">{{ icon('vimeo', 36) }}<span class="visually-hidden">Vimeo</span></a>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +175,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col col-12 col-md-6">Contents © {{ copyright_dates }} Tryton <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></div>
-                        <div class="col col-12 col-md-6 text-md-right">Made with <a target="_blank" rel="noopener" href="https://www.palletsprojects.com/p/flask/">Flask</a> and delivered through <a target="_blank" rel="noopener" href="https://www.keycdn.com/?a=69381">KeyCDN</a></div>
+                        <div class="col col-12 col-md-6 text-md-end">Made with <a target="_blank" rel="noopener" href="https://www.palletsprojects.com/p/flask/">Flask</a> and delivered through <a target="_blank" rel="noopener" href="https://www.keycdn.com/?a=69381">KeyCDN</a></div>
                     </div>
                 </div>
             </div>

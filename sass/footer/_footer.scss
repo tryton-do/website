@@ -31,7 +31,7 @@
       border-color: $tryton-color-gray;
     }
 
-    .footer-right {
+    .footer-end {
       @include media-breakpoint-down(md) {
         margin-top: 2rem;
       }

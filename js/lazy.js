@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var lazy_callback = function() {
     if ("IntersectionObserver" in window) {
         lazyElements = document.querySelectorAll(".lazy");
         var lazyObserver = new IntersectionObserver(function(entries, observer) {
@@ -15,4 +15,11 @@ $(document).ready(function() {
             lazyObserver.observe(element);
         });
     }
-});
+};
+
+if (document.readyState === "complete" ||
+    (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+    lazy_callback();
+} else {
+    document.addEventListener("DOMContentLoaded", callback);
+}

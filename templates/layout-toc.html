@@ -3,7 +3,7 @@
 <ul class="{{ klass }}">
     {% for name, anchor, sub in toc %}
     <li class="nav-item">
-        <a class="nav-link pl-3 py-1" href="#{{ anchor }}">{{ name }}</a>
+        <a class="nav-link ps-3 py-1" href="#{{ anchor }}">{{ name }}</a>
         {% if sub %}
         {{ nav(sub) }}
         {% endif %}
@@ -18,7 +18,7 @@
             {{ super() }}
             {% block toc %}
             <div class="d-none d-md-block col-md-2 order-2 sticky-top" style="top: 1rem; height: 100%;">
-                {{ nav(toc, "nav flex-column border-left") }}
+                {{ nav(toc, "nav flex-column border-start") }}
             </div>
             {% endblock toc %}
             <main class="col-sm-12 col-md-8 offset-md-2 order-1">

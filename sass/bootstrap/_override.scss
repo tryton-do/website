@@ -14,7 +14,15 @@ $light: $tryton-color-light;
 $dark: $tryton-color-dark;
 $body-color: $tryton-color-body;
 $theme-colors: (
-  'white': #fff,
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  'white':      #fff,
 );
 
 // Text
@@ -37,9 +45,14 @@ $navbar-nav-link-padding-x: 1rem;
 $navbar-light-color: rgba($black, .6) !default;
 $dropdown-bg: $dark;
 $dropdown-link-color: #fff;
+$dropdown-link-hover-color: $dark;
 $dropdown-spacer: 0;
 $dropdown-border-width: 0;
 $dropdown-border-radius: 0;
+
+// LINKS
+$link-decoration:       none;
+$link-hover-decoration: underline;
 
 // BUTTONS
 $btn-focus-width: 0;
@@ -51,7 +64,14 @@ $input-border-radius: $border-radius;
 $grid-gutter-width: 30px;
 
 // SPACERS
+$spacer: 1rem !default;
 $spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
   'gutter': $grid-gutter-width,
   'gutter-half': math.div($grid-gutter-width, 2),
   );
