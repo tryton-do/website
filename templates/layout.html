@@ -122,9 +122,7 @@
 
         <footer id="footer">
             {% block footer %}
-            <noscript class="loading-lazy">
-                <img class="img-fluid" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/placeholder-large.jpg') }};" width="1920" height="350"/>
-            </noscript>
+            <img class="img-fluid" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/placeholder-large.jpg') }};" width="1920" height="350"/>
             <section class="topfooter">
                 <div class="container">
                     <div class="row">
@@ -148,9 +146,7 @@
                         </div>
                         <div class="offset-lg-1 col-md-5 col-lg-4">
                             <div class="footer-end">
-                                <noscript class="loading-lazy">
-                                    <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
-                                </noscript>
+                                <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
                                 <hr/>
                                 <p class="lead">Modularity, scalability & security for your business</p>
                                 <p>

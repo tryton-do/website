@@ -23,9 +23,7 @@
             {% set roundup = roundup_url(supporter) %}
             <div class="col mb-gutter">
                 <div class="card mx-auto shadow" style="max-width: 200px">
-                    <noscript class="loading-lazy">
-                        <img class="card-img-top" src="{{ supporter['email'] | gravatar(198) }}" width="198" height="198" alt="" loading="lazy"/>
-                    </noscript>
+                    <img class="card-img-top" src="{{ supporter['email'] | gravatar(198) }}" width="198" height="198" alt="" loading="lazy"/>
                     <div class="card-body">
                         <h2 class="h6 card-title">{{ supporter['name'] }}</h2>
                         {% if discuss %}

@@ -13,10 +13,9 @@ gulp.task('main-js', function() {
     return gulp.src([
         'node_modules/@popperjs/core/dist/umd/popper.js',
         'node_modules/bootstrap/dist/js/bootstrap.js',
-        'node_modules/loading-attribute-polyfill/dist/loading-attribute-polyfill.umd.js',
         'js/highlight.pack.js',
         'js/highlight.js',
-        'js/lazy.js'])
+    ])
         .pipe(sourcemaps.init())
         .pipe(gulp.dest('static/js/'))
         .pipe(concat('main.js'))

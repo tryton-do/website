@@ -1,9 +1,5 @@
 {% macro background(name) %}
 <style>
-.background-{{ name | replace('/', '-') }}.lazy {
-    background-image: none;
-    background-color: {{ dominant_color('images/%s.jpg' % name) }};
-}
 .background-{{ name | replace('/', '-') }} {
     background-image: url('{{ url_for('static', filename='images/%s.jpg' % name) }}');
 }
@@ -18,31 +14,12 @@
     }
 }
 </style>
-<noscript>
-    <style>
-    .background-{{ name | replace('/', '-') }}.lazy {
-        background-image: url('{{ url_for('static', filename='images/%s.jpg' % name) }}');
-    }
-    @media (max-width: 800px) {
-        .background-{{ name | replace('/', '-') }}.lazy {
-            background-image: url('{{ url_for('static', filename='images/%s-800px.jpg' % name) }}');
-        }
-    }
-    @media (max-width: 400px) {
-        .background-{{ name | replace('/', '-') }}.lazy {
-            background-image:url('{{ url_for('static', filename='images/%s-400px.jpg' % name) }}');
-        }
-    }
-    </style>
-</noscript>
 {% endmacro %}
 
 {% macro case_card(case, classes='') %}
 <div class="card mx-auto shadow d-flex flex-column {{ classes }}" style="max-width: 18rem; height: 100%">
     {% if case.logo %}
-    <noscript class="loading-lazy">
-        <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" alt="" loading="lazy" width="286" height="180"/>
-    </noscript>
+    <img class="card-img-top" src="{{ url_for('static', filename=case.logo) }}" alt="" loading="lazy" width="286" height="180"/>
     {% endif %}
     <div class="card-body">
         <h2 class="h5 card-title">{{ case.title }}</h2>
