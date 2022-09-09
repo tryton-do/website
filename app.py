@@ -452,6 +452,10 @@ CASES = [
         title="AMMEBA",
         description="A Medical Mutual Society from Buenos Aires.",
         story=True),
+    Case(title="APAR @ AIIMS",
+        description="Annual Performance Appraisal for the All Indian "
+        "Institute of Medical Sciences",
+        story=True),
     Case(
         title="Advocate Consulting Legal Group",
         description="A legal firm servicing the general aviation industry",
