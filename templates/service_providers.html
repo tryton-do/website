@@ -20,9 +20,8 @@
 <section class="section">
     <div class="container">
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
-            {% for provider, _ in providers %}
-            {% set name = provider %}
-            {% include "service_providers/%s.html" % provider|lower|slugify %}
+            {% for provider in providers %}
+            {% include "service_providers/%s.html" % provider.name|lower|slugify %}
             {% endfor %}
         </div>
     </div>
@@ -63,11 +62,10 @@
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         var markers = {{ providers | tojson }};
-        markers.forEach(function(marker) {
-            var name = marker[0];
-            marker[1].forEach(function(LatLng) {
+        markers.forEach(function(provider) {
+            provider.positions.forEach(function(LatLng) {
                 L.marker(LatLng).addTo(map)
-                    .bindPopup('<a href="#' + name.toLowerCase().replace(/ /g, '-') + '">' + name + '</a>');
+                    .bindPopup('<a href="#' + provider.name.toLowerCase().replace(/ /g, '-') + '">' + provider.name + '</a>');
             });
         });
     }

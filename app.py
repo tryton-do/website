@@ -44,23 +44,6 @@ DONATIONS_URL = (
     'https://foundation.tryton.org:9000/foundation/foundation/1/donations'
     '?account=732&account=734')
 
-PROVIDERS = [
-    ('Adiczion', [(43.52153, 5.43150)]),
-    ('B2CK', [(50.631123, 5.567552)]),
-    ('Coopengo', [(48.873278, 2.324776)]),
-    ('Datalife', [(37.9596885, -1.2086241)]),
-    ('First Telecom', [(38.0131591, 23.7721521)]),
-    ('gcoop', [(-34.59675, -58.43035)]),
-    ('IntegraPer', [(-11.9753824, -77.0860785)]),
-    ('INROWGA', [(18.476389, -69.893333)]),
-    ('Kopen Software', [(41.5995983, 0.5799085)]),
-    ('Lava Lab Software', [(-27.978905, 153.389466)]),
-    ('m-ds', [(52.520008, 13.404954)]),
-    ('NaN-tic', [(41.544063, 2.115122)]),
-    ('power solutions', [(47.0467674, 8.3048232)]),
-    ('SISalp', [(45.903956, 6.099937), (43.132028, 5.935532)]),
-    ('Virtual Things', [(48.13585, 11.577415), (50.775116, 6.083565)]),
-    ]
 CRITICAL_CSS_DIR = os.environ.get('CRITICAL_CSS')
 CRITICAL_CSS_COOKIE = 'critical-css'
 
@@ -100,6 +83,20 @@ cache.init_app(app)
 CDN(app)
 gravatar = Gravatar(app)
 sitemap = Sitemap(app=app)
+
+
+def json_default(o):
+    if hasattr(o, '__json__'):
+        return o.__json__()
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+        f'is not JSON serializable')
+
+
+app.jinja_env.policies['json.dumps_kwargs'] = {
+    'sort_keys': True,
+    'default': json_default,
+    }
+
 
 _slugify_strip_re = re.compile(r'[^\w\s-]')
 _slugify_hyphenate_re = re.compile(r'[-\s]+')
@@ -858,8 +855,54 @@ def donate_cancel():
     return render_template('donate_cancel.html')
 
 
+class Provider:
+    def __init__(self, name, positions):
+        self.name = name
+        self.positions = positions
+
+    def __json__(self):
+        return {
+            'name': self.name,
+            'positions': self.positions,
+            }
+
+
+PROVIDERS = [
+    Provider(name="Adiczion",
+        positions=[(43.52153, 5.43150)]),
+    Provider(name="B2CK",
+        positions=[(50.631123, 5.567552)]),
+    Provider(name="Coopengo",
+        positions=[(48.873278, 2.324776)]),
+    Provider(name="Datalife",
+        positions=[(37.9596885, -1.2086241)]),
+    Provider(name="First Telecom",
+        positions=[(38.0131591, 23.7721521)]),
+    Provider(name="gcoop",
+        positions=[(-34.59675, -58.43035)]),
+    Provider(name="IntegraPer",
+        positions=[(-11.9753824, -77.0860785)]),
+    Provider(name="INROWGA",
+        positions=[(18.476389, -69.893333)]),
+    Provider(name="Kopen Software",
+        positions=[(41.5995983, 0.5799085)]),
+    Provider(name="Lava Lab Software",
+        positions=[(-27.978905, 153.389466)]),
+    Provider(name="m-ds",
+        positions=[(52.520008, 13.404954)]),
+    Provider(name="NaN-tic",
+        positions=[(41.544063, 2.115122)]),
+    Provider(name="power solutions",
+        positions=[(47.0467674, 8.3048232)]),
+    Provider(name="SISalp",
+        positions=[(45.903956, 6.099937), (43.132028, 5.935532)]),
+    Provider(name="Virtual Things",
+        positions=[(48.13585, 11.577415), (50.775116, 6.083565)]),
+    ]
+
+
 @app.route('/service-providers')
-@cache.cached(key_prefix=cache_key_prefix_view)
+@cache.cached(key_prefix=cache_key_prefix_view, query_string=True)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers():
     shuffle(PROVIDERS)

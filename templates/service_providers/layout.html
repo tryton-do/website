@@ -1,12 +1,12 @@
-<div class="col mb-gutter" id="{{ name | lower | replace(' ', '-') }}">
+<div class="col mb-gutter" id="{{ provider.name | lower | replace(' ', '-') }}">
     <div class="card mx-auto shadow d-flex flex-colum" style="max-width: 24rem; height: 100%">
         <a href="{{ website }}" style="height: 240px">
             {% if img %}
-            <img class="card-img-top text-center d-block" src="{{ img }}" alt="{{ name }}" loading="lazy" width="382" height="240"/>
+            <img class="card-img-top text-center d-block" src="{{ img }}" alt="{{ provider.name }}" loading="lazy" width="382" height="240"/>
             {% endif %}
         </a>
         <div class="card-body">
-            <h2 class="h5 card-title">{{ name }}</h2>
+            <h2 class="h5 card-title">{{ provider.name }}</h2>
             <p class="card-text" style="height: 200px; overflow-y: auto;">
             {% block description %}{% endblock %}
             </p>
