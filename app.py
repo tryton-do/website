@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 import ast
 import datetime
+import enum
 import functools
 import glob
 import hashlib
 import logging
+import operator
 import os
 import re
 import unicodedata
@@ -83,6 +85,15 @@ cache.init_app(app)
 CDN(app)
 gravatar = Gravatar(app)
 sitemap = Sitemap(app=app)
+
+
+def url_for_self(**args):
+    return url_for(request.endpoint, **dict(request.args, **args))
+
+
+@app.context_processor
+def inject_self():
+    return dict(url_for_self=url_for_self)
 
 
 def json_default(o):
@@ -855,10 +866,23 @@ def donate_cancel():
     return render_template('donate_cancel.html')
 
 
+class Service(enum.Flag):
+    NONE = 0
+    CONSULTING = enum.auto()
+    DEVELOPMENT = enum.auto()
+    HOSTING = enum.auto()
+    TRAINING = enum.auto()
+
+
 class Provider:
-    def __init__(self, name, positions):
+    def __init__(self, name, positions, services=Service.NONE):
         self.name = name
         self.positions = positions
+        self.services = services
+
+    def __getattr__(self, name):
+        if self.services:
+            return self.services & getattr(Service, name.upper())
 
     def __json__(self):
         return {
@@ -869,35 +893,52 @@ class Provider:
 
 PROVIDERS = [
     Provider(name="Adiczion",
-        positions=[(43.52153, 5.43150)]),
+        positions=[(43.52153, 5.43150)],
+        services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="B2CK",
-        positions=[(50.631123, 5.567552)]),
+        positions=[(50.631123, 5.567552)],
+        services=Service.CONSULTING | Service.DEVELOPMENT | Service.TRAINING),
     Provider(name="Coopengo",
-        positions=[(48.873278, 2.324776)]),
+        positions=[(48.873278, 2.324776)],
+        services=Service.DEVELOPMENT),
     Provider(name="Datalife",
-        positions=[(37.9596885, -1.2086241)]),
+        positions=[(37.9596885, -1.2086241)],
+        services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="First Telecom",
-        positions=[(38.0131591, 23.7721521)]),
+        positions=[(38.0131591, 23.7721521)],
+        services=Service.CONSULTING),
     Provider(name="gcoop",
-        positions=[(-34.59675, -58.43035)]),
+        positions=[(-34.59675, -58.43035)],
+        services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="IntegraPer",
-        positions=[(-11.9753824, -77.0860785)]),
+        positions=[(-11.9753824, -77.0860785)],
+        services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="INROWGA",
-        positions=[(18.476389, -69.893333)]),
+        positions=[(18.476389, -69.893333)],
+        services=Service.CONSULTING),
     Provider(name="Kopen Software",
-        positions=[(41.5995983, 0.5799085)]),
+        positions=[(41.5995983, 0.5799085)],
+        services=Service.CONSULTING | Service.DEVELOPMENT | Service.HOSTING
+        | Service.TRAINING),
     Provider(name="Lava Lab Software",
-        positions=[(-27.978905, 153.389466)]),
+        positions=[(-27.978905, 153.389466)],
+        services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="m-ds",
-        positions=[(52.520008, 13.404954)]),
+        positions=[(52.520008, 13.404954)],
+        services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="NaN-tic",
-        positions=[(41.544063, 2.115122)]),
+        positions=[(41.544063, 2.115122)],
+        services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="power solutions",
-        positions=[(47.0467674, 8.3048232)]),
+        positions=[(47.0467674, 8.3048232)],
+        services=Service.CONSULTING | Service.DEVELOPMENT | Service.HOSTING),
     Provider(name="SISalp",
-        positions=[(45.903956, 6.099937), (43.132028, 5.935532)]),
+        positions=[(45.903956, 6.099937), (43.132028, 5.935532)],
+        services=Service.CONSULTING | Service.HOSTING),
     Provider(name="Virtual Things",
-        positions=[(48.13585, 11.577415), (50.775116, 6.083565)]),
+        positions=[(48.13585, 11.577415), (50.775116, 6.083565)],
+        services=Service.CONSULTING | Service.DEVELOPMENT | Service.TRAINING
+        | Service.HOSTING),
     ]
 
 
@@ -907,7 +948,24 @@ PROVIDERS = [
 def service_providers():
     providers = PROVIDERS.copy()
     shuffle(providers)
-    return render_template('service_providers.html', providers=providers)
+    services = []
+    environ = {}
+    filters = {'consulting', 'development', 'hosting', 'training'}
+    if not (request.args.keys() <= filters):
+        abort(HTTPStatus.BAD_REQUEST)
+    for filter_name in filters:
+        environ[filter_name] = request.args.get(filter_name, type=int)
+        if (environ[filter_name] is not None
+                and environ[filter_name] not in {0, 1}):
+            abort(HTTPStatus.BAD_REQUEST)
+        if environ[filter_name]:
+            services.append(getattr(Service, filter_name.upper()))
+    if services:
+        services = functools.reduce(operator.ior, services)
+        providers = list(
+            filter(lambda p: (p.services & services) == services, providers))
+    return render_template(
+        'service_providers.html', providers=providers, **environ)
 
 
 @app.route('/services.html', endpoint='service_providers-alt')

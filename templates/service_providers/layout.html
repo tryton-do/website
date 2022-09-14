@@ -7,6 +7,20 @@
         </a>
         <div class="card-body">
             <h2 class="h5 card-title">{{ provider.name }}</h2>
+            <div class="h6 card-subtitle mb-2 text-muted">
+                {% if provider.consulting %}
+                <span class="material-icons" title="Consulting">group_work</span>
+                {% endif %}
+                {% if provider.development %}
+                <span class="material-icons" title="Development">api</span>
+                {% endif %}
+                {% if provider.hosting %}
+                <span class="material-icons" title="Hosting">cloud</span>
+                {% endif %}
+                {% if provider.training %}
+                <span class="material-icons" title="Training">school</span>
+                {% endif %}
+            </div>
             <p class="card-text" style="height: 200px; overflow-y: auto;">
             {% block description %}{% endblock %}
             </p>

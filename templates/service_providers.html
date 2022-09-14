@@ -19,6 +19,34 @@
 
 <section class="section">
     <div class="container">
+        <div class="row mb-4">
+            <div class="btn-group col-7 mx-auto">
+                <a type="button" class="btn btn-primary {% if consulting %}active{% endif %}" {% if consulting %}aria-pressed="true"{% endif %} href="{{ url_for_self(consulting=(not consulting)|int) }}">
+                    {% if consulting %}
+                    <span class="material-icons">check</span>
+                    {% endif %}
+                    Consulting
+                </a>
+                <a type="button" class="btn btn-primary {% if development %}active{% endif %}" {% if development %}aria-pressed="true"{% endif %} href="{{ url_for_self(development=(not development)|int) }}">
+                    {% if development %}
+                    <span class="material-icons">check</span>
+                    {% endif %}
+                    Development
+                </a>
+                <a type="button" class="btn btn-primary {% if hosting %}active{% endif %}" {% if hosting %}aria-pressed="true"{% endif %} href="{{ url_for_self(hosting=(not hosting)|int) }}">
+                    {% if hosting %}
+                    <span class="material-icons">check</span>
+                    {% endif %}
+                    Hosting
+                </a>
+                <a type="button" class="btn btn-primary {% if training %}active{% endif %}" {% if training %}aria-pressed="true"{% endif %} href="{{ url_for_self(training=(not training)|int) }}">
+                    {% if training %}
+                    <span class="material-icons">check</span>
+                    {% endif %}
+                    Training
+                </a>
+            </div>
+        </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
             {% for provider in providers %}
             {% include "service_providers/%s.html" % provider.name|lower|slugify %}
