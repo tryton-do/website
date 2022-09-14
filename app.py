@@ -905,8 +905,9 @@ PROVIDERS = [
 @cache.cached(key_prefix=cache_key_prefix_view, query_string=True)
 @add_links(PRECONNECT_HEADERS + JS_LINK_HEADERS + CSS_LINK_HEADERS)
 def service_providers():
-    shuffle(PROVIDERS)
-    return render_template('service_providers.html', providers=PROVIDERS)
+    providers = PROVIDERS.copy()
+    shuffle(providers)
+    return render_template('service_providers.html', providers=providers)
 
 
 @app.route('/services.html', endpoint='service_providers-alt')
