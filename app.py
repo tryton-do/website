@@ -67,6 +67,10 @@ app.config['SITEMAP_IGNORE_ENDPOINTS'] = [
     'presentations-alt', 'contribute-alt', 'foundation-alt', 'supporters-alt',
     'donate-alt', 'donate_thanks', 'donate_cancel', 'service_providers-alt',
     'sitemap.xml']
+app.config['DOWNLOADS_DOMAIN'] = os.environ.get(
+    'DOWNLOADS_DOMAIN', 'downloads.tryton.org')
+app.config['VIDEOS_DOMAIN'] = os.environ.get(
+    'VIDEOS_DOMAIN', 'videos.tryton.org')
 app.config['CDN_DOMAIN'] = os.environ.get('CDN_DOMAIN')
 app.config['CDN_HTTPS'] = ast.literal_eval(os.environ.get('CDN_HTTPS', 'True'))
 app.config['SITEMAP_IGNORE_ENDPOINTS'] = ['events', 'events-alt', 'events-ics']
@@ -120,6 +124,24 @@ def slugify(value):
     value = unicodedata.normalize('NFKD', value)
     value = str(_slugify_strip_re.sub('', value).strip())
     return _slugify_hyphenate_re.sub('-', value)
+
+
+def url_for_downloads(*args):
+    return urljoin('//' + app.config['DOWNLOADS_DOMAIN'], os.path.join(*args))
+
+
+@app.context_processor
+def inject_url_for_dowloads():
+    return dict(url_for_downloads=url_for_downloads)
+
+
+def url_for_videos(*args):
+    return urljoin('//' + app.config['VIDEOS_DOMAIN'], os.path.join(*args))
+
+
+@app.context_processor
+def inject_url_for_videos():
+    return dict(url_for_videos=url_for_videos)
 
 
 def cdn_url_for(*args, **kwargs):
