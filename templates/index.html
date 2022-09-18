@@ -249,7 +249,7 @@
         <div class="row">
             {% for item in news[:3] %}
             <div class="col-md">
-                <h4>{{ item.title }} <small class="d-none d-sm-inline text-muted">{{ item.pubDate | string | truncate(16, True, '') }}</small></h4>
+                <h4>{{ item.title }} <small class="d-none d-sm-inline text-muted text-nowrap">{{ item.pubDate | string | truncate(16, True, '') }}</small></h4>
                 <p class="news-description">
                 {{ item.description|news_text|truncate(240) }}
                 </p>
