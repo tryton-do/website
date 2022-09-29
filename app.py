@@ -560,7 +560,8 @@ CASES = [
         story=True),
     Case(
         title="Sinclair Containers",
-        description="Sells and rents containers."),
+        description="Sells and rents containers.",
+        story=True),
     Case(
         title="Skoda Autohaus Zeidler",
         description="A German car dealership and workshop for Skoda."),
