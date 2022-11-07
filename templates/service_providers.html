@@ -49,7 +49,9 @@
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
             {% for provider in providers %}
+            {% with loading = 'lazy' if loop.index > 1 else 'eager' %}
             {% include "service_providers/%s.html" % provider.name|lower|slugify %}
+            {% endwith %}
             {% endfor %}
         </div>
     </div>
