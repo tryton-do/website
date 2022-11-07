@@ -153,7 +153,7 @@ def cdn_url_for(*args, **kwargs):
 
 def cache_key_prefix_view():
     scheme = 'https' if request.is_secure else 'http'
-    if not request.cookies.get('critical-css'):
+    if not request.cookies.get(CRITICAL_CSS_COOKIE):
         return 'view/%s/%s/%s' % (
             scheme, request.path, critical_css(timestamp=True))
     else:
