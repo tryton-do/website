@@ -20,7 +20,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
             {% for supporter in supporters %}
             {% set discuss  = discuss_url(supporter) %}
-            {% set roundup = roundup_url(supporter) %}
+            {% set heptapod = heptapod_url(supporter) %}
             <div class="col mb-gutter">
                 <div class="card mx-auto shadow" style="max-width: 200px">
                     <img class="card-img-top" src="{{ supporter['email'] | gravatar(198) }}" width="198" height="198" alt="" loading="{{ 'lazy' if loop.index > 2 else 'eager' }}"/>
@@ -29,11 +29,11 @@
                         {% if discuss %}
                         <a href="{{ discuss }}"><span class="material-icons">forum</span></a>
                         {% endif %}
-                        {% if roundup %}
-                        <a href="{{ roundup }}"><span class="material-icons">bug_report</span></a>
+                        {% if heptapod %}
+                        <a href="{{ heptapod }}"><span class="material-icons">bug_report</span></a>
                         {% endif %}
                     </div>
-                    {% if supporter['website'] and supporter['website'] not in [discuss, roundup] %}
+                    {% if supporter['website'] and supporter['website'] not in [discuss, heptapod] %}
                     <div class="card-footer text-truncate">
                         <a href="{{ supporter['website'] }}">{{ supporter['website'] | hostname }}</a>
                     </div>

@@ -788,7 +788,7 @@ def supporters():
     return render_template('supporters.html',
         supporters=fetch_supporters(),
         discuss_url=partial(url, start='https://discuss.tryton.org/'),
-        roundup_url=partial(url, start='https://bugs.tryton.org/'))
+        heptapod_url=partial(url, start='https://foss.heptapod.net/'))
 
 
 @app.route('/foundation/supporters.html', endpoint='supporters-alt')
