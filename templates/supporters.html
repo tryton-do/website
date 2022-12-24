@@ -19,7 +19,9 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
             {% for supporter in supporters %}
+            {% with %}
             {% set discuss  = discuss_url(supporter) %}
+            {% set roundup = roundup_url(supporter) %}
             {% set heptapod = heptapod_url(supporter) %}
             <div class="col mb-gutter">
                 <div class="card mx-auto shadow" style="max-width: 200px">
@@ -33,13 +35,14 @@
                         <a href="{{ heptapod }}"><span class="material-icons">bug_report</span></a>
                         {% endif %}
                     </div>
-                    {% if supporter['website'] and supporter['website'] not in [discuss, heptapod] %}
+                    {% if supporter['website'] and supporter['website'] not in [discuss, roundup, heptapod] %}
                     <div class="card-footer text-truncate">
                         <a href="{{ supporter['website'] }}">{{ supporter['website'] | hostname }}</a>
                     </div>
                     {% endif %}
                 </div>
             </div>
+            {% endwith %}
             {% endfor %}
         </div>
         <p class="mt-5 text-center">
