@@ -10,7 +10,7 @@ COPY package.json  gulpfile.js ./
 COPY js js/
 COPY sass sass/
 RUN npm install
-RUN node_modules/.bin/gulp
+RUN npx gulp
 
 FROM debian:11-slim
 LABEL maintainer="Tryton <foundation@tryton.org>" \
