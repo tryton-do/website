@@ -317,6 +317,7 @@ def inject_menu():
         ('News', url_for('news')),
         ('Get Tryton', url_for('download')),
         ('Documentation', '//docs.tryton.org/'),
+        ('Code', '//code.tryton.org/'),
         ]
     menu['Community'] = [
         ('Forum', url_for('forum')),
