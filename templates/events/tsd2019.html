@@ -38,7 +38,7 @@
         ("Sale Costs and Return Management", (17, 30), (18, 00), "",
             [("Nicolas Lopez", 'ce2ffc0d3acbb3acf94cbc46e48e13e0', "Datalife", 'https://datalifeit.es/')]),
         ("Tryton oriented to Food Industry", (18, 00), (18, 30), "",
-            [("Javier Celada", '3def9fa553ed0691c12d0eb8db6f6f0c', "INGSYS", 'https://www.ingsys.es/')]),
+            [("Javier Celada", '3def9fa553ed0691c12d0eb8db6f6f0c', "INGSYS", '')]),
         ("Business Intelligence with Tryton", (18, 30), (19, 00), ""),
             location=location(), full=True),
     Day((2019, 11, 28),
@@ -97,12 +97,12 @@ The event will take place in the sunny city of Alicante on the 27th and 28th of 
 <ul>
     <li>By Train
         <ul>
-            <li>The <a href="https://en.wikipedia.org/wiki/AVE">AVE</a> <a href="http://www.adif.es/es_ES/infraestructuras/estaciones/60911/informacion_000077.shtml">in the Alicant Terminal</a> located at the center of Alicant is preferred.</li>
+            <li>The <a href="https://en.wikipedia.org/wiki/AVE">AVE</a> in the Alicant Terminal located at the center of Alicant is preferred.</li>
         </ul>
     </li>
     <li>By Plane
         <ul>
-            <li>The <a href="http://www.aena.es/es/aeropuerto-alicante/index.html">Alicant Airport</a> has <a href="http://www.aena.es/es/aeropuerto-alicante/autobuses-urbanos.html#1237554343710">a bus shuttle to Alicant</a> every 20 minutes.</li>
+            <li>The <a href="http://www.aena.es/es/aeropuerto-alicante/index.html">Alicant Airport</a> has a bus shuttle to Alicant every 20 minutes.</li>
         </ul>
     </li>
 </ul>
@@ -114,7 +114,7 @@ The event will take place in the sunny city of Alicante on the 27th and 28th of 
 <ul>
     <li><a href="https://www.melia.com/es/hoteles/espana/alicante/tryp-ciudad-de-alicante-hotel/index.htm">Tryp Ciudad de Alicante</a></li>
     <li><a href="https://www.melia.com/es/hoteles/espana/alicante/melia-alicante/index.htm">Melià Alicante</a></li>
-    <li><a href="https://www.eurostarshotels.com/eurostars-centrum-alicante/mapa.html">Eurostars Centrum Alicante</a></li>
+    <li>Eurostars Centrum Alicante</li>
 </ul>
 {% endblock accommodations %}
 
@@ -135,9 +135,9 @@ The event will take place in the sunny city of Alicante on the 27th and 28th of 
         <a href="https://www.kopen.es/">
             <img class="img-thumbnail" src="{{ url_for('static', filename='images/service-providers/kopen.jpg') }}" alt="Kopen Software" loading="lazy" width="200" height="130"/>
         </a>
-        <a href="http://www.ingsys.es/">
+        <span>
             <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-ingsys.jpg') }}" alt="INGSYS" loading="lazy" width="200" height="113"/>
-        </a>
+        </span>
         <a href="https://www.numenalia.com/">
             <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-numenalia.jpg') }}" alt="Numenalia" loading="lazy" width="200" height="104"/>
         </a>

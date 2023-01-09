@@ -6,7 +6,7 @@
 {% macro location() %}
 <div class="h-card vcard">
     <strong class="p-name fn">
-        <a class="u-url url" href="http://www.emd-management.fr/en/">
+        <a class="u-url url" href="http://www.emd-management.fr/">
             École de Commerce et de Management
         </a></strong><br/>
         <span class="p-addr addr">
@@ -47,8 +47,8 @@
             [("Cédric Krier", 'bedb3a4b40d90063feb70b48ee2b0f25', "B2CK", 'https://www.b2ck.com/')]),
         ("Use Case: Tryton for warehouse management", (15,), (16,),
             "How we use Tryton to manage our warehouse (customizations, label printing, small android application,...).",
-            [("Maxime Richez", '5eb4d42d9dbe5c943d4a85475cadd7cb', "Saluc", 'http://www.saluc.com/'),
-             ("Thierry Bruyere", 'fcf331766bad42138c031fde241dbc49', "Saluc", 'http://www.saluc.com/')]),
+            [("Maxime Richez", '5eb4d42d9dbe5c943d4a85475cadd7cb', "Saluc", 'https://www.saluc.com/'),
+             ("Thierry Bruyere", 'fcf331766bad42138c031fde241dbc49', "Saluc", 'https://www.saluc.com/')]),
         ("Lisp ERP", (16,), (17,),
             "Programming modules for Tryton with Hy (embedded Lisp for Python).",
             [("Francesc Guillen", 'a0ef3bd08930d7f4891f891ec27d17a6',)]),
@@ -120,7 +120,7 @@ Discover new features, learn about latest technical developments and share feedb
 <p>Marseille is a touristic city, they are a lot of hotels near the location.</p>
 <p>Yet we have some suggestions of hotels:</p>
 <ul>
-    <li><a href="http://europehotelmarseille.com/">Europe Hôtel Marseille</a></li>
+    <li>Europe Hôtel Marseille</li>
     <li><a href="http://www.hotel-aixenprovence-concorde.com/">Hotel le Concorde</a></li>
     <li><a href="https://www.hotelterminusmarseille.fr/">Hôtel Terminus Saint Charles</a></li>
     <li><a href="https://www.hiexpress.com/hotels/gb/en/reservation">Holiday Inn Express</a></li>
@@ -138,9 +138,9 @@ Discover new features, learn about latest technical developments and share feedb
         <a href="http://www.emd-management.fr/">
             <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tum2019-emd.jpg') }}" alt="École de Commerce et de Management" loading="lazy" width="200" height="114"/>
         </a>
-        <a href="http://www.libertis.org/">
+        <span>
             <img class="img-thumbnail m-2" src="{{ url_for('static', filename='images/events/tum2019-libertis.jpg') }}" alt="Libertis" loading="lazy" width="200" height="78"/>
-        </a>
+        </span>
     </div>
 </section>
 {% endblock main %}
