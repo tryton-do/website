@@ -479,10 +479,6 @@ CASES = [
     Case(title="ALS Swiss",
         description="A society for people suffering ALS disease.",
         story=True),
-    Case(
-        title="AMMEBA",
-        description="A Medical Mutual Society from Buenos Aires.",
-        story=True),
     Case(title="APAR @ AIIMS",
         description="Annual Performance Appraisal for the All Indian "
         "Institute of Medical Sciences",
