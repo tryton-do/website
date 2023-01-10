@@ -63,12 +63,20 @@ class TestApp(unittest.TestCase):
                 if _skip(href) or href in _HREF_VISITED:
                     continue
                 with self.subTest(href=href):
-                    response = requests.get(
-                        href, verify=_verify(href),
-                        headers={
-                            # Some sites forbid python-requests
-                            'User-Agent': 'Mozilla/5.0',
-                            })
+                    verify = _verify(href)
+                    headers = {
+                        # Some sites forbid python-requests
+                        'User-Agent': 'Mozilla/5.0',
+                        }
+                    response = requests.head(
+                        href, verify=verify, allow_redirects=True,
+                        headers=headers)
+                    if response.status_code in {
+                            HTTPStatus.FORBIDDEN,
+                            HTTPStatus.METHOD_NOT_ALLOWED,
+                            }:
+                        response = requests.get(
+                            href, verify=verify, headers=headers)
                     response.raise_for_status()
                     _HREF_VISITED.add(href)
 
