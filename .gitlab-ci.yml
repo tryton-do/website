@@ -14,8 +14,11 @@ stages:
 javascript:
   stage: preparation
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:15
+  cache:
+    paths:
+      - .npm/
   script:
-    - npm install
+    - npm install --cache .npm --prefer-offline
     - npx gulp
   artifacts:
     paths:
