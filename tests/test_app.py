@@ -1,3 +1,4 @@
+import os
 import unittest
 from http import HTTPStatus
 
@@ -5,6 +6,11 @@ import html5lib
 import requests
 
 from app import app, success_story_generator
+
+try:
+    TEST_HREF = bool(int(os.environ.get('TEST_HREF', 0)))
+except ValueError:
+    TEST_HREF = False
 
 
 def _verify(url):
@@ -48,6 +54,8 @@ class TestApp(unittest.TestCase):
                     self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def assertHref(self, document):
+        if not TEST_HREF:
+            return
         for link in document.iterfind('.//*[@href]'):
             href = link.attrib['href']
             if href.startswith('http'):
