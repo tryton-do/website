@@ -11,6 +11,7 @@ try:
     TEST_HREF = bool(int(os.environ.get('TEST_HREF', 0)))
 except ValueError:
     TEST_HREF = False
+_HREF_VISITED = set()
 
 
 def _verify(url):
@@ -59,7 +60,7 @@ class TestApp(unittest.TestCase):
         for link in document.iterfind('.//*[@href]'):
             href = link.attrib['href']
             if href.startswith('http'):
-                if _skip(href):
+                if _skip(href) or href in _HREF_VISITED:
                     continue
                 with self.subTest(href=href):
                     response = requests.get(
@@ -69,6 +70,7 @@ class TestApp(unittest.TestCase):
                             'User-Agent': 'Mozilla/5.0',
                             })
                     response.raise_for_status()
+                    _HREF_VISITED.add(href)
 
     def test_get_routes(self):
         for rule in app.url_map.iter_rules():
