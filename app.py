@@ -958,8 +958,7 @@ PROVIDERS = [
         services=Service.CONSULTING | Service.HOSTING),
     Provider(name="Virtual Things",
         positions=[(48.13585, 11.577415), (50.775116, 6.083565)],
-        services=Service.CONSULTING | Service.DEVELOPMENT | Service.TRAINING
-        | Service.HOSTING),
+        services=Service.CONSULTING | Service.DEVELOPMENT | Service.TRAINING),
     ]
 
 
