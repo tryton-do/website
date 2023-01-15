@@ -182,11 +182,11 @@ Purchase Report
     A module's documentation should be placed inside the <span class="text-monospace">doc</span> directory found in the module.
     Depending on what the module does, and how it is structured you may need some, or all, of the following files:</p>
     <dl>
-        <dt class="text-monospace">conf.py</dt>
+        <dt class="text-monospace" id="conf.py">conf.py</dt>
         <dd class="ps-4"><p>
             This file is required, and is the Sphinx configuration file.
             It must be kept exactly the same as the <span class="text-monospace">conf.py</span> files in the all the other modules.</p></dd>
-        <dt class="text-monospace">index.rst</dt>
+        <dt class="text-monospace" id="index.rst">index.rst</dt>
         <dd class="ps-4"><p>
             This file is also required and should include a basic description of the module and a table of contents (<code>toctree</code> directive) that links to the other files with a <code>maxdepth</code> of 2.</p>
             <p class="bg-warning rounded p-2">
@@ -197,24 +197,24 @@ Purchase Report
             Using them will cause problems when packaging the module for distribution.</p>
             <p>
             The reason it is okay to use a <code>toctree</code> directive is because the build process knows about these and automatically strips them out when building the distribution file.</p></dd>
-        <dt class="text-monospace">setup.rst</dt>
+        <dt class="text-monospace" id="setup.rst">setup.rst</dt>
         <dd class="ps-4"><p>
             The aim of this file is to describe any setup that needs to be done once a module has been activated.
             Often this setup will need to be done by the user before the module can be used properly.</p>
             <p>
             Add sections to this file that describe the setup that is required and how it is done, for example <mark>"Doing a specific module setup task"</mark>, or <mark>"Setting up the thing to do something"</mark>.</p></dd>
-        <dt class="text-monospace">usage.rst</dt>
+        <dt class="text-monospace" id="usage.rst">usage.rst</dt>
         <dd class="ps-4"><p>
             The contents of this file are intended for users of the system.
             So it should talk to these readers directly and you can refer to them in the second person.
             This means you can use sentences like <mark>"Your system ... then you need to ..."</mark>.</p>
             <p>
             It should contain sections that provide instructions or guidance on using a feature of the module, for example <mark>"Using the main feature in the module"</mark>, or <mark>"Working with a specific part of the module"</mark>.</p></dd>
-        <dt class="text-monospace">configuration.rst</dt>
+        <dt class="text-monospace" id="configuration.rst">configuration.rst</dt>
         <dd class="ps-4"><p>
             This file should contain each of the server configuration settings that the module provides.
             Each configuration option should be described mentioning what it is for, or what it does.</p></dd>
-        <dt class="text-monospace">design.rst</dt>
+        <dt class="text-monospace" id="design.rst">design.rst</dt>
         <dd class="ps-4"><p>
             The design and structure of the module is described in this file.
             Try and focus on the concepts that the module introduces or extends.
@@ -224,11 +224,11 @@ Purchase Report
             <p>
             Wizards and reports should be documented in sections beneath the concepts that they relate to.
             If they are used with several different models then document them as part of either the primary, or first, model that they relate to, and then link to them from any other models that use them.</p></dd>
-        <dt class="text-monospace">reference.rst</dt>
+        <dt class="text-monospace" id="reference.rst">reference.rst</dt>
         <dd class="ps-4"><p>
             This file is used to provide reference information for people who are developing or working on the module.
             It includes sections that document any APIs or routes the module provides, as well as documentation on how to build or update parts of the module.</p></dd>
-        <dt class="text-monospace">releases.rst</dt>
+        <dt class="text-monospace" id="releases.rst">releases.rst</dt>
         <dd class="ps-4"><p>
             This file is used to include the <span class="text-monospace">CHANGELOG</span>.</p></dd>
     </dl>
