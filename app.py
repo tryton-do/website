@@ -1056,10 +1056,11 @@ if __name__ == '__main__':
     app.run(
         debug=ast.literal_eval(os.environ.get('DEBUG', 'True')),
         extra_files=[
-            'templates',
-            'templates/service_providers',
-            'templates/events',
-            'templates/success_stories',
+            'templates/*.html',
+            'templates/events/*.html',
+            'templates/guidelines/*.html',
+            'templates/service_providers/*.html',
+            'templates/success_stories/*.html',
             ])
 
 if not app.debug:
