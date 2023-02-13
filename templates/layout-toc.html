@@ -17,9 +17,9 @@
         <div class="row flex-md-nowrap">
             {{ super() }}
             {% block toc %}
-            <div class="d-none d-md-block col-md-2 order-2 sticky-top" style="top: 1rem; height: 100%;">
+            <aside class="d-none d-md-block col-md-2 order-2 sticky-top" style="top: 1rem; height: 100%;">
                 {{ nav(toc, "nav flex-column border-start") }}
-            </div>
+            </aside>
             {% endblock toc %}
             <main class="col-sm-12 col-md-8 offset-md-2 order-1">
             {% block main %}
