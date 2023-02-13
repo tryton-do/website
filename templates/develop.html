@@ -6,6 +6,7 @@
     ("Guidelines", 'guidelines', [
         ("Code", 'guidelines-code', None),
         ("Documentation", 'guidelines-documentation', None),
+        ("Commit Message", 'commit-message', None),
         ]),
     ("Requirements", 'requirements', None),
     ("Rules", 'rules', None),
@@ -70,6 +71,32 @@ $ hg topic my-change</code></pre>
         <li>When creating documentation for a package you should follow the main <a href="{{ url_for('guidelines_documentation') }}">Documentation Guidelines</a>.</li>
         <li>There are some <a href="{{ url_for('guidelines_documentation_help') }}">Help Text Guidelines</a> to follow if you are writing or changing help text.</li>
         <li>If submitting a Howto for approval, then please make sure you've followed the <a href="{{ url_for('guidelines_documentation_howto') }}">Howto Guidelines</a>.</li>
+    </ul>
+    <h3 id="commit-message">Commit Message</h3>
+    <ul>
+        <li>
+            Use a short title starting with a capital letter.
+            <ul>
+                <li>Use imperative mood.<br/>
+                    <em>So that it completes the sentence "With this change, the project will…".</em>
+                </li>
+                <li>
+                    Use human names of objects instead of the technical name.<br/>
+                    <em>Like "Invoice" instead of "account.invoice".</em>
+                </li>
+            </ul>
+        </li>
+        <li>Add extra details in the message body (optional).
+            <ul>
+                <li>Less than 80 characters per line.</li>
+                <li>Explain <strong>WHAT</strong> the change is, but most importantly <strong>WHY</strong> the change is needed.</li>
+                <li>Leave a blank line between the body and the title.</li>
+                <li>Separate paragraphs in the body with blank lines.</li>
+                <li>Use a hyphen (<samp>-</samp>) for bullet points if needed.</li>
+                <li>Use hanging indents if needed.</li>
+            </ul>
+        </li>
+        <li>Include the <a href="https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#default-closing-pattern">pattern to close</a> linked issues (optional).</li>
     </ul>
 </div>
 <div class="subsection">
