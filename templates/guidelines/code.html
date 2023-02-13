@@ -18,16 +18,16 @@
 {{ background('banner-develop') }}
 {% endblock %}
 {% block content %}
-<section class="section section-banner background-banner-develop filter filter-primary text-center lazy">
+<div class="section section-banner background-banner-develop filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
-</section>
+</div>
 {{ super() }}
 {% endblock content %}
 
 {% block main %}
-<div class="subsection">
+<section>
     <h2 id="code-style">Code Style</h2>
     <p>The Tryton Project strongly recommends the following code style:</p>
     <h3 id="python">Python</h3>
@@ -72,5 +72,5 @@
         <li>For modules and method names use an underscore to separate the parts of name.</li>
         <li>For naming classes use <a href="https://en.wikipedia.org/wiki/CamelCase">CamelCase</a>.</li>
     </ul>
-</div>
+</section>
 {% endblock main %}

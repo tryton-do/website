@@ -19,16 +19,16 @@
 {{ background('banner-document') }}
 {% endblock %}
 {% block content %}
-<section class="section section-banner background-banner-document filter filter-primary text-center lazy">
+<div class="section section-banner background-banner-document filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
-</section>
+</div>
 {{ super() }}
 {% endblock content %}
 
 {% block main %}
-<div class="subsection">
+<section>
     <h2 id="purpose">Purpose</h2>
     <p>
     The <a href="https://discuss.tryton.org/c/howto">Howto categories</a> are the right place to document more complex tasks.
@@ -45,8 +45,8 @@
     <p>
     Each howto should focus on a single topic, links to related topics, or other documentation can always be included when needed.
     It is much better to add documentation into the right place, and then link to it, to avoid duplicating documentation.</p>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="general-style">General Style</h2>
     <h3 id="consistency">Consistency</h3>
     <p>
@@ -86,5 +86,5 @@
     It is often a good idea to add a table of contents to the howto.
     This will be automatically generated from the howto's sections if you include, on the first line:</p>
     <pre><code class="html">&lt;div data-theme-toc="true"&gt;&lt;/div&gt;</code></pre>
-</div>
+</section>
 {% endblock main %}

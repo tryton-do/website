@@ -22,16 +22,16 @@
 {{ background('banner-develop') }}
 {% endblock %}
 {% block content %}
-<section class="section section-banner background-banner-develop filter filter-primary text-center lazy">
+<div class="section section-banner background-banner-develop filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
-</section>
+</div>
 {{ super() }}
 {% endblock content %}
 
 {% block main %}
-<div class="subsection">
+<div>
     <p class="lead">
     <span class="h2">TL;DR</span><br/>
     Clone the repository:</p>
@@ -44,7 +44,7 @@ $ hg topic my-change</code></pre>
     <p class="lead">
     Click on the link to create the Merge Request.</p>
 </div>
-<div class="subsection">
+<section>
     <h2 id="submit-change">Submit a Change</h2>
     <p class="bg-info rounded p-2">The project is using <a href="https://www.mercurial-scm.org/">mercurial</a> as Version Control System with the <a href="https://pypi.org/project/hg-evolve/">hg-evolve extension</a>.</p>
     <ul>
@@ -54,8 +54,8 @@ $ hg topic my-change</code></pre>
         <li>Ensure you did not break the tests by running them and add tests if necessary.</li>
         <li>Once accepted your merge request is merged by a Mercurial Publisher.</li>
     </ul>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="guidelines">Guidelines</h2>
     <p>The Tryton Project has guidelines for both code and documentation.</p>
     <h3 id="guidelines-code">Code</h3>
@@ -98,8 +98,8 @@ $ hg topic my-change</code></pre>
         </li>
         <li>Include the <a href="https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#default-closing-pattern">pattern to close</a> linked issues (optional).</li>
     </ul>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="requirements">Requirements</h2>
     <p>Your contribution must meet the following requirements:</p>
     <h3>Must</h3>
@@ -116,16 +116,16 @@ $ hg topic my-change</code></pre>
         <li>The contributor name should be the real name of the natural person who submits the code.</li>
         <li>The contributor email should be linked to only one contributor name.</li>
     </ul>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="rules">Rules</h2>
     <p>If the contributor has a significant amount of code, he can add himself to the <span class="text-monospace">COPYRIGHT</span> file of the modified packages.</p>
     <p>
     In the case of disagreement, a consensus should be reached.
     As a last resort, the project leader (<a href="https://foss.heptapod.net/cedk">Cédric Krier</a>) will make the decision.
     </p>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="roles">Roles</h2>
     <ul>
         <li>
@@ -138,8 +138,8 @@ $ hg topic my-change</code></pre>
             Maintainers can push directly on all branches to make releases.
         </li>
     </ul>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="publish-change">Publish a Change</h2>
     <p class="bg-info rounded p-2">This part is only for Mercurial Publishers</p>
     <p>
@@ -151,11 +151,11 @@ $ hg topic my-change</code></pre>
     <p>
     Ensure commit message contains proper <a href="https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#default-closing-pattern">pattern to close</a> linked issues.
     </p>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="backporting">Backporting</h2>
     <p>A fix will be back ported to older series by the maintainer on his own discretion using a backport merge request.
     The decision is based on the importance of the bug, the availability of workaround and the feasibilities.</p>
     <p>Those rules don't apply for security bugs which are applied at once to all affected series and followed by a release.</p>
-</div>
+</section>
 {% endblock main %}

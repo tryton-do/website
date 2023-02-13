@@ -24,16 +24,16 @@
 {{ background('banner-document') }}
 {% endblock %}
 {% block content %}
-<section class="section section-banner background-banner-document filter filter-primary text-center lazy">
+<div class="section section-banner background-banner-document filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
-</section>
+</div>
 {{ super() }}
 {% endblock content %}
 
 {% block main %}
-<div class="subsection">
+<section>
     <h2 id="purpose">Purpose</h2>
     <p>The main Tryton documentation is written using <a href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> and is converted into a variety of different formats using <a href="https://www.sphinx-doc.org/">Sphinx</a>.</p>
     <p>For most things this style guide aims to be consistent with the <a href="https://devguide.python.org/documenting/#style-guide">Python style guide</a>.</p>
@@ -43,8 +43,8 @@
     If something is not mentioned here, but the Python style guide mentions it, then try and follow that.
     If neither have an opinion on it, but it is already done a particular way in the existing documentation then try and follow that.
     The real aim is to have a consistent structure and style for all the documentation.</p>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="general-style">General Style</h2>
     <h3 id="use-of-whitespace">Use of Whitespace</h3>
     <p>The key things to take note of are:</p>
@@ -174,8 +174,8 @@ Purchase Report
         <dd class="ps-4">Used for links to Internet Request for Comments.
             Just use the RFC's number.</dd>
     </dl>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="structure">Structure</h2>
     <h3 id="modules">Modules</h3>
     <p>

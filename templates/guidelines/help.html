@@ -19,16 +19,16 @@
 {{ background('banner-document') }}
 {% endblock %}
 {% block content %}
-<section class="section section-banner background-banner-document filter filter-primary text-center lazy">
+<div class="section section-banner background-banner-document filter filter-primary text-center lazy">
     <div class="container">
         <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
     </div>
-</section>
+</div>
 {{ super() }}
 {% endblock content %}
 
 {% block main %}
-<div class="subsection">
+<section>
     <h2 id="purpose">Purpose</h2>
     <p>The help messages for fields, buttons and selection values, which are displayed as tooltips in the client, are very useful for new users who are discovering Tryton and existing users who need to refresh their memory.<p>
     <p>
@@ -38,8 +38,8 @@
     <p>The help text should answer the question:<p>
     <p class="bg-light font-weight-bold p-2">What is this, or what is it for?</p>
     <p>If it is obvious what it is for, or what it does, then it is often better not to add any help text.</p>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="general-style">General Style</h2>
     <p>In general you should try and follow the <a href="https://material.io/design/communication/writing.html">material design style guide</a>.</p>
     <h3 id="language">Language</h3>
@@ -97,8 +97,8 @@
                     <td>"Edit where to store the goods."</td></tr>
             </table></li>
     </ul>
-</div>
-<div class="subsection">
+</section>
+<section>
     <h2 id="standard-help-text">Standard Help Text</h2>
     <h3 id="standard-fields">Fields</h3>
     <p>
@@ -126,5 +126,5 @@
         <dt>State:</dt>
         <dd class="ps-4">The current state of the <mark>MODEL-NAME</mark>.</dd>
     </dl>
-</div>
+</section>
 {% endblock main %}
