@@ -2,13 +2,13 @@
 {% set description = "Success story of Felber implementing Tryton" %}
 {% set keywords = ["success story", "review", "case study"] %}
 {% set banner = "felber/banner" %}
-{% set logo = "images/success-stories/felber.jpg" %}
+{% set logo = "images/success-stories/felber.webp" %}
 {% extends "success_stories/layout.html" %}
 {% block customer %}
 {{ super() }}
 <p class="lead"><a href="https://www.felber-ag.ch/">Felber</a> is a local producer and service provider for label stamps and signalisation products.
 It is a small company with only 4 employees.</p>
-<img src="{{ url_for('static', filename='images/success-stories/felber/banner.jpg') }}" class="img-fluid mx-auto d-block" alt="" loading="lazy" width="1500" height="1000">
+<img src="{{ url_for('static', filename='images/success-stories/felber/banner.webp') }}" class="img-fluid mx-auto d-block" alt="" loading="lazy" width="1500" height="1000">
 {% endblock customer %}
 {% block challenge %}
 {{ super() }}

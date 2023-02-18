@@ -282,8 +282,11 @@ def inject_critical_css():
 def dominant_color(path):
     if app.debug:
         return '#000'
-    color = ColorThief(
-        os.path.join(app.static_folder, path)).get_color(quality=1)
+    try:
+        color = ColorThief(
+            os.path.join(app.static_folder, path)).get_color(quality=1)
+    except Exception:
+        return '#000'
     return '#%02x%02x%02x' % color
 
 
@@ -465,7 +468,7 @@ class Case:
 
     @property
     def logo(self):
-        return 'images/success-stories/%s.jpg' % self.name
+        return 'images/success-stories/%s.webp' % self.name
 
     def __eq__(self, other):
         if isinstance(other, str):
@@ -1016,7 +1019,7 @@ def warmup():
                 hash, s='198', d=gravatar.default, r=gravatar.rating)
         except Exception:
             app.logger.warning('fail to fetch gravatar')
-    for path in glob.glob(os.path.join(app.static_folder, '**/*.jpg')):
+    for path in glob.glob(os.path.join(app.static_folder, '**/*.webp')):
         dominant_color(os.path.relpath(path, app.static_folder))
     return '', HTTPStatus.NO_CONTENT
 

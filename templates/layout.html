@@ -15,8 +15,8 @@
         <meta property="og:title" content="{{ title }}"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="{{ canonical }}"/>
-        <meta property="og:image" content="{{ url_for('static', filename=(logo or 'images/logo.png'), _external=True, _scheme='http') }}"/>
-        <meta property="og:image:secure_url" content="{{ url_for('static', filename=(logo or 'images/logo.png'), _external=True, _scheme='https') }}"/>
+        <meta property="og:image" content="{{ url_for('static', filename=(logo or 'images/logo.webp'), _external=True, _scheme='http') }}"/>
+        <meta property="og:image:secure_url" content="{{ url_for('static', filename=(logo or 'images/logo.webp'), _external=True, _scheme='https') }}"/>
         {% if description %}
         <meta property="og:description" content="{{ description }}"/>
         {% endif %}
@@ -27,10 +27,10 @@
         {% if description %}
         <meta name="twitter:description" content="{{ description }}"/>
         {% endif %}
-        <meta name="twitter:image" content="{{ url_for('static', filename=(logo or 'images/logo.png'), _external=True) }}"/>
+        <meta name="twitter:image" content="{{ url_for('static', filename=(logo or 'images/logo.webp'), _external=True) }}"/>
 
         <title>Tryton - {{ title }}</title>
-        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+        <link rel="shortcut icon" type="image/webp" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
         {% if canonical != request.url %}
         <link rel="canonical" href="{{ canonical }}"/>
         {% endif %}
@@ -63,7 +63,7 @@
             <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url_for('index') }}">
-                        <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.png') }}" width="110" height="32" alt="Tryton Home"/>
+                        <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.webp') }}" width="110" height="32" alt="Tryton Home"/>
                     </a>
                     <a href="#content" class="visually-hidden visually-hidden-focusable">Skip to main content</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,7 +127,7 @@
 
         <footer id="footer">
             {% block footer %}
-            <img class="img-fluid" src="{{ url_for('static', filename='images/placeholder-large.jpg') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.jpg') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.jpg') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.jpg') }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/placeholder-large.jpg') }};" width="1920" height="350"/>
+            <img class="img-fluid" src="{{ url_for('static', filename='images/placeholder-large.webp') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.webp') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.webp') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.webp') }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/placeholder-large.webp') }};" width="1920" height="350"/>
             <section class="topfooter">
                 <div class="container">
                     <div class="row">
@@ -151,7 +151,7 @@
                         </div>
                         <div class="offset-lg-1 col-md-5 col-lg-4">
                             <div class="footer-end">
-                                <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-white.png') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
+                                <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-white.webp') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
                                 <hr/>
                                 <p class="lead">Modularity, scalability & security for your business</p>
                                 <p>
