@@ -175,15 +175,7 @@ CSS_LINK_HEADERS = [
         'static', {'filename': 'css/main.css'}, {
             'rel': 'preload', 'as': 'style', 'nopush': True}),
     LinkHeader(
-        'static', {'filename': 'fonts/RobotoCondensed-Light.woff'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True,
-            'crossorigin': True}),
-    LinkHeader(
         'static', {'filename': 'fonts/RobotoCondensed-Regular.woff'}, {
-            'rel': 'preload', 'as': 'font', 'nopush': True,
-            'crossorigin': True}),
-    LinkHeader(
-        'static', {'filename': 'fonts/RobotoCondensed-Bold.woff'}, {
             'rel': 'preload', 'as': 'font', 'nopush': True,
             'crossorigin': True}),
     LinkHeader(
