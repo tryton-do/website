@@ -29,7 +29,19 @@
 </div>
 {% endmacro %}
 {% set events = [
-    Day((2023, 5, 22), location=location1(), full=True),
+    Day((2023, 5, 22),
+        ("New index declaration", (10,), (10, 30),
+            "The implementation process of the new index system, the reasons for the change, "
+            "the choices that have been made and a presentation of the result",
+            [("Nicolas Évrard", '9f3e84dcf01f24de39a02268e00a89ed', "B2CK", 'https://www.b2ck.com/')]),
+        ("Demo of tooling to create tutorial videos", (11,), (11, 15),
+            "",
+            [("Hartmut Goebel", 'a12beb8d8d1e540be1a40ec70fa325c3', 'Crazy Compilers', 'http://www.crazy-compilers.com/')]),
+        ("Sample databases in multiple languages", (11, 15), (11, 45),
+            "Discussion on how to be used in videos",
+            [("Hartmut Goebel", 'a12beb8d8d1e540be1a40ec70fa325c3', 'Crazy Compilers', 'http://www.crazy-compilers.com/')]),
+        ("Code Sprint", (10,), (18,)),
+        location=location1(), full=False),
     Day((2023, 5, 23),
         ("Code Sprint", (10,), (18,)), location=location2(), full=True),
     Day((2023, 5, 24),
