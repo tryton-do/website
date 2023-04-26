@@ -1,4 +1,4 @@
-from node:16
+from node:18
 LABEL maintainer="Tryton <foundation@tryton.org>" \
     org.label-schema.name="Tryton" \
     org.label-schema.url="http://www.tryton.org/" \
