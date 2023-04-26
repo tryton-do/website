@@ -1,4 +1,4 @@
-from node:15
+from node:16
 LABEL maintainer="Tryton <foundation@tryton.org>" \
     org.label-schema.name="Tryton" \
     org.label-schema.url="http://www.tryton.org/" \
@@ -7,12 +7,12 @@ LABEL maintainer="Tryton <foundation@tryton.org>" \
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libasound2 \
-#        libatk-bridge2.0 \
-#        libgtk-3-0 \
-#        libnss3 \
-#        libx11-xcb1 \
-#        libxss1 \
-#        libxtst6 \
+        libatk-bridge2.0 \
+        libgtk-3-0 \
+        libnss3 \
+        libx11-xcb1 \
+        libxss1 \
+        libxtst6 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g critical
