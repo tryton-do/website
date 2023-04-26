@@ -111,8 +111,8 @@ deploy-critical-css:
   stage: deploy
   timeout: 730 hours
   variables:
-    CRITICAL_CSS_IMAGE: critical-css
-    CRITICAL_CSS_TAG: latest
+    CRITICAL_CSS_IMAGE: $CI_REGISTRY_IMAGE
+    CRITICAL_CSS_TAG: critical-css
   needs:
     - build-critical-css
   before_script:
