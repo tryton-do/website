@@ -80,12 +80,12 @@ build-critical-css:
   stage: build
   image: docker:latest
   variables:
-    CRITICAL_CSS_IMAGE: critical-css
-    CRITICAL_CSS_TAG: latest
+    IMAGE: $CI_REGISTRY_IMAGE
+    TAG: critical-css
   services:
     - docker:dind
   script:
-    - docker build --pull -t $CRITICAL_CSS_IMAGE:$CRITICAL_CSS_TAG critical-css/.
+    - docker build --pull -t $IMAGE:$TAG critical-css/.
   # Run this job in a branch where a Dockerfile exists
   rules:
     - if: $CI_COMMIT_BRANCH
@@ -111,11 +111,11 @@ deploy-critical-css:
   stage: deploy
   timeout: 730 hours
   variables:
-    CRITICAL_CSS_IMAGE: $CI_REGISTRY_IMAGE
-    CRITICAL_CSS_TAG: critical-css
+    IMAGE: $CI_REGISTRY_IMAGE
+    TAG: critical-css
   needs:
     - build-critical-css
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker push $CRITICAL_CSS_IMAGE:$CRITICAL_CSS_TAG
+    - docker push $IMAGE:$TAG
