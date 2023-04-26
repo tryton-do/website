@@ -7,7 +7,7 @@ workflow:
 stages:
   - preparation
   - check
-#  - test
+  - test
   - build
   - deploy
 
@@ -39,26 +39,26 @@ check-isort:
   script:
     - isort -c .
 
-#test:
-#  stage: test
-#  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:3.9
-#  variables:
-#    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
-#  cache:
-#    paths:
-#      - .cache/pip
-#  script:
-#    - pip install -r requirements.txt -r requirements-test.txt
-#    - coverage run --omit=*/tests/* -m xmlrunner discover -v --output-file junit.xml
-#    - coverage report
-#    - coverage xml
-#  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
-#  artifacts:
-#    reports:
-#      junit: junit.xml
-#      coverage_report:
-#        coverage_format: cobertura
-#        path: coverage.xml
+test:
+  stage: test
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:3.9
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip
+  script:
+    - pip install -r requirements.txt -r requirements-test.txt
+    - coverage run --omit=*/tests/* -m xmlrunner discover -v --output-file junit.xml
+    - coverage report
+    - coverage xml
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+  artifacts:
+    reports:
+      junit: junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
 
 build:
   stage: build
@@ -100,7 +100,7 @@ deploy:
     TAG: latest
   needs:
     - build
-#    - test
+    - test
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
