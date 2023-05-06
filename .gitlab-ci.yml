@@ -65,7 +65,7 @@ build:
   image: docker:stable
   variables:
     IMAGE: $CI_REGISTRY_IMAGE
-    TAG: latest
+    TAG: website
   services:
     - docker:dind
   script:
