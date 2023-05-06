@@ -62,7 +62,7 @@ test:
 
 build:
   stage: build
-  image: docker:latest
+  image: docker:stable
   variables:
     IMAGE: $CI_REGISTRY_IMAGE
     TAG: latest
@@ -78,7 +78,7 @@ build:
 
 build-critical-css:
   stage: build
-  image: docker:latest
+  image: docker:stable
   variables:
     IMAGE: $CI_REGISTRY_IMAGE
     TAG: critical-css
@@ -97,7 +97,7 @@ deploy:
   timeout: 730 hours
   variables:
     IMAGE: $CI_REGISTRY_IMAGE
-    TAG: latest
+    TAG: website
   needs:
     - build
     - test
