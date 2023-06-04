@@ -103,8 +103,10 @@ deploy:
     - test
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD" $DOCKER_IO_REGISTRY
   script:
     - docker push $IMAGE:$TAG
+    - docker push $$DOCKER_IO_USER/$IMAGE:$TAG
 
 
 deploy-critical-css:
@@ -117,5 +119,7 @@ deploy-critical-css:
     - build-critical-css
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD" $DOCKER_IO_REGISTRY
   script:
     - docker push $IMAGE:$TAG
+    - docker push $$DOCKER_IO_USER/$IMAGE:$TAG
