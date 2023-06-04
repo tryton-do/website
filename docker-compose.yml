@@ -1,34 +1,41 @@
-version: '2.1'
+version: '3'
 
 services:
-    website:
-        build: .
-        env_file:
-            - website.env
-        environment:
-            - MEMCACHED=memcached
-            - CRITICAL_CSS=/critical-css
-        volumes:
-            - critical-css:/critical-css
-        ports:
-            - "127.0.0.1:5000:5000"
-        restart: unless-stopped
-        healthcheck:
-            test: ["CMD", "/web/check-running"]
-            interval: 5m
-    memcached:
-        image: memcached
-        ports:
-            - "127.0.0.1:11211:11211"
-        restart: unless-stopped
-    critical-css:
-        build: critical-css
-        environment:
-            - OUTPUT=/critical-css
-            - SITE=website:5000
-        volumes:
-            - critical-css:/critical-css
-        depends_on:
-            - website
+  website:
+    container_name: ${CONTAINER_WEBSITE_NAME}
+    image: ${WEBSITE_IMAGE}:${WEBSITE_TAG}
+    restart: unless-stopped
+    environment:
+#      MEMCACHED=memcached
+#      - CRITICAL_CSS=/critical-css
+#      - CDN_DOMAIN: cdn.${DOMAIN}
+#      - CDN_HTTPS: true
+    volumes:
+      - critical-css:/critical-css
+    ports:
+      - "127.0.0.1:5000:5000"
+#    healthcheck:
+#      test: ["CMD", "/web/check-running"]
+#      interval: 30m
+
+  memcached:
+    container_name: ${CONTAINER_MEMCACHED_NAME}
+    image: memcached
+    ports:
+      - "127.0.0.1:11211:11211"
+    restart: unless-stopped
+
+  critical-css:
+    container_name: ${CONTAINER_CRITICAL_CSS_NAME}
+    image: ${CRITICAL_CSS_IMAGE}:${CRITICAL_CSS_TAG}
+    restart: unless-stopped
+    environment:
+      - SITE="website:5000"
+      - OUTPUT=critical-css
+    volumes:
+      - critical-css:/critical-css
+    depends_on:
+      - website
+
 volumes:
   critical-css:
