@@ -931,10 +931,12 @@ PROVIDERS = [
         services=Service.CONSULTING | Service.DEVELOPMENT),
     Provider(name="INROWGA",
         positions=[(18.476389, -69.893333)],
-        services=Service.CONSULTING | Service.DEVELOPMENT | Service.HOSTING | Service.TRAINING),
+        services=Service.CONSULTING | Service.DEVELOPMENT | 
+        Service.HOSTING | Service.TRAINING),
     Provider(name="SOLUTEMA",
         positions=[(18.476389, -69.893333)],
-        services=Service.CONSULTING | Service.DEVELOPMENT | Service.HOSTING | Service.TRAINING),
+        services=Service.CONSULTING | Service.DEVELOPMENT | 
+        Service.HOSTING | Service.TRAINING),
     Provider(name="Kopen Software",
         positions=[(41.5995983, 0.5799085)],
         services=Service.CONSULTING | Service.DEVELOPMENT | Service.HOSTING
