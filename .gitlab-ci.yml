@@ -106,7 +106,7 @@ deploy:
     - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD" $DOCKER_IO_REGISTRY
   script:
     - docker push $IMAGE:$TAG
-    - docker push $$DOCKER_IO_USER/$IMAGE:$TAG
+    - docker push $DOCKER_IO_USER/$IMAGE:$TAG
 
 
 deploy-critical-css:
@@ -122,4 +122,4 @@ deploy-critical-css:
     - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD" $DOCKER_IO_REGISTRY
   script:
     - docker push $IMAGE:$TAG
-    - docker push $$DOCKER_IO_USER/$IMAGE:$TAG
+    - docker push $DOCKER_IO_USER/$IMAGE:$TAG
