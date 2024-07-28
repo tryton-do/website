@@ -1,0 +1,121 @@
+{% set title = "MARKOM Offroad" %}
+{% set description = "Success story of an 4x4 off-road driving school and off-road event organizer" %}
+{% set keywords = ["success story", "review", "case study", "off-road driving", "event organisation", "event management"] %}
+{% set banner = "markom-offroad/banner" %}
+{% set logo = "images/success-stories/markom-offroad.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+    <a href="https://gelaendefahrschule.de">MARKOM OFFROAD</a> is a owner operated company in Sinsheim, Germany, committed to serious 4x4 off-road driving courses.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/markom-offroad/toyota_lc_in_dyn_ZORG-Schraegfahrt.webp') }}" class="img-fluid w-100" alt="Toyota Land Cruiser in dynamically inclined driving" loading="lazy" width="800" height="533">
+<p>
+The challenge is to go sefely from A to B through rough terrain without damaging the vehicle, the driver and the terrain.
+This has nothing to do with rally driving.
+</p>
+<p>
+MARKOM offers:
+</p>
+<ul>
+    <li>Off-road driving tuition for all-wheel-drive vehicles</li>
+    <li>Off-road driving events (1 to 3 hours) with different classic off-road vehicles like the Land Rover Defender or the Unimog L1300</li>
+    <li>Off-road trainer academy</li>
+</ul>
+<p>
+Customers are private citizens, hunters, foresters, fire brigades and private companies.
+</p>
+<p>
+For off-road driving events, MARKOM works with agencies like <a href="https://www.mydays.de">Mydays</a>, <a href="https://maennerspielplatz.de">maennerspielplatz.de</a> and <a href="https://www.jochen-schweizer.de">Jochen Schweitzer</a>.
+</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>
+MARKOM was trapped by proprietary legacy software.
+</p>
+<p>
+They were very dependent on, what used to be, an efficient and flexible CRM system which is no longer supported, is not upgradable, and due to missing source code is no longer maintainable.
+Its last working OS was Windows XP / Server 2003.
+The data was stored in a password protected MS SQL database, and the password was unknown.
+</p>
+<p>
+All kind of tricks were used to keep the system working, like running virtual XP machines and virtualisation of the Server 2003 SBS.
+However, it was clear that this system had no future.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/markom-offroad/stop.webp') }}" class="img-fluid w-100" alt="Trainer signals STOP to a 4x4 vehicle passing over a hillock" loading="lazy" width="800" height="533">
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>
+ A free/libre system, including Tryton, was chosen for the following reasons:
+</p>
+<ul>
+    <li>It was possible to migrate existing CRM data to the new system (approximately 20,000 parties,  more than 60,000 file attachments, and more than 100,000 notes)</li>
+    <li>MARKOM as a off-road training company does not want to get stuck again in the future by proprietary software</li>
+    <li>It was possible to implement very individual requirements by custom Tryton modules</li>
+</ul>
+<img src="{{ url_for('static', filename='images/success-stories/markom-offroad/feuerwehrfahrzeug_im_wald.webp') }}" class="img-fluid w-100" alt="Firetruck stuck in wet forest terrain, uses special recovery boards to come out" loading="lazy" width="800" height="438">
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>
+First we analyzed which processes and data could be mapped to standard Tryton, and which individual extensions would have to be implemented.
+Since business processes had been "aligned" to the CRM system over a period of more than 15 years, this was a real challenge.
+</p>
+<p>
+Next, we implemented the migration scripts from the old CRM system to Tryton.
+As there was no possibility to export the data out of the CRM system in a useful way.
+The database scheme of the CRM system was also, kind of, "off the road".
+We decided to do a 4-step migration process, "MS SQL export → PostgreSQL → remodeling → Tryton import from PostgreSQL".
+</p>
+<p>
+Meanwhile we set up a new IT system in parallel to the old one.
+Microsoft Exchange Server was replaced by a Linux mail server and a <a href="https://nextcloud.com/">Nextcloud</a> instance.
+Outlook was replaced by <a href="https://www.thunderbird.net/">Thunderbird</a>, MS Office was replaced by <a href="https://www.libreoffice.org/">LibreOffice</a>, the fileserver by <a href="https://www.samba.org/">Samba</a>, and the old CRM software was replaced by Tryton.
+</p>
+<p>
+Among other things, a custom <i>Product Event module</i> was implemented, which extended the standard Tryton <i>Product module</i>.
+This was used to store "Events" (Driving tuitions, "fun-" driving events, …) as Products, with the event type as a Template and each scheduled event date as a Variant.
+These events can last one or more days, and can take up the whole day or are available to book in shorter time slots during the day.
+Some events are solely bookable for a whole day or multiple days (such as driving courses), others have bookable time slots (like driving events).
+</p>
+<p>
+An automatic calendar export from the Tryton (Product-) Events was implemented to constantly have the event schedule on the PCs in Thunderbird's calendar, and on the instructor's smartphones.
+A calendar entry for an event includes the number of people booked on the event, each persons' contact details and information about the vehicles.
+Everything the instructor needs in the field.
+</p>
+<p>
+During the implementation phase, MARKOM was able to review the current progress and test things out using a test system. 
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/markom-offroad/fwatv_schraegfahrt.webp') }}" class="img-fluid w-100" alt="Firefighter on ATV in dynamically inclined driving" loading="lazy" width="800" height="553">
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>
+ After an adaption phase of several months, MARKOM is now using the new system efficiently.
+</p>
+<p>
+Some business processes and habits had to change.
+This was not easy, but in the end the MARKOM team confirmed that it was worth the effort.
+</p>
+<p>
+The fact alone that the trainers now have calendar and customer contact information on their smartphones reduced printing and communication costs significantly.
+</p>
+<p>
+Every three months an e-mail newsletter is sent to more than 3.000 recipients.
+Sending this newsletter out always used to be half a day of manual work.
+Now, with the Tryton <i>Marketing Email Module</i>, it is done with just a few clicks.
+</p>
+<p>
+For MARKOM, the changeover to free open source software, from the basic <a href="https://en.wikipedia.org/wiki/Hypervisor">hypervisor</a> (running <a href="https://linux-kvm.org/">KVM</a> on <a href="https://www.debian.org/">Debian GNU/Linux</a>), over infrastructure (e-mail, logging, firewall) up to the Tryton system, was a complete success, giving MARKOM the safety of not being trapped by proprietary systems again in the future.
+</p>
+<p>
+For us as an IT service provider with more than 20 years of experience in using free and open source software, it was a pleasure to help MARKOM switch from a complete proprietary system to a (nearly completely) free open source system.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/markom-offroad/trail.webp') }}" class="img-fluid w-100" alt="Three 4x4 vehicles on an uphill off-road trail" loading="lazy" width="800" height="456">
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.wuerfel-datentechnik.de/">Wuerfel Datentechnik</a></p>
+{% endblock %}

@@ -1,0 +1,314 @@
+{% set title = "Modularity, scalability & security for your business" %}
+{% set description = "TRYTON is business software, ideal for companies of any size, easy to use, complete and 100% Open Source." %}
+{% extends "layout.html.jinja" %}
+{% macro slide_img(i) %}
+<img class="d-block w-100 img-fluid" src="{{ url_for('static', filename='images/slide%i.webp' % i) }}" sizes="100vw"  width="1920" height="500" srcset="{{ url_for('static', filename='images/slide%i.webp' % i) }} 1920w, {{ url_for('static', filename='images/slide%i-800px.webp' % i) }} 800w, {{ url_for('static', filename='images/slide%i-400px.webp' % i) }} 400w" alt="" loading="{{ 'lazy' if i > 1 else 'eager' }}" style="background-color: {{ dominant_color('images/slide%i.webp' % i) }};">
+{% endmacro %}
+{% block head %}
+{{ super() }}
+<link rel="alternate" type="application/rss+xml" title="Tryton's news" href="{{ url_for('news_rss') }}"/>
+{% endblock head %}
+{% block header %}
+{{ super() }}
+<div id="carousel-header" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carousel-header" data-bs-slide-to="0" class="active">
+            <noscript>
+                <label for="carousel-0"> </label>
+            </noscript>
+        </li>
+        <li data-bs-target="#carousel-header" data-bs-slide-to="1">
+            <noscript>
+                <label for="carousel-1"> </label>
+            </noscript>
+        </li>
+        <li data-bs-target="#carousel-header" data-bs-slide-to="2">
+            <noscript>
+                <label for="carousel-2"> </label>
+            </noscript>
+        </li>
+        <li data-bs-target="#carousel-header" data-bs-slide-to="3">
+            <noscript>
+                <label for="carousel-3"> </label>
+            </noscript>
+        </li>
+    </ol>
+    <div class="carousel-inner">
+        <input class="carousel-active" type="radio" id="carousel-0" name="carousel" aria-hidden="true" hidden="" checked="checked">
+        <div class="carousel-item active">
+            {{ slide_img(1) }}
+            <div class="carousel-caption">
+                <div class="container">
+                    <h2>
+                        Business Software
+                    </h2>
+                    <h3>
+                        Modularity, scalability & security for your business
+                    </h3>
+                    <a class="btn btn-primary text-white mt-3" href="{{ url_for('demo') }}">Try the demo</a>
+                </div>
+            </div>
+        </div>
+        <input class="carousel-active" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            {{ slide_img(2) }}
+            <div class="carousel-caption">
+                <div class="container">
+                    <h2>
+                        Total Freedom
+                    </h2>
+                    <h3>
+                        No vendor lock-in
+                    </h3>
+                    <a class="btn btn-primary text-white mt-3" href="{{ url_for('download') }}">Install it now</a>
+                </div>
+            </div>
+        </div>
+        <input class="carousel-active" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            {{ slide_img(3) }}
+            <div class="carousel-caption">
+                <div class="container">
+                    <h2>
+                        Vibrant Community
+                    </h2>
+                    <h3>
+                        United under a Foundation
+                    </h3>
+                    <a class="btn btn-primary text-white mt-3" href="{{ url_for('donate') }}">Make a donation</a>
+                </div>
+            </div>
+        </div>
+        <input class="carousel-active" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            {{ slide_img(4) }}
+            <div class="carousel-caption">
+                <div class="container">
+                    <h2>
+                        Professional service
+                    </h2>
+                    <h3>
+                        Supported by a network of providers
+                    </h3>
+                    <a class="btn btn-primary text-white mt-3" href="{{ url_for('service_providers') }}">Find your partner</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="section">
+    <div class="container text-center">
+        <h1 class="lead mb-4">
+            {% include 'tryton-tm.html.jinja' %} is business software, ideal for companies of any size, easy to use, complete and 100% Open Source.
+        </h1>
+        <a href="{{ url_for('download') }}" class="btn btn-primary btn-lg">Start with Tryton</a>
+    </div>
+</div>
+
+<section class="section bg-light text-dark text-center" id="features">
+    <div class="container">
+        <section class="section-header text-primary">
+            <h2 class="bg-light ps-3 pe-3 text-uppercase">All you need to run your business</h2>
+        </section>
+        <h3 class="lead">
+            {% include 'tryton-tm.html.jinja' %} includes all these features <strong>fully integrated</strong>
+        </h3>
+        <section class="subsection-top">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xxl-9 col-xl-10">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">account_balance</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Financial Accounting</h4>
+                                <p class="d-none d-sm-block">Record all transactions<br/>in your chart of accounts.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">store_mall_directory</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Sales</h4>
+                                <p class="d-none d-sm-block">Follow orders from quotation<br/>to customer satisfaction.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">local_convenience_store</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Inventory & Stock</h4>
+                                <p class="d-none d-sm-block">Track goods in your warehouses<br/>from receipt to delivery.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">account_balance_wallet</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Analytic Accounting</h4>
+                                <p class="d-none d-sm-block">Break down your expenses<br/>and revenues by category.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">person</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">CRM</h4>
+                                <p class="d-none d-sm-block">Convert your leads<br/>and opportunities into sales.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">shopping_cart</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Purchasing</h4>
+                                <p class="d-none d-sm-block">Follow your requests for quotation<br/>and reduce costs by grouping orders.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">equalizer</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Supply Chain</h4>
+                                <p class="d-none d-sm-block">Fill your warehouses<br/>just in time.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">build</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Manufacturing</h4>
+                                <p class="d-none d-sm-block">Transform raw materials<br/>into finished products with bill of materials and routing.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">local_shipping</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Shipping</h4>
+                                <p class="d-none d-sm-block">Package shipments<br/>for your carriers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">work</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Project Management</h4>
+                                <p class="d-none d-sm-block">Check the profitability of projects<br/>and never forget to invoice customers.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">repeat</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Subscription Management</h4>
+                                <p class="d-none d-sm-block">Create recurring invoices<br/>for your customer contracts.</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="picto-container">
+                                <div class="picto bg-primary text-white">
+                                    <span class="material-icons md-48">group_work</span>
+                                </div>
+                                <h4 class="mt-3 text-uppercase">Third Party Integration</h4>
+                                <p class="d-none d-sm-block">Automate your communication<br/>with banks, carriers, websites etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<section class="section" id="news">
+    <div class="container">
+        <section class="section-header text-primary">
+            <h3 class="bg-body pe-3 text-uppercase"><a class="link-primary " href="{{ url_for('news') }}">News</a></h3>
+        </section>
+        <div class="row">
+            {% for item in news[:3] %}
+            <div class="col-md">
+                <h4>{{ item.title }} <small class="d-none d-sm-inline text-muted text-nowrap">{{ item.pubDate | string | truncate(16, True, '') }}</small></h4>
+                <p class="news-description">
+                {{ item.description|news_text|truncate(240) }}
+                </p>
+                <div class="d-flex">
+                    <a class="btn btn-primary ms-auto" href="{{ item.link }}">More<span class="visually-hidden">on "{{ item.title }}"</span></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section-bottom" id="events">
+    <div class="container">
+        <div class="p-5 rounded bg-primary">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="picto-container">
+                                <div class="picto bg-dark text-white" aria-hidden="true">
+                                    <span class="material-icons md-48">event</span>
+                                </div>
+                                <h3 class="text-white mt-3 mb-3">Events</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <p class="text-white">
+                            If you are organizing an event around Tryton and want to be listed here, please send us a message.
+                            </p>
+                            <div class="d-flex">
+                                <a class="btn btn-dark ms-auto" href="https://discuss.tryton.org/new-message?groupname=foundation">Send</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg">
+                            <h4 class="text-white text-uppercase">Next Events:</h4>
+                            <dl class="row text-white">
+                            {% for event in next_events %}
+                            <dt class="col-md-3">{{ event.get('dtstart').dt|date }}</dt>
+                            <dd class="col-md-9 text-truncate">
+                                <a class="text-reset" href="{{ event.get('url', '#') }}">
+                                    {{ event.get('summary') }}
+                                </a>
+                            </dd>
+                            {% endfor %}
+                            </dl>
+                        </div>
+                        <div class="col-lg-2 d-flex flex-column justify-content-between">
+                            <a class="btn btn-outline-secondary" href="{{ url_for('events-ics') }}">Add<span class="visually-hidden"> to calendar</span></a>
+                            <a class="btn btn-secondary" href="{{ url_for('events') }}">More<span class="visually-hidden"> events</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

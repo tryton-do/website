@@ -1,0 +1,57 @@
+// OVERRIDE BOOTSTRAP
+// @Override Bootstrap variables
+// See "bootstrap/scss/_variables.scss"
+@use "sass:math";
+
+$color-mode-type: media-query;
+
+// COLORS
+$primary: $tryton-color-primary;
+$secondary: $tryton-color-secondary;
+$success: $tryton-color-success;
+$info: $tryton-color-info;
+$warning: $tryton-color-warning;
+$danger: $tryton-color-danger;
+$light: $tryton-color-light;
+$dark: $tryton-color-dark;
+$body-color: $tryton-color-body;
+
+// Text
+$font-family-base: $tryton-font-family-base;
+$headings-color: $dark;
+$line-height-base: 1.75;
+
+// JUMBOTRON
+$border-radius-lg: $border-radius;
+
+// NAVBAR
+//$navbar-brand-padding-y: 0;
+$navbar-padding-y: 0;
+$nav-link-padding-x: 1rem;
+$nav-link-padding-y: 1.5rem;
+$navbar-nav-link-padding-x: 1rem;
+
+// DROPDOWN
+$dropdown-spacer: 0;
+$dropdown-border-width: 0;
+$dropdown-border-radius: 0;
+
+// LINKS
+$link-decoration:       none;
+$link-hover-decoration: underline;
+
+// GRID
+$grid-gutter-width: 30px;
+
+// SPACERS
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  'gutter': $grid-gutter-width,
+  'gutter-half': math.div($grid-gutter-width, 2),
+  );

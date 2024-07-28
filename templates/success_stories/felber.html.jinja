@@ -1,0 +1,51 @@
+{% set title = "Felber" %}
+{% set description = "Success story of Felber implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "felber/banner" %}
+{% set logo = "images/success-stories/felber.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead"><a href="https://www.felber-ag.ch/">Felber</a> is a local producer and service provider for label stamps and signalisation products.
+It is a small company with only 4 employees.</p>
+<img src="{{ url_for('static', filename='images/success-stories/felber/banner.webp') }}" class="img-fluid mx-auto d-block" alt="" loading="lazy" width="1500" height="1000">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>It is important for all companies to be well run and organized.
+Small companies are no different, but they may not have the large budgets required for well known business software.
+Andy Felber, the owner of the company, was looking for business software that would help him organize and rationalize his company.
+In his business one of the major challenges was the <b>huge amount of invoices</b> that were for very small amounts.
+So for him speed was vital.
+He needed business software that was able to provide:
+</p>
+<ul>
+    <li>Party management</li>
+    <li>Product management</li>
+    <li>Fast invoicing</li>
+    <li>ePayment</li>
+    <li>Accounting (bookkeeping)</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p><a href="https://www.tryton.cloud/">Tryton.cloud</a> was chosen as it delivers a fast and easy to integrate SaaS solution based on the excellent Tryton framework.
+Custom modules were not needed as Tryton.cloud already incorporates all the features a company like Felber needs.</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>We designed a migration script to import some data from an existing database into the new Tryton system.
+Parties and products were migrated across to the new system and the layouts of reports were updated to match Felber's corporate identity.
+All the Mac computers were installed with the Tryton client, additional access rights were setup and after some basic training, the users were able to get started.</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>Tryton has demonstrated that it has all the features that are needed to run a company's day to day operations.
+The system is fast and accessible from the office, at home, and any other location with an internet connection.</p>
+<p>For Felber choosing Tryton was the right choice.
+They have been successfully working with it for many years now, and are happy with it's cost-effectiveness.</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.powersolutions.ch/">power solutions</a></p>
+{% endblock %}

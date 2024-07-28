@@ -1,0 +1,115 @@
+{% set toc = [
+    ("Schedule", 'schedule', None),
+    ("Register", 'register', None),
+    ("Venue", 'venue', None),
+    ("Accommodations", 'accommodations', None),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% block style %}
+{{ super() }}
+<link rel="profile" href="http://microformats.org/profile/hcard">
+<link rel="profile" href="http://microformats.org/profile/hcalendar">
+{% endblock style %}
+{% block content %}
+<div class="section section-banner filter filter-primary text-center" style="background-image:url({{ url_for('static', filename='images/events/%s' % banner) }});">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{% block title %}{{ title }}{% endblock %}</h1>
+    </div>
+</div>
+{{ super() }}
+{% endblock content %}
+{% block main %}
+{{ super() }}
+<div class="section bg-light">
+    <div class="container text-center">
+        {% block lead %}
+        <a href="#register" class="btn btn-primary btn-lg">Register</a>
+        {% endblock lead %}
+    </div>
+</div>
+<section class="section" id="schedule">
+    <div class="container">
+        <div class="section-header bg-white text-primary text-center">
+            <h2 class="ps-3 pe-3 text-uppercase"><span class="material-icons">timer</span> Schedule</h2>
+        </div>
+        {% block schedule %}
+        <div class="mx-auto" style="max-width: 600px;">
+            {% for day in events %}
+            <section class="subsection" id="schedule-{{ day.date.strftime('%Y-%m-%d') }}">
+                <h3 class="d-flex justify-content-between align-items-baseline flex-wrap">{{ day.date.strftime('%A, %d %B') }} {% if day.events %}<small>from {{ day.start.strftime('%H:%M') }} to {{ day.end.strftime('%H:%M') }}</small>{% endif %}</h3>
+                {% if day.events %}
+                <ol class="list-group mx-auto">
+                    {% for event in day.events %}
+                    <li class="h-event vevent list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="p-name summary">{{ event.summary }}</h4>
+                            <small>
+                                <abbr class="dt-start dtstart" datetime="{{ event.start.strftime('%Y%m%dT%H%M%S') }}" title="{{ event.start.strftime('%Y%m%dT%H%M%S') }}">{{ event.start.strftime('%H:%M') }}</abbr>
+                                -
+                                <abbr class="dt-end dtend" datetime="{{ event.end.strftime('%Y%m%dT%H%M%S') }}" title="{{ event.end.strftime('%Y%m%dT%H%M%S') }}">{{ event.end.strftime('%H:%M') }}</abbr>
+                            </small>
+                        </div>
+                        {% if event.description %}
+                        <p class="p-summary description">
+                        {{ event.description }}
+                        </p>
+                        {% endif %}
+                        {% if event.profiles %}
+                        <div class="p-attendee organizer d-flex justify-content-start">
+                            {% for profile in event.profiles %}
+                            <div class="h-card vcard d-flex flex-wrap justify-content-start align-items-start">
+                                <a class="u-url url" href="//www.gravatar.com/{{ profile.gravatar }}">
+                                    <img class="img-thumbnail u-photo photo" src="{{ url_for('avatar', hash=profile.gravatar, s=48) }}" alt="Avatar of {{ profile.name }}" loading="lazy" width="48" height="48"/>
+                                </a>
+                                <span class="p-name fn m-1">{{ profile.name }}{% if profile.company %},<br/><a class="p-org org" href="{{ profile.url }}">{{ profile.company }}</a>{% endif %}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if event.location %}
+                        <div class="p-location location d-none">{{ event.location | safe }}</div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ol>
+                {% if not day.full and day.date > datetime.date.today() %}
+                <p class="bg-info text-center mt-4 rounded p-2">More to come</p>
+                {% endif %}
+                {% else %}
+                <p class="bg-info text-center rounded p-2">To be announced</p>
+                {% endif %}
+            </section>
+            {% endfor %}
+        </div>
+        {% endblock schedule %}
+    </div>
+</section>
+<section class="section bg-light" id="register">
+    <div class="container">
+        <div class="section-header bg-light">
+            <h2 class="ps-3 pe-3 text-uppercase">Register</h2>
+        </div>
+        {% block register %}
+        {% endblock register %}
+    </div>
+</section>
+<section class="section" id="venue">
+    <div class="container">
+        <div class="section-header bg-white">
+            <h2 class="ps-3 pe-3 text-uppercase">Venue <span class="material-icons">place</span></h2>
+        </div>
+        {% block venue %}
+        {% endblock venue %}
+    </div>
+</section>
+<section class="section bg-light" id="accommodations">
+    <div class="container">
+        <div class="section-header bg-light">
+            <h2 class="ps-3 pe-3 text-uppercase">Accommodations <span class="material-icons">hotel</span></h2>
+        </div>
+        {% block accommodations %}
+        {% endblock accommodations %}
+    </div>
+</section>
+{% endblock main %}

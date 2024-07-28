@@ -1,0 +1,42 @@
+<div class="col mb-gutter" id="{{ provider.name | lower | replace(' ', '-') }}">
+    <div class="card mx-auto shadow d-flex flex-colum" style="max-width: 300px; min-width: 270px; height: 100%">
+        <a href="{{ website or '#' }}">
+            <img style="object-fit: cover;" class="card-img-top" src="{{ img or 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D' }}" alt="{{ provider.name }}" loading="{{ loading or 'lazy' }}" height="200" width="300"/>
+            </a>
+        <div class="card-body">
+            <h2 class="h5 card-title">{{ provider.name }}</h2>
+            <div class="h6 card-subtitle mb-2 text-muted">
+                {% if provider.consulting %}
+                <span class="material-icons" title="Consulting">group_work</span>
+                {% endif %}
+                {% if provider.development %}
+                <span class="material-icons" title="Development">api</span>
+                {% endif %}
+                {% if provider.hosting %}
+                <span class="material-icons" title="Hosting">cloud</span>
+                {% endif %}
+                {% if provider.training %}
+                <span class="material-icons" title="Training">school</span>
+                {% endif %}
+            </div>
+            <p class="card-text" style="height: 200px; overflow-y: auto;">
+            {% block description %}{% endblock %}
+            </p>
+            {% if website %}
+            <a href="{{ website }}"><span class="material-icons">web</span></a>
+            {% endif %}
+            {% if email %}
+            <a href="mailto:{{ email }}"><span class="material-icons">email</span></a>
+            {% endif %}
+            {% if phone %}
+            <a href="tel:{{ phone }}"><span class="material-icons">phone</span></a>
+            {% endif %}
+            {% for story in stories %}
+            <a href="{{ url_for('success_story', story=story) }}"><span class="material-icons">history_edu</span></a>
+            {% endfor %}
+        </div>
+        <div class="card-footer text-truncate">
+            {% block location %}{% endblock %}
+        </div>
+    </div>
+</div>

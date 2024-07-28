@@ -1,0 +1,59 @@
+{% extends "layout.html.jinja" %}
+{% from "utils.html.jinja" import background, case_card with context %}
+{% block style %}
+{{ super() }}
+{{ background('success-stories/%s' % banner) }}
+{% endblock style %}
+{% block head %}
+{{ super() }}
+<link rel="prefetch" href="{{ next_case.url }}"/>
+{% endblock %}
+{% block content %}
+{{ super() }}
+<div class="section section-banner background-success-stories-{{ banner | replace('/', '-') }} filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-xl-6 mx-md-auto order-1" role="main">
+                <section class="subsection">
+                    {% block customer %}
+                    <h2 id="customer">The Customer</h2>
+                    {% endblock customer %}
+                </section>
+                <section class="subsection">
+                    {% block challenge %}
+                    <h2 id="challenge">The Challenge</h2>
+                    {% endblock challenge %}
+                </section>
+                <section class="subsection">
+                    {% block solution %}
+                    <h2 id="solution">The Solution</h2>
+                    {% endblock solution %}
+                </section>
+                <section class="subsection">
+                    {% block implementation %}
+                    <h2 id="implementation">The Implementation</h2>
+                    {% endblock implementation %}
+                </section>
+                <section class="subsection">
+                    {% block results %}
+                    <h2 id="results">Results</h2>
+                    {% endblock results %}
+                </section>
+                <section class="subsection">
+                    {% block provider %}
+                    <h2 id="provider">Provider</h2>
+                    {% endblock provider %}
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section bg-light text-center">
+    {{ case_card(next_case, classes='bounce') }}
+</div>
+{% endblock content %}

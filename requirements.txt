@@ -1,0 +1,12 @@
+Flask>=2.2,<3
+Flask-Caching
+Flask-Gravatar
+Flask-Sitemap
+flask-cdn
+icalendar
+jinja2
+lxml
+python-memcached
+requests
+werkzeug
+colorthief

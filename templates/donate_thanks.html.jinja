@@ -1,0 +1,30 @@
+{% set title = "Donate Thanks" %}
+{% extends "layout.html.jinja" %}
+{% block content %}
+{{ super() }}
+<div class="section bg-light">
+    <div class="container">
+        <section class="section-header text-center bg-light mb-1">
+            <h1 class="ps-3 pe-3">{{ heart | safe }}Thanks You!</h1>
+        </section>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <p class="lead text-center">
+                <span class="material-icons">sentiment_very_satisfied</span>
+                On behalf of the Tryton Community, we thank you for your support!
+                </p>
+                <p class="text-end">
+                <small>
+                    If you have any questions regarding your donations, please send us an email to <a href="foundation@tryton.org">foundation@tryton.org</a>.
+                </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

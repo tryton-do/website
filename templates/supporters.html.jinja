@@ -1,0 +1,53 @@
+{% set title = "Supporters" %}
+{% set description = "List of foundation supporters" %}
+{% set keywords = ["foundation", "supporters"] %}
+{% extends "layout.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-supporters') }}
+{% endblock %}
+{% block content %}
+{{ super() }}
+<section class="section section-banner background-banner-supporters filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
+            {% for supporter in supporters %}
+            {% with %}
+            {% set discuss  = discuss_url(supporter) %}
+            {% set roundup = roundup_url(supporter) %}
+            {% set heptapod = heptapod_url(supporter) %}
+            <div class="col mb-gutter">
+                <div class="card mx-auto shadow" style="max-width: 200px">
+                    <img style="object-fit: scale-down;" class="card-img-top" src="{{ supporter['email'] | gravatar(198) }}" height="198" width="198" alt="" loading="{{ 'lazy' if loop.index > 2 else 'eager' }}"/>
+                    <div class="card-body">
+                        <h2 class="h6 card-title">{{ supporter['name'] }}</h2>
+                        {% if discuss %}
+                        <a href="{{ discuss }}"><span class="material-icons">forum</span></a>
+                        {% endif %}
+                        {% if heptapod %}
+                        <a href="{{ heptapod }}"><span class="material-icons">bug_report</span></a>
+                        {% endif %}
+                    </div>
+                    {% if supporter['website'] and supporter['website'] not in [discuss, roundup, heptapod] %}
+                    <div class="card-body text-truncate border-top">
+                        <a class="card-link" href="{{ supporter['website'] }}">{{ supporter['website'] | hostname }}</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endwith %}
+            {% endfor %}
+        </div>
+        <p class="alert alert-info rounded text-center">
+        If you want to become a supporter, please send an email to <a class="alert-link" href="mailto:foundation@tryton.org">foundation@tryton.org</a>.
+        </p>
+    </div>
+</section>
+{% endblock %}

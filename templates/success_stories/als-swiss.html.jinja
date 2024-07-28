@@ -1,0 +1,47 @@
+{% set title = "ALS Swiss" %}
+{% set description = "Success story of ALS Swiss implementing Tryton for fundraising" %}
+{% set keywords = ["success story", "review", "case study", "fundraising"] %}
+{% set banner = "als-swiss/banner" %}
+{% set logo = "images/success-stories/als-swiss.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">The <a href="https://www.als-schweiz.ch/">ALS society in Switzerland</a> helps and cares for people suffering from amyotrophic lateral sclerosis.
+The society also provides support for relatives and friends of people suffering from this progressive life-limiting illness.</p>
+<img src="{{ url_for('static', filename='images/success-stories/als-swiss/banner.webp') }}" class="img-fluid mx-auto d-block" alt="" loading="lazy" width="1170" height="500">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>In order to provide support to people affected by ALS, the ALS society needs to raise money from donations.
+These fundraising activities, and the general day to day operations of the ALS society, lead to administrative work that needs to be organized and managed.
+So the ALS society was looking for business software that was able to handle the following tasks:</p>
+<ul>
+    <li>Party management</li>
+    <li>Leads and Opportunities</li>
+    <li>Donation management</li>
+    <li>Rental of support material</li>
+    <li>Accounting (bookkeeping)</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>It was decided that Tryton would be ideal as the base platform as it could be easily extended with the custom functionality that the ALS society needed.
+So a standard Tryton system was extended with a rental module and a complete donation management system including confirmation letters.
+Tryton's flexibility allowed the donation management system to be tightly integrated with the rest of the system and with Tryton's standard bookkeeping features.</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>Existing parties and donations from previous years were migrated into the new Tryton system.
+All the Windows computers were installed with the Tryton client and after some basic training, the users were able to get started.</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>Tryton has demonstrated that it is an excellent framework for developing custom business systems.
+It allows advanced features to be easily integrated into the system in a cost effective way.</p>
+<p>The implementation of the donation and bookkeeping functionality significantly improved the ALS society's productivity.
+They are now finding that they can concentrate on getting the donations they need to support all their patients and people who rely on their help.</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.powersolutions.ch/">power solutions</a></p>
+{% endblock %}

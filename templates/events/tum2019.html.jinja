@@ -1,0 +1,151 @@
+{% set title = "Unconference Marseille - June 4th-7th, 2019" %}
+{% set description = "Tryton Unconference at Marseille" %}
+{% set keywords = ["conference", "meeting", "event"] %}
+{% set logo = 'images/events/tum2019-logo.webp' %}
+{% set banner = 'tum2019-banner.svg' %}
+{% macro location() %}
+<div class="h-card vcard">
+    <strong class="p-name fn">
+        <a class="u-url url" href="http://www.emd-management.fr/">
+            École de Commerce et de Management
+        </a></strong><br/>
+        <span class="p-addr addr">
+            <span class="p-street-address street-address">Rue Joseph Biaggi - CS 70329</span>,<br/>
+            <span class="p-postal-code postal-code">13331</span>
+            <span class="p-locality locality">Marseille</span><br/>
+        </span>
+</div>
+{% endmacro %}
+{% set events = [
+    Day((2019, 6, 4),
+        ("Code Sprint", (9,), (18,)), location=location(), full=True),
+    Day((2019, 6, 5),
+        ("Code Sprint", (9,), (18,)), location=location(), full=True),
+    Day((2019, 6, 6),
+        ("A tour of new Tryton's features", (9,), (12,),
+            "Presentation of new key features introduced in Tryton between 4.8 and 5.2.",
+            [("Cédric Krier", 'bedb3a4b40d90063feb70b48ee2b0f25', "B2CK", 'https://www.b2ck.com/')]),
+        ("Managing a service company with Tryton", (14,), (15,),
+            "A tour on how Tryton can be usefull for companies non managing product stocks.",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("I used to Excel, but now I Shine", (15,), (16,),
+            "We're going to present a new tool that aims to completely remove the use of spreadsheets as a critical tool in companies using Tryton. Not matter if the company uses spreadsheets for analysis or registering information not held by Tryton modules.",
+            [("Albert Cervera i Areny", '7b657cfa5fc31952b4507e61ec95853b', "NaN-tic", 'https://www.nan-tic.com/')]),
+        ("Supporters Meeting", (17,), (18,),
+            "The annual meeting of Foundation's supporters.",
+            []),
+        location=location()),
+    Day((2019, 6, 7),
+        ("Building mobile applications connected to Tryton", (9,), (10,),
+            "How we developed an Android application which reads and writes information to a Tryton server.",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es')]),
+        ("Papyrus", (11,), (12,),
+            "We're going to present a new Tryton module for advanced document processing and inspection in Tryton.",
+            [("Albert Cervera i Areny", '7b657cfa5fc31952b4507e61ec95853b', "NaN-tic", 'https://www.nan-tic.com/')]),
+        ("Deploying Tryton with Docker", (14,), (15,),
+            "How we customize and deploy Tryton at B2CK using Docker and few shell scripts.",
+            [("Cédric Krier", 'bedb3a4b40d90063feb70b48ee2b0f25', "B2CK", 'https://www.b2ck.com/')]),
+        ("Use Case: Tryton for warehouse management", (15,), (16,),
+            "How we use Tryton to manage our warehouse (customizations, label printing, small android application,...).",
+            [("Maxime Richez", '5eb4d42d9dbe5c943d4a85475cadd7cb', "Saluc", 'https://www.saluc.com/'),
+             ("Thierry Bruyere", 'fcf331766bad42138c031fde241dbc49', "Saluc", 'https://www.saluc.com/')]),
+        ("Lisp ERP", (16,), (17,),
+            "Programming modules for Tryton with Hy (embedded Lisp for Python).",
+            [("Francesc Guillen", 'a0ef3bd08930d7f4891f891ec27d17a6',)]),
+        location=location()),
+    ]
+%}
+{% extends "events/layout.html.jinja" %}
+
+{% block title %}
+Tryton Unconference Marseille<br/><small>June 4th-7th 2019</small>
+{% endblock %}
+
+{% block style %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href='//css.tito.io/v1.1'/>
+{% endblock style %}
+
+{% block lead %}
+<p class="lead">
+From Tuesday, June 4th to Friday, June 7th, 2019, the Tryton unconference comes to <a href="http://www.marseille.fr/">Marseille</a>.
+We invite users, developers and people interested to learn more about Tryton.
+Discover new features, learn about latest technical developments and share feedback from the community.
+</p>
+{{ super() }}
+{% endblock lead %}
+
+{% block schedule %}
+{{ super() }}
+{% if datetime.date.today() < datetime.date(2019, 5, 30) %}
+<div class="bg-light py-4 mb-4 text-center">
+    <p class="lead"><span class="material-icons align-middle">build</span> The unconference is built by its participants.</p>
+    <a class="btn btn-primary text-uppercase my-4" href="mailto:tum2019@tryton.org">Submit a talk</a>
+</div>
+{% endif %}
+<div class="bg-light py-4 mb-4 text-center" id="video">
+    <p class="lead"><span class="material-icons align-middle">movie</span> The talks are recorded and life streamed on our Youtube channel.</p>
+    <a class="btn btn-lnk" href="https://www.youtube.com/playlist?list=PL4ydsflJkP9XEFW5YZqJfB3lMa8WWRj9A">Watch</a>
+</div>
+{% endblock schedule %}
+
+{% block register %}
+<h3 class="text-center"><a href="https://ti.to/tryton-foundation/tum2019">Want to participate to the #TUM2019?</a></h3>
+<tito-widget event="tryton-foundation/tum2019"></tito-widget>
+{% endblock register %}
+
+{% block venue %}
+<div class="vcard text-center">The unconference will be hosted at the
+    {{ location() | safe }}
+</div>
+<iframe height="500" src="https://www.openstreetmap.org/export/embed.html?bbox=5.37457823753357%2C43.302074626344606%2C5.378113389015199%2C43.303889933242516&amp;layer=mapnik&amp;marker=43.30298228656913%2C5.3763458132743835" style="width: 100%; border: 1px solid black; overflow: hidden; margin: 0"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=43.30298&amp;mlon=5.37635#map=19/43.30298/5.37635">View Larger Map</a></small>
+<h3>Transportations</h3>
+<ul>
+    <li>By Train
+        <ul>
+            <li>The <a href="https://en.wikipedia.org/wiki/TGV">TGV</a> station St Charles in the center of Marseille is preferred.</li>
+            <li>The other TGV station Aix en Provence is also an option but requires a 25km of bus shuttle.</li>
+        </ul>
+    </li>
+    <li>By Plane
+        <ul>
+            <li>The <a href="https://www.marseille-airport.com/">Marseille Provence Airport</a> has <a href="https://www.marseille-airport.com/access-car-parks/access/bus/marseille-gare-saint-charles">bus shuttle to Marseille</a> every 15 minutes.</li>
+        </ul>
+    </li>
+</ul>
+<p>Inside Marseille, we recommend to use the <a href="https://www.rtm.fr/">public transport</a> which has 2 metro lines and many bus lines.</p>
+{% endblock %}
+
+{% block accommodations %}
+<p>Marseille is a touristic city, they are a lot of hotels near the location.</p>
+<p>Yet we have some suggestions of hotels:</p>
+<ul>
+    <li>Europe Hôtel Marseille</li>
+    <li><a href="http://www.hotel-aixenprovence-concorde.com/">Hotel le Concorde</a></li>
+    <li><a href="https://www.hotelterminusmarseille.fr/">Hôtel Terminus Saint Charles</a></li>
+    <li>Holiday Inn Express</li>
+</ul>
+{% endblock accommodations %}
+
+{% block main %}
+{{ super() }}
+<section class="section sponsors" id="sponsors">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="bg-white">Sponsors</h2>
+        </div>
+        <p>With the support of:</p>
+        <a href="http://www.emd-management.fr/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tum2019-emd.webp') }}" alt="École de Commerce et de Management" loading="lazy" width="200" height="114"/>
+        </a>
+        <span>
+            <img class="img-thumbnail m-2" src="{{ url_for('static', filename='images/events/tum2019-libertis.webp') }}" alt="Libertis" loading="lazy" width="200" height="78"/>
+        </span>
+    </div>
+</section>
+{% endblock main %}
+
+{% block script %}
+{{ super() }}
+<script src='//js.tito.io/v1' async></script>
+{% endblock script %}

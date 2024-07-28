@@ -1,0 +1,90 @@
+{% set title = "Howto Documentation Guidelines" %}
+{% set description = "Howto documentation guidelines for Tryton" %}
+{% set keywords = ["development", "documentation", "guidelines", "howto"] %}
+{% set toc = [
+    ("Purpose", 'purpose', None),
+    ("General Style", 'general-style', [
+        ("Consistency", 'consistency', None),
+        ("Audience", 'audience', None),
+        ("Formatting", 'formatting', None),
+        ("Sections", 'sections', None),
+        ("Table of Contents", 'table-of-contents', None),
+        ]),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-document') }}
+{% endblock %}
+{% block content %}
+<div class="section section-banner background-banner-document filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<section>
+    <h2 id="purpose">Purpose</h2>
+    <p>
+    The <a href="https://discuss.tryton.org/c/howto">Howto categories</a> are the right place to document more complex tasks.
+    These are for things that involve multiple different modules, or need to describe concepts and go into lots of detail.</p>
+    <p>A howto is ideal for things like:</p>
+    <ul>
+        <li><a href="https://discuss.tryton.org/t/how-to-run-tryton-using-docker/3200">How to run Tryton using Docker</a>
+            (what steps are required, what commands need to be run and what does each one do)</li>
+        <li>How to import initial stock
+            (how to create products, set proper cost prices, and create the initial internal shipment from the supplier location)</li>
+        <li>How to organise warehouse locations
+            (including what strategies can be used, what are their pros and cons, what performance concerns are there and what can be done to avoid them)</li>
+    </ul>
+    <p>
+    Each howto should focus on a single topic, links to related topics, or other documentation can always be included when needed.
+    It is much better to add documentation into the right place, and then link to it, to avoid duplicating documentation.</p>
+</section>
+<section>
+    <h2 id="general-style">General Style</h2>
+    <h3 id="consistency">Consistency</h3>
+    <p>
+    Try and be consistent with how other howtos have been written.
+    Read through some of the existing howtos to get an idea of their style and how they have been structured.
+    This will make all the howtos feel familiar to the readers and help them get the most out of them.</p>
+    <h3 id="audience">Audience</h3>
+    <p>
+    When writing your howto try and remember which audience the document is intended for.
+    There are separate sub-categories for different audiences so try and submit your howto into the right place.</p>
+    <h3 id="formatting">Formatting</h3>
+    <p>
+    The editor allows you to format the howto as required.
+    It has buttons that can make text bold or italic, and allows you to insert things like links, bullet and numbered lists.
+    Use these as appropriate.</p>
+    <p class="alert alert-info rounded">
+    <span class="material-icons">warning</span>
+    You may want to write your howto offline, and then copy and paste it when you are ready to submit it.
+    If you are doing this then you can use the editor to see how the different styles are represented in plain text.</p>
+    <h3 id="sections">Sections</h3>
+    <p>Ideally the howto should be structured in a logical way, with its parts split up into appropriate sections and subsections.</p>
+    <p>
+    Section are introduced by a section title that uses one or more <span class="text-monospace">#</span> symbols at the start of the line.
+    The number of <span class="text-monospace">#</span> symbols indicates the level of the section.</p>
+    <p>For example:</p>
+    <pre><code class="plaintext"># Main Section
+
+## Subsection
+
+## Subsection
+
+### Subsubsection
+
+# Next Section</code></pre>
+    <h3 id="table-of-contents">Table of Contents</h3>
+    <p>
+    It is often a good idea to add a table of contents to the howto.
+    This will be automatically generated from the howto's sections if you include, on the first line:</p>
+    <pre><code class="html">&lt;div data-theme-toc="true"&gt;&lt;/div&gt;</code></pre>
+</section>
+{% endblock main %}

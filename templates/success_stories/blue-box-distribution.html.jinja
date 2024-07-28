@@ -1,0 +1,54 @@
+{% set title = "Blue Box Distribution" %}
+{% set description = "Success story of Blue Box Distribution implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "blue-box-distribution/banner" %}
+{% set logo = "images/success-stories/blue-box-distribution.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead"><a href="https://www.blueboxag.ch/">BLUE BOX</a> is an international distributor of hair care products based in Switzerland and Germany, selling products from great international brands.
+Customers are mainly hair stylists who then use and sell the products to their customers.</p>
+<img src="{{ url_for('static', filename='images/success-stories/blue-box-distribution/banner.webp') }}" class="img-fluid mx-auto d-block" alt="" loading="lazy" width="1500" height="1000">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>Blue Box Distribution was running a smaller Business Software system named boaTOOLS based on a 4th Dimension database.
+They wanted to upgrade to a system with more features, lower costs and which could be updated smoothly.
+The new business software needed to be able to deliver the following functionalities:</p>
+<ul>
+    <li>Party management</li>
+    <li>Product and stock management</li>
+    <li>Leads and Opportunities</li>
+    <li>Purchases</li>
+    <li>Accounting (invoicing, bookkeeping)</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>It was decided to use Tryton as the base platform.
+We identified that, to begin with, some minor custom functionality was needed.
+However, most of the functionality from the Tryton base platform and our Swiss extensions could be used without any alteration.
+</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>We designed a migration script to import the existing database data into the new Tryton system.
+Parties and products were transferred across and the layouts of reports were adjusted to match Blue Box's corporate identity.
+All the Mac computers were installed with the Tryton client and after some basic training, the users were able to get started.</p>
+<p>In our experience we have found that it is a pleasure to work with the Tryton framework and that it provides a set of powerful APIs.
+This made it possible to easily connect the external <a href="https://www.prestashop.com/">PrestaShop</a> webshop to Blue Box's new Tryton system.</p>
+<p>As time passes, laws and banking standards change.
+With Tryton this hasn't been a problem.
+We were able to deliver continuous optimizations and new features like <a href="//docs.tryton.org/projects/modules-account-payment-sepa/en/latest/">pain.001, pain.008 and camt.054 payment standards</a> thanks to the great Tryton developer community working tightly together and sharing know-how and technologies.</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>The migration from boaTOOLS to Tryton has been a resounding success.
+Tryton has demonstrated that it is a robust and well-thought out framework.
+As the data in the system continues to grow Tryton remains fast and stable.</p>
+<p>The implementation of the purchase, stock, sale and invoicing modules has structured the business processes and significantly improved the productivity of the whole company.</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.powersolutions.ch/">power solutions</a></p>
+{% endblock %}

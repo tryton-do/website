@@ -1,0 +1,12 @@
+{% set img = url_for('static', filename='images/service-providers/ack.webp') %}
+{% set website = 'https://www.ack.eus/' %}
+{% set email = 'ack@ack.eus' %}
+{% set phone = '+34946755148' %}
+{% set stories = [] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+Located in Bizkaia (Spain) ACK advises and accompanies the digital transformation of the company through Tryton ERP.
+Specialized in the food processing and distribution sector and in full expansion to other sectors.
+ACK has a versatile team, trained and involved in providing customer solutions.
+{% endblock description %}
+{% block location %}Barakaldo, Spain{% endblock %}

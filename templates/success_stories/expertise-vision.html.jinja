@@ -1,0 +1,50 @@
+{% set title = "Expertise Vision" %}
+{% set description = "Success story of Expertise Vision implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "expertise-vision/banner" %}
+{% set logo = "images/success-stories/expertise-vision.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead"><a href="http://www.expertisevision.fr/">Expertise-Vision</a> is a French company producing vision based systems for inspecting and gauging.
+They use hardware and software in order to invent, design and implement turnkey solutions for quality control and process automation.</p>
+<img src="{{ url_for('static', filename='images/success-stories/expertise-vision/expert.webp') }}" class="img-fluid mx-auto d-block" alt="Expert" loading="lazy" width="646" height="300">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>Expertise-Vision was running an old version of <a href="https://www.odoo.com/">Odoo</a> (named OpenERP at that time).
+They wanted to upgrade to a system with the same features but which could be updated smoothly.
+The perimeter of the ERP at that time was narrowed to the following functionalities:</p>
+<ul>
+    <li>Party management</li>
+    <li>Product management</li>
+    <li>Accounting (customer invoices and payments only)</li>
+    <li>Leads and Opportunities</li>
+    <li>Quotations</li>
+    <li>Purchases</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>It was decided that in order to make migrations from Tryton series to Tryton series as smooth as possible the scope of the implementation would tightly follow the scope of the Tryton modules used.
+Only a few fields were integrated to the Opportunity object to store additional data.</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>We designed a <a href="https://hg.b2ck.com/openerp2tryton/">migration script</a> to import into an unmodified Tryton system the data from the OpenERP instance.
+The leads and opportunities were transferred to use the <a href="//docs.tryton.org/projects/modules-sale-opportunity">Sale Opportunity module</a>.</p>
+<p>From the initial list of functionalities the usage of <a href="https://radicale.org/">Radical</a> with an <a href="http://hg.b2ck.com/radicale_tryton_auth/">authentication plugin</a> for calendar management and the <a href="//docs.tryton.org/projects/modules-party-relationship">Party Relationship module</a> were added to the list of requirements.
+The supplier invoices and payments are also handled by the system now.</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>The migration from OpenERP to Tryton has been a success and was implemented very quickly.
+Tryton has also demonstrated that it can be used without much customization in order to successfully run a business from the quotation phase through to the payment of invoices.</p>
+<p>The implementation of the <a href="//docs.tryton.org/projects/modules-purchase">Purchase</a> and <a href="//docs.tryton.org/projects/modules-stock">Stock</a> modules has structured the purchasing process and significantly improved the invoice control.
+Expertise-Vision can now easily view outstanding supplier and customer bills.</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.b2ck.com/">B2CK</a> provided its development experience with Tryton (and OpenERP)</p>
+<p><a href="https://sisalp.fr/">SISalp</a> provided its hosting experience in matters of deployment and backup infrastructure.</p>
+{% endblock %}

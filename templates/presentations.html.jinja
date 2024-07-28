@@ -1,0 +1,802 @@
+{% set title = "Presentations & Papers" %}
+{% set description = "All the presentations of Tryton" %}
+{% set keywords = ["presentation", "paper", "video", "slide"] %}
+{% set toc = [
+    ("Podcast Projets Libres", 'podcast-projets-libres', None),
+    ("TUB2023", 'TUB2023', None),
+    ("TSD2021", 'TSD2021', None),
+    ("TSD2019", 'TSD2019', None),
+    ("TUM2019", 'TUM2019', None),
+    ("PyConFr 2018", 'PyConFr2018', None),
+    ("TUL2017", 'TUL2017', None),
+    ("TUB2016", 'TUB2016', None),
+    ("Jeudi du Libre 2016", 'jdl2016', None),
+    ("TUBA2015", 'TUBA2015', None),
+    ("TUL2014", 'TUL2014', None),
+    ("TUB2013", 'TUB2013', None),
+    ("TUL2012", 'TUL2012', None),
+    ("TUL2011", 'TUL2011', None),
+    ("PyCONFR 2010", 'PyConFr2010', None),
+    ("EUROPYTHON 2010", 'EUROPYTHON2010', None),
+    ("Good Morning Stallman", 'good-morning-stallman', None),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-presentations') }}
+{% endblock %}
+{% block content %}
+<section class="section section-banner background-banner-presentations filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</section>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<p class="alert alert-info rounded">If you made a presentation around Tryton and want to be listed here, please send an email to <a class="alert-link" href="mailto:foundation@tryton.org">foundation@tryton.org.</a></p>
+<section class="subsection">
+    <h2 id="podcast-projets-libres">Podcast Projets Libres</h2>
+    <ul>
+        <li><a href="https://www.projets-libres.org/n-evrard-amp-c-krier-lerp-tryton-histoire-et-perspectives-par-tryton-fondation/">L’ERP Tryton : histoire et perspectives,</a>
+            <em>Nicolas Évrard &amp; Cédric Krier</em>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUB2023">TUB2023</h2>
+    <ul>
+        <li>
+            What is Tryton and why you want to use it?,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/CKwRrHQWxpk">Video</a>
+        </li>
+        <li>
+            Tryton for professional communities,
+            <em>Dominique Chabord</em>,
+            <a href="https://youtu.be/kFdCxFcmAMY">Video</a>
+        </li>
+        <li>
+            Tryton Use Case: A small trade and service enterprise,
+            <em>Wolf Drechsel</em>,
+            <a href="https://youtu.be/ii21t6I4M8k">Video</a>
+        </li>
+        <li>
+            Demo of tooling to create tutorial videos,
+            <em>Hartmut Goebel</em>,
+            <a href="https://youtu.be/VSQeCgPe7xw">Video</a>
+        </li>
+        <li>
+            Doing business intelligence in Tryton databases,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/yFkwlDddth0">Video</a>
+        </li>
+        <li>
+            Sample databases in multiple languages,
+            <em>Hartmut Goebel</em>,
+            <a href="https://youtu.be/uaBlOnbk6sU">Video</a>
+        </li>
+        <li>
+            Production Planning with frePPle and Tryton,
+            <em>Adrià Tarroja Caubet</em>,
+            <a href="https://youtu.be/CeADf9iwjBc">Video</a>
+        </li>
+        <li>
+            New index declaration,
+            <em>Nicolas Évrard</em>,
+            <a href="https://youtu.be/wtS_L72un4Q">Video</a>
+        </li>
+        <li>
+            GNU Health loves Tryton,
+            <em>Luis Falcon</em>,
+            <a href="https://youtu.be/VA2DsJHVVJ8">Video</a>
+        </li>
+        <li>
+            How to make seamless ERP migrations with Tryton,
+            <em>Adrià Tarroja Caubet</em>,
+            <a href="https://youtu.be/dS3VFMhrG2Y">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TSD2021">TSD2021</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Novedades Tryton 6.2.pdf') }}">New functionality in Tryton 6.2 and 6.0</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/fSeE_1-Oqag">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Datalife - 4agro.pdf') }}">Example Verticalization: 4agro and agroalimentary sector</a>,
+            <em>Nicolas Lopez</em>,
+            <a href="https://youtu.be/XXjdsATiHf8">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Presentacion Tryton Alicante calidad 2021.pps') }}">Quality management: Tryton for manufacturing companies</a>,
+            <em>Yunior Lobo</em>,
+            <a href="https://youtu.be/m8rvxF37kA8">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Datalife - Confección en campo.pdf') }}">Preparation in field: Creating pallets using mobility</a>,
+            <em>Sergio Morillo</em>,
+            <a href="https://youtu.be/z3wcqlI_e0s">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Conciliacion Bancaria con Tryton.pdf') }}">Bank Reconciliation with Tryton</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/C0iUD6ukEzg">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Shopify.pdf') }}">How to connect Tryton with Shopify</a>,
+            <em>Adrià Tarroja Caubet</em>,
+            <a href="https://youtu.be/garUiAGkt20">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Tryton Academy.pdf') }}">The Tryton Academy: How to become a Tryton Expert</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/OACfO_JTTVE">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Presentacion Tryton% Alicante Alimentacion 2021.pps') }}">Tryton as an integral solution for food manufacturing companies</a>,
+            <em>Yunior Lobo</em>,
+            <a href="https://youtu.be/M_OTS35a5L4">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Datalife - Ley 11 21.pdf') }}">Law 11/2021: Software formal obligations</a>,
+            <em>Ramón Oliver</em>,
+            <a href="https://youtu.be/n3Uev06FXt0">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', 'Logistica_Inversa_TRYTON_2021.pdf') }}">Package reverse logistics: Tryton based managment model</a>,
+            <em>Javier Escudero</em>,
+            <a href="https://youtu.be/pZaW7LiKJ-E">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2021', '04 - Control horario.pdf') }}">How to implement attendance control in companies</a>,
+            <em>Marcos Sabater</em>,
+            <a href="https://youtu.be/Wocx3_kfkhY">Video</a>
+        </li>
+        <li>
+            Tryton future and Roadmap,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/_lGEupgYNu4">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TSD2019">TSD2019</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Bienvenida.pdf') }}">Welcome and presentation</a>,
+            <em>Ricardo Laborda</em>,
+            <a href="https://youtu.be/p9yW0fxiiDs">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'What can Tryton offer to my company.pdf') }}">What can Tryton offer my company?</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/1LwzV7TsH-E">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'como_lo_hacen.html') }}">Tryton: How they do it</a>,
+            <em>José Salvador</em>,
+            <a href="https://youtu.be/oLWkQelGqy0">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'builing_large_health_networks_gnuhealth.pdf') }}">Tryton and the GNU Health federation</a>,
+            <em>Luis Falcon</em>,
+            <a href="https://youtu.be/1GBFz59eXkA">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', '4agro y el sector agroalimentario.pdf') }}">4agro and the agrolimentari sector</a>,
+            <em>Ricardo Laborda</em>,
+            <a href="https://youtu.be/ODn1jRtFv_E">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'eCommerce con Tryton.pdf') }}">eCommerce from Tryton</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/SqAgs7w3LPQ">Video</a>
+        </li>
+        <li>
+            What open source gives my business,
+            <em>Fernando Martín</em>,
+            <a href="https://youtu.be/DpnS2sJRHwY">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Caso éxito Grupo Roca.pdf') }}">Tryton business case: Roca Group</a>,
+            <em>Ricardo Laborda</em>,
+            <a href="https://youtu.be/4rNzHsQjPC0">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Sistemas de movilidad para aportar más valor_ Tryvy.pdf') }}">Mobility systems to give value: tryvy</a>,
+            <em>Sergio Morillo</em>,
+            <a href="https://youtu.be/wezQlgOlYyc">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', '4agro y el sector agroalimentario.pdf') }}">Sale Costs and Return Management</a>,
+            <em>Nicolas Lopez</em>,
+            <a href="https://youtu.be/caOe7rbaWDo">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Orientacion Tryton Industria Alimentaria.pps') }}">Tryton oriented to Food Industry</a>,
+            <em>Jesus Rouco</em>,
+            <a href="https://youtu.be/G96cj-SU_3U">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Novedades Tryton 5.4 y 5.2.pdf') }}">New functionalities on Tryton 5.4</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/MEXXmTPqTcI">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'EDI.pdf') }}">EDI and Attendance Control</a>,
+            <em>Ricardo Laborda</em>,
+            <a href="https://youtu.be/qy7Ftntbncc">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Localizacion Española Jornadas 2019.pdf') }}">Tryton Spanish Localization</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/NoYz0VfPjps">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Productividad en la gestión financiera - Ejemplo de Intrastat.pdf') }}">Productivity in financial: Intrastat</a>,
+            <em>Ramón Oliver</em>,
+            <a href="https://youtu.be/l-x8wv7BR4Q">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TSD2019', 'Ciclo Vida Software libre sostenible.pdf') }}">Tryton and the lifecycle of Open Source</a>,
+            <em>Nicolas Lopez</em>,
+            <a href="https://youtu.be/DntazOQE11M">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUM2019">TUM2019</h2>
+    <ul>
+        <li>
+            A tour of new Tryton's features,
+            <em>Cédric Krier</em>,
+            <a href="https://youtu.be/ltNsxEu4l20">Video1</a>, <a href="https://youtu.be/4nOYc5A2d_4">Video2</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUM2019', 'Managing a service company with Tryton.pdf') }}">Managing a service company with Tryton</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/ZlCn6CcrH5k">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUM2019', 'shine.pdf') }}">I used to Excel, but now I Shine</a>,
+            <em>Albert Cervera i Areny</em>,
+            <a href="https://youtu.be/4XtOlxZOkHw">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUM2019', 'Building Mobile Application connected to Tryton.pdf') }}">Building mobile applications connected to Tryton</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="https://youtu.be/Afwj1nadb8Y">Video</a>
+        </li>
+        <li>
+            Papyrus,
+            <em>Albert Cervera i Areny</em>,
+            <a href="https://youtu.be/g80VJFQIVB8">Video</a>
+        </li>
+        <li>
+            Deploying Tryton with Docker,
+            <em>Cédric Krier</em>,
+            <a href="https://youtu.be/S1JmgNbNeeo">Video1</a>, <a href="https://youtu.be/Oe-e1njvKek">Video2</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUM2019', 'warehouse_management.pdf') }}">Use Case: Tryton for warehouse management</a>,
+            <em>Maxime Richez</em>
+            <a href="https://youtu.be/mFcfFhGz9wQ">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUM2019', 'lisp-erp') }}">Lisp ERP</a>,
+            <em>Francesc Guillen</em>,
+            <a href="https://youtu.be/cuX1_RZIIvM">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="PyConFr2018">PyConFr 2018</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('PyConFr2018', 'optimisation-transactional-application.odp') }}">Optimiser une application principalement transactionnelle (retour d'expérience avec Tryton)</a>,
+            <em>Cédric Krier</em>,
+            <a href="https://youtu.be/dTJ4VPSbVZs">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUL2017">TUL2017</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'past-present-future-tryton.odp') }}">Past, Present and Future of Tryton</a>,
+            <em>Cédric Krier</em>,
+            Video <a href="https://youtu.be/Gw6kAXkOmMg">part 1</a> &amp; <a href="https://youtu.be/prKWX6LwOOI">part 2</a></li>
+        <li>
+            semilimes - vitamins for business,
+            <em>Ronald Vuillemin</em>,
+            <a href="https://youtu.be/0q6JXq3PMz0">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'custom-webshop-1-month.odp') }}">Custom web-shop from scratch to production in 1 month</a>,
+            <em>Cédric Krier and Nicolas ÉVrard</em>,
+            <a href="https://youtu.be/MA1DnlnTy7I">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'kalenis.pdf') }}">Kalenis: Integrating LIMS &amp; ERP</a>,
+            <em>Sebastián Marró and Ignacio Parszyk</em>,
+            <a href="https://youtu.be/Iknsb16h8iM">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'tul2017_saluc_v1pdf.pdf') }}">Demonstration of a pre-purchase Process in Tryton</a>,
+            <em>Thierry Bruyere and Maxime Richez</em>,
+            <a href="https://youtu.be/atMO62IDP1c">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'paybox-cryptolog-modules.odp') }}">Two new modules for Tryton: Paybox payment system and electronic signature</a>,
+            <em>Adrien Ben-Duc</em>,
+            <a href="https://youtu.be/5-2YoMV1wX0">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'PluggableBackends.odp') }}">Pluggable backends in Tryton: an how-to</a>,
+            <em>Nicolas Évrard</em>,
+            <a href="https://youtu.be/yRg2mHI8XBI">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'gnuhealth-franceville-gabon.odp') }}">Gnu Health Implementation in Franceville - Gabon: Connecting Diamonds</a>,
+            <em>Armand Mpassy-Nzoumba</em>,
+            <a href="https://youtu.be/OwCBFqXwOkI">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'challenges-scaling-with-tryton.odp') }}">A few challenges when scaling with Tryton</a>,
+            <em>Jérémy Mousset</em>,
+            <a href="https://youtu.be/9w-1XUagZ2U">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'collect-payment-tryton-stripe.odp') }}">Collect payment with Tryton and Stripe</a>,
+            <em>Cédric Krier</em>,
+            <a href="https://youtu.be/aQtlf0edENQ">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2017', 'tryton-based-web-stack.odp') }}">A web application and an API based on Tryton</a>,
+            <em>Ali Kefia</em>,
+            <a href="https://youtu.be/uFajBwgB-60">Video</a>
+        </li>
+        <li>
+            semilimes - behind the scenes,
+            <em>Ronald Vuillemin</em>,
+            <a href="https://youtu.be/VSn1JbDCs0Q">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUB2016">TUB2016</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'new_features_42.pdf') }}">New features in 4.2</a>,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tub2016', 'new_features_in_42.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'billiard_balls_manufacture.pdf') }}">Implementing Tryton in a billiard balls manufacture</a>,
+            <em>Maxime Richez &amp; Thierry Bruyere</em>,
+            <a href="{{ url_for_videos('tub2016', 'billiard_balls_manufacture.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'tub-2016-prez-bus.pdf') }}">How we used tryton to build an Insurance ERP (part1)</a>,
+            <em>Romain Séon &amp; Frédéric Langevin</em>,
+            <a href="{{ url_for_videos('tub2016', 'insurance_erp_1.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'tub-2016-prez-bus.pdf') }}">How we used tryton to build an Insurance ERP (part 2)</a>,
+            <em>Romain Séon &amp; Frédéric Langevin</em>,
+            <a href="{{ url_for_videos('tub2016', 'insurance_erp_2.html') }}">Video</a>
+        </li>
+        <li>
+            Advocate Tax,
+            <em>Jonathan Levy</em>,
+            <a href="{{ url_for_videos('tub2016', 'advocate_tax.html') }}">Video</a>
+        </li>
+        <li>
+            Adore,
+            <em>Udo Spallek</em>,
+            <a href="{{ url_for_videos('tub2016', 'adore.html') }}">Video</a>
+        </li>
+        <li>
+            SISalp,
+            <em>Dominique Chabord</em>,
+            <a href="{{ url_for_videos('tub2016', 'sisalp.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'distributed.pdf') }}">Distributed Transactions</a>,
+            <em>Nicolas Évrard</em>,
+            <a href="{{ url_for_videos('tub2016', 'distributed_transactions.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'user_application.pdf') }}">User Application</a>,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tub2016', 'user_application.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'tub-2016-prez-tech.pdf') }}">How Tryton is customized to empower Coog</a>,
+            <em>Jean Cavallo &amp; Ali Kefia</em>,
+            <a href="{{ url_for_videos('tub2016', 'how_trton_is_customized_to_empower_coog.html') }}">Video</a>
+        </li>
+        <li>
+            Application Performance Monitoring,
+            <em>Albert Cervera i Areny</em>,
+            <a href="{{ url_for_videos('tub2016', 'application_performance_monitoring.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'who_are_you.pdf') }}">Tryton Authentication</a>,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tub2016', 'tryton_authentification.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'tryton-integration-drupal.pdf') }}">Tryton integrates with Drupal</a>,
+            <em>Lucho Rossi</em>,
+            <a href="{{ url_for_videos('tub2016', 'tryton_with_drupal.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'developing-on-trunk') }}">Why you should develop on trunk?</a>,
+            <em>Sergi Almacellas Abellana</em>,
+            <a href="{{ url_for_videos('tub2016', 'why_you_should_develop_on_trunk.html') }}">Video</a>
+        </li>
+        <li>
+            Universal Business Language,
+            <em>Dominique Chabord</em>,
+            <a href="{{ url_for_videos('tub2016', 'support_UBL.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2016', 'postgresql.pdf') }}">PostgreSQL: present and near future</a>,
+            <em>Albert Cervera i Areny</em>,
+            <a href="{{ url_for_videos('tub2016', 'postgresql.html') }}">Video</a>
+        </li>
+        <li>
+            A Raft of Tryton Modules,
+            <em>Albert Cervera i Areny</em>,
+            <a href="{{ url_for_videos('tub2016', 'a_raft_of_tryton_modules.html') }}">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="jdl2016">Jeudi du Libre 2016</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('jeudidulibre2016', 'tryton-jdl.pdf') }}">Tryton, un framework libre d'application métier</a>,
+            <em>Cédric Krier</em>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUBA2015">TUBA2015</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'tryton-project.pdf') }}">Tryton History from the very beginning</a>,
+            <em>Nicolas Évrard</em>,
+            <a href="{{ url_for_videos('tuba2015', 'NicolasEvrard-TrytonHistoryFromTheVeryBeginning.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'silex_why_we_have_chosen_tryton.pdf') }}">Why we have chosen Tryton - from homemade proprietary ERPs to free software</a>,
+            <em>Roberto Novaes</em>,
+            <a href="{{ url_for_videos('tuba2015', 'RobertoNovaes-WhyWeHaveChosenTryton.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'gcoop_tryton_in_argentina.pdf') }}">Tryton in Argentina, our localization and use</a>,
+            <em>Pablo Vannini</em>
+        </li>
+        <li>
+            sao, Tryton in your browser,
+            <em>Cédric Krier and Nicolas Évrard</em>,
+            <a href="{{ url_for_videos('tuba2015', 'CedricKrier-NicolasEvrard-SAO-TrytonInYourBrowser.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'gnusolidario_gnuhealth_new_features.pdf') }}">New features in GNU Health 3.0</a>,
+            <em>Luis Falcón</em>,
+            <a href="{{ url_for_videos('tuba2015', 'LuisFalcon-NewFeaturesInGNUHealth3.0.html') }}">Video</a>
+        </li>
+        <li>
+            Tryton Implementations, our experience without programmers,
+            <em>Agustin Montagna</em>,
+            <a href="{{ url_for_videos('tuba2015', 'AgustinMontagna-TrytonImplementations-OurExperienceWithoutProgrammers.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'axel_braun_building_packages_for_tryton.pdf') }}">Building packages for Tryton</a>,
+            <em>Axel Braun</em>,
+            <a href="{{ url_for_videos('tuba2015', 'AxelBraun-BuildingPackagesForTryton.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'mr_robot') }}">Mr Robot</a>,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tuba2015', 'CedricKrier-MrRobot.html') }}">Video</a>
+        </li>
+        <li>
+            A newbie introduction to proteus,
+            <em>Nicolas Évrard</em>,
+            <a href="{{ url_for_videos('tuba2015', 'NicolasEvrard-ANewbieIntroductionToProteus.html') }}">Video</a>
+        </li>
+        <li>
+            typi: The Tryton Package Index,
+            <em>Nicolas Èvrard</em>,
+            <a href="{{ url_for_videos('tuba2015', 'NicolasEvrard-TypiTheTrytonPackageIndex.html') }}">Video</a>
+        </li>
+        <li>
+            Nahual Inclusion Technology,
+            <em>Cesar Tynik</em>,
+            <a href="{{ url_for_videos('tuba2015', 'CesarTynik-NahualInclusionTechnology.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'axel_braun_building_live_cd_for_tryton.pdf') }}">Running Tryton from a CD - and how to adapt a live system</a>,
+            <em>Axel Braun</em>,
+            <a href="{{ url_for_videos('tuba2015', 'AxelBraun-RunningTrytonFromACD-andHowToAdaptALiveSystem.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'design_pattern') }}">Design Patterns in Tryton</a>,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tuba2015', 'CedricKrier-DesignPatternsInTryton.html') }}">Video</a>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUBA2015', 'thymbra_occhiolino.pdf') }}">Integrating Tryton + Occhiolino in Food Testing Laboratory</a>,
+            <em>Sebastián Marró and Favio Dutria</em>,
+            <a href="{{ url_for_videos('tuba2015', 'SebastianMarro-FavioDutria-IntegratingTryton+OcchiolinoInFoodTestingLaboratory.html') }}">Video</a>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUL2014">TUL2014</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'tryton_34_and_future') }}">Tryton 3.4 and future</a>,
+            <em>Cédric Krier</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'TUL2014_OBS_und_SUSEStudio.odp') }}">Building Distribution packages with Open Build Service</a>,
+            <em>Axel Braun</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'Docker Tryton.pdf') }}">Dockerized Tryton Deployments</a>,
+            <em>Prakash Pandey</em> &amp; <em>Sharoon Thomas</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'WSGI_Deployment.pdf') }}">Tryton WSGI Deployment: A field report</a>,
+            <em>Robin Baumgartner</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'occhiolino_english_tul_2014.pdf') }}">Occhiolino: The GNU LIMS (Laboratory Information Management System)</a>,
+            <em>Sebastián Marró</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'doc-and-babi.pdf') }}">Documentation and BAsic Business Intelligence updates</a>,
+            <em>Albert Cervera i Areny</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'Open source projects need more than good code.pdf') }}">Open-Source Projects Need More Than Good Code</a>,
+            <em>Varun Kumar</em> &amp; <em>Sharoon Thomas</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'html_webkit.pdf') }}">The HTML/Webkit report engine</a>,
+            <em>Umang Arora</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'Features in GNU Health 28.pdf') }}">New features in GNU Health 2.8</a>,
+            <em>Luis Falcón</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'synchronise_engine') }}">Synchronise engine: The case study of Jamaica health records</a>,
+            <em>Cédric Krier</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'flask_tryton') }}">Flask-Tryton: Tailored web app</a>,
+            <em>Cédric Krier</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2014', 'crash-course.pdf') }}">Writing your first module for tryton</a>,
+            <em>Nicolas Évrard</em>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUB2013">TUB2013</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'no_localization') }}">Why you should not do localization modules?</a>,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tub2013', 'WhyYouShouldNotDoLocalizationModules.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'WhyYouShouldNotDoLocalizationModules_small.html') }}">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'release_module') }}">How to release module</a>,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tub2013', 'HowToReleaseModule.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'HowToReleaseModule_small.html') }}">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'TeleTryton_for_dumbs.pdf') }}">TéléTryton</a>,
+            <em>Dominique Chabord</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'cooperatives-and-free-software.pdf') }}">Cooperatives and Free Software, Our experience with Tryton</a>,
+            <em>Pablo Vannini</em>,
+            <a href="{{ url_for_videos('tub2013', 'CooperativesAndFreeSoftware_OurExperienceWithTryton.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'CooperativesAndFreeSoftware_OurExperienceWithTryton_small.html') }}">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'pos.pdf') }}">Point of Sale</a>,
+            <em>Jordi Esteve</em>,
+            <a href="{{ url_for_videos('tub2013', 'TrytonPointOfSale.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'TrytonPointOfSale_small.html') }}">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'proteus.pdf') }}">A newbie introduction to proteus</a>,
+            <em>Nicolas Évrard</em>,
+            <a href="{{ url_for_videos('tub2013', 'aNewbieIntroductionToProteus.html') }}">Video</a>
+            (<a href="//videos.tryton.org/tub2013/aNewbieIntroductionToProteus_small.html">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'tryton-and-insurance.odp') }}">Tryton and Insurance</a>,
+            <em>Jean Cavallo</em>,
+            <a href="{{ url_for_videos('tub2013', 'TrytonAndInsuranceCoopengo.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'TrytonAndInsuranceCoopengo_small.html') }}">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'tryton-from-user-perspective.odp') }}">Tryton from a User-Perspective</a>,
+            <em>Axel Braun</em>,
+            <a href="{{ url_for_videos('tub2013', 'TrytonFromAUserPerspective.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'TrytonFromAUserPerspective_small.html') }}">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'tryton-user-doc.pdf') }}">Tryton User Documentation</a>,
+            <em>Guillem Barba Domingo</em>,
+            <a href="{{ url_for_videos('tub2013', 'TrytonUserDocumentation.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'TrytonUserDocumentation_small.html') }}">small size</a>)
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUB2013', 'gnu-health.pdf') }}">GNU Health: Current status and next steps</a>,
+            <em>Luis Falcón</em>,
+            <a href="{{ url_for_videos('tub2013', 'GNUHealth_CurrentStatus_NextSteps.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'GNUHealth_CurrentStatus_NextSteps_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Business Intelligence: Presentation of BABI,
+            <em>Albert Cervera i Areny</em>,
+            <a href="{{ url_for_videos('tub2013', 'BABI.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'BABI_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Showcase Of SAO,
+            <em>Cédric Krier</em>,
+            <a href="{{ url_for_videos('tub2013', 'ShowcaseOfSAO.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'ShowcaseOfSAO_small.html') }}">small size</a>)
+        </li>
+        <li>
+            SAO patch from NaN,
+            <em>Guillem Barba Domingo</em>,
+            <a href="{{ url_for_videos('tub2013', 'SAO_NaN.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'SAO_NaN_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Roundtable About The Future Development,
+            <a href="{{ url_for_videos('tub2013', 'merged', '9_RoundtableAboutTheFutureDevelopment.ogg') }}">Audio</a>
+        </li>
+        <li>
+            iOS client,
+            <em>Sharoon Thomas</em>,
+            <a href="{{ url_for_videos('tub2013', 'iOS_client.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'iOS_client_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Nereid Workshop,
+            <em>Sharoon Thomas</em>,
+            <a href="{{ url_for_videos('tub2013', 'NereidWorkshop.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'NereidWorkshop_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Working In Distributed Environments, Synchronizing Instances And Models,
+            <em>Sebastián Marró</em>,
+            <a href="{{ url_for_videos('tub2013', 'WorkingInDistributedEnvironments_SynchronizingInstancesAndModels.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'WorkingInDistributedEnvironments_SynchronizingInstancesAndModels_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Tryton Private Foundation Treasury,
+            <a href="{{ url_for_videos('tub2013', 'TrytonPrivateFoundationTreasury.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'TrytonPrivateFoundationTreasury_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Workshop summaries: BABI,
+            <em>Albert Cervera i Areny</em>,
+            <a href="{{ url_for_videos('tub2013', 'WorkshopSummaryBABI.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'WorkshopSummaryBABI_small.html') }}">small size</a>)</li>
+        <li>
+            Workshop summaries: Tryton Documentation,
+            <em>Sharoon Thomas</em>,
+            <a href="{{ url_for_videos('tub2013', 'WorkshopSummaryTrytonDocumentation.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'WorkshopSummaryTrytonDocumentation_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Tryton Magento,
+            <a href="{{ url_for_videos('tub2013', 'TrytonMagento.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'TrytonMagento_small.html') }}">small size</a>)
+        </li>
+        <li>
+            Nereid Extra Features,
+            <em>Sharoon Thomas</em>,
+            <a href="{{ url_for_videos('tub2013', 'NereidExtraFeatures.html') }}">Video</a>
+            (<a href="{{ url_for_videos('tub2013', 'NereidExtraFeatures_small.html') }}">small size</a>)
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUL2012">TUL2012</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TUL2012', 'what_s_new') }}">What's new?</a>,
+            <em>Cédric Krier</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2012', 'domains_states_safe_eval') }}">Domains, states and safe-eval</a>,
+            <em>Bertrand Chenal</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2012', 'GNU_Health_status.pdf') }}">GNU Health status</a>,
+            <em>Sebastián Marró</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2012', 'python3', 'python3.html') }}">Python3 port: why and how far are we?</a>,
+            <em>Nicolas Évrard</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2012', 'GSoC - Calendar View.pdf') }}">GSoC - calendar view for Tryton</a>,
+            <em>Antoine Smolders</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2012', 'what_next') }}">What next?</a>,
+            <em>Cédric Krier</em>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="TUL2011">TUL2011</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('TUL2011', 'Tryton_vs_OpenERP') }}">Tryton vs OpenERP</a>,
+            <em>Cédric Krier</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2011', 'GNUHealth/text0.html') }}">GNU Health over Tryton</a>,
+            <em>Sebastián Marró</em>
+        </li>
+        <li>
+            <a href="{{ url_for_downloads('TUL2011', 'mercurial.pdf') }}">Mercurial Introduction</a>,
+            <em>Nicolas Évrard</em>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="PyConFr2010">PyCONFR 2010</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('PyCONFR2010', 'slides.pdf') }}">Tryton</a>,
+            <em>Cédric Krier &amp; Bertrand Chenal</em>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="EUROPYTHON2010">EUROPYTHON 2010</h2>
+    <ul>
+        <li>
+            <a href="{{ url_for_downloads('europython2010', 'presentation.tar.gz') }}">What is Tryton?</a>,
+            <em>Sharoon Thomas</em>
+        </li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="good-morning-stallman">Good Morning Stallman</h2>
+    <ul>
+        <li>
+            <a href="https://www.radiopanik.org/emissions/good-morning-stallman/emission-du-14-janvier-2009/">Émission du 14 janvier 2009 : Tryton</a>,
+            <em>Bertrand Chenal &amp; Cédric Krier &amp; Nicolas Évrard</em>
+        </li>
+    </ul>
+</section>
+{% endblock main %}

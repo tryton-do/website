@@ -1,0 +1,11 @@
+{% set img = url_for('static', filename='images/service-providers/adiczion.webp') %}
+{% set website = 'http://adiczion.com/' %}
+{% set email = 'contact@adiczion.com' %}
+{% set phone = '+33950693113' %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+A service company with the aim of promoting the use of the free software in
+companies. Specialist in integration of Tryton we offer consulting services,
+coaching, and development of functionality around the solution.
+{% endblock description %}
+{% block location %}Aix en Provence, France{% endblock %}

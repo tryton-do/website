@@ -1,0 +1,99 @@
+{% set title = "Foundation" %}
+{% set description = "The Tryton Foundation aims to protect, promote and develop Tryton as Free Software" %}
+{% set keywords = ["foundation", "board", "bylaws"] %}
+{% extends "layout.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-foundation') }}
+{% endblock %}
+{% block content %}
+{{ super() }}
+<section class="section section-banner background-banner-foundation filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">Tryton Foundation</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md mb-gutter">
+                <h2 class="text-uppercase text-center">Foundation</h2>
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <p>
+                        The Tryton Foundation is a private foundation (Fondation Privée) formed under the Belgian law.
+                        It aims to protect, promote and develop Tryton as Free Software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md mb-gutter">
+                <h2 class="text-uppercase text-center">{{ heart | safe }} Donations</h2>
+                <div class="card bg-primary">
+                    <div class="card-body">
+                        <p class="text-white">
+                        Please, visit our <a href="{{ url_for('donate') }}" class="text-white">donations page</a> to learn more about
+                        how you can help the Foundation to keep going and who has already supported us.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md mb-gutter">
+                <h2 class="text-uppercase text-center">Contact</h2>
+                <address class="text-center">
+                    <strong>Tryton Fondation Privée</strong><br/>
+                    Rue de Rotterdam, 4<br/>
+                    4000 Liège<br/>
+                    Belgium<br/>
+                    <abbr title="Message">M:</abbr><a href="https://discuss.tryton.org/new-message?groupname=foundation">@foundation</a><br/>
+                    <abbr title="Email">E:</abbr><a href="mailto:foundation@tryton.org">foundation@tryton.org</a><br/>
+                </address>
+            </div>
+        </div>
+        <h2 class="text-uppercase">Mission &amp; Organization</h2>
+        <div class="row">
+            <div class="col-md mb-gutter">
+                <h3>What does the Tryton Foundation do?</h3>
+                <p>The Tryton Foundation:</p>
+                <ul>
+                    <li>aims to develop and support conferences, meetings and community activities,</li>
+                    <li>holds and administers the tryton.org infrastructure</li>
+                    <li>organizes the community of supporters,</li>
+                    <li>manages and promotes the Tryton trademark.</li>
+                </ul>
+            </div>
+            <div class="col-md mb-gutter">
+                <h3>How is the foundation organized?</h3>
+                <p>In the spirit of democracy the foundation want to recognize everyone's work in Tryton.
+                So a specific status is available for people or companies active in the community:
+                the <a href="{{ url_for('supporters') }}">supporter</a> status.
+                This body of people represents the Tryton community and will have some power over the board of directors.</p>
+                <p>In order to manage the day to day duties of the foundation and the nomination of new members a board of directors has been appointed. They are currently:</p>
+                <ul>
+                    <li>Nicolas Évrard from Belgium,</li>
+                    <li>Cédric Krier from Belgium</li>
+                    <li>Jonathan Levy from United States of America,</li>
+                    <li>Korbinian Preisler from Germany,</li>
+                    <li>Pedro Luciano Rossi from Argentina.</li>
+                </ul>
+                <p>The articles of association of the foundation foresee the role of managing directors and administration delegates, depending whether they are members of the board or not.
+                The current directors/delegates are:</p>
+                <ul>
+                    <li>Cédric Krier from Belgium as Delegated Administrator,</li>
+                    <li>Nicolas Évrard from Belgium as Delegated Administrator.</li>
+                </ul>
+                <p>The <a href="https://downloads.tryton.org/foundation/TRYTON._fondation_constitution.pdf">complete articles of association of the Tryton Foundation</a> and the <a href="https://www.ejustice.just.fgov.be/tsv_pdf/2012/11/29/12193839.pdf">official publication</a> are available electronically.</p>
+            </div>
+        </div>
+        <h2 id="trademark" class="text-uppercase text-center">Trademark</h2>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 offset-md-2 mb-gutter">
+                <a href="https://euipo.europa.eu/eSearch/#details/trademarks/010548411">Tryton<sup>&reg;</sup></a> is a registered trademark of the Tryton Fondation Privée.
+                Any third-party using the term "Tryton" must do so only to refer to the <a href="https://www.tryton.org/">Tryton project</a>, and not to refer to any other project or activity, unless the reference is unrelated to the Nice Classifications (9, 37, and 42) covered in the registration.
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

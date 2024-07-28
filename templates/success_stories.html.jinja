@@ -1,0 +1,41 @@
+{% set title = "Success Stories" %}
+{% set description = "List of Tryton's success stories" %}
+{% set keywords = ["sucess story", "review", "case study" ] %}
+{% extends "layout.html.jinja" %}
+{% from "utils.html.jinja" import background, case_card with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-success-stories') }}
+{% endblock %}
+{% block content %}
+{{ super() }}
+<div class="section section-banner background-banner-success-stories filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {% for case in cases %}
+        <div class="col mb-gutter">
+            {{ case_card(case, loading='lazy' if loop.index > 2 else 'eager') }}
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <p class="alert alert-info rounded">
+                Have a story to share? You can submit it using the <a class="alert-link" href="https://bugs.tryton.org/website">issue tracker</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

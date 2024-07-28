@@ -1,0 +1,15 @@
+{% set img = url_for('static', filename='images/service-providers/sisalp.webp') %}
+{% set website = 'https://sisalp.fr/' %}
+{% set email = 'contact@sisalp.fr' %}
+{% set phone = '+33950274960' %}
+{% set stories = ['expertise-vision'] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+A consulting company focussed on free software for the enterprise.
+SISalp provides the following services to Tryton French users:
+Cheap hosting and First level support to end users,
+Project management and Requirements qualification.
+SISalp leverages Tryton community expertise and promotes services from the best
+contributors.
+{% endblock description %}
+{% block location %}Annecy, France{% endblock %}

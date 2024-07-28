@@ -1,0 +1,168 @@
+{% set title = "How to Develop" %}
+{% set description = "How to develop for Tryton" %}
+{% set keywords = ["development", "mercurial", "codereview", "patch" ] %}
+{% set toc = [
+    ("Submit a Change", 'submit-change', None),
+    ("Guidelines", 'guidelines', [
+        ("Code", 'guidelines-code', None),
+        ("Documentation", 'guidelines-documentation', None),
+        ("Commit Message", 'commit-message', None),
+        ]),
+    ("Requirements", 'requirements', None),
+    ("Rules", 'rules', None),
+    ("Roles", 'roles', None),
+    ("Publish a Change", 'publish-change', None),
+    ("Backporting", 'backporting', None),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-develop') }}
+{% endblock %}
+{% block content %}
+<div class="section section-banner background-banner-develop filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<div>
+    <p class="lead">
+    <span class="h2">TL;DR</span><br/>
+    Clone the repository:</p>
+    <pre><code class="console">$ hg clone https://foss.heptapod.net/tryton/tryton
+$ cd tryton
+$ hg topic my-change</code></pre>
+    <p class="lead">
+    Refer to the setup on <a href="https://foss.heptapod.net/tryton/tryton/-/blob/branch/default/README.rst">README</a>.
+    </p>
+    <p class="lead">
+    Make your modification.</p>
+    <pre><code class="console">$ hg commit
+$ hg push -r my-change</code></pre>
+    <p class="lead">
+    Click on the link to create the Merge Request.</p>
+</div>
+<section>
+    <h2 id="submit-change">Submit a Change</h2>
+    <p class="alert alert-info rounded">The project is using <a class="alert-link" href="https://www.mercurial-scm.org/">mercurial</a> as Version Control System with the <a class="alert-link" href="https://pypi.org/project/hg-evolve/">hg-evolve extension</a>.</p>
+    <ul>
+        <li>Follow the <a href="#guidelines">guidelines</a>.</li>
+        <li><a href="https://foss.heptapod.net/groups/tryton/-/group_members/request_access">Request access</a> to the <a href="https://foss.heptapod.net/tryton">project</a><i>(in the drop-down action menu next to the group title)</i>.</li>
+        <li>Submit your change with a <a href="https://heptapod.net/pages/quick-start-guide.html">merge request</a> that you assign to yourself.</li>
+        <li>Ensure you did not break the tests by running them and add tests if necessary.</li>
+        <li style="list-style-type: '↻ ';">Resolve all threads opened by reviewers.</li>
+        <li>Once accepted your merge request is merged by a Mercurial Publisher.</li>
+    </ul>
+    <p class="alert alert-warning rounded">There is no need to rebase merge requests too often, even when there are conflicts, as this is often just for CHANGELOG entries.</p>
+    <p class="alert alert-info rounded">To ease the review process, avoid pushing rebase and modifications at the same time. Prefer to use the <b>Rebase</b> button.</p>
+</section>
+<section>
+    <h2 id="guidelines">Guidelines</h2>
+    <p>The Tryton Project has guidelines for both code and documentation.</p>
+    <h3 id="guidelines-code">Code</h3>
+    <ul>
+        <li>The <a href="{{ url_for('guidelines_code') }}">Coding Guidelines</a> should be followed for any review you submit.</li>
+    </ul>
+    <h3 id="guidelines-documentation">Documentation</h3>
+    <p>
+    There are several different places that Tryton documentation can be found.
+    This is to make sure it is available in the right format, at the right time, for different use cases.</p>
+    <p>So to avoid duplication, and keep the documentation organised and maintainable there are several sets of guidelines:</p>
+    <ul>
+        <li>When creating documentation for a package you should follow the main <a href="{{ url_for('guidelines_documentation') }}">Documentation Guidelines</a>.</li>
+        <li>There are some <a href="{{ url_for('guidelines_documentation_help') }}">Help Text Guidelines</a> to follow if you are writing or changing help text.</li>
+        <li>If submitting a Howto for approval, then please make sure you've followed the <a href="{{ url_for('guidelines_documentation_howto') }}">Howto Guidelines</a>.</li>
+    </ul>
+    <h3 id="commit-message">Commit Message</h3>
+    <ul>
+        <li>
+            Use a short title starting with a capital letter.
+            <ul>
+                <li>Use imperative mood.<br/>
+                    <em>So that it completes the sentence "With this change, the project will…".</em>
+                </li>
+                <li>
+                    Use human names of objects instead of the technical name.<br/>
+                    <em>Like "Invoice" instead of "account.invoice".</em>
+                </li>
+            </ul>
+        </li>
+        <li>Add extra details in the message body (optional).
+            <ul>
+                <li>Less than 80 characters per line.</li>
+                <li>Explain <strong>WHAT</strong> the change is, but most importantly <strong>WHY</strong> the change is needed.</li>
+                <li>Leave a blank line between the body and the title.</li>
+                <li>Separate paragraphs in the body with blank lines.</li>
+                <li>Use a hyphen (<samp>-</samp>) for bullet points if needed.</li>
+                <li>Use hanging indents if needed.</li>
+            </ul>
+        </li>
+        <li>Include the <a href="https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#default-closing-pattern">pattern to close</a> linked issues (optional).</li>
+    </ul>
+</section>
+<section>
+    <h2 id="requirements">Requirements</h2>
+    <p>Your contribution must meet the following requirements:</p>
+    <h3>Must</h3>
+    <ul>
+        <li>By submitting a change, the contributor accepts the <a href="https://developercertificate.org/">Developer Certificate of Origin</a>.</li>
+        <li>The contributor email must be a valid email address.</li>
+        <li>The domain of the contributor email must not contain tryton.</li>
+        <li>The <span class="text-monospace">username</span> of a mercurial changeset must be in the form:
+            <pre>Name &lt;email&gt;</pre>
+        </li>
+    </ul>
+    <h3>Nice to have, but not required</h3>
+    <ul>
+        <li>The contributor name should be the real name of the natural person who submits the code.</li>
+        <li>The contributor email should be linked to only one contributor name.</li>
+    </ul>
+</section>
+<section>
+    <h2 id="rules">Rules</h2>
+    <p>If the contributor has a significant amount of code, he can add himself to the <span class="text-monospace">COPYRIGHT</span> file of the modified packages.</p>
+    <p>
+    In the case of disagreement, a consensus should be reached.
+    As a last resort, the project leader (<a href="https://foss.heptapod.net/cedk">Cédric Krier</a>) will make the decision.
+    </p>
+</section>
+<section>
+    <h2 id="roles">Roles</h2>
+    <ul>
+        <li>
+            Developers can create merge requests.
+        </li>
+        <li>
+            Mercurial Publishers can merge requests on default branch.
+        </li>
+        <li>
+            Maintainers can push directly on all branches to make releases.
+        </li>
+    </ul>
+</section>
+<section>
+    <h2 id="publish-change">Publish a Change</h2>
+    <p class="alert alert-info rounded p-2">This part is only for Mercurial Publishers</p>
+    <p>
+    Prefer publication without merge (fast-forward).
+    </p>
+    <p>
+    Squash fix commits that the developer may have done instead of amending.
+    </p>
+    <p>
+    Ensure commit message contains proper <a href="https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#default-closing-pattern">pattern to close</a> linked issues.
+    </p>
+</section>
+<section>
+    <h2 id="backporting">Backporting</h2>
+    <p>A fix will be back ported to older series by the maintainer on his own discretion using a backport merge request.
+    The decision is based on the importance of the bug, the availability of workaround and the feasibilities.</p>
+    <p>Those rules don't apply for security bugs which are applied at once to all affected series and followed by a release.</p>
+</section>
+{% endblock main %}

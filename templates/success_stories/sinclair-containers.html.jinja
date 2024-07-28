@@ -1,0 +1,34 @@
+{% set title = "Sinclair Containers" %}
+{% set description = "Success story of Sinclair Containers implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "sinclair-containers/banner" %}
+{% set logo = "images/success-stories/sinclair-containers.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<img src="{{ url_for('static', filename='images/success-stories/sinclair-containers/sinclair.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-start" alt="" loading="lazy" width="131" height="38">
+<p class="lead"><a href="https://sinclaircontainers.com.au/">Sinclair Containers</a> is an Australian company selling and renting containers.</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>Lava Lab was engaged by Sinclair Containers to provide a software solution for their business that included a web client so as to avoid having to manage computer installations and also enable mobile phone access for the owner who is a roaming user.
+It was also identified that the business would benefit from a website to allow clients to purchase or rent a container directly from the one system.</p>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>Straight out of the box the Tryton framework provided solutions to some basic shortfalls of the current desktop based software solution and allowed the business owner to improve and extend the software solution really easily.</p>
+{% endblock %}
+{% block implementation %}
+{{ super() }}
+<p>The implementation scope included the managing of specific business activities of selling and renting containers as well as management of customer details such as typical Customer Relationship Manager ( CRM ) software.
+The solution for selling and renting containers was based off the flexible and extensible Tryton accounting modules as well as some extra functionalities that included a scheduled task to invoice customers and charge their credit cards using an online payment gateway.</p>
+<p>The solution also provided the business with an e-commerce solution based on the <a href="https://pypi.python.org/pypi/trytond_nereid">Nereid</a> module that is connected directly to the business system.</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>The result is a completely specific solution for the business that also allows the business owner to be in touch with the business directly from his mobile phone.</p>
+{% endblock results %}
+{% block provider %}
+{{ super() }}
+<p>Lava Lab Software provided its development experience with Tryton</p>
+{% endblock %}

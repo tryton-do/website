@@ -1,0 +1,81 @@
+{% set title = "CAMIR" %}
+{% set description = "Success story of CAMIR implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "camir/banner" %}
+{% set logo = "images/success-stories/camir.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+<img src="{{ url_for('static', filename='images/success-stories/camir/warehouse1.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-start" alt="Zone C of CAMIR's warehouse" loading="lazy" width="300" height="400">
+<a href="https://www.camirperu.com/">CAMIR</a>, is a company whose main activities are the commercialization of industrial products and the manufacture of metal parts at the business to business level, one of its main clients is the largest brewery factory in Peru.</p>
+<p>It started operations in 1991 and is located in the JR. HELIO NRO. 5624 URB. INDUSTRIAL INFANTAS - LOS OLIVOS - LIMA - PERU.</p>
+<p>It has <a href="https://www.iso.org/standard/62085.html">ISO 9001-2015</a> certification since April-2018, a process initiated in parallel with the implementation of Tryton as its ERP in 2017.</p>
+{% endblock %}
+{% block challenge %}
+{{ super() }}
+<p>When we started the implementation of Tryton in September 2017, in the analytical phase (AS IS) we identified operational problems. A large-scale solution was necessary, some of the challenges and problems that were encountered were:</p>
+<ul>
+    <li>Disorder at the operational level.</li>
+    <li>There was no clear and consistent assignment of roles among workers.</li>
+    <li>Personnel without experience in the use of Integrated Information Systems were on spreadsheets.</li>
+    <li>Lack of documented processes: the activities were done spontaneously, without having a formal process.</li>
+    <li>Lack of integration of the different areas of the company: each area performed their roles without following an order or sequence, which caused merchandise purchases to be made at suboptimal times and there was no traceability of the progress of orders until they were dispatched from the warehouse.</li>
+    <li>There was no codification or categorization of the products. There was an "application" in fox for DOS that allowed them to create quotes and record sales.</li>
+    <li>There was no control over the invoices receivable and payable, nor over their payment terms, it was all handled manually using Excel tables.</li>
+    <li>The Production / Manufacturing Area did not have any type of registration or automated control of its operations or the materials consumed in each production.</li>
+    <li>The Payroll was calculated using Excel spreadsheets and the pay slips were created by manually filling in forms.</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>In response to the problems identified during the analytical phase, we defined the scope of the changes that were required.
+From this we were able to work out what Tryton modules were needed to support all of the businesses processes.</p>
+<p>
+<img src="{{ url_for('static', filename='images/success-stories/camir/warehouse2.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-end" alt="Zone B of CAMIR's warehouse" loading="lazy" width="350" height="467">
+The modules that were needed were the following:</p>
+<ul>
+    <li>Purchase</li>
+    <li>Sales</li>
+    <li>Stock</li>
+    <li>Accounting</li>
+    <li>Payroll</li>
+    <li>Production</li>
+    <li>Electronic Billing</li>
+    <li>Products</li>
+    <li>Party</li>
+</ul>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>The implementation was completed in eight months, during this time a match was made between the existing processes in Tryton and the processes of CAMIR.
+This led to extra functionality being added to the system, and led to us identifying additional areas where we developed further improvements.</p>
+<p>Working with the administration team, we helped tidy up and re-categorize the products, thus eliminating products with more than one code and making products easier to find and manage.
+The accounting department supervised the re-classification of the products to ensure that the new classifications worked from an accounting point of view.
+Once this process was done the products were then migrated to Tryton.</p>
+<p>The same thing happened with the Parties, Tryton now ensures that all their data is linked together and can be easily found, and that they have their mandatory tax identifiers.</p>
+<p>Staff were trained by assigning them specific roles that corresponded to the Tryton modules: purchases, sales, warehouse, invoicing / treasury, payroll and accounting.
+This also ended the problems caused by a lack of documented processes, now each worker knows how their role fits in with other areas of the company and lets them have a greater impact on the value produced by the company.</p>
+<p>This has also enabled the different areas of the business to be brought together by the work flows that Tryton provides.</p>
+<p>The use of paper forms was significantly reduced.</p>
+<p>Electronic Billing was implemented in Tryton from taxpayer systems, CAMIR was already obliged by <a href="http://www.sunat.gob.pe/">SUNAT</a> to do so.
+However, now Tryton communicates directly with the SUNAT web service, so invoices no longer need to be printed and shipped by courier to the client.
+This reduces costs, saves time, and improves procedural agility.</p>
+<p>The Purchase and Sales Register at the end of each month is generated in 3 clicks of the mouse and this makes the accountants very happy.</p>
+<p>The implementation started its testing phase in June 2018, and entered production on January 1, 2019.</p>
+<img src="{{ url_for('static', filename='images/success-stories/camir/manufacturer.webp') }}" class="img-fluid mx-auto d-block" alt="Manufacturer" loading="lazy" width="780" height="840">
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>Today, there is order and traceability across the company for all purchases, sales, production runs and payroll transactions, including all stock received or dispatched in the stores and proper tracking of purchase and sales invoices.</p>
+<p>The use of photocopies and storing paper in physical files has been significantly reduced.
+The company has made a major step away from manual processes that are abundant in paper towards automated systems that have minimal use of paper.</p>
+<p>Reports were defined that allow managers to monitor and control the various aspects of the organization.</p>
+<p>Accounting is no longer dedicated to manually entering purchase and sales invoices into the accounting software, as Tryton automatically creates them and has them available.</p>
+<p>The company has implemented Tryton as their ERP system without any payment in software licenses.</p>
+<p>Tryton provides the autonomy to adjust the solution to match future changes to processes, products, or the changing nature of the market.</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://integraper.com/">IntegraPer</a></p>
+{% endblock %}

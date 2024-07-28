@@ -1,0 +1,129 @@
+{% set title = "APAR @ AIIMS" %}
+{% set description = "Success story of the implementation of an Annual Performance Appraisal at the All Indian Institute of Medical Sciences" %}
+{% set keywords = ["success story", "review", "case study", "annual performance appraisal"] %}
+{% set banner = "apar-aiims/banner" %}
+{% set logo = "images/success-stories/apar-aiims.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<img src="{{ url_for('static', filename='images/success-stories/apar-aiims/aiims.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-start" alt="" loading="lazy" width="190" height="71">
+<p class="lead">The <a href="https://aiims.edu/">All Indian Institute of Medical Sciences</a> are a group of autonomous government public medical colleges of higher education.
+These institutes have been declared by an Act of Parliament as Institutes of National Importance.</p>
+<p>APAR stands for Annual Performance Appraisal Report.
+This is the process used to evaluate the annual performance of Central Government Employees in any organisation related to the Union Government of India.</p>
+
+<p>The APAR form consists of the following parts:</p>
+<ul>
+    <li>
+        <b>Basic Information</b>:
+        This part contains the basic employment details of the employee such as name, department, designation, etc.
+        This part is filled in by the Establishment, which is equivalent to a human ressources Office.
+    </li>
+    <li>
+        <b>Self Appraisal</b>:
+        This part contains the questions that an employee fills in and explains the work done by them in the period mentioned on the form.
+    </li>
+    <li>
+        <b>Appraisal</b>:
+        The employee's reporting officer fills in this part and gives the employee grades based on the work that they have done.
+    </li>
+    <li>
+        <b>Review</b>:
+        The reviewing officer, reviews both parts 2 and 3 to ensure that the grades actually reflect the work done by the employee.
+    </li>
+    <li>
+        <b>Acceptance</b>:
+        For some of the designations, there is a third level review of the form and this is done by the Accepting Authority.
+    </li>
+</ul>
+<p>The APAR forms collected over a period of 5 years are used in the promotion of the employees.</p>
+<p>As per the Department of Personnel Training (DoPT), each step in the process has a certain deadline after which it is supposed to be taken to the next level.</p>
+{%endblock customer %}
+{% block challenge %}
+{{ super() }}
+<ul>
+    <li>
+        <b>Lack of Digitisation</b>:
+        Due to lack of digitisation of the process, many printed forms used to go missing.
+        This was due to high workloads and the lack of responsible behaviour of certain employees.
+        Since there was no transparency in the process, the administration was not able to intervene in the process and take the appropriate actions.
+    </li>
+    <li>
+        <b>Delay in Promotions</b>:
+        At some times, the missing APAR forms for certain employees caused delay in their promotion.
+        Many times it was found that the reporting or reviewing officer had retired or resigned and this resulted in missing Forms.
+    </li>
+    <li>
+        <b>In the process of Digitisation</b>:
+        When an external agency was approached for the digitalisation of the APAR process, the charges provided by them were high and this was causing delay in the process of digitisation.
+    </li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>In a meeting with Deputy Director of Administration, AIIMS, New Delhi, it was decided to develop the module in-house and deploy it for the AIIMS.
+In the first phase, the module was to be launched for approx 4800 employees covering 60 designations.</p>
+<p>The entire project was developed on Tryton.
+The work was done in the following stages:</p>
+<ul>
+    <li>
+        <b>SRS and BPM</b>:
+        Various meetings were called between the development team and the ACR cell to understand the process.
+        A Business Process Model was created on <a href="https://www.yworks.com/products/yed"> yEditor</a>.
+        During these meetings, the business process was re-engineered to make the process faster and remove the overheads.
+        A detailed Software Requirement Specification document was written.
+    </li>
+    <li>
+        <b>Coding</b>:
+        A team of 5 developers lead by a Senior Software Consultant wrote the code for the APAR module.
+        The project was managed on Gitlab, which was hosted on an in-house server.
+    </li>
+    <li>
+        <b>Testing</b>:
+        A quality assurance team wrote and now runs the test cases on the APAR Module to make sure that it follows the process and is ready for deployment.
+    </li>
+</ul>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>An in-house server was used to launch the project.
+The system was made available on both the Internet and intranet.
+The system was made available using the Tryton web client.
+The employees data was collected from the establishment on a parallel platform (initiated before developing the module).</p>
+<p>This data was then migrated to the APAR module using Python scripts.
+Once the data was in place, the demos and the user training was conducted in batches to make sure that the users understood the process and what needed to be done by them.</p>
+<p>Three modules were created as the by-product of this project:</p>
+<ul>
+    <li>
+        <b>HR</b>:
+        This module contains the information of the Employee Registers
+    </li>
+    <li>
+        <b>AIIMS Extension</b>:
+        This module contains the complex structure of AIIMS that includes the Establishments, Centers, Departments, etc.
+    </li>
+    <li>
+        <b>Hindi Localisation</b>:
+        This module contains the basic configuration for the Hindi Language.
+    </li>
+</ul>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<div class="row">
+    <img src="{{ url_for('static', filename='images/success-stories/apar-aiims/dsc-2066.webp') }}" class="col-sm-6 img-fluid p-2" alt="Mr. Shubhashish Panda, Deputy Director Administration" loading="lazy" width="360" height="240">
+    <img src="{{ url_for('static', filename='images/success-stories/apar-aiims/dsc-2085.webp') }}" class="col-sm-6 img-fluid p-2" alt="Dr. Randeep Guleria, Director AIIMS" loading="lazy" width="360" height="240">
+</div>
+<p>As of the 23rd October, 2019, 4840 APAR forms (out of have 4853) have completed the full process.
+That is approx 99.73% of all the APAR forms that were created.
+<i>(The process is still ongoing)</i></p>
+
+<h3>Future Plans</h3>
+<p>In the Phase 2 of APAR, all the regular employees will be filling out their APARs online on this platform.
+The total count of regular employees is approx 13,000.
+This will include a wide range of users from doctors to support staff.</p>
+{% endblock results %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.aiims.edu/en/computer_home.html?id=159">Computer Facility, All India Institute of Medical Science, New Delhi</a></p>
+{% endblock provider %}

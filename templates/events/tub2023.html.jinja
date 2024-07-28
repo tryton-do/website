@@ -1,0 +1,217 @@
+{% set title = "Unconference Berlin - May 22nd-24th, 2023" %}
+{% set description = "Tryton Unconference in Berlin" %}
+{% set keywords = ["conference", "meeting", "code sprint", "event"] %}
+{% set banner = 'tub2023-banner.svg' %}
+{% macro location1() %}
+<div class="h-card vcard">
+    <strong class="p-ame fn">
+        <a class="u-url url" href="https://www.change-hub.de/">
+            Change Hub
+        </a></strong><br/>
+        <span class="p-addr addr">
+            <span class="p-street-address street-address">Hardenbergstr. 32</span>
+            <span class="p-postal-code postal-code">10623</span>
+            <span class="p-locality locality">Berlin</span><br/>
+        </span>
+</div>
+{% endmacro %}
+{% macro location2() %}
+<div class="h-card vcard">
+    <strong class="p-ame fn">
+        <a class="u-url url" href="https://www.inmedio.de/en/berlin-en/">
+            inmedio Berlin
+        </a></strong><br/>
+        <span class="p-addr addr">
+            <span class="p-street-address street-address">Holbeinstraße 33</span>
+            <span class="p-postal-code postal-code">12203</span>
+            <span class="p-locality locality">Berlin</span><br/>
+        </span>
+</div>
+{% endmacro %}
+{% set events = [
+    Day((2023, 5, 22),
+        ("What is Tryton and why you want to use it?", (10, ), (10, 30),
+            "We will learn what is Tryton and what is used for. "
+            "They key concepts to improve the day by day of your company will be shown.",
+            [("Sergi Almacellas Abellana", '71c441aa930202e038d23412a0bfc455', "KOPEN", 'https://www.kopen.es/')]),
+        ("Tryton Use Case: A small trade and service enterprise", (10, 30), (11, ),
+            "We show a very slimline and simple implementation in a one person company. "
+            "It reduced accounting costs from 1200€ to less than 100€. "
+            "Side effects are a full-featured inventory management system and the creation of \"Das Tryton-Buch\".",
+            [("Wolf Drechsel", '7e18dec426ad0080cef3a34c5e4c23b6', "KomponentenKontor Berlin GmbH", 'https://rollentausch.eu/')]),
+        ("Tryton for professional communities", (10, 30), (11, ),
+            "We relate a 2 year effort to package Tryton based solutions as products for groups of professionals. "
+            "Will explain how we designed the product. "
+            "Also will talk about sass provisionning and pre-configured data for users and service professionals. "
+            "We will share our experiences on community adoption of the product.",
+            [("Dominique Chabord", '5bcff256b1bbeef145a9babebc7d3b04', "SISalp", 'https://sisalp.fr/'), ("Jean-Martial NDOUTOUME NFENGONE", 'c474b0ae58151d314c18e2ee0e49beaa', "Versatil", '#')]),
+        ("Demo of tooling to create tutorial videos", (11, 30), (11, 45),
+            "",
+            [("Hartmut Goebel", 'a12beb8d8d1e540be1a40ec70fa325c3', 'Crazy Compilers', 'http://www.crazy-compilers.com/')]),
+        ("Doing business intelligence in Tryton databases", (11, 45), (12, 15),
+            "We will explain which tools we use for analyzing data stored in Tryton. "
+            "We will do a demo showing some charts, dashboards but also KPIs and alerts. "
+            "A technical explanation on how you can do it by yourself will be shown at the end.",
+            [("Sergi Almacellas Abellana", '71c441aa930202e038d23412a0bfc455', "KOPEN", 'https://www.kopen.es/')]),
+        ("Sample databases in multiple languages", (12, 15), (12, 45),
+            "Discussion on how to be used in videos",
+            [("Hartmut Goebel", 'a12beb8d8d1e540be1a40ec70fa325c3', 'Crazy Compilers', 'http://www.crazy-compilers.com/')]),
+        ("Lunch Break", (13, ), (14, 30), ""),
+        ("Production Planning with frePPle and Tryton", (14, 30), (15, ),
+            "Showcase of the integration we did between Tryton and frePPle "
+            "which allows the automatic planning of production works "
+            "based on employees skills, machine capacities and customer demand.",
+            [("Adrià Tarroja Caubet", 'f80ff70a062f85f5fbf78b7eb77f6fc8', "KOPEN", 'https://www.kopen.es/')]),
+        ("New index declaration", (15, ), (15, 30),
+            "The implementation process of the new index system, the reasons for the change, "
+            "the choices that have been made and a presentation of the result",
+            [("Nicolas Évrard", '9f3e84dcf01f24de39a02268e00a89ed', "B2CK", 'https://www.b2ck.com/')]),
+        ("GNU Health loves Tryton", (15, 30), (16, ),
+            "The GNUHealth project uses Tryton for the Hospital and Lab Management System component. "
+            "We'll talk about the past, present and future of the GNU Health and Tryton relationship, "
+            "and how collaboration between the two communities is benefiting open science, health professionals, "
+            "hospitals and research institutions, improving the lives of millions around the world.",
+            [("Luis Falcon", '90fe9fb9f620de54c52bf9efd4bdfc2f', "GNU Health", 'https://www.gnuhealth.org/')]),
+        ("How to make seamless ERP migrations with Tryton", (16, ), (16, 30),
+            "Data is the lifeblood of ERP systems. "
+            "Accurately transferring it is essential when upgrading to Tryton. "
+            "Dive into diverse techniques for importing data, ensuring a smooth transition for your business. "
+            "Join us for valuable tips and tricks, and empower yourself with the knowledge for seamless migrations.",
+            [("Adrià Tarroja Caubet", 'f80ff70a062f85f5fbf78b7eb77f6fc8', "KOPEN", 'https://www.kopen.es/')]),
+        ("Lighthing Talks", (16, 30), (18,)),
+        location=location1(), full=False),
+    Day((2023, 5, 23),
+        ("Hackathon", (10,), (18,)), location=location2(), full=True),
+    Day((2023, 5, 24),
+        ("Hackathon", (10,), (18,)), location=location2(), full=True),
+    ]
+%}
+{% extends "events/layout.html.jinja" %}
+
+{% block title %}
+Tryton Unconference Berlin<br/><smal>May 22nd-24th 2023</smal>
+{% endblock %}
+
+{% block lead %}
+<p class="lead">
+From Monday, May 22nd to Wednesday, May 24th, 2023, the Tryton unconference comes to <a href="https://www.berlin.de/en/">Berlin</a>.
+We invite users, developers and anyone else who is interested to come along and learn more about Tryton.
+Discover new features, learn about the latest technical developments and share feedback with the community.
+</p>
+{{ super() }}
+{% endblock lead %}
+
+{% block schedule %}
+{{ super() }}
+{% if datetime.date.today() < datetime.date(2023, 5, 15) %}
+<div class="bg-light py-4 mb-4 text-center">
+    <p class="lead"><span class="material-icons align-middle">build</span> The unconference is built by its participants.</p>
+    <a class="btn btn-primary text-uppercase my-4" href="mailto:tub2023@tryton.org">Submit a talk</a>
+</div>
+{% endif %}
+<div class="bg-light py-4 mb-4 text-center" id="video">
+    <p class="lead"><span class="material-icons align-middle">movie</span> Talks will be recorded and live streamed on our Youtube channel.</p>
+    <a class="btn btn-primary text-uppercase my-4" href="https://www.youtube.com/@TrytonSoftware">Subscribe</a>
+</div>
+{% endblock schedule %}
+
+{% block register %}
+<h3 class="text-center"><a href="https://ti.to/tryton-foundation/tub2023">Want to participate in the #TUB2023?</a></h3>
+<tito-widget event="tryton-foundation/tub2023"></tito-widget>
+<div class="bg-info text-center mx-auto rounded" style="max-width: 600px;">
+    It is possible to pay by cash on the first day of the conference, but capacity is limited and there is no guarantee that there will still be places available.
+</div>
+{% endblock register %}
+
+{% block venue %}
+<div class="vcard text-center">The unconference will be hosted on Monday at
+    {{ location1() | safe }}
+</div>
+<iframe height="500" src="https://www.openstreetmap.org/export/embed.html?bbox=13.327671289443972%2C52.50753004990837%2C13.3312064409256%2C52.50903033381524&amp;layer=mapnik&amp;marker=52.50828%2C13.329439999999977" style="width: 100%; border: 1px solid black; overflow: hidden; margin: 0"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=52.50828&amp;mlon=13.32944#map=19/52.50828/13.32944&amp;layers=N">View Larger Map</a></small>
+
+<div class="vcard text-center">and on Tuesday and Wednesday at
+    {{ location2() | safe }}
+</div>
+<iframe height="500" src="https://www.openstreetmap.org/export/embed.html?bbox=13.308944106101992%2C52.44077523757813%2C13.31247925758362%2C52.442277799104964&amp;layer=mapnik&amp;marker=52.441527100093786%2C13.310711149999975" style="width: 100%; border: 1px solid black; overflow: hidden; margin: 0"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=52.44153&amp;mlon=13.31071#map=19/52.44153/13.31071&amp;layers=N">View Larger Map</a></small>
+
+<h3>Transportation</h3>
+<ul>
+    <li>By Train
+        <ul>
+            <li>The <a href="https://en.wikipedia.org/wiki/Berlin_Zoologischer_Garten_station">Berlin Zoologischer Garten station</a> is the closest station to Change Hub.</li>
+            <li>The <a href="https://sbahn.berlin/fahren/bahnhofsuebersicht/botanischer-garten/">Botanischer Garten station</a> is the closest station to inmedio Berlin.</li>
+            <li>The <a href="https://www.bahnhof.de/berlin-hauptbahnhof">Berlin Hauptbahnhof</a> is the main station and Berlin Zoologischer Garten station is 3 stations away by S3, S5, S7 or S9 (Ticket AB) from Zoologischer Garten and by S1 from Botanischer Garten.</li>
+        </ul>
+    </li>
+    <li>By Plane
+        <ul>
+            <li>The <a href="https://ber.berlin-airport.de/en.html">Flughafen Berlin Brandenburg (BER)</a> is the international airport.
+                Local trains can get you to Berlin Zoologischer Garten station:
+                <ul>
+                    <li>from terminal 1/2 by S9, RB23 or RE8 (40min)</li>
+                    <li>from terminal 5 by S9 (50min)</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<p>While in Berlin, we recommend using <a href="https://www.bvg.de/en">public transport</a> and their <a href="https://www.bvg.de/en/subscriptions-and-tickets/all-apps/ticket-app">Ticket App</a>.</p>
+{% endblock venue %}
+
+{% block accommodations %}
+<p>Berlin is a tourist city, there are a lot of hotels near the location.</p>
+<p>However, here are a few suggestions for hotels:</p>
+<ul>
+    <li>in Berlin-Charlottenburg
+        <ul>
+            <li><a href="https://www.motel-one.com/de/hotels/berlin/hotel-berlin-upper-west/">Motel One in der Kantstr</a></li>
+            <li><a href="https://www.ihg.com/hotelindigo/hotels/de/de/berlin/beriw/hoteldetail">Hotel Indigo in der Hardenstr.</a></li>
+            <li><a href="https://www.aletto.de/de/kudamm">Aletto Kudamm in der Hardenbergstr.</a></li>
+            <li><a href="https://www.novum-hotels.com/hotel-flash-berlin">The niu flash in der Franklinstr.</a></li>
+            <li><a href="https://www.hotel-bb.com/de/hotel/berlin-charlottenburg">B & B Kaiserdamm</a></li>
+        </ul>
+    </li>
+    <li>in Berlin-Steglitz
+        <ul>
+            <li><a href="https://www.si-hotel.com/">Best Western am Rathaus Steglitz</a></li>
+            <li><a href="https://www.villakult.de/de/">Villa Kult</a></li>
+            <li><a href="https://www.hotel-morgenland.de/">VCH Hotel Morgenland</a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock accommodations %}
+
+{% block main %}
+{{ super() }}
+<section class="section sponsors" id="sponsors">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="bg-white">Sponsors</h2>
+        </div>
+        <p>With the support of:</p>
+        <a href="http://m-ds.de/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tub2023-m-ds.webp') }}" alt="m-ds" loading="lazy" width="200" height="114"/>
+        </a>
+        <a href="https://www.virtual-things.biz/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tub2023-virtual-things.webp') }}" alt="virtual-things" loading="lazy" width="200" height="114"/>
+        </a>
+        <a href="https://kopen.es/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tub2023-kopen.webp') }}" alt="Kopen" loading="lazy" width="200" height="114"/>
+        </a>
+        <div class="row mt-2">
+            <div class="col-md-6 mx-auto text-center">
+                <p class="p-3 mb-2 bg-info text-white rounded">
+                Want to help us for the event?<br/>
+                Contact the <a href="mailto:foundation@tryton.org">Foundation</a> to become sponsor<br/>
+                and be listed here.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}
+
+{% block script %}
+{{ super() }}
+<script src='https://js.tito.io/v2' async></script>
+{% endblock script %}

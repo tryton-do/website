@@ -1,0 +1,132 @@
+{% set title = "Donate" %}
+{% set description = "Help the Tryton project to achieve its goals" %}
+{% set keywords = ["help", "donation", "contribute"] %}
+{% set toc = [
+    ("Wire Transfer", 'wire-transfer', None),
+    ("Credit Card", 'credit-card', None),
+    ("Contribute", 'contribute', None),
+    ("Other Projects", 'others', None),
+    ("Donors", 'donors', None),
+    ("Yearly Donations", 'donations-yearly', None),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-donate') }}
+<script defer src="https://donorbox.org/install-popup-button.js"></script>
+{% endblock %}
+{% block content %}
+<section class="section section-banner background-banner-donate filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ heart | safe }} {{ title }}</h1>
+    </div>
+</section>
+{{ super() }}
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center" id="donors">Donors</h2>
+                <p>
+                The Tryton Foundation wants to thank individuals and companies that finance it's activity.
+                Donors are listed in descending order using an algorithm that takes into account
+                both the amount and the age of the donation over the last 2 years.
+                </p>
+                <ol>
+                    {% for donator in donators %}
+                    <li>{{ donator }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-center" id="donations-yearly">Yearly Donations</h2>
+                <table class="table table-striped text-end">
+                    <thead>
+                        <tr>
+                            <th scope="col">Year</th>
+                            <th scope="col">Donation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for year, donation in donations %}
+                        <tr>
+                            <td>{{ year }}</td>
+                            <td>{{ '{0:0.2f}'.format(donation) }} €</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block main %}
+<p class="lead">
+Help the Tryton project to achieve its goals. This ultimately brings a better free software business solution to companies all over the world.
+No matter whether they're big or small, all of them benefit from a powerful application that is free from vendor lock-in.<br/>
+If you're already using Tryton, please consider contributing to the project or supporting the Foundation so the project remains vibrant and continues to grow.
+</p>
+<div class="card mb-5 w-100">
+    <h2 class="h4 card-header" id="wire-transfer">Wire Transfer</h2>
+    <div class="card-body">
+        <div class="card-text">
+            <p>You can make a wire transfer to our bank account:</p>
+            <address>
+                <abbr title="International Bank Account Number">IBAN:</abbr>BE82 0688 9627 4468<br/>
+                <abbr title="Bank Identifier Codes">BIC:</abbr>GKCCBEBB<br/>
+            </address>
+        </div>
+    </div>
+</div>
+<div class="card mb-5 w-100">
+    <h2 class="h4 card-header" id="credit-card">Credit Card</h2>
+    <div class="card-body">
+        <div class="card-text">
+            <p>You can easily make a donation by credit card:</p>
+            <a class="btn btn-outline-primary dbox-donation-button" href="https://donorbox.org/tryton-foundation">{{ heart | safe }}Donate</a>
+        </div>
+    </div>
+</div>
+<div class="card mb-5 w-100">
+    <h2 class="h4 card-header" id="contribute">Contribute</h2>
+    <div class="card-body">
+        <p class="card-text">
+        If you want to donate your time, we <a href="{{ url_for('contribute') }}">welcome contributions from the community</a>.
+        </p>
+    </div>
+</div>
+<div class="card mb-5 w-100">
+    <h2 class="h4 card-header" id="others">Other Projects</h2>
+    <div class="card-body">
+        <p class="card-text">
+        Tryton relies on other projects that also need your support.
+        This includes (but is not limited to):
+        </p>
+        <ul class="row">
+            <li class="col-sm-6"><a href="https://psfmember.org/civicrm/contribute/transact?reset=1&id=2">Python</a></li>
+            <li class="col-sm-6"><a href="https://www.postgresql.org/about/donate/">PostgreSQL</a></li>
+            <li class="col-sm-6"><a href="https://www.gnome.org/foundation/">GTK</a></li>
+            <li class="col-sm-6"><a href="https://opencollective.com/bootstrap">Bootstrap</a></li>
+            <li class="col-sm-6"><a href="https://psfmember.org/civicrm/contribute/transact?reset=1&id=20">Pallets</a></li>
+            <li class="col-sm-6"><a href="https://github.com/sponsors/dvarrazzo?o=esb">Psycopg</a></li>
+            <li class="col-sm-6"><a href="https://lxml.de/index.html#support-the-project">lxml</a></li>
+            <li class="col-sm-6"><a href="https://openjsf.org/">jQuery</a></li>
+            <li class="col-sm-6"><a href="https://opencollective.com/courtbouillon">WeasyPrint</a></li>
+            <li class="col-sm-6"><a href="http://www.gevent.org/sfc.html">gevent</a></li>
+            <li class="col-sm-6"><a href="https://www.paypal.com/donate/?cmd=_donations&business=S6VTL9FQ6L8EN&item_name=PapaParse&currency_code=EUR&source=url">Papaparse</a></li>
+            <li class="col-sm-6"><a href="https://fullcalendar.io/donate">FullCalendar</a></li>
+            <li class="col-sm-6"><a href="https://craig.is/accepting-donations?ref=mousetrap">Mousetrap</a></li>
+            <li class="col-sm-6"><a href="https://opencollective.com/Sortable/contribute">Sortable</a></li>
+            <li class="col-sm-6"><a href="https://opencollective.com/popperjs">Popper</a></li>
+            <li class="col-sm-6"><a href="https://readthedocs.org/sustainability/">Read the Docs</a></li>
+            <li class="col-sm-6"><a href="https://heptapod.net/pages/funding-heptapod.html#donating">Heptapod</a></li>
+            <li class="col-sm-6"><a href="https://www.mercurial-scm.org/donate">Mercurial</a></li>
+            <li class="col-sm-6"><a href="https://weblate.org/en/donate/">Weblate</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock main %}

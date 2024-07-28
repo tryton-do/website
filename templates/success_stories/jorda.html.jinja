@@ -1,0 +1,69 @@
+{% set title = "Ascensores Jordà" %}
+{% set description = "Success story of a company that installs and maintains lifts with Tryton" %}
+{% set keywords = ["success story", "review", "case study", "elevators", "lift"] %}
+{% set banner = "jorda/banner" %}
+{% set logo = "images/success-stories/jorda.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+<a href="https://www.jorda-sa.es/">Ascensores Jordà</a> is a company with more than 65 years of experience in the market.
+It is dedicated to maintaining, repairing and installing lifts and elevators.
+Its 50 employees are focused on providing quality services and on site emergency callouts to its customers.
+The company has obtained several quality certifications including ISO 9000:2015.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/jorda/offices.webp') }}" class="img-fluid mx-auto d-block" alt="Jordà offices" loading="lazy" width="690" height="460">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>
+Although office employees were already using Tryton for the company's day-to-day operations, the technicians were still working with paper documents.
+This meant that the information on their actions was not being updated in real time.
+This resulted in delays before their services were billed, and a large administrative burden caused by having to manually enter in their data.
+</p>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>
+As the most of the technicians work from the customer installations it was decided to implement an application that can be used on mobile phones.
+The application could then be used to record the technicians information in real time from wherever they are working.
+</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>
+A mobile application for Android devices was developed using <a href="https://cordova.apache.org/">Apache Cordova</a>, <a href="https://onsen.io/">Onsen UI</a> and <a href="https://vuejs.org/">Vue.js</a>.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/jorda/application.webp') }}" class="img-fluid mx-auto d-block border p-2 bg-light mb-3" alt="Jordà mobile application" loading="lazy" width="280" height="498">
+<p>
+It allows the technicians to perform the following actions:
+</p>
+<ul>
+    <li>Have a record of their pending work.</li>
+    <li>Record the material used and the time spent.</li>
+    <li>Receive notifications in case of failure of the customer installation.</li>
+    <li>Record the client's signature showing compliance with the work performed.</li>
+</ul>
+<p>
+In addition, the system was configured to automatically send the work done to the customer via email.
+</p>
+<p>
+The solution was presented in a technical talk during the <a href="/presentations#TUM2019-jorda">Tryton Conference 2019</a> and can be viewed from the <a href="https://www.youtube.com/watch?v=Afwj1nadb8Y">Tryton YouTube channel.</a>
+</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>
+Thanks to the use of the mobile application the company achieved the following improvements:
+</p>
+<ul>
+    <li>Reduction in the work's billing time and therefore reduced time before they are paid.</li>
+    <li>Avoidance of data errors and no duplication of information.</li>
+    <li>Automation of communication with customers.</li>
+    <li>Improvement in work planning and reduction in customer waiting times.</li>
+</ul>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.kopen.es/">Kopen Software</a> developed the Android Mobile application connected to Tryton.</p>
+{% endblock %}

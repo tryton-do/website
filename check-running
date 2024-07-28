@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+curl -f "http://${SERVER_NAME:=localhost}/_warmup" --connect-to "::localhost:5000"
+curl -f "http://${SERVER_NAME:=localhost}/" --connect-to "::localhost:5000"

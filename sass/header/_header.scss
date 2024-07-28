@@ -1,0 +1,74 @@
+#header {
+  .navbar {
+    font-size: 13px;
+
+    .navbar-brand {
+      @include media-breakpoint-up(lg) {
+        padding-bottom: 0;
+        padding-top: 0;
+      }
+    }
+
+    .navbar-nav {
+      @include media-breakpoint-down(md) {
+        padding-bottom: 1rem;
+      }
+
+      .nav-link {
+        @include media-breakpoint-down(lg) {
+          padding-left: .5rem;
+          padding-right: .5rem;
+        }
+        @include media-breakpoint-down(md) {
+          padding-bottom: .5rem;
+          padding-top: .5rem;
+        }
+
+        text-transform: uppercase;
+
+        &:hover,
+        &:focus {
+          background-color: $primary;
+          color: $secondary;
+        }
+      }
+    }
+  }
+
+  .carousel {
+    .carousel-caption {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+
+      left: 0;
+      padding-bottom: 2rem;
+      right: 0;
+      text-align: left;
+
+      h2 {
+        color: $secondary;
+        font-size: 2.5rem;
+        margin: 15px 0 0;
+      }
+
+      h3 {
+        color: $primary;
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      a {
+        color: $body-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+    ol > li {
+      list-style-type: none;
+    }
+  }
+}

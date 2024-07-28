@@ -1,0 +1,90 @@
+{% set title = "Buchkontor Teltow" %}
+{% set description = "Success story of Buchkontor Teltow implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study", "institute"] %}
+{% set banner = "buchkontor-teltow/banner" %}
+{% set logo = "images/success-stories/buchkontor-teltow.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+<a href="https://www.buchkontor-teltow.de/">Buchkontor Teltow</a> is a small bookstore located in Teltow, close to Berlin.
+This bookstore has won some awards: 2018 Most beautiful bookstore in Germany 2018; 2021 German bookstore award.
+It offers classics, school textbooks, current bestsellers, children‘s books and regional literature in connection with its own publishing house.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/buchkontor-teltow/shop.webp') }}" class="img-fluid mx-auto d-block" alt="Buchkontor teltow shop" loading="lazy" width="690" height="362">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>
+After a change to German legislation, POS systems had to be equipped with TSE.
+TSE is a technical solution that certifies, archives and prevents subsequent changes to sales.
+It's aim is to provide verified documentation of cash based sales for the tax authorities, in order to put an end to unreported income.
+For a small independent bookstore, a TSE/POS solution that was integrated with accounting software was ideal:
+The solution needed to include:
+</p>
+
+<ul>
+    <li>Accounting</li>
+    <li>TSE/POS</li>
+    <li>Stock Management</li>
+    <li>Interface for the books wholesaler</li>
+    <li>Customer Relationship Management, incl. vCard compatibility</li>
+    <li>The ability to print to a standard Epson receipt printer</li>
+</ul>
+
+<p>
+Neither POS nor TSE had ready to go solutions for Python.
+Also a Tryton Point of Sale module needed to be developed.
+Setting the focus on TSE, only three companies were offering certified solutions.
+To get TSE running, there were two possible approaches:
+</p>
+<ol>
+    <li>Use software compatible with the local system, called a hardware solution.</li>
+    <li>Use a cloud solution, offered by only two providers.</li>
+</ol>
+<p>
+The challenge with both of these approaches was the same, creating a Python API.
+Another thing that needed to be adhered to were the German fixed book price laws which involved using gross prices for the calculations.
+Buchkontor Teltow is a small business, so its accounting does not depend on balancing but the net income method (comparison of revenue over expenses).
+</p>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>
+Tryton 6.0 was chosen in order to take advantage of its Long Term Support.
+In order to have a maintainable long term POS solution, we asked B2CK to implement it and the work was finished on the Tryton Sale Point Module and it was released as part of Tryton 6.2.
+This module is now available to the whole Tryton community and the wider public.
+After making some adjustments to this module and making it compatible with Tryton 6.0, we were very pleased with the outcome.
+Checking the different approaches to TSE, we dismissed the local hardware solution.
+After several exchanges with Jan Grasnick, who had also started working on a TSE solution, we combined our efforts together and chose to use the cloud offering from fiscali.
+Together we built a stable fiscali cloud Python API, even though the interface is still under development and changing.
+Jan Grasnick is registered as a wholesaler for the fiscali cloud, and is our partner for the TSE/POS solution.
+The last step was to connect to the wholesaler to retrieve all their data (such as prices, stock levels, and other meta-data).
+This interface is well documented and was realised through pull requests.
+</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>
+The implementation was completed on schedule.
+We set up a new Ubuntu server inside the bookshop so the POS can keep running even during an internet outage.
+We built an importer for the necessary data from the existing system.
+After a week of training and testing we decided to go live and imported the necessary data and switched TSE from testing to live mode.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/buchkontor-teltow/team.webp') }}" class="img-fluid mx-auto d-block" alt="Buchkontor teltow team" loading="lazy" width="382" height="240">
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>
+The employees and owner of the bookshop are very happy with the new system.
+It is reliable, stable and runs smoothly.
+Through the flexible reporting system, and some further adjustments, the bookshop will now be able to make its own tax reports and will no longer need to depend on a tax consultant.
+Besides POS and TSE the shop benefits from many other features of Tryton 6.0, and this is definitely a success for everyone involved.
+</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.m-ds.de/">m-ds</a> consulting, POS/TSE development/integration, deployment</p>
+<p>Jan Grasnick TSE provider and co-developer</p>
+<p><a href="https://www.b2ck.com/">B2CK</a> on the Sale Point module development</p>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% set title = "Koolvet" %}
+{% set description = "Success story of veterinary software based on Tryton" %}
+{% set keywords = ["success story", "review", "case study", "veterinary"] %}
+{% set banner = "koolvet/banner" %}
+{% set logo = "images/success-stories/koolvet.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+<img src="{{ url_for('static', filename='images/success-stories/koolvet/cat.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-end" alt="cat with veterinary" loading="lazy" width="257" height="257">
+<a href="https://www.koolvet.com/">Koolvet</a> is a young company based in Spain but expanding to South America.
+It offers veterinary software for the management of clinics, veterinary offices, universities and ambulant veterinarians.
+</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>
+There is a lot veterinary software currently in the market but from the very initial design stages the idea was to make koolvet a step change to the software that veterinarians are used to.
+We wanted a tool that can be adapted to the needs of our customers and not the other way around.
+</p>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>
+After looking at all the different tools in the market, we finally picked Tryton because:
+</p>
+<ul>
+    <li>It's a mature and stable solution</li>
+    <li>It's constantly updated</li>
+    <li>It's a modular system that adapts to the needs of our customers</li>
+</ul>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>
+Our implementation was based on the standard Tryton solution.
+The Accounting, Sale, Purchase and Stock Supply modules where used as the starting point and were then adapted to fit the needs of the veterinary sector.
+On top of this we developed for the veterinarians specific needs, which involved:
+</p>
+<ul>
+    <li>Pets and their clinic history</li>
+    <li>Appointments and veterinary Agendas</li>
+    <li>Hospitalization</li>
+    <li>Health plans</li>
+    <li>Medicines and receipts</li>
+    <li>Lab tests</li>
+    <li>Reminders</li>
+</ul>
+<p>
+Our solution is also integrated with external systems to provide the following functionalities:
+</p>
+<ul>
+    <li>Electronic receipt</li>
+    <li>Integration with lab machines</li>
+</ul>
+<p>
+Now complete, the solution is ready for use in veterinary clinics that deal with small domestic pets (such as dogs, cats and rabbits) and larger farm animals (like horses, sheep and cows).
+</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>
+<img src="{{ url_for('static', filename='images/success-stories/koolvet/results.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-start" alt="computer with koolvet software" loading="lazy" width="400" height="246">
+Our customers are extremely happy with koolvet: They can access their information from anywhere using any device.
+All the team members always have easy access to information that is always up to date, and their processes have been streamlined making them simpler and less error prone.
+</p>
+<p>
+Koolvet also sends automated appointment reminders via email or SMS.
+This reduces the number of missed appointments, improving the productivity of the veterinary clinics.
+</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.kopen.es">Kopen Software</a> has developed this vertical solution taking advantage of it's knowledge and experience with Tryton.</p>
+{% endblock %}

@@ -1,0 +1,9 @@
+@import 'section';
+@import 'component';
+@import 'util';
+
+#content {
+  &:focus {
+    outline: none;
+  }
+}

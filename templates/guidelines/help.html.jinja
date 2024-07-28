@@ -1,0 +1,130 @@
+{% set title = "Help Text Guidelines" %}
+{% set description = "Help text guidelines for Tryton" %}
+{% set keywords = ["development", "documentation", "guidelines", "help", "text"] %}
+{% set toc = [
+    ("Purpose", 'purpose', None),
+    ("General Style", 'general-style', [
+        ("Language", 'language', None),
+        ("Formatting", 'formatting', None),
+        ]),
+    ("Standard Help Text", 'standard-help-text', [
+        ("Fields", 'standard-fields', None),
+        ]),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-document') }}
+{% endblock %}
+{% block content %}
+<div class="section section-banner background-banner-document filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<section>
+    <h2 id="purpose">Purpose</h2>
+    <p>The help messages for fields, buttons and selection values, which are displayed as tooltips in the client, are very useful for new users who are discovering Tryton and existing users who need to refresh their memory.</p>
+    <p>
+    These help messages are part of Tryton's documentation and are great because they are easily displayed to users, at the time and place where they need to see them.
+    They are also close to the code, as they are defined in the <code>help</code> parameters to fields, which helps developers keep them up to date, and allows them to be shown in the user's language.</p>
+    <p>These guidelines provide some clear rules on how to write this help text, so it is kept consistent and accurate across the whole application.</p>
+    <p>The help text should answer the question:</p>
+    <p class="bg-light font-weight-bold p-2">What is this, or what is it for?</p>
+    <p>If it is obvious what it is for, or what it does, then it is often better not to add any help text.</p>
+</section>
+<section>
+    <h2 id="general-style">General Style</h2>
+    <p>In general you should try and follow the <a href="https://material.io/design/communication/writing.html">material design style guide</a>.</p>
+    <h3 id="language">Language</h3>
+    <ul>
+        <li>The help text is always written in English, Tryton will automatically display it in the user's language if a translation for it is available.</li>
+        <li>Write in complete sentences, starting with a capital letter and ending with a full stop.</li>
+        <li>Try and write text that adds useful information in a clear, accurate and concise way.
+            Normally help text will be no more that one or two lines long.</li>
+    </ul>
+    <h3 id="formatting">Formatting</h3>
+    <p>General formatting guidelines that are applicable to all types of help text:</p>
+    <ul>
+        <li>Always use double quotes for help text.
+            In Tryton double quotes are normally used for human readable text, and help text is designed to be read by humans.</li>
+        <li>If you need to add a line break it can be done using <code>\n</code> in the help text.</li>
+        <li>Multi-line strings are concatenated without needing an operator (<code>+</code>).</li>
+        <li>Indent multi-line help text so it all has the same level of indentation:
+            <pre><code class="python">help="Multi-line help text should "
+"all have the same level of indentation."</code></pre></li>
+        <li>Break long strings after a whitespace character:
+            <pre><code class="python">help="You should break long "
+"strings after a whitespace,\n"
+"not before."</code></pre></li>
+        <li>Start each sentence on a new line:
+            <pre><code class="python">help="When using multiple sentences. "
+"Code reviews will be easier like this."</code></pre></li>
+    </ul>
+    <h4 id="buttons">Buttons</h4>
+    <ul>
+        <li>Help text for buttons should describe the action or impact of pressing the button.</li>
+    </ul>
+    <h4 id="fields">Fields</h4>
+    <ul>
+        <li>Avoid using <mark>this</mark> or <mark>that</mark> when referring to the field's value because the help text may be used when the value is not visible:
+            <table class="table table-borderless table-sm">
+                <tr class="table-success">
+                    <td>Use:</td>
+                    <td>"The last date when the MODEL-NAME can be used."</td></tr>
+                <tr class="table-danger">
+                    <td>Avoid:</td>
+                    <td>"Prevent usage after this date."</td></tr>
+            </table></li>
+        <li>On selection fields don't refer to the selection's options, these may change depending on what modules are activated.</li>
+        <li>Help text for fields should describe either what is contained in the field or what it is used for.
+            Avoid using verbs for these:
+            <table class="table table-borderless table-sm">
+                <tr class="table-success">
+                    <td>Use:</td>
+                    <td>"Used to group stock moves together."</td></tr>
+                <tr class="table-success">
+                    <td>Use:</td>
+                    <td>"The moves that put the stock away into the storage area."</td></tr>
+                <tr class="table-danger">
+                    <td>Avoid:</td>
+                    <td>"Edit where to store the goods."</td></tr>
+            </table></li>
+    </ul>
+</section>
+<section>
+    <h2 id="standard-help-text">Standard Help Text</h2>
+    <h3 id="standard-fields">Fields</h3>
+    <p>
+    Some fields implement general functionality and are used in many different places in the same way.
+    To keep things consistent use one of the standard help text values for these:</p>
+    <dl>
+        <dt>Name <span class="small">(name)</span>:</dt>
+        <dd class="ps-4">This should be pretty obvious and so no help text is normally required.</dd>
+        <dt>Name <span class="small">(rec_name)</span>:</dt>
+        <dd class="ps-4">The main identifier for the <mark>MODEL-NAME</mark>.</dd>
+        <dt>Parent:</dt>
+        <dd class="ps-4">Used to add structure above the <mark>MODEL-NAME</mark>.</dd>
+        <dt>Children:</dt>
+        <dd class="ps-4">Used to add structure below the <mark>MODEL-NAME</mark>.</dd>
+        <dt>Number:</dt>
+        <dd class="ps-4">The main identifier for the <mark>MODEL-NAME</mark>.</dd>
+        <dt>Code:</dt>
+        <dd class="ps-4">The internal identifier for the <mark>MODEL-NAME</mark>.</dd>
+        <dt>Reference:</dt>
+        <dd class="ps-4">The external identifier for the <mark>MODEL-NAME</mark>.</dd>
+        <dt>Origin:</dt>
+        <dd class="ps-4">The source of the <mark>MODEL-NAME</mark>.</dd>
+        <dt>Company:</dt>
+        <dd class="ps-4">The company that the <mark>MODEL-NAME</mark> is associated with.</dd>
+        <dt>State:</dt>
+        <dd class="ps-4">The current state of the <mark>MODEL-NAME</mark>.</dd>
+    </dl>
+</section>
+{% endblock main %}

@@ -1,0 +1,42 @@
+{% set title = "Advocate Consulting Legal Group" %}
+{% set description = "Success story of Advocate Consulting Legal Group implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "advocate-consulting-legal-group/banner" %}
+{% set logo = "images/success-stories/advocate-consulting-legal-group.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<img src="{{ url_for('static', filename='images/success-stories/advocate-consulting-legal-group/advocate-consulting.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-start" alt="Advocate Consulting" loading="lazy" width="260" height="100">
+<p class="lead"><a href="https://advocatetax.com/">Advocate Consulting Legal Group, PLLC</a>is a US-based law and accounting firm that services the general aviation industry.
+Advocate’s product goes by the slogan, "Aviation TLC," standing for "tax, legal, and compliance," which are areas of service that map onto the needs of customers in this unique industry.</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>The term "general aviation" refers to aircraft that do not fly back-and-forth along established routes.
+Companies and governments use these aircraft for missions such as air-ambulance and air-taxi, cargo delivery, sports teams, and time-sensitive transport to locations ill-serviced by the airline hub-and-spoke system.
+Because they are more transient than the airlines’ fixed-route aircraft, general aviation aircraft are subject to enhanced record-keeping rules, making regulatory compliance a data-heavy endeavor.</p>
+<p>Some fields have gained more from the ERP revolution than others.
+Law firms have generally been slow to benefit, due to their unpredictable work-flows from project-to-project.
+But, given the right match between a specialized, boutique firm, and outstanding, bespoke software, it can be possible for the law to enter the 21st Century.</p>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>Tryton has allowed it to make the jump from relying on multiple, ad-hoc systems (e.g., Excel spreadsheets) and manual procedures, to an integrated, specialized software suite that handles both data collection from customers and internal task tracking to ensure that work is performed in a timely and accurate manner.</p>
+<p>The Tryton kernel’s elegant ORM and user-interface definition made it the ideal solution to implement the custom business logic that Advocate Consulting needed.</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>The Tryton standard modules provided a foundation of constructs such as parties and projects, but Advocate Consulting’s implementation was driven by its custom module, which also includes a JavaScript-powered web application that customers use to input their aircraft data.</p>
+<img src="{{ url_for('static', filename='images/success-stories/advocate-consulting-legal-group/plane.webp') }}" class="img-fluid mx-auto d-block" alt="Plane" loading="lazy" width="690" height="317">
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>Since 2013, Tryton has helped Advocate Consulting deliver its customers a consistent, high-quality product, and has served to differentiate Advocate from its competition.</p>
+<p>Tryton's Open Source nature puts the company in the driver's seat. No lock-in to a proprietary framework.</p>
+<p>Tryton's extensibility has been the key to meeting this company's idiosyncratic needs.
+At every stage where a standard module's pre-made solution has not fit the company's needs, a modification path has been available.</p>
+{% endblock results %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.fulfil.io/">Fulfil.io</a> provided their expertise to Advocate Consulting’s Tryton implementation</p>
+{% endblock provider %}

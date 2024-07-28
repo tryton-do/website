@@ -1,0 +1,48 @@
+{% set title = "Revelle Group" %}
+{% set description = "Success story of Revelle Group implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "revelle/banner" %}
+{% set logo = "images/success-stories/revelle.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+<img src="{{ url_for('static', filename='images/success-stories/revelle/office.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-end" alt="Revelle's office" loading="lazy" width="201" height="300">
+<a href="http://www.revellegroup.com/">Revelle Group</a> is a Belgium-based consulting company working in developing countries and emerging economies in three key sectors: energy and climate change; environment; and sustainable economic and social development.</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>Revelle Group has numerous projects happening at the same time.
+Project managers supervise a certain number of staff for each project.
+In order to have all the documentation and reports in one place, the Group needed a new ERP system that should:</p>
+<ul>
+    <li>allow them to keep financial records together enabling the project managers to view, edit, manage, track project flow and create ad hoc reports</li>
+    <li>be easy to integrate with the bespoke financial management suite (FIMAS) they were already using</li>
+    <li>be flexible enough to adapt to any set of internationally accepted Accounting Principles</li>
+    <li>be based upon as many state of the art design and implementation technologies as possible</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>Tryton as an ERP was a straightforward choice given:</p>
+<ul>
+    <li>its native support for the Belgian Chart of Accounts</li>
+    <li>the out of the box availability of standard reporting such as periodical VAT statements, balance sheets, income statements, cash flow statements, etc.</li>
+    <li>the strong technological advantages of its architecture (3-tier, Postgres, Python)</li>
+    <li>an excellent communications interface (XML-RPC based)</li>
+    <li>a world of unlimited possibilities to develop add-on modules, that enhanced already existing functionality without altering concepts or user experience</li>
+</ul>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>We designed a migration script to import the data from the existing database into the Tryton system.
+We seamlessly integrated the FIMAS suite and its project related records into Tryton's full cycle of business transactions.</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>Revelle’s project reporting activities have become easier, quicker, more reliable and accurate and this initial success story is leading to the future implementation of Analytic accounting which will improve the managerial visibility and global overview even more.</p>
+{% endblock results %}
+{% block provider %}
+{{ super() }}
+<p><a href="http://www.first.gr/">First Telecom</a></p>
+{% endblock provider %}

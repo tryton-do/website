@@ -1,0 +1,50 @@
+.dropdown {
+  &:active,
+  &:focus-within {
+    > .dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+*[data-bs-toggle='collapse'] {
+  display: none;
+}
+
+label {
+  &[for] {
+    cursor: pointer;
+  }
+}
+
+.navbar-toggler {
+  &:checked ~ .navbar-collapse {
+    display: block;
+  }
+}
+
+.carousel-active {
+  &:checked + .carousel-item {
+    display: block;
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.carousel-indicators {
+  li {
+    height: 10px;
+    opacity: .5;
+    text-indent: 0;
+
+    &.active {
+      opacity: .5;
+    }
+
+    label {
+      height: 100%;
+      margin: 0;
+      width: 100%;
+    }
+  }
+}

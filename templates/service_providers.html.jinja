@@ -1,0 +1,105 @@
+{% set title = "Service Providers" %}
+{% set description = "List of companies providing service on Tryton" %}
+{% set keywords = ["service", "company", "support" ] %}
+{% extends "layout.html.jinja" %}
+{% block content %}
+{{ super() }}
+<div class="section bg-primary">
+    <div class="container">
+        <section class="section-header text-center text-white bg-primary mb-1">
+            <h1 class="ps-3 pe-3">{{ title }}</h1>
+        </section>
+        <div id="map-card" class="d-none d-sm-block mx-auto col-md-6 card mt-4">
+            <div class="card-body">
+                <div id="map" style="height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        {% for display, group in [('d-none d-sm-flex', 'btn-group'), ('d-flex d-sm-none', 'btn-group-vertical')] %}
+        <div class="row mb-4 {{ display }}">
+            <div class="{{ group }} col-md-7 mx-auto">
+                <a role="button" class="btn btn-primary {% if consulting %}active{% endif %}" aria-pressed="{{ 'true' if consulting else 'false' }}" href="{{ url_for_self(consulting=(not consulting)|int) }}">
+                    {% if consulting %}
+                    <span class="material-icons" aria-hidden="true">check</span>
+                    {% endif %}
+                    Consulting
+                </a>
+                <a role="button" class="btn btn-primary {% if development %}active{% endif %}" aria-pressed="{{ 'true' if development else 'false' }}" href="{{ url_for_self(development=(not development)|int) }}">
+                    {% if development %}
+                    <span class="material-icons" aria-hidden="true">check</span>
+                    {% endif %}
+                    Development
+                </a>
+                <a role="button" class="btn btn-primary {% if hosting %}active{% endif %}" aria-pressed="{{ 'true' if hosting else 'false' }}" href="{{ url_for_self(hosting=(not hosting)|int) }}">
+                    {% if hosting %}
+                    <span class="material-icons" aria-hidden="true">check</span>
+                    {% endif %}
+                    Hosting
+                </a>
+                <a role="button" class="btn btn-primary {% if training %}active{% endif %}" aria-pressed="{{ 'true' if training else 'false' }}" href="{{ url_for_self(training=(not training)|int) }}">
+                    {% if training %}
+                    <span class="material-icons" aria-hidden="true">check</span>
+                    {% endif %}
+                    Training
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+            {% for provider in providers %}
+            {% with loading = 'lazy' if loop.index > 1 else 'eager' %}
+            {% include "service_providers/%s.html.jinja" % provider.name|lower|slugify %}
+            {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <p class="alert alert-info rounded">
+                Want to be listed here? Check how to <a class="alert-link" href="{{ url_for('service_providers_start') }}">become a service provider</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block style %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}"/>
+<noscript>
+    <style>
+    #map-card {
+        display: none!important;
+    }
+    </style>
+</noscript>
+{% endblock style %}
+
+{% block script %}
+<script async src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script>
+    function setupMap() {
+        L.Icon.Default.imagePath = '/static/images/';
+        var map = L.map('map').setView([0, 0], 1);
+        L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        var markers = {{ providers | tojson }};
+        markers.forEach(function(provider) {
+            provider.positions.forEach(function(LatLng) {
+                L.marker(LatLng).addTo(map)
+                    .bindPopup('<a href="#' + provider.name.toLowerCase().replace(/ /g, '-') + '">' + provider.name + '</a>');
+            });
+        });
+    }
+</script>
+{% endblock script %}

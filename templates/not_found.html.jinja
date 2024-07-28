@@ -1,0 +1,40 @@
+{% set title = "Whoops, that page isn't here!" %}
+{% extends "layout.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-dead-end') }}
+{% endblock style %}
+{% block content %}
+{{ super() }}
+<section class="section section-banner background-banner-dead-end filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">
+            <span class="material-icons">sentiment_dissatisfied</span>
+            Sorry, that page isn't here.
+        </h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm lg-mx-5 my-5">
+                <h1 style="width: 30rem">
+                    We could not find the page you're looking for.
+                </h1>
+            </div>
+            <div class="col-sm lg-mx-5">
+                <p class="lead">Here are some helpful links instead:</p>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('download') }}">Get Tryton</a></li>
+                    <li><a href="{{ url_for('forum') }}">Forum</a></li>
+                    <li><a href="{{ url_for('foundation') }}">Foundation</a></li>
+                    <li><a href="{{ url_for('service_providers') }}">Service Providers</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

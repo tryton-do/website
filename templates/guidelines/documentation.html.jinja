@@ -1,0 +1,241 @@
+{% set title = "Documentation Guidelines" %}
+{% set description = "Documentation guidelines for Tryton" %}
+{% set keywords = ["development", "documentation", "guidelines", "restructuredtext", "sphinx"] %}
+{% set toc = [
+    ("Purpose", 'purpose', None),
+    ("General Style", 'general-style', [
+        ("Use of Whitespace", 'use-of-whitespace', None),
+        ("Line Length", 'line-length', None),
+        ("Capitalisation", 'capitalisation', None),
+        ("Sections", 'sections', None),
+        ("Anchors", 'anchors', None),
+        ("Links", 'links', None),
+        ("Inline Markup", 'inline-markup', None),
+        ]),
+    ("Structure", 'structure', [
+        ("Modules", 'modules', None),
+        ]),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-document') }}
+{% endblock %}
+{% block content %}
+<div class="section section-banner background-banner-document filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<section>
+    <h2 id="purpose">Purpose</h2>
+    <p>The main Tryton documentation is written using <a href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> and is converted into a variety of different formats using <a href="https://www.sphinx-doc.org/">Sphinx</a>.</p>
+    <p>For most things this style guide aims to be consistent with the <a href="https://devguide.python.org/documenting/#style-guide">Python style guide</a>.</p>
+    <p>Some of the most important points are also mentioned here along with any areas that are different, or are specific to Tryton.</p>
+    <p>
+    Wherever appropriate you should try follow the rules given in this document.
+    If something is not mentioned here, but the Python style guide mentions it, then try and follow that.
+    If neither have an opinion on it, but it is already done a particular way in the existing documentation then try and follow that.
+    The real aim is to have a consistent structure and style for all the documentation.</p>
+</section>
+<section>
+    <h2 id="general-style">General Style</h2>
+    <h3 id="use-of-whitespace">Use of Whitespace</h3>
+    <p>The key things to take note of are:</p>
+    <ul>
+        <li>Start each sentence on a new line.
+            This results in simpler code reviews and diffs when changes need to be made in the future.</li>
+        <li>Use a standard indentation of 3 spaces, with no tabs.</li>
+        <li>List's contents should be indented so that it lines up with the start of the text in the first line.</li>
+        <li>Blocks of code should be indented the way they would normally be indented.</li>
+    </ul>
+    <p>For example:</p>
+    <pre><code class="plaintext">A sentence should end with a full stop. There should be a single space
+before the start of the next sentence.
+
+Indentation
+   The blank space between the start of a line and where the text
+   starts.
+
+   .. note::
+
+      This is where the text should normally be indented to.
+
+* This is a list item
+  with two lines of text.
+
+  * And a sub list
+
+#. This is a numbered list item
+   with multiple lines of
+   text.</code></pre>
+    <h3 id="line-length">Line Length</h3>
+    <p>
+    The maximum line length for normal text is 79 characters.
+    This can be exceeded for tables and long links that are not part of a paragraph.</p>
+    <h3 id="capitalisation">Capitalisation</h3>
+    <p>Try and follow the rules in the Python style guide, so:</p>
+    <ul>
+        <li>Use sentence case for section titles.</li>
+        <li>Except for the names of objects. In section titles these should use title case.</li>
+    </ul>
+    <p>To ensure consistency for certain words and terms always use:</p>
+    <dl class="bg-light p-2">
+        <dt>Tryton</dt>
+        <dd class="ps-4">This is always capitalised, unless referring to the <span class="text-monospace">tryton</span> command for the desktop client.</dd>
+    </dl>
+    <p>
+    Also avoid using the word ERP after Tryton.
+    This is because Tryton can be used for more than just enterprise resource planning.</p>
+    <h3 id="sections">Sections</h3>
+    <p>Section heading styles follow the Python style guide:</p>
+    <ul>
+        <li><code>#</code> with overline, for the project or module title in the <span class="text-monospace">index.rst</span> file</li>
+        <li><code>*</code> with overline, for the main titles in the other main <span class="text-monospace">.rst</span> files or subdirectory <span class="text-monospace">index.rst</span> files</li>
+        <li><code>=</code>, for sections</li>
+        <li><code>-</code>, for subsections</li>
+        <li><code>^</code>, for subsubsections</li>
+        <li><code>"</code>, for paragraphs</li>
+    </ul>
+    <h3 id="anchors">Anchors</h3>
+    <p>In order to make it easy to link the documentation together, and find Tryton objects based on their <code>__name__</code> use explicitly defined anchors.</p>
+    <ul>
+        <li><p>For all <mark>concepts</mark>, <mark>models</mark>, <mark>wizards</mark>, <mark>reports</mark> and <mark>config</mark> settings place an anchor before their title using the object's type followed by a dash (<code>-</code>), then the object's full <code>__name__</code>.</p>
+            <p>So, for example, for the purchase model and report you would use:</p>
+            <pre><code class="plaintext">.. _model-purchase.purchase:
+
+Purchase Model
+==============
+
+.. _report-purchase.purchase:
+
+Purchase Report
+---------------</code></pre></li>
+        <li><p>
+            Each setup and usage step should also have an anchor defined.
+            For these the anchor should match the title, so that they can be linked to without needing to duplicate the title in the reference link.</p></li>
+    </ul>
+    <h3 id="links">Links</h3>
+    <p>
+    It's good to provide the reader with links to any concepts or instructions that are described elsewhere and relevant to the item being documented.</p>
+    <ul>
+        <li>The <code>default_role</code> is set to <code>ref</code>.
+            This allows links to be created without needing to prefix them with <code>:ref:</code>.</li>
+        <li>Add a link each time an item is first mentioned within a section.
+            This is because the reader may have just jumped into the document at the current section and not seen any links in earlier parts of the document.</li>
+        <li>When an item is mentioned more than once extra mentions can be styled using the <code>*Item*</code> format.
+            This should also be used instead of creating a link when mentioning the current section.</li>
+        <li>Links should be created with an explicit title, for example <code>`Link Title &lt;target&gt;`</code>.</li>
+        <li>The documentation uses <a href="https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html">intersphinx</a> to allow links to other module's documentation.
+            When linking to targets in other modules always prefix the target with the module name followed by a colon (<code>:</code>) for example <code>`Link Title &lt;module:target&gt;`</code>.</li>
+        <li>You can also create a link to another module by linking to that module's <span class="text-monospace">index.rst</span> file.
+            For example: <pre><code class="plaintext">Services can be defined in the :doc:`Product Module &lt;product:index&gt;`.</code></pre></li>
+    </ul>
+    <h3 id="inline-markup">Inline Markup</h3>
+    <p>Where available <a href="https://docutils.sourceforge.io/docs/user/rst/quickref.html">standard reStructuredText markup</a> and <a href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html">Sphinx roles</a> can be used (except in the <span class="text-monospace">index.rst</span> file).</p>
+    <p>Literal values should always be surrounded by double backticks (<code>``</code>) to avoid the value being interpreted as a reference by the default role.</p>
+    <p>A few useful examples of standard roles include:</p>
+    <dl>
+        <dt><code>:abbr:`TST (Test Sphinx Thing)`</code></dt>
+        <dd class="ps-4">Used to define abbreviations.
+            The abbreviation definition can be given inside brackets and is only shown as a tooltip.</dd>
+        <dt><code>:command:`trytond_import_countries`</code></dt>
+        <dd class="ps-4">Used for the name of commands or scripts.</dd>
+        <dt><code>:doc:`Style Guide &lt;style&gt;`</code></dt>
+        <dd class="ps-4">Used to link to a documentation file.</dd>
+        <dt><code>:file:`modules/{module_name}/doc/index.rst`</code></dt>
+        <dd class="ps-4">Used for filenames.
+            Parts that may vary can be included with <mark>{variable}</mark> syntax, these are displayed differently to indicate that they should be replaced by the correct value when used.</dd>
+        <dt><code>:guilabel:`Open related records`</code></dt>
+        <dd class="ps-4">Used for any element in the <abbr title="Graphical User Interface">GUI</abbr>.
+            This includes button labels, window titles, menu names, and so on.</dd>
+        <dt><code>:menuselection:`Administration --> Users --> Users`</code></dt>
+        <dd class="ps-4">Used for menu items.
+            Each level is separated using <code>--></code>.
+            <p>
+            To create a <code>:menuselection:</code> item that is also a link you need to use substitutions:</p>
+            <pre><code class="plaintext">This is found in the main menu:
+
+   |Menu --> Sub Menu --> Item|__.
+
+   .. |Menu --> Sub Menu --> Item| replace:: :menuselection:`Menu --> Sub Menu --> Item`
+   __ https://example.com/</code></pre>
+            <p class="alert alert-info rounded p-2">
+            <span class="material-icons">warning</span>
+            Where possible try and put <code>:menuselection:</code> items in an indented paragraph of their own so they won't break across lines.
+            If this is not possible then enclose them in <code>[</code>square brackets<code>]</code> to help make them easier to read.</p></dd>
+        <dt><code>:rfc:`2324`</code></dt>
+        <dd class="ps-4">Used for links to Internet Request for Comments.
+            Just use the RFC's number.</dd>
+    </dl>
+</section>
+<section>
+    <h2 id="structure">Structure</h2>
+    <h3 id="modules">Modules</h3>
+    <p>
+    A module's documentation should be placed inside the <span class="text-monospace">doc</span> directory found in the module.
+    Depending on what the module does, and how it is structured you may need some, or all, of the following files:</p>
+    <dl>
+        <dt class="text-monospace" id="conf.py">conf.py</dt>
+        <dd class="ps-4"><p>
+            This file is required, and is the Sphinx configuration file.
+            It must be kept exactly the same as the <span class="text-monospace">conf.py</span> files in the all the other modules.</p></dd>
+        <dt class="text-monospace" id="index.rst">index.rst</dt>
+        <dd class="ps-4"><p>
+            This file is also required and should include a basic description of the module and a table of contents (<code>toctree</code> directive) that links to the other files with a <code>maxdepth</code> of 2.</p>
+            <p class="alert alert-warning rounded p-2">
+            <span class="material-icons">warning</span>
+            In this file use only standard restructured text markup, do not use any Sphinx specific roles or directives, except <code>toctree</code>.
+            This is because this file is used as the module's <span class="text-monospace">README.rst</span>, and also as the distribution's <code>long_description</code>.
+            It's contents is displayed on <a class="alert-link" href="https://pypi.org/">PyPI</a>, and PyPI doesn't support Sphinx directives and roles.
+            Using them will cause problems when packaging the module for distribution.</p>
+            <p>
+            The reason it is okay to use a <code>toctree</code> directive is because the build process knows about these and automatically strips them out when building the distribution file.</p></dd>
+        <dt class="text-monospace" id="setup.rst">setup.rst</dt>
+        <dd class="ps-4"><p>
+            The aim of this file is to describe any setup that needs to be done once a module has been activated.
+            Often this setup will need to be done by the user before the module can be used properly.</p>
+            <p>
+            Add sections to this file that describe the setup that is required and how it is done, for example <mark>"Doing a specific module setup task"</mark>, or <mark>"Setting up the thing to do something"</mark>.</p></dd>
+        <dt class="text-monospace" id="usage.rst">usage.rst</dt>
+        <dd class="ps-4"><p>
+            The contents of this file are intended for users of the system.
+            So it should talk to these readers directly and you can refer to them in the second person.
+            This means you can use sentences like <mark>"Your system ... then you need to ..."</mark>.</p>
+            <p>
+            It should contain sections that provide instructions or guidance on using a feature of the module, for example <mark>"Using the main feature in the module"</mark>, or <mark>"Working with a specific part of the module"</mark>.</p></dd>
+        <dt class="text-monospace" id="configuration.rst">configuration.rst</dt>
+        <dd class="ps-4"><p>
+            This file should contain each of the server configuration settings that the module provides.
+            Each configuration option should be described mentioning what it is for, or what it does.</p></dd>
+        <dt class="text-monospace" id="design.rst">design.rst</dt>
+        <dd class="ps-4"><p>
+            The design and structure of the module is described in this file.
+            Try and focus on the concepts that the module introduces or extends.
+            Often these concepts are implemented in Tryton as models, but it is the concepts and how they fit together that are important.</p>
+            <p>
+            Avoid specifically mentioning models, fields, or selection values these are documented in the code with doc strings and <a href="{{ url_for('guidelines_documentation_help') }}">help text</a>.</p>
+            <p>
+            Wizards and reports should be documented in sections beneath the concepts that they relate to.
+            If they are used with several different models then document them as part of either the primary, or first, model that they relate to, and then link to them from any other models that use them.</p></dd>
+        <dt class="text-monospace" id="reference.rst">reference.rst</dt>
+        <dd class="ps-4"><p>
+            This file is used to provide reference information for people who are developing or working on the module.
+            It includes sections that document any APIs or routes the module provides, as well as documentation on how to build or update parts of the module.</p></dd>
+        <dt class="text-monospace" id="releases.rst">releases.rst</dt>
+        <dd class="ps-4"><p>
+            This file is used to include the <span class="text-monospace">CHANGELOG</span>.</p></dd>
+    </dl>
+    <p>
+    In some cases a large module may require lots of documentation.
+    It can make sense to split up these files into smaller parts.
+    To do this the file should be replaced with a directory of the same name, but without the <span class="text-monospace">.rst</span> extension.
+    The separate files should be added to this directory with the extension <span class="text-monospace">.inc.rst</span>, and there should be an <span class="text-monospace">index.rst</span> file with the directive <code>include</code> for each separate file.</p>
+</section>
+{% endblock main %}

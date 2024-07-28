@@ -1,0 +1,12 @@
+{% set img = url_for('static', filename='images/service-providers/m-ds.webp') %}
+{% set website = 'https://www.m-ds.de/' %}
+{% set email = 'service@m-ds.de' %}
+{% set phone = '+493328308801' %}
+{% set stories = ['buchkontor-teltow', 'inmedio-berlin'] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+With its roots in cross-platform publishing, the company provides services around Linux/Windows server management and integrated business solutions.
+For many years m-ds has supported the Tryton foundation and the team is in regular contact with other Tryton partners and customers.
+The company offers services for businesses and public institutions.
+{% endblock description %}
+{% block location %}Berlin, Germany{% endblock %}

@@ -1,0 +1,198 @@
+{% set title = "Get Tryton" %}
+{% set description = "How to download and install Tryton" %}
+{% set keywords = ["download", "install"] %}
+{% set toc = [
+    ("Docker Image", 'docker', None),
+    ("Desktop Client", 'desktop-client', None),
+    ("Source Files", 'source', None),
+    ("Chronos", 'chronos', None),
+    ("Packages", 'packages', None),
+    ("Distributions", 'distributions', None),
+    ("Third Party Modules", 'third-party-modules', None),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% from "utils.html.jinja" import icon %}
+{% block style %}
+{{ super() }}
+{{ background('banner-download') }}
+<style type="text/css">
+    dt::after {
+        content: ": ";
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="section section-banner background-banner-download filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<p class="lead">Tryton has a <a href="https://en.wikipedia.org/wiki/Multitier_architecture#Three-tier_architecture">Three-tier architecture</a>.
+It is composed of an application server which connects to a <a href="https://www.postgresql.org/">PostgreSQL</a> database, a web or desktop client for the presentation and a set of server modules for the business logic.</p>
+<p>Tryton is released by series (same major and minor version numbers) every 6 months
+and they are supported for 1 year except for new major which has long term support of 5 years.</p>
+<section class="subsection">
+    <h2 id="docker">Docker Image</h2>
+    <p>A docker container that comes pre-installed with the server, modules and web client.
+    This is a very simple way of locally installing and exploring the application.
+    It is also production ready for easy deployment.
+    These images are updated every week.</p>
+    <p>
+    <a href="https://hub.docker.com/r/tryton/tryton/" class="btn btn-primary">
+        {{ icon('docker') }} Download
+    </a>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="desktop-client">Desktop Client</h2>
+    <p>A ready-to-use client for your desktop.
+    You can manage and connect to different servers using the same client.</p>
+    <p>
+    Current version:<br/>
+    <a href="https://downloads.tryton.org/current/tryton-32bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 32bit">
+        {{ icon('windows') }} Windows 32bit
+    </a>
+    <a href="https://downloads.tryton.org/current/tryton-64bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 64bit">
+        {{ icon('windows') }} Windows 64bit
+    </a>
+    <a href="https://downloads.tryton.org/current/tryton-x86_64-last.dmg" class="btn btn-outline-primary" title="Download for macOS x86-64">
+        {{ icon('apple') }} macOS x86-64
+    </a>
+    <a href="https://downloads.tryton.org/current/tryton-arm64-last.dmg" class="btn btn-outline-primary" title="Download for macOS arm64">
+        {{ icon('apple') }} macOS arm64
+    </a>
+    <a href="https://downloads.tryton.org/current/tryton-flatpak" class="btn btn-outline-primary" title="Download for Linux Flatpak">
+        {{ icon('linux') }} Linux Flatpak
+    </a>
+    </p>
+    <p>
+    Long term support:<br/>
+    <a href="https://downloads.tryton.org/lts/tryton-32bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 32bit">
+        {{ icon('windows') }} Windows 32bit
+    </a>
+    <a href="https://downloads.tryton.org/lts/tryton-64bit-last.exe" class="btn btn-outline-primary" title="Download for Windows 64bit">
+        {{ icon('windows') }} Windows 64bit
+    </a>
+    <a href="https://downloads.tryton.org/lts/tryton-last.dmg" class="btn btn-outline-primary" title="Download for macOS">
+        {{ icon('apple') }} macOS
+    </a>
+    <a href="https://downloads.tryton.org/lts/tryton-flatpak" class="btn btn-outline-primary" title="Download for Linux Flatpak">
+        {{ icon('linux') }} Linux Flatpak
+    </a>
+    </p>
+    <p class="alert alert-info">For other platforms, use the <a class="alert-link" href="#source">source files</a></p>
+    <p class="alert alert-warning">On macOS depending of your settings, you may need to <a class="alert-link" href="https://support.apple.com/en-us/HT202491">authorize</a> the Tryton App</p>
+</section>
+<section class="subsection">
+    <h2 id="source">Source Files</h2>
+    <p>The source code for the release of each component is available in an archive file.
+    These are useful for creating packages.</p>
+    <p>
+    Current version:<br/>
+    <a href="https://downloads.tryton.org/current/" class="btn btn-outline-primary mr-2">Browse</a>
+    <a href="https://downloads.tryton.org/current/trytond-last.tar.gz" class="btn btn-outline-primary">Server</a>
+    <a href="https://downloads.tryton.org/current/tryton-last.tar.gz" class="btn btn-outline-primary">Desktop Client</a>
+    <a href="https://downloads.tryton.org/current/tryton-sao-last.tgz" class="btn btn-outline-primary">Web Client</a>
+    <a href="https://downloads.tryton.org/current/proteus-last.tar.gz" class="btn btn-outline-primary">Console Client</a>
+    </p>
+    <p>
+    Long term support:<br/>
+    <a href="https://downloads.tryton.org/lts/" class="btn btn-outline-primary mr-2">Browse</a>
+    <a href="https://downloads.tryton.org/lts/trytond-last.tar.gz" class="btn btn-outline-primary">Server</a>
+    <a href="https://downloads.tryton.org/lts/tryton-last.tar.gz" class="btn btn-outline-primary">Desktop Client</a>
+    <a href="https://downloads.tryton.org/lts/tryton-sao-last.tgz" class="btn btn-outline-primary">Web Client</a>
+    <a href="https://downloads.tryton.org/lts/proteus-last.tar.gz" class="btn btn-outline-primary">Console Client</a>
+    </p>
+    <div class="alert alert-info">
+    All source archives are signed using <a href="https://man.openbsd.org/signify"><code>signify</code></a> with a different key for each series:
+        <dl class="ps-4">
+            <dt>7.2</dt>
+            <dd><a href="https://downloads.tryton.org/signify/7.2.pub"><code>RWTWVRwJV+eY0FPfGu8kivt7IvtvSfvp8Zzj4n3Zq+9TLyCXVdJYv/IZ</code></a></dd>
+            <dt>7.0</dt>
+            <dd><a href="https://downloads.tryton.org/signify/7.0.pub"><code>RWTZ+6pp13P8NQVDhSTlNYh83nirl+IWHmJKPzUnOQ0tyP8v8+z+oFlg</code></a></dd>
+            <dt>6.8</dt>
+            <dd><a href="https://downloads.tryton.org/signify/6.8.pub"><code>RWQWYAGNCLpZKsZjgXjSfSoo6c1IcmnHzuF8E36t0o+9UaMB+gQ4udFE</code></a></dd>
+            <dt>6.0</dt>
+            <dd><a href="https://downloads.tryton.org/signify/6.0.pub"><code>RWQv4FwbbnhSvAv4Cg3oyqKWy4X6TpfaEvWr3IuODsgx1g0wTTAx00kg</code></a></dd>
+            <dt>aeb43</dt>
+            <dd><a href="https://downloads.tryton.org/signify/aeb43.pub"><code>RWSAr32B5W/34g8MLNqJk8DY9klFWxqbEWi1DtMPSOlfLFWq8IOGOF6p</code></a></dd>
+            <dt>chronos</dt>
+            <dd><a href="https://downloads.tryton.org/signify/chronos.pub"><code>RWT2XpEPmOotnJWXLEC/rXgeXpwSB/Bgx8sUu1ERSNbP9fnqiw6tropR</code></a></dd>
+            <dt>coda</dt>
+            <dd><a href="https://downloads.tryton.org/signify/coda.pub"><code>RWT5kIby5zBrwAhMk2TndK17Dm3oLCCJs3JJYB18HSucZMrB/zf6qy+9</code></a></dd>
+            <dt>flask-tryton</dt>
+            <dd><a href="https://downloads.tryton.org/signify/flask-tryton.pub"><code>RWTAanmAE2hF/rCPZD5NOeIbKA+shtigRVpuHBcGGKMHgBk3ZU7L8vjv</code></a></dd>
+            <dt>goocalendar</dt>
+            <dd><a href="https://downloads.tryton.org/signify/goocalendar.pub"><code>RWTwvGBIHkVo8r471FYfVbPtjXGxhf3M5OaY/NJvZsIVB5x3cjO/Ut1T</code></a></dd>
+            <dt>python-sql</dt>
+            <dd><a href="https://downloads.tryton.org/signify/python-sql.pub"><code>RWThKqtWd8GsCBnwf04Po1iuw+gYMQwVJCH8s2JZ54B3yju653oW+6lH</code></a></dd>
+            <dt>relatorio</dt>
+            <dd><a href="https://downloads.tryton.org/signify/relatorio.pub"><code>RWQLysx5h9TmkNvMl3cqb+8O+x3dI/RuumINw5ECauCt2NGn98INORWS</code></a></dd>
+            <dt>tryton-filestore-cellar</dt>
+            <dd><a href="https://downloads.tryton.org/signify/tryton-filestore-cellar.pub"><code>RWQjB3cL9B6lkAFSjKxxpep4hs4Eq08ss2oMGdagSJ9ASydkwqRVJ0tw</code></a></dd>
+        </dl>
+    </div>
+</section>
+<section class="subsection">
+    <h2 id="chronos">Chronos</h2>
+    <p>We also publish an optional add-on that can be used to manage timesheets from inside your browser.</p>
+    <p>
+    <a href="https://addons.mozilla.org/en-US/firefox/addon/tryton-chronos/" class="btn btn-outline-primary" title="Download for Firefox">
+        {{ icon('firefox') }} Firefox
+    </a>
+    <a href="https://chrome.google.com/webstore/detail/chronos/ikhcoclknebokeabdhaaggmmookkndmp" class="btn btn-outline-primary" title="Download for Chrome">
+        {{ icon('google-chrome') }} Chrome
+    </a>
+    </p>
+</section>
+<section class="subsection">
+    <h2 id="packages">Packages</h2>
+    <p>All the packages are also published on the <a href="https://pypi.python.org/pypi?:action=browse&show=all&c=551">Python Package Index</a>.
+    Tryton modules from third parties can also be found there.<br/>
+    You can install them using the <a href="https://pip.pypa.io/">pip</a> command-line tool:</p>
+    <pre><code class="console">$ python -m pip install trytond       # server
+$ python -m pip install tryton        # client
+$ python -m pip install trytond_sale  # sale module</code></pre>
+    <p class="alert alert-info">Replace <code>trytond_sale</code> with the name of the module needed.</p>
+    <p class="alert alert-warning">The web client can not be installed with <code>pip</code>, you must follow this <a class="alert-link" href="https://www.npmjs.com/package/tryton-sao#installation">installation procedure</a>.</p>
+</section>
+<section class="subsection">
+    <h2 id="distributions">Distributions</h2>
+    <p>Tryton is also packaged and distributed by third-party volunteers.
+    These generally provide better integration with the operating system, but often there is a delay before new versions make it into their distributions.</p>
+    <ul>
+        <li id="archlinux"><a href="https://aur.archlinux.org/packages?K=tryton">
+                {{ icon('arch-linux') }} Arch Linux
+            </a></li>
+        <li id="debian"><a href="https://tryton-team.pages.debian.net/">
+                {{ icon('debian') }} Debian
+            </a></li>
+        <li id="gentoo"><a href="https://wiki.gentoo.org/wiki/Tryton">
+                {{ icon('gentoo') }} Gentoo
+            </a></li>
+        <li id="netbsd"><a href="http://pkgsrc.se/meta-pkgs/py-tryton-platform">
+                {{ icon('netbsd') }} NetBSD
+            </a></li>
+        <li id="openbsd"><a href="https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/productivity/tryton/">
+                {{ icon('openbsd') }} OpenBSD
+            </a></li>
+        <li id="opensuse"><a href="https://build.opensuse.org/project/subprojects/Application:ERP:Tryton">
+                {{ icon('opensuse') }} openSUSE
+            </a></li>
+        <li id="ubuntu"><a href="https://packages.ubuntu.com/search?searchon=names&keywords=tryton">
+                {{ icon('ubuntu') }} Ubuntu
+            </a></li>
+    </ul>
+</section>
+<section class="subsection">
+    <h2 id="third-party-modules">Third Party Modules</h2>
+    <p>Tryton has a <a href="https://pypi.python.org/pypi?:action=browse&show=all&c=551">large ecosystem of modules</a>.<br/>
+    To ease your choice, we maintain a curated list of <a href="https://discuss.tryton.org/c/third-party-modules">third party modules</a>.</p>
+</section>
+{% endblock main %}

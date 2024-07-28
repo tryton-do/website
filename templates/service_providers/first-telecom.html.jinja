@@ -1,0 +1,16 @@
+{% set img = url_for('static', filename='images/service-providers/first-telecom.webp') %}
+{% set website = 'http://www.first.gr/' %}
+{% set email = 'tryton@first.gr' %}
+{% set phone = '+302106441354' %}
+{% set stories = ['revelle'] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+One of the few real ICT companies and thus is almost equally active in
+Telecommunications as in IT/Software development.
+We devote a significant amount of our time in screening and selecting best of
+breed Open Source projects (such as Tryton) with a strategic, sectorial focus
+and then dedicate a fair share of our "brains" in developing add-on or even
+bespoke solutions around them, that will improve and facilitate our customers’
+experience maximizing their professional agility.
+{% endblock description %}
+{% block location %}Athens, Greece{% endblock %}

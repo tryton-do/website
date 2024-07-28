@@ -1,0 +1,16 @@
+{% set img = url_for('static', filename='images/service-providers/gcoop.webp') %}
+{% set website = 'https://www.gcoop.coop/' %}
+{% set email = 'info@gcoop.coop' %}
+{% set phone = '+541152547755' %}
+{% set stories = ['gotsho-lims'] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+A group of professionals with extensive experience in the world of free
+software that decided to form this company.
+To do this we created a work cooperative dedicated to the development and
+implementation of systems with free tools.
+gcoop is a solutions company that provides custom development, consulting,
+support, migration and system audits. Since 2011 we have worked with the Tryton
+system and have contributed to this community.
+{% endblock description %}
+{% block location %}Buenos Aires, Argentina{% endblock %}

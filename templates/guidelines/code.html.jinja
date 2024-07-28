@@ -1,0 +1,76 @@
+{% set title = "Coding Guidelines" %}
+{% set description = "Coding guidelines for Tryton" %}
+{% set keywords = ["development", "coding", "guidelines", "python", "xml"] %}
+{% set toc = [
+    ("Code Style", 'code-style', [
+        ("Python", 'python', None),
+        ("XML", 'xml', None),
+        ]),
+    ("Best Practices", 'best-practices', [
+        ("Naming of modules, classes, variables", 'naming', None),
+        ]),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-develop') }}
+{% endblock %}
+{% block content %}
+<div class="section section-banner background-banner-develop filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<section>
+    <h2 id="code-style">Code Style</h2>
+    <p>The Tryton Project strongly recommends the following code style:</p>
+    <h3 id="python">Python</h3>
+    <p>Code style, in general, follows <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> and <a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a>:</p>
+    <ul>
+        <li>Use 4 spaces for indentation.</li>
+        <li>Avoid the usage of <span class="text-monospace">from M import *</span>.</li>
+        <li>If unsure about conformity use <a href="https://pypi.org/project/flake8/">flake8</a> to check the code (with option <span class="text-monospace">ignore=E123,E124,E126,E128,E741,W503</span>) and <a href="https://pypi.org/project/isort/">isort</a> to check the imports (with the parameters <span class="text-monospace">-m VERTICAL_GRID -p trytond</span>).</li>
+        <li>Breaking lines:
+            <ul>
+                <li>Use 4 spaces per bracket pair.</li>
+                <li>Prefer parenthesis over backslash.</li>
+                <li>Prefer breaking lines after opening parenthesis.</li>
+            </ul>
+        </li>
+        <li>Use double-quotes for strings that are <a href="https://en.wikipedia.org/wiki/Natural_language">natural language</a>, single-quotes for symbol-like strings and triple double-quotes for multi-line docstrings.</li>
+    </ul>
+    <h3 id="xml">XML</h3>
+    <ul>
+        <li>Use 4 spaces for indentation.</li>
+        <li>No 80 columns limitation.</li>
+        <li>Opening tag on single line or one attribute per line.</li>
+    </ul>
+    <h2 id="best-practices">Best Practices</h2>
+    <p>These best practices help keep the code consistent:</p>
+    <ul>
+        <li>Use doc-strings and comments in your code.</li>
+        <li>Never pass keyword arguments as positional arguments when calling a method.</li>
+        <li>In the very beginning (right under the doc-string) of a method definition, define all pool objects that will be used (<span class="text-monospace">pool.get(...)</span>).</li>
+    </ul>
+    <h3 id="naming">Naming of modules, classes, variables</h3>
+    <ul>
+        <li>A name should be as descriptive and as short as possible.</li>
+        <li>Avoid unnecessary duplication of names.</li>
+        <li>Naming structure of a model or module must follow these rules:
+            <ul>
+                <li>First part of the name is the general function of the module or model,</li>
+                <li>after this come the less general parts of the name (i.e. the more specific name parts) for the module or model</li>
+                <li>If you are unsure with naming, please ask first on the <a href="{{ url_for('forum', _anchor='irc') }}">#tryton channel</a></li>
+            </ul>
+        </li>
+        <li>For modules and method names use an underscore to separate the parts of name.</li>
+        <li>For naming classes use <a href="https://en.wikipedia.org/wiki/CamelCase">CamelCase</a>.</li>
+    </ul>
+</section>
+{% endblock main %}

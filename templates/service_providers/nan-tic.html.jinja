@@ -1,0 +1,13 @@
+{% set img = url_for('static', filename='images/service-providers/nan-tic.webp') %}
+{% set website = 'https://www.nan-tic.com/' %}
+{% set email = 'info@nan-tic.com' %}
+{% set phone = '+34935531803' %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+Specialized in implementation, development and support services on Open Source ERP solutions like Tryton.
+We work for companies in the chemical, pharmaceutical, logistics and other
+industries whose needs are mainly production, warehouse and project management.
+We like to be involved and contribute to the open source projects we work with,
+and we aim to be the link between end users and the project.
+{% endblock description %}
+{% block location %}Sabadell, Catalonia, Spain{% endblock %}

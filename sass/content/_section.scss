@@ -1,0 +1,93 @@
+// SECTIONS
+.section {
+  @include media-breakpoint-down(md) {
+    padding-bottom: $tryton-section-padding-responsive;
+    padding-top: $tryton-section-padding-responsive;
+  }
+
+  padding-bottom: $tryton-section-padding;
+  padding-top: $tryton-section-padding;
+}
+
+.section-top {
+  @include media-breakpoint-down(md) {
+    padding-top: $tryton-section-padding-responsive;
+  }
+  padding-top: $tryton-section-padding;
+}
+
+.section-bottom {
+  @include media-breakpoint-down(md) {
+    padding-bottom: $tryton-section-padding-responsive;
+  }
+  padding-bottom: $tryton-section-padding;
+}
+
+.section,
+.section-top,
+.section-bottom {
+
+  // SECTION HEADER
+  .section-header {
+    animation: fadeInDown 2s ease-out;
+    margin-bottom: 2rem;
+    position: relative;
+    border-top: 2px solid;
+    height: 0;
+    margin-bottom: 40px;
+    margin-top: 40px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      background-color: inherit;
+      display: inline-block;
+      margin-bottom: 0;
+      position: relative;
+      top: -.5lh;
+      z-index: 1;
+    }
+
+    @each $color, $value in $theme-colors {
+      &.text-#{$color} {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $value;
+        }
+
+        border-color: $value;
+      }
+    }
+  }
+
+  // SUBSECTIONS
+  .subsection {
+    padding-bottom: $tryton-subsection-padding;
+    padding-top: $tryton-subsection-padding;
+  }
+
+  .subsection-top {
+    padding-top: $tryton-subsection-padding;
+  }
+
+  .subsection-bottom {
+    padding-bottom: $tryton-subsection-padding;
+  }
+}
+
+.section-banner {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & .container {
+    animation: fadeInDown 1s ease-out;
+  }
+}

@@ -1,0 +1,135 @@
+{% set title = "Tryton Spanish Days - November 17th-18th 2021" %}
+{% set description = "Tryton Spanish Days at Alicante" %}
+{% set keywords = ["conference", "meeting", "event"] %}
+{% set banner = 'tsd2021-banner.webp' %}
+{% macro location() %}
+<div class="h-card vcard">
+    <strong class="p-name fn">
+        <a class="u-url url" href="https://www.alicante.es/es/equipamientos/auditorio-edificio-municipal-puerta-ferrisa-agencia-local-desarrollo">
+            Auditorio Puerta Ferrisa
+        </a></strong><br/>
+        <span class="p-addr addr">
+            <span class="p-street-address street-address">Calle Jorge Juan, 21 bajo</span>,<br/>
+            <span class="p-postal-code postal-code">03002</span>
+            <span class="p-locality locality">Alicante</span><br/>
+        </span>
+</div>
+{% endmacro %}
+{% set events = [
+    Day((2021, 11, 17),
+        ("New functionality in Tryton 6.2", (10,00), (10,40), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("Example Verticalization: 4agro and agroalimentary sector", (10, 40), (11, 15), "",
+            [("Nicolas Lopez", 'ce2ffc0d3acbb3acf94cbc46e48e13e0', "Datalife", 'https://datalifeit.es/')]),
+        ("Quality management: Tryton for manufacturing companies", (11, 15), (11, 50), "",
+            [("Yunior Lobo", '3def9fa553ed0691c12d0eb8db6f6f0c', "INGSYS", '')]),
+        ("Coffee Break", (11, 50), (12, 35), ""),
+        ("Preparation in field: Creating pallets using mobility", (12, 35), (13, 10), "",
+            [("Sergio Morillo", 'bc2d2c53bd73f8bd7f6cfbaa5ed436a8', "Datalife", 'https://datalifeit.es/')]),
+        ("Bank Reconciliation with Tryton", (13, 10), (13, 45,), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("Lunch Break", (13, 45), (16, 15), ""),
+        ("How to connect Tryton with Shopify", (16, 15), (16, 55), "",
+            [("Adrià Tarroja Caubet", 'f80ff70a062f85f5fbf78b7eb77f6fc8', "KOPEN", 'https://www.kopen.es/')]),
+        ("The Tryton Academy: How to become a Tryton Expert", (16, 55), (17, 30), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+            location=location(), full=True),
+    Day((2021, 11, 18),
+        ("Tryton as an integral solution for food manufacturing companies", (10, 00), (10, 30), "",
+            [("Yunior Lobo", '3def9fa553ed0691c12d0eb8db6f6f0c', "INGSYS", '')]),
+        ("Law 11/2021: Software formal obligations", (10, 30), (11, 30), "",
+            [("Ramón Oliver", 'e8004e385368b66b469028a8cef6641c', "Datalife", 'https://datalifeit.es/')]),
+        ("Coffee Break", (11, 30), (12, 15), ""),
+        ("Package reverse logistics: Tryton based managment model", (12, 15), (13, 00), "",
+            [("Javier Escudero", '01e277b7dfaba3faf8e9de5afdea7cf0', "PoolBack", 'http://www.poolback.com/')]),
+        ("How to implement attendance control in companies", (13, 00), (13, 30), "",
+            [("Marcos Sabater", '01e277b7dfaba3faf8e9de5afdea7cf0', "Datalife", 'https://datalifeit.es/')]),
+        ("Tryton future and Roadmap", (13, 30), (13, 55), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+            location=location(), full=True),
+    ]
+%}
+{% extends "events/layout.html.jinja" %}
+
+{% block title %}
+Tryton Spanish Days<br/><small>November 17th-18th 2021</small>
+{% endblock %}
+
+{% block lead %}
+<p class="lead">
+The event will take place in the sunny city of Alicante on the 17th and 18th of November where several Tryton experts will talk about open source and digital transformation.</p>
+{{ super() }}
+{% endblock lead %}
+
+{% block schedule %}
+{{ super() }}
+{% if datetime.date.today() < datetime.date(2021, 11, 11) %}
+<div class="bg-light py-4 mb-4 text-center">
+    <p class="lead"><span class="material-icons align-middle">build</span> The unconference is built by its participants.</p>
+    <a class="btn btn-primary text-uppercase my-4" href="mailto:foundation@tryton.org">Submit a talk</a>
+</div>
+{% endif %}
+<div class="bg-light py-4 mb-4 text-center" id="video">
+    <p class="lead"><span class="material-icons align-middle">movie</span> The talks will be recorded and live streamed on our Youtube channel.</p>
+    <a class="btn btn-lnk" href="https://youtu.be/mKVEc0zpDNk">Watch the First Day's Talks</a>
+    <a class="btn btn-lnk" href="https://youtu.be/GbiSMd0rv80">Watch the Second Day's Talks</a>
+</div>
+{% endblock %}
+
+{% block register %}
+<h3 class="text-center"><a href="https://www.eventbrite.es/e/entradas-jornadas-nacionales-tryton-2021-165098709685?aff=ebdssbdestsearch">Register to the #JornadasTryton2021 (Spanish)</a></h3>
+{% endblock register %}
+
+{% block venue %}
+<div class="vcard text-center">The unconference will be hosted at the
+    {{ location() | safe }}
+</div>
+<iframe height="500" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.4852116107940674%2C38.34229572239992%2C-0.4710924625396729%2C38.34968356290722&amp;layer=mapnik&amp;marker=38.34598973684903%2C-0.4781520366668701" style="width: 100%; border: 1px solid black; overflow: hidden; margin: 0"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.34599&amp;mlon=-0.47815#map=17/38.34599/-0.47815">View Larger Map</a></small>
+<h3>Transportation</h3>
+<ul>
+    <li>By Train
+        <ul>
+            <li>The <a href="https://en.wikipedia.org/wiki/AVE">AVE</a> in the Alicante Terminal located at the center of Alicante is preferred.</li>
+        </ul>
+    </li>
+    <li>By Plane
+        <ul>
+            <li>The <a href="http://www.aena.es/es/aeropuerto-alicante/index.html">Alicante Airport</a> has a shuttle bus to Alicante every 20 minutes.</li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}
+
+{% block accommodations %}
+<p>As the event is held in the center of Alicante there are a lot of hotels near the location.</p>
+<p>However we have some suggestions for hotels:</p>
+<ul>
+    <li>Tryp Ciudad de Alicante</li>
+    <li>Melià Alicante</li>
+    <li>Eurostars Centrum Alicante</li>
+</ul>
+{% endblock accommodations %}
+
+{% block main %}
+{{ super() }}
+<section class="section sponsors" id="sponsors">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="bg-white">Sponsors</h2>
+        </div>
+        <p>With the support of:</p>
+        <a href="https://www.impulsalicante.es/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-impulsalicante.webp') }}" alt="Agencia local de desarrollo economico y social de Alicante" loading="lazy" width="200" height="141"/>
+        </a>
+        <a href="https://datalifeit.es/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/service-providers/datalife.webp') }}" alt="Datalife" loading="lazy" width="200" height="130"/>
+        </a>
+        <a href="https://www.kopen.es/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/service-providers/kopen.webp') }}" alt="Kopen Software" loading="lazy" width="200" height="130"/>
+        </a>
+        <span>
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-ingsys.webp') }}" alt="INGSYS" loading="lazy" width="200" height="113"/>
+        </span>
+    </div>
+</section>
+{% endblock main %}

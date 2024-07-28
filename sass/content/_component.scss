@@ -1,0 +1,106 @@
+// LEAD
+.lead {
+  letter-spacing: .5px;
+}
+
+// PICTOS
+.picto-container {
+  align-items: center;
+  animation: zoomIn 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  h4 {
+    font-size: 1rem;
+  }
+}
+
+.picto {
+  align-items: center;
+  border-radius: $border-radius;
+  display: flex;
+  height: 75px;
+  justify-content: center;
+  width: 75px;
+}
+
+// BUTTONS
+.btn {
+  text-transform: uppercase;
+}
+
+.btn-secondary {
+  border-color: $light;
+
+  &:hover,
+  &:focus,
+  &:active {
+    &:not(:disabled) {
+      background-color: $light;
+      border-color: $light;
+    }
+  }
+}
+
+.btn-dark {
+  &:hover,
+  &:focus,
+  &:active {
+    &:not(:disabled) {
+      background-color: lighten($dark, 7.5%);
+      border-color: lighten($dark, 7.5%);
+    }
+  }
+}
+
+.btn-outline-warning,
+.btn-outline-info {
+  &:hover,
+  &:active {
+    color: $secondary;
+  }
+}
+
+// JUMBOTRON
+.jumbotron {
+  margin-bottom: 0;
+}
+
+// IMAGES
+.image-frame {
+  @include media-breakpoint-down(md) {
+    min-height: auto;
+  }
+  align-items: center;
+  display: flex;
+  min-height: $image-frame-height-default;
+  @each $height, $value in $image-frame-heights {
+    &.frame-#{$height} {
+      min-height: $value;
+    }
+  }
+}
+
+.socials {
+  a {
+    opacity: .5;
+
+    &:hover {
+      opacity: 1;
+      transition: .5s ease;
+    }
+  }
+}
+
+.sponsors {
+  a {
+    vertical-align: top;
+
+    img {
+      margin: .5rem;
+      max-height: 200px;
+      width: 200px;
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{% from "utils.html.jinja" import icon %}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        {% block head %}
+        {%- if canonical is not defined %}
+        {%- set canonical = url_for_canonical() %}
+        {%- endif %}
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="{{ description }}"/>
+        <meta name="keywords" content="{{ ((keywords or []) + ["tryton", "open source", "opensource", "free software", "freesoftware", "business software", "erp"]) | join(', ') }}"/>
+        <meta name="author" content="Tryton"/>
+        <meta property="og:title" content="{{ title }}"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="{{ canonical }}"/>
+        <meta property="og:image" content="{{ url_for('static', filename=(logo or 'images/logo.webp'), _external=True, _scheme='http') }}"/>
+        <meta property="og:image:secure_url" content="{{ url_for('static', filename=(logo or 'images/logo.webp'), _external=True, _scheme='https') }}"/>
+        {% if description %}
+        <meta property="og:description" content="{{ description }}"/>
+        {% endif %}
+        <meta property="og:site_name" content="Tryton"/>
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="@TrytonSoftware"/>
+        <meta name="twitter:title" content="{{ title }}"/>
+        {% if description %}
+        <meta name="twitter:description" content="{{ description }}"/>
+        {% endif %}
+        <meta name="twitter:image" content="{{ url_for('static', filename=(logo or 'images/logo.webp'), _external=True) }}"/>
+
+        <title>Tryton - {{ title }}</title>
+        <link rel="shortcut icon" type="image/webp" href="{{ url_for('static', filename='images/favicon.ico') }}">
+        {% if canonical != request.url %}
+        <link rel="canonical" href="{{ canonical }}">
+        {% endif %}
+
+        {% block style %}
+        {% set css = critical_css() %}
+        {% if css %}
+        <style type="text/css">
+            {{ css|safe }}
+        </style>
+        <link rel="preload" href="{{ url_for('static', filename='css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        </noscript>
+        {% else %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        {% endif %}
+        <noscript>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
+        </noscript>
+        {% endblock style %}
+
+        <script async src="{{ url_for('static', filename='js/main.js') }}"></script>
+        {% endblock head %}
+    </head>
+    <body>
+
+        <header id="header">
+            {% block header %}
+            <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ url_for('index') }}">
+                        <picture>
+                            <source srcset="{{ url_for('static', filename='images/tryton-white.svg') }}" media="(prefers-color-scheme: dark)">
+                            <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-black.svg') }}" width="110" height="32" alt="Tryton Home"/>
+                        </picture>
+                    </a>
+                    <a href="#content" class="visually-hidden visually-hidden-focusable">Skip to main content</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <noscript>
+                        <label class="navbar-toggler" for="navbarButton" tabindex="0">
+                            <span class="navbar-toggler-icon"></span>
+                        </label>
+                    </noscript>
+                    <input id="navbarButton" class="navbar-toggler d-none" aria-controls="navbarText" aria-pressed="true" role="button" type="checkbox"/>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav ms-auto">
+                            {% for title, items in menu.items() %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true">{{ title }}</a>
+                                <div class="dropdown-menu dropdown-menu-end text-lg-end">
+                                    {% for item, url in items %}
+                                    <a class="dropdown-item" href="{{ url }}">{{ item|safe }}</a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            {% if datetime.date.today() <= datetime.date(2019, 6, 7) %}
+            <div class="alert alert-info text-center" role="alert">
+                <span class="material-icons align-middle">notifications</span>Do not miss the <a class="alert-link" href="{{ url_for('event', event='tum2019') }}">Tryton Unconference, June 4th-7th 2019</a>!
+            </div>
+            {% endif %}
+            {% if datetime.date.today() <= datetime.date(2019, 11, 28) %}
+            <div class="alert alert-info text-center" role="alert">
+                <span class="material-icons align-middle">notifications</span>Do not miss the <a class="alert-link" href="{{ url_for('event', event='tsd2019') }}">Tryton Spanish Days, November 27th-28th 2019</a>!
+            </div>
+            {% endif %}
+            {% if datetime.date.today() <= datetime.date(2021, 6, 30) %}
+            <div class="alert alert-info text-center" role="alert">
+                <span class="material-icons align-middle">notifications</span>The Tryton Foundation has published its <a class="alert-link" href="https://discuss.tryton.org/t/foundation-budget-for-2021/3861">2021 Budget</a>.
+                You can help us get everything done by <a class="alert-link" href="{{ url_for('donate')}}">making a donation</a>{{ heart | safe }}!
+            </div>
+            {% endif %}
+            {% if datetime.date.today() <= datetime.date(2021, 11, 18) %}
+            <div class="alert alert-info text-center" role="alert">
+                <span class="material-icons align-middle">notifications</span>Do not miss the <a class="alert-link" href="{{ url_for('event', event='tsd2021') }}">Tryton Spanish Days, November 17th-18th 2021</a>!
+            </div>
+            {% endif %}
+            {% if datetime.date.today() <= datetime.date(2023, 5, 24) %}
+            <div class="alert alert-info text-center" role="alert">
+                <span class="material-icons align-middle">notifications</span>Do not miss the <a class="alert-link" href="{{ url_for('event', event='tub2023') }}">Tryton Unconference, May 22nd-24th 2023</a>!
+            </div>
+            {% endif %}
+            {% endblock header %}
+        </header>
+
+        <div id="content" tabindex="-1">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <footer id="footer">
+            {% block footer %}
+            <img class="w-100 img-fluid" src="{{ url_for('static', filename='images/placeholder-large.webp') }}" sizes="100vw" srcset="{{ url_for('static', filename='images/placeholder-large.webp') }} 1920w, {{ url_for('static', filename='images/placeholder-large-800px.webp') }} 800w, {{ url_for('static', filename='images/placeholder-large-400px.webp') }} 400w" alt="" loading="lazy" style="background-color: {{ dominant_color('images/placeholder-large.webp') }};" width="1920" height="350"/>
+            <section class="topfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                {% for title, items in menu.items() %}
+                                <div class="col-md-3">
+                                    <h2>{{ title }}</h2>
+                                    <nav>
+                                        <ul>
+                                            {% for item, url in items %}
+                                            <li class="p-2">
+                                                <a href="{{ url }}">{{ item|safe }}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="offset-lg-1 col-md-5 col-lg-4">
+                            <div class="footer-end">
+                                <img class="img-fluid" src="{{ url_for('static', filename='images/tryton-white.svg') }}" width="110" height="32" alt="Tryton" loading="lazy"/>
+                                <hr/>
+                                <p class="lead">Modularity, scalability & security for your business</p>
+                                <p>
+                                {% include "tryton-tm.html.jinja" %} is business software, ideal for communities of any size, easy to use, complete and <strong>100% Open Source</strong>.
+                                </p>
+                                <div class="socials">
+                                    <h2>Follow us</h2>
+                                    <a href="{{ url_for('news_rss') }}" class="me-3">{{ icon('rss-box', 36) }}<span class="visually-hidden">RSS</span></a>
+                                    <a href="https://twitter.com/TrytonSoftware" target="_blank" rel="me noopener" class="me-3">{{ icon('twitter-box', 36) }}<span class="visually-hidden">Twitter</span></a>
+                                    <a href="https://fosstodon.org/@tryton" target="_blank" rel="me noopener" class="me-3">{{ icon('mastodon', 36) }}<span class="visually-hidden">Mastodon</span></a>
+                                    <a href="https://www.facebook.com/TrytonSoftware/" target="_blank" rel="me noopener" class="me-3">{{ icon('facebook-box', 36) }}<span class="visually-hidden">Facebook</span></a>
+                                    <a href="https://www.linkedin.com/groups/1313967" target="_blank" rel="me noopener" class="me-3">{{ icon('linkedin-box', 36) }}<span class="visually-hidden">LinkedIn</span></a>
+                                    <a href="https://www.youtube.com/c/TrytonSoftware" target="_blank" rel="me noopener" class="me-3">{{ icon('youtube', 36) }}<span class="visually-hidden">YouTube</span></a>
+                                    <a href="https://vimeo.com/groups/tryton" target="_blank" rel="me noopener" class="me-3">{{ icon('vimeo', 36) }}<span class="visually-hidden">Vimeo</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12 col-md-6">Contents © {{ copyright_dates }} Tryton <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></div>
+                        <div class="col col-12 col-md-6 text-md-end">Made with <a target="_blank" rel="noopener" href="https://www.palletsprojects.com/p/flask/">Flask</a> and delivered through <a target="_blank" rel="noopener" href="https://www.keycdn.com/?a=69381">KeyCDN</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endblock footer %}
+        </footer>
+
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>

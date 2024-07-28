@@ -1,0 +1,13 @@
+{% set img = url_for('static', filename='images/service-providers/b2ck.webp') %}
+{% set website = 'https://www.b2ck.com/' %}
+{% set email = 'info@b2ck.com' %}
+{% set phone = '+32472544659' %}
+{% set stories = ['expertise-vision'] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+The main driving force behind Tryton.
+Specialists in design, architecture and implementation of Tryton modules as
+well as advanced core features.
+B2CK also provides support for new or existing Tryton installations.
+{% endblock description %}
+{% block location %}Liège, Belgium{% endblock %}

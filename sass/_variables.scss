@@ -1,0 +1,38 @@
+// COLORS
+$black: #000;
+$tryton-color-primary: #267f82;
+$tryton-color-secondary: #fff;
+$tryton-color-success: #32ad52;
+$tryton-color-info: #71bdc1;
+$tryton-color-warning: #e78e42;
+$tryton-color-light: #f2f2f2;
+$tryton-color-dark: #1e2628;
+$tryton-color-body: #586669;
+$tryton-color-danger: #e74842;
+$tryton-color-gray: #3e4950;
+$tryton-color-gray-dark: #282f33;
+$tryton-color-gray-light: #dcddde;
+
+// SECTIONS
+$tryton-section-padding: 4.5rem;
+$tryton-subsection-padding: 1rem;
+$tryton-section-padding-responsive: .75rem;
+
+// UTILS
+$line-height-small: 15px;
+$filter-opacity: .6;
+$z-indexs: (
+  '1-negative': -1,
+  '0': 0,
+  '1': 1,
+  );
+
+// COMPONENTS
+$image-frame-height-default: 10rem;
+$image-frame-heights: (
+  'small': 7.5rem,
+  );
+
+// GENERAL
+$tryton-font-family-base: Roboto, sans-serif;
+$border-radius: 10px;

@@ -1,0 +1,61 @@
+{% set title = "Wenger Energie" %}
+{% set description = "Success story of Wenger Energie - Vacuum degasser and filter systems" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "wenger-energie/banner" %}
+{% set logo = "images/success-stories/wenger-energie.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead"><a href="https://www.wengerenergie.com/">Wenger Energie GmbH</a> offers corrosion protection for heating and cooling systems built into private and industrial buildings.
+They clean the "heating water" and the "cooling liquid" with ultra fine filter technology and prohibit corrosion by using vacuum degassing.
+This is a sustainable solution for new and old buildings.
+No pollution of the "heating water" and a 13% faster heating / cooling transfer makes the heating systems last longer.
+Wenger Energie offers consulting, sales, installation and servicing for their systems.</p>
+<img src="{{ url_for('static', filename='images/success-stories/wenger-energie/banner-800px.webp') }}" class="img-fluid mx-auto d-block" alt="Heating and cooling system" loading="lazy" width="800" height="632">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>Wenger Energie consists of four companies each focused on a different aspect of the business like dealing with components, integrating systems and delivering services for the integrated systems.
+The goal was to use flexible business software where the individual needs of the different companies could be satisfied.
+It is also important to mention that all the business processes from customer relationship management to accounting needed to be implemented within the business software:</p>
+<ul>
+    <li>Party management</li>
+    <li>Leads and opportunities</li>
+    <li>Quotes and invoicing with real products and services</li>
+    <li>Project management with all the relations to other companies involved</li>
+    <li>Maintenance organisation for the employees</li>
+    <li>Accounting (bookkeeping)</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>It was decided to use Tryton as the platform as most of the functionality could be provided by existing modules including the special Swiss accounting and efinance modules available on tryton.cloud.</p>
+<p>Tryton's flexible and reliable framework allowed the remaining custom features to be easily added.
+Because Wenger Energie works in a team with other specialists, an important requirement was to be able to manage all the companies involved in a project.
+Therefore, a special module was developed that keeps all parties together for a certain project, starting from the quote until the end of the project.</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>As they had no existing business software we started with a clean slate.
+Parties and products were imported from CSV format files.
+Accounting was set up for the 4 companies.
+As is normally the case, the most time-consuming task was laying out the forms so they corresponded to the corporate identity of the companies.</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<img src="{{ url_for('static', filename='images/success-stories/wenger-energie/system.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-sm-end" alt="Employee with thumb up" loading="lazy" width="225" height="400">
+<p>Two years after implementation the big question to the employees was</p>
+<blockquote class="blockquote">
+    - Are you happy with Tryton?<br/>
+    - Yes, we are.
+</blockquote>
+<p>So many of the day to day challenges were made easier to overcome.
+Lots of tasks could be automated.
+Life got easier and the administration overhead got smaller.
+Tryton demonstrated that it is a flexible and expandable framework and that it is a great fit for businesses that are made up from multiple companies.
+It also showed how some tricky features can be integrated without spending a lot of money.</p>
+{% endblock results %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.powersolutions.ch/">power solutions</a></p>
+{% endblock provider %}

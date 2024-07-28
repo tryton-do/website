@@ -1,0 +1,72 @@
+{% set title = "Grufesa SAT" %}
+{% set description = "Success story of Grufesa implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study", "agriculture"] %}
+{% set banner = "grufesa/banner" %}
+{% set logo = "images/success-stories/grufesa.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+<img src="{{ url_for('static', filename='images/success-stories/grufesa/grufesa.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-0 float-md-end" alt="strawberries" loading="lazy" width="286" height="180">
+<a href="http://grufesa.com/">Grufesa SAT</a> is one of the biggest berry exporters in Europe.
+Over the last 35 years millions of people from across Europe, Russia and America have consumed strawberries they have produced.
+</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>
+Grufesa needed a software tool that fitted their technological ecosystem, had the capacity to evolve and adapt at the same pace as their company, and provided great cost-benefits both in terms of economical and organizational effort.
+Furthermore, this tool had to cover other key requirements:
+</p>
+<ul>
+    <li>Mechanisms that facilitate robust and efficient integration with the rest of their technologies, including:
+        <ul>
+            <li>Payroll software</li>
+            <li>Presence Control by fingerprint checking</li>
+            <li>Presence Control by face checking</li>
+            <li>RFID traceability</li>
+            <li>Automated weighers and label printers</li>
+            <li>Business Intelligence tools</li>
+            <li>etc.</li>
+        </ul>
+    </li>
+    <li>A way to improve their commercial processes</li>
+    <li>Accounting (customer invoices and payments only)</li>
+    <li>The need for a fast and precise settlement for members, as Grufesa is a farming cooperative</li>
+    <li>A tool that is adapted to the specific farming area, both at the process and legal level</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>
+After a thorough evaluation of the best available tools in the market, Grufesa finally adopted <a href="https://4agro.net/">4agro</a>, based on Tryton and provided by Datalife.
+4Agro meets Grufesa's requirements by combining adaptability with a comprehensive feature list for farming and agriculture.
+This was possible thanks to Datalife's knowledge of the agricultural sector.
+</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>The implementation started from the Tryton-4agro standard solution with new functionalities developed for this particular project (that were subsequently transfered to the 4agro standard), and include:</p>
+<ul>
+    <li>Integration with RFID traceability system</li>
+    <li>Fully adapted sales pipeline</li>
+    <li>Automatic new pallet registration at the end of the production lines</li>
+    <li>Accurate farmer payments system (due to the complex market model)</li>
+    <li>Developments to manage nurseries</li>
+</ul>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>
+Grufesa is very pleased with the outcome of the project and the continuous upgrades:
+Tryton was implemented quickly in a complex process scenario and the system fully covers all the processes in an intuitive and easy to use way.
+</p>
+<p>
+Tryton can flexibly adapt its process management to fit a wide range of specific processes.
+This advantage lets Grufesa propose improvements that help evolve and improve Tryton 4agro.
+</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://datalifeit.es">Datalife</a> has wide-ranging know-how in the agricultural sector and extensive experience with Tryton.</p>
+{% endblock %}

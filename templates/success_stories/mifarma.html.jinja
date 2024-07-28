@@ -1,0 +1,62 @@
+{% set title = "Mifarma" %}
+{% set description = "Success story of Mifarma implementing Tryton" %}
+{% set keywords = ["success story", "review", "case study", "online parapharmacy"] %}
+{% set banner = "mifarma/banner" %}
+{% set logo = "images/success-stories/mifarma.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+    <img src="{{ url_for('static', filename='images/success-stories/mifarma/mifarma.webp') }}" class="img-fluid mx-auto my-4 d-block mx-md-4 my-md-4 float-md-end" alt="online-parapharmacy" loading="lazy" width="286" height="180">
+    <a href="https://www.atida.com/es-es">Mifarma</a> is one of the most important parapharmacies in Europe and currently is the market leader in Spain.
+    It is part of the Atida Group and it also has a presence in other countries such as Portugal, Italy, France, the United Kingdom, Germany and the Netherlands.
+    The company was founded in 2010.
+    It has 120 employees and sells more than 30,000 different products from a range of 800 brands.
+</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>
+Mifarma was in need of an ERP that was capable of integrating with their web shop, managing the operations of a large company and also standing up to the critical aspects of a highly competitive sector in which the main objective is to process the maximum number of orders.
+In short they were looking to:
+</p>
+<ul>
+    <li>Optimize provisioning</li>
+    <li>Streamline order delivery</li>
+    <li>Improve integration with automated locations</li>
+    <li>Notify real time stock availability to the web shop</li>
+    <li>Integrate with logistics operators</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>
+After an evaluation process, Mifarma selected Tryton as their main software tool. This decision provided:
+</p>
+<ul>
+    <li>A complete ERP that allows the staff to control every area of the company.</li>
+    <li>A framework which can be developed and adapted to incorporate new business processes and which is easy to integrate with other systems.</li>
+    <li>A 100% open source solution: The DevOps team got a tool that can be modified, extended or adapted by themselves therefore winning autonomy.</li>
+</ul>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>Once the standard ERP and the integration with the web shop was deployed, additional improvements were addressed, in accordance with Mifarma’s specific needs, these included:</p>
+<ul>
+    <li>The integration between Tryton and a Big Data analytics service that uses deep learning to help provisioning and purchase request creation</li>
+    <li>Apps for the warehouse staff which provide more agility and flexibility: In order to process each order, an App helps personnel find the stored products</li>
+    <li>Tryton is integrated with System Logistics’ Modula in order to automatically serve the products needed during order preparation</li>
+    <li>Communications with logistics providers are automated by integrating Tryton with their platforms</li>
+</ul>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>
+The outcome is that Mifarma trusts Tryton and is very pleased with the results.
+The high level of control and automation achieved allows for a scenario that only very few systems can obtain.
+</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://datalifeit.es">Datalife</a></p>
+{% endblock %}

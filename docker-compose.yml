@@ -1,0 +1,35 @@
+version: '2.1'
+
+services:
+    website:
+        build: .
+        env_file:
+            - website.env
+        environment:
+            - MEMCACHED=memcached
+            - CRITICAL_CSS=/critical-css
+        volumes:
+            - critical-css:/critical-css
+        ports:
+            - "127.0.0.1:5000:5000"
+        restart: unless-stopped
+        healthcheck:
+            test: ["CMD", "/web/check-running"]
+            interval: 5m
+    memcached:
+        image: memcached
+        ports:
+            - "127.0.0.1:11211:11211"
+        restart: unless-stopped
+    critical-css:
+        build: critical-css
+        env_file:
+            - website.env
+        environment:
+            - OUTPUT=/critical-css
+        volumes:
+            - critical-css:/critical-css
+        depends_on:
+            - website
+volumes:
+  critical-css:

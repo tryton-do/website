@@ -1,0 +1,11 @@
+{% set img = url_for('static', filename='images/service-providers/lampero.webp') %}
+{% set website = 'https://lampero.ro/infotec/' %}
+{% set email = 'dmoustos@lampero.ro' %}
+{% set phone = '+40730556557' %}
+{% set stories = [] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+Localization, adaptation and implementation consulting for Tryton in Romania.
+Call or e-mail for a demo free of charge.
+{% endblock description %}
+{% block location %}Bucharest, Romania{% endblock %}

@@ -1,0 +1,43 @@
+{% set title = "GotSHO" %}
+{% set description = "Success story of GotSHO developing LIMS with Tryton" %}
+{% set keywords = ["success story", "review", "case study"] %}
+{% set banner = "gotsho-lims/banner" %}
+{% set logo = "images/success-stories/gotsho-lims.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">Since 2013, <a href="https://www.gotsho.com/">GotSHO LTD</a> a private company established in Israel, India and Europe, have developed software for the world of genomics.
+Their clients are large genetics and diagnostics companies in Israel and abroad.</p>
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>Faced with the need for technological systems that manage and safeguard valuable data sets in the biological, medical and genetic fields, GotSHO came to gcoop with the intention of implementing and developing a LIMS (Laboratory Information Management System).
+This development work involved research into, and the participation of, different laboratories, and the collaboration GotSHO and gcoop (a company specialized in development using the Tryton framework).
+The development of LIMS with Tryton has allowed laboratories to move from an ad-hoc system, to a complete laboratory management system, taking into account the specific processes that are unique to this field.</p>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>The Tryton framework provides a great starting point for many different kinds of project, and this was proved here.
+The only core module that was needed was the party module, since all the other modules were developed specifically for this project.
+LIMS needed modules and reports for Referrals, Tests, Samples, Jobs, Batch Tests, Patients, Doctors and Medical Institutions.
+These were easy to implement thanks to the clean abstractions and core functionality provided by the Tryton framework.</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>In order to make good management decisions you need information that is presented in the right way.
+So, in addition to collecting the data the system must also be able to generate meaningful statistics from it.
+For this, several reports were developed that are then visualized onto a dashboard for the users.
+GotSHO implemented their own tryton front-end with <a href="https://reactjs.org/">React.js</a> to better visualize the large amount of information that the tests generate.</p>
+<img src="{{ url_for('static', filename='images/success-stories/gotsho-lims/screenshot.webp') }}" class="img-fluid mx-auto d-block" alt="Screenshot of LIMS" loading="lazy" width="690" height="326">
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>After initial testing in one of the laboratories, system errors were discovered which were quickly corrected.
+There has also been some great feedback which is now being used to continue improving and developing the system.
+Currently gcoop and GotSHO are adding additional features to LIMS to make it an even better choice for companies and laboratories.</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p><a href="https://www.gcoop.coop/">gcoop</a> provided its development experience with Tryton</p>
+<p><a href="https://www.gotsho.com/">GotSHO</a> provided its experience in software development for the world of genomics</p>
+{% endblock %}

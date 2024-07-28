@@ -1,0 +1,70 @@
+{% set title = "Try Tryton" %}
+{% set description = "Demostration server of Tryton" %}
+{% set keywords = ["demo"] %}
+{% extends "layout.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-demo') }}
+{% endblock %}
+{% block content %}
+<div class="section section-banner background-banner-demo filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</div>
+{{ super() }}
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2 id="demo">Try without installing</h2>
+                <p>We host a public shared demo server.
+                It is filled with some example data that gets reset every day.<br/>
+                Emails send by the server are catch by <a href="//demo-mail.tryton.org/">MailCatcher</a>.<br/>
+                Here are the <a href="//www.tryton.org/~demo/">backup of the demo database</a>.</p>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th class="table-light" scope="col">User name</th>
+                            <th class="table-light" scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="table-light" scope="row">English</th>
+                            <td>demo</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th class="table-light" scope="row">Español</th>
+                            <td>demo_es</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th class="table-light" scope="row">Français</th>
+                            <td>demo_fr</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th class="table-light" scope="row">Deutsch</th>
+                            <td>demo_de</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <th class="table-light" scope="row">Administrator</th>
+                            <td>admin</td>
+                            <td>admin</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="alert alert-warning">This is a shared server, so please do not change the password or the user's language.</p>
+                <div class="text-center">
+                    <a href="//demo.tryton.org/" class="btn btn-primary text-white mx-auto mt-3">Launch the demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

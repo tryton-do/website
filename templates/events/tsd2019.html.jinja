@@ -1,0 +1,149 @@
+{% set title = "Tryton Spanish Days - November 27th-28th 2019" %}
+{% set description = "Tryton Spanish Days at Alicante" %}
+{% set keywords = ["conference", "meeting", "event"] %}
+{% set banner = 'tsd2019-banner.webp' %}
+{% macro location() %}
+<div class="h-card vcard">
+    <strong class="p-name fn">
+        <a class="u-url url" href="https://www.alicante.es/es/equipamientos/auditorio-edificio-municipal-puerta-ferrisa-agencia-local-desarrollo">
+            Auditorio Puerta Ferrisa
+        </a></strong><br/>
+        <span class="p-addr addr">
+            <span class="p-street-address street-address">Calle Jorge Juan, 21 bajo</span>,<br/>
+            <span class="p-postal-code postal-code">03002</span>
+            <span class="p-locality locality">Alicante</span><br/>
+        </span>
+</div>
+{% endmacro %}
+{% set events = [
+    Day((2019, 11, 27),
+        ("Welcome and Presentation", (10,00), (10,15), "",
+            [("Ricardo Laborda", '7def80bf949923280eeee51329876f97', "Datalife", 'https://datalifeit.es/')]),
+        ("What can Tryton offer my company?", (10, 15), (10, 45), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("Tryton: How they do it", (10, 45), (11, 15), "",
+            [("José Salvador", '06fe0c653b51b1979ec798a2e108108a', "Numenalia", '')]),
+        ("Coffee Break", (11, 15), (11, 45), ""),
+        ("eCommerce from Tryton", (12, 00), (12, 30,), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("Tryton and the GNU Health federation", (12,30), (13,00), "",
+            [("Luis Falcon", '8195b77c77637a67c1155e0876481f75', "GNUHealth", 'https://www.gnuhealth.org/')]),
+        ("4agro and the agrolimentari sector", (13, 00), (13, 30), "",
+            [("Ricardo Laborda", '7def80bf949923280eeee51329876f97', "Datalife", 'https://datalifeit.es/')]),
+        ("Lunch Break", (14, 00), (16, 00), ""),
+        ("What open source gives my business", (16, 00), (16, 30), "",
+            [("Fernando Martín", 'aaa01ef70898773a935e0bb0c9bb3b45', "OpenViT", 'https://openvit.org/')]),
+        ("Mobility systems to give value: tryvy", (17, 00), (17, 30), "",
+            [("Sergio Morillo", 'bc2d2c53bd73f8bd7f6cfbaa5ed436a8', "Datalife", 'https://datalifeit.es/')]),
+        ("Sale Costs and Return Management", (17, 30), (18, 00), "",
+            [("Nicolas Lopez", 'ce2ffc0d3acbb3acf94cbc46e48e13e0', "Datalife", 'https://datalifeit.es/')]),
+        ("Tryton oriented to Food Industry", (18, 00), (18, 30), "",
+            [("Javier Celada", '3def9fa553ed0691c12d0eb8db6f6f0c', "INGSYS", '')]),
+        ("Business Intelligence with Tryton", (18, 30), (19, 00), ""),
+            location=location(), full=True),
+    Day((2019, 11, 28),
+        ("New functionalities on Tryton 5.4", (10,00), (10, 45), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("EDI and Attendance Control", (10, 45), (11, 15), "",
+            [("Marcos Sabater", '01e277b7dfaba3faf8e9de5afdea7cf0', "Datalife", 'https://datalifeit.es/')]),
+        ("Coffee Break", (11, 15), (11, 45), ""),
+        ("Tryton Spanish Localization", (12,00), (12, 30), "A summary of the current state of the Spanish localization and the future work.",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("Productivity in financial: Instrastat", (12, 30), (13, 00), "",
+            [("Ramón Oliver", 'e8004e385368b66b469028a8cef6641c', "Datalife", 'https://datalifeit.es/')]),
+        ("Contribute to Open Source managing customer timings", (13,00), (13, 30), "",
+            [("Sergi Almacellas Abellana", '5efa3ab997adc9ee037d06034a58161c', "KOPEN", 'https://www.kopen.es/')]),
+        ("Tryton and the lifecycle of Open Source", (13, 30), (14, 00), "",
+            [("Nicolas Lopez", 'ce2ffc0d3acbb3acf94cbc46e48e13e0', "Datalife", 'https://datalifeit.es/')]),
+            location=location(), full=True),
+    ]
+%}
+{% extends "events/layout.html.jinja" %}
+
+{% block title %}
+Tryton Spanish Days<br/><small>November 27th-28th 2019</small>
+{% endblock %}
+
+{% block lead %}
+<p class="lead">
+The event will take place in the sunny city of Alicante on the 27th and 28th of November where several Tryton experts will talk about open source and digital transformation.</p>
+{{ super() }}
+{% endblock lead %}
+
+{% block schedule %}
+{{ super() }}
+{% if datetime.date.today() < datetime.date(2019, 11, 11) %}
+<div class="bg-light py-4 mb-4 text-center">
+    <p class="lead"><span class="material-icons align-middle">build</span> The unconference is built by its participants.</p>
+    <a class="btn btn-primary text-uppercase my-4" href="mailto:foundation@tryton.org">Submit a talk</a>
+</div>
+{% endif %}
+<div class="bg-light py-4 mb-4 text-center" id="video">
+    <p class="lead"><span class="material-icons align-middle">movie</span> The talks are recorded and live streamed on our Youtube channel.</p>
+    <a class="btn btn-lnk" href="https://www.youtube.com/playlist?list=PL4ydsflJkP9X0rCPZdEks4LMXOKz7FDrs">Watch</a>
+</div>
+{% endblock %}
+
+{% block register %}
+<h3 class="text-center"><a href="https://www.eventbrite.es/e/entradas-jornadas-nacionales-tryton-2019-76928648659">Register to the #JornadasTryton2019 (Spanish)</a></h3>
+{% endblock register %}
+
+{% block venue %}
+<div class="vcard text-center">The unconference will be hosted at the
+    {{ location() | safe }}
+</div>
+<iframe height="500" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.4852116107940674%2C38.34229572239992%2C-0.4710924625396729%2C38.34968356290722&amp;layer=mapnik&amp;marker=38.34598973684903%2C-0.4781520366668701" style="width: 100%; border: 1px solid black; overflow: hidden; margin: 0"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.34599&amp;mlon=-0.47815#map=17/38.34599/-0.47815">View Larger Map</a></small>
+<h3>Transportations</h3>
+<ul>
+    <li>By Train
+        <ul>
+            <li>The <a href="https://en.wikipedia.org/wiki/AVE">AVE</a> in the Alicant Terminal located at the center of Alicant is preferred.</li>
+        </ul>
+    </li>
+    <li>By Plane
+        <ul>
+            <li>The <a href="http://www.aena.es/es/aeropuerto-alicante/index.html">Alicant Airport</a> has a bus shuttle to Alicant every 20 minutes.</li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}
+
+{% block accommodations %}
+<p>As the event is hold on the center of Alicante there are a lot of hotels near the location.</p>
+<p>Yet we have some suggestions of hotels:</p>
+<ul>
+    <li>Tryp Ciudad de Alicante</li>
+    <li>Melià Alicante</li>
+    <li>Eurostars Centrum Alicante</li>
+</ul>
+{% endblock accommodations %}
+
+{% block main %}
+{{ super() }}
+<section class="section sponsors" id="sponsors">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="bg-white">Sponsors</h2>
+        </div>
+        <p>With the support of:</p>
+        <a href="https://www.impulsalicante.es/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-impulsalicante.webp') }}" alt="Agencia local de desarrollo economico y social de Alicante" loading="lazy" width="200" height="141"/>
+        </a>
+        <a href="https://datalifeit.es/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/service-providers/datalife.webp') }}" alt="Datalife" loading="lazy" width="200" height="130"/>
+        </a>
+        <a href="https://www.kopen.es/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/service-providers/kopen.webp') }}" alt="Kopen Software" loading="lazy" width="200" height="130"/>
+        </a>
+        <span>
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-ingsys.webp') }}" alt="INGSYS" loading="lazy" width="200" height="113"/>
+        </span>
+        <span>
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-numenalia.webp') }}" alt="Numenalia" loading="lazy" width="200" height="104"/>
+        </span>
+        <a href="https://openvit.org/">
+            <img class="img-thumbnail" src="{{ url_for('static', filename='images/events/tsd2019-openvit.webp') }}" alt="Asociación de tecnologías libres de la comunidad valenciana" loading="lazy" width="200" height="99"/>
+        </a>
+    </div>
+</section>
+{% endblock main %}

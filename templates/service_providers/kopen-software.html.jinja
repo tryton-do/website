@@ -1,0 +1,13 @@
+{% set img = url_for('static', filename='images/service-providers/kopen.webp') %}
+{% set website = 'https://www.kopen.es/' %}
+{% set email = 'info@kopen.es' %}
+{% set phone = '+34651569834' %}
+{% set stories = ['jorda', 'koolvet'] %}
+{% extends "service_providers/layout.html.jinja" %}
+{% block description %}
+A company focused on delivering Tryton to our customers.
+We provide hosting, support, custom development and training services.
+Our team is involved with Tryton: we are committed to contribute new features to each version and we are very active on the forum discussions.
+This commitment give us a comprehensive knowledge of Tryton which we use to provide the best solutions for our customers.
+{% endblock description %}
+{% block location %}Lleida, Spain{% endblock %}

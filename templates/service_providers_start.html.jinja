@@ -1,0 +1,115 @@
+{% set title = "Become a Service Provider" %}
+{% set description = "How to be listed as service provider" %}
+{% set keywords = ["service", "company", "support" ] %}
+{% set toc = [
+    ("Contribute", 'contribute', None),
+    ("Request Listing", 'listing', None),
+    ("Submit Success Stories", 'success-stories', None),
+    ("Keep up to date", 'update', None),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+<style>
+body {
+    counter-reset: step;
+}
+#content h2:before {
+    counter-increment: step;
+    content: counter(step) ". ";
+}
+</style>
+{{ background('banner-service-providers-start') }}
+{% endblock style %}
+{% block content %}
+<section class="section section-banner background-banner-service-providers-start filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</section>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<p class="lead">You want your company to be listed as a <a href="{{ url_for('service_providers') }}"> service provider</a>? Follow these steps:</p>
+
+<div class="card mb-5 shadow w-100">
+    <div class="card-body d-inline-flex">
+        <div class="picto-container me-3 d-none d-sm-flex">
+            <div class="picto bg-dark text-white">
+                <span class="material-icons md-48">build</span>
+            </div>
+        </div>
+        <div>
+            <h2 class="h5 card-title" id="contribute">Contribute</h2>
+            <p class="card-text">
+            You must build a reputation for expertize within the community by <a href="{{ url_for('contribute') }}">contributing</a> to the project.
+            </p>
+            <a href="{{ url_for('contribute') }}" class="card-link">Contribute</a>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-5 shadow w-100">
+    <div class="card-body d-inline-flex">
+        <div class="picto-container me-3 d-none d-sm-flex">
+            <div class="picto bg-dark text-white">
+                <span class="material-icons md-48">send</span>
+            </div>
+        </div>
+        <div>
+            <h2 class="h5 card-title" id="listing">Request Listing</h2>
+            <p class="card-text">
+            Once you think that your reputation has reached a high enough level, send an email to <a href="mailto:foundation@tryton.org">foundation@tryton.org</a> to request to be listed.
+            </p>
+            <a href="mailto:foundation@tryton.org" class="btn btn-primary">Send Email</a>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-5 shadow w-100">
+    <div class="card-body d-inline-flex">
+        <div class="picto-container me-3 d-none d-sm-flex">
+            <div class="picto bg-dark text-white">
+                <span class="material-icons md-48">create</span>
+            </div>
+        </div>
+        <div>
+            <h2 class="h5 card-title" id="success-stories">Submit Success Stories</h2>
+            <p class="card-text">
+            To stay listed, you must provide at least one <a href="{{ url_for('success_stories') }}">success story</a> within 6 months.
+            </p>
+            <a href="https://bugs.tryton.org/website" class="btn btn-primary">Submit Success Stories</a>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-5 shadow w-100">
+    <div class="card-body d-inline-flex">
+        <div class="picto-container me-3 d-none d-sm-flex">
+            <div class="picto bg-dark text-white">
+                <span class="material-icons md-48">update</span>
+            </div>
+        </div>
+        <div>
+            <h2 class="h5 card-title" id="update">Keep up to date</h2>
+            <div class="card-text">
+                <p>You must:</p>
+                <ul>
+                    <li>
+                        keep your company information and existing success stories up to date,
+                    </li>
+                    <li>
+                        stay active in the community and keep <a href="{{ url_for('contribute') }}">contributing</a>,
+                    </li>
+                    <li>
+                        submit new <a href="{{ url_for('success_stories') }}">success stories</a>.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

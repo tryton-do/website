@@ -1,0 +1,73 @@
+{% set title = "Legna" %}
+{% set description = "Success story of a digital printing company" %}
+{% set keywords = ["success story", "review", "case study", "digital printing"] %}
+{% set banner = "legna/banner" %}
+{% set logo = "images/success-stories/legna.webp" %}
+{% extends "success_stories/layout.html.jinja" %}
+{% block customer %}
+{{ super() }}
+<p class="lead">
+<a href="https://www.legna.com.do">LEGNA COMUNICACIÓN VISUAL, SRL</a> is a company from the Dominican Republic dedicated to graphic design, digital printing and offset solutions but above all they are experts in large format printing.
+They are committed to satisfing their client's needs with respect to design, printing and placement of billboards.
+Currently they have 16 employees, 5 users in the office and 11 who work in production.
+</p>
+<img src="{{ url_for('static', filename='images/success-stories/legna/offices.webp') }}" class="img-fluid" alt="legna offices" loading="lazy" width="534" height="400">
+{% endblock customer %}
+{% block challenge %}
+{{ super() }}
+<p>
+The company was using Excel to manage sales and invoices but this was uncontrollable.
+They wanted to upgrade to a system with more features, lower costs for small and medium sized business (SME) and which could be customized and updated smoothly.
+The new business software needed to be able to deliver the following functionalities:
+</p>
+<ul>
+    <li>Customers/suppliers management</li>
+    <li>Product and stock management</li>
+    <li>Sales</li>
+    <li>Purchases</li>
+    <li>Accounting (invoicing, bookkeeping)</li>
+    <li>Tax Reporting</li>
+    <li>Analytic Statistics</li>
+    <li>Groups, Users and Audit System</li>
+</ul>
+{% endblock challenge %}
+{% block solution %}
+{{ super() }}
+<p>
+It was decided to use Tryton as the base platform.
+We identified that, to begin with, some minor custom functionality was needed to adapt the accounting and fiscal accounting to their needs.
+However, most of the functionality from the Tryton base platform and the extensions for Dominican Republic could be used without any issue.
+</p>
+{% endblock solution %}
+{% block implementation %}
+{{ super() }}
+<p>
+We developed a migration script to import the existing data into the new Tryton system.
+Report layouts were adjusted to match the customer's corporate identity and satisfy the Dominican Republic's fiscal rules and regulations.
+The desktop client was installed on all the Mac and Windows computers.
+The web client was also installed.
+After some basic training, the users were able to use Tryton as the company's new managment system.
+</p>
+{% endblock implementation %}
+{% block results %}
+{{ super() }}
+<p>
+<img src="{{ url_for('static', filename='images/success-stories/legna/tryton-computer.webp') }}" class="img-fluid mb-4 center" alt="A Legna computer using Tryton" loading="lazy" width="540" height="400">
+The migration from Excel to Tryton has been a complete success.
+Tryton has shown that it is an excellent solution for companies that need a standard accounting and business management system.
+With some light customization it was easy to get it to work perfectly for LEGNA COMUNICACIÓN VISUAL, SRL.
+</p>
+<p>
+The use of the purchase, sale, stock and invoicing modules has structured the business processes and significantly improved the productivity of the whole company.
+</p>
+<blockquote>
+We are very pleased with the outcome of the project and the continuous upgrades.
+The system fully covers our processes and it is easy to use.
+</blockquote>
+<p><a href="https://www.legna.com.do">LEGNA COMUNICACIÓN VISUAL, SRL</a> is very happy with the Tryton system and is already looking forward to the next version.
+</p>
+{% endblock %}
+{% block provider %}
+{{ super() }}
+<p>INROWGA is the provider which helped the customer with the full Tryton implementation.</p>
+{% endblock %}

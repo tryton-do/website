@@ -1,0 +1,146 @@
+{% set title = "Forum" %}
+{% set description = "Participate to the community and get help" %}
+{% set keywords = ["forum", "help", "community"] %}
+{% set toc = [
+    ("Forum", 'discuss', None),
+    ("IRC", 'irc', None),
+    ("Mailing Lists", 'mailing-lists', None),
+    ]
+%}
+{% extends "layout-toc.html.jinja" %}
+{% from "utils.html.jinja" import background with context %}
+{% block style %}
+{{ super() }}
+{{ background('banner-forum') }}
+{% endblock %}
+{% block content %}
+<section class="section section-banner background-banner-forum filter filter-primary text-center lazy">
+    <div class="container">
+        <h1 class="mb-0 text-white position-relative z-1">{{ title }}</h1>
+    </div>
+</section>
+{{ super() }}
+{% endblock content %}
+
+{% block main %}
+<p class="lead" id="netiquette">
+<span class="material-icons">warning</span>
+Be considerate of others, follow the <a href="https://tools.ietf.org/html/rfc1855#section-3.0">netiquette</a>.
+</p>
+
+<div class="card mb-5 shadow w-100">
+    <div class="card-body">
+        <h2 class="card-title text-uppercase" id="discuss">Forum</h2>
+        <p class="card-text">
+        The principal communication method for the community is on our forum.
+        We discuss <a href="https://discuss.tryton.org/c/feature">new features</a>,
+        provide each other with <a href="https://discuss.tryton.org/c/support">support</a>,
+        share <a href="https://discuss.tryton.org/c/howto">howto's</a>
+        and talk about the <a href="https://discuss.tryton.org/c/organisation">organisation</a>.
+        </p>
+        <a href="https://discuss.tryton.org" class="card-link">Join the Forum</a>
+    </div>
+</div>
+
+<div class="card mb-5 shadow w-100">
+    <div class="card-body">
+        <h2 class="card-title text-uppercase" id="irc">Internet Relay Chat</h2>
+        <p class="card-text">
+        For instant communication, we have multiple channels on the <a href="https://libera.chat/">Libera.Chat network</a>.
+        </p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                English:
+                <a href="irc://irc.tryton.org/tryton">#tryton</a>
+                (<a href="//www.tryton.org/~irclog/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                Deutsch:
+                <a href="irc://irc.tryton.org/tryton-de">#tryton-de</a>
+                (<a href="//www.tryton.org/~irclog/de/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                Español:
+                <a href="irc://irc.tryton.org/tryton-es">#tryton-es</a>
+                (<a href="//www.tryton.org/~irclog/es/">archive</a>)
+            </li>
+            <li class="list-group-item">
+                Français:
+                <a href="irc://irc.tryton.org/tryton-fr">#tryton-fr</a>
+                (<a href="//www.tryton.org/~irclog/fr/">archive</a>)
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mb-5 shadow w-100">
+    <div class="card-body">
+        <h2 class="card-title text-uppercase" id="mailing-lists">Mailing Lists</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h3>Announces</h3>
+                <p>
+                You receive notifications about Tryton releases and news by subscribing to announces mailing list.
+                </p>
+                <ul>
+                    <li>To subscribe, send an email to <a href="mailto:announces+subscribe@tryton.org">announces+subscribe@tryton.org</a></li>
+                    <li>To unsubscribe, send an email to <a href="mailto:announces+unsubscribe@tryton.org">announces+unsubscribe@tryton.org</a></li>
+                </ul>
+                <a href="https://www.mail-archive.com/announces@tryton.org/" class="card-link">Archive</a>
+            </li>
+            <li class="list-group-item">
+                <h3>Commits</h3>
+                <p>
+                You receive notifications about all Tryton commits by subscribing to commits mailing list.
+                </p>
+                <ul>
+                    <li>To subscribe, send an email to <a href="mailto:commits+subscribe@tryton.org">commits+subscribe@tryton.org</a></li>
+                    <li>To unsubscribe, send an email to <a href="mailto:commits+unsubscribe@tryton.org">commits+unsubscribe@tryton.org</a></li>
+                </ul>
+                <a href="https://www.mail-archive.com/commits@tryton.org/" class="card-link">Archive</a>
+            </li>
+            <li class="list-group-item">
+                <h3>Pipelines</h3>
+                <p>
+                You receive notifications about any Tryton pipelines failing on the default and protected branches.
+                </p>
+                <ul>
+                    <li>To subscribe, send an email to <a href="mailto:pipelines+subscribe@tryton.org">pipelines+subscribe@tryton.org</a></li>
+                    <li>To unsubscribe, send an email to <a href="mailto:pipelines+unsubscribe@tryton.org">pipelines+unsubscribe@tryton.org</a></li>
+                </ul>
+            </li>
+        </ul>
+        <p class="card-text mt-5">
+        <span class="material-icons">warning</span>
+        We also have some mailing lists which are <span class="text-danger">deprecated</span> in favor of the <a href="#discuss">forum</a>.
+        They are listed here for reference.
+        </p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton@googlegroups.com/">English</a>
+            </li>
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton-ca@googlegroups.com/">Català</a>
+            </li>
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton-de@googlegroups.com/">Deutsch</a>
+            </li>
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton-es@googlegroups.com/">Español</a>
+            </li>
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton-fr@googlegroups.com/">Français</a>
+            </li>
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton-ru@googlegroups.com/">РУССКИЙ</a>
+            </li>
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton-dev@googlegroups.com/">Developers</a>
+            </li>
+            <li class="list-group-item list-group-item-light">
+                <a href="https://www.mail-archive.com/tryton-contrib@googlegroups.com/">contrib</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock main %}
