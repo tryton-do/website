@@ -1,4 +1,5 @@
 Flask>=2.2,<3
+Flask-Babel
 Flask-Caching
 Flask-Gravatar
 Flask-Sitemap
