@@ -22,6 +22,7 @@ import requests
 from colorthief import ColorThief
 from flask import (
     Flask, abort, make_response, redirect, render_template, request, url_for)
+from flask_babel import Babel, _
 from flask.logging import default_handler
 from flask_caching import Cache
 from flask_cdn import CDN
@@ -66,6 +67,8 @@ app.config['PREFERRED_URL_SCHEME'] = 'https'
 app.config['SERVER_NAME'] = os.environ.get('SERVER_NAME')
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SITEMAP_VIEW_DECORATORS'] = [cache.cached()]
+app.config['BABEL_DEFAULT_LOCALE'] = 'es'
+app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'es']
 app.config['SITEMAP_IGNORE_ENDPOINTS'] = {
     'contribute-alt',
     'donate-alt',
@@ -116,15 +119,25 @@ CDN(app)
 gravatar = Gravatar(app)
 sitemap = Sitemap(app=app)
 
+babel = Babel(app)
 
+@babel.localeselector
+def get_locale():
+    lang = request.args.get('lang')
+    if lang:
+        return lang
+    return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES'])
+
+@app.before_request
+def before_request():
+    g.lang = get_locale()
+    
 def url_for_self(**args):
     return url_for(request.endpoint, **dict(request.args, **args))
-
 
 @app.context_processor
 def inject_self():
     return dict(url_for_self=url_for_self)
-
 
 def json_default(o):
     if hasattr(o, '__json__'):
