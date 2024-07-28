@@ -23,13 +23,13 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build Docker Website image
-        run: docker build . -t website:latest
+        run: docker build . -t ${{ secrets.DOCKER_HUB_USERNAME }}/website:latest
 
       - name: Push Docker Website image to Docker Hub
-        run: docker push website:latest
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/website:latest
 
       - name: Build Docker Critical-CSS image
-        run: docker build . -t critical-css:latest
+        run: docker build . -t ${{ secrets.DOCKER_HUB_USERNAME }}/critical-css:latest
 
       - name: Push Docker Critical-CSS image to Docker Hub
-        run: docker push critical-css:latest
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/critical-css:latest
